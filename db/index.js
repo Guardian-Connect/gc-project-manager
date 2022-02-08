@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 const bcrypt = require("bcrypt");
-const DB_NAME = "change";
+const DB_NAME = "equipment";
 
 const client = new Client(
   process.env.DATABASE_URL ||
@@ -77,6 +77,16 @@ async function getAllUsers() {
   return rows;
 }
 
+async function getAllSites() {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM dispinfo;
+  `
+  );
+
+  return rows;
+}
+
 async function getUsersByID(id) {
   try {
     const {
@@ -103,4 +113,5 @@ module.exports = {
   getUsersByID,
   getUserByUsername,
   getUser,
+  getAllSites,
 };

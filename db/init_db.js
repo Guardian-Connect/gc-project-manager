@@ -6,6 +6,7 @@ const {
   createUser,
   getUsersByID,
   getUserByUsername,
+  getAllSites,
 } = require("./index");
 
 async function createTables() {
@@ -17,17 +18,78 @@ async function createTables() {
           password varchar NOT NULL,
           email varchar NOT NULL
         );
+CREATE TABLE dispinfo (
+  id SERIAL PRIMARY KEY,
+  gp varchar NOT NULL,
+  gvrid varchar UNIQUE NOT NULL,
+  address varchar NOT NULL,
+  city varchar NOT NULL,
+  state varchar NOT NULL,
+  totaldisp varchar NOT NULL,
+  disp1 varchar,
+  grades1 varchar,
+  disp2 varchar,
+  grades2 varchar,
+  disp3 varchar,
+  grades3 varchar,
+  disp4 varchar,
+  grades4 varchar,
+  disp5 varchar,
+  grades5 varchar,
+  disp6 varchar,
+  grades6 varchar,
+  disp7 varchar,
+  grades7 varchar,
+  disp8 varchar,
+  grades8 varchar,
+  disp9 varchar,
+  grades9 varchar,
+  disp10 varchar,
+  grades10 varchar,
+  disp11 varchar,
+  grades11 varchar,
+  disp12 varchar,
+  grades12 varchar,
+  disp13 varchar,
+  grades13 varchar,
+  disp14 varchar,
+  grades14 varchar,
+  disp15 varchar,
+  grades15 varchar,
+  disp16 varchar,
+  grades16 varchar,
+  disp17 varchar,
+  grades17 varchar,
+  disp18 varchar,
+  grades18 varchar,
+  disp19 varchar,
+  grades19 varchar,
+  disp20 varchar,
+  grades20 varchar,
+  disp21 varchar,
+  grades21 varchar
+);
+
       `);
   } catch (error) {
     throw error;
   }
 }
 
+// CREATE TABLE dispinfo (
+//   id SERIAL PRIMARY KEY,
+//   gp varchar NOT NULL,
+//   gvrid varchar UNIQUE NOT NULL,
+//   totaldisp varchar NOT NULL,
+//   dispinfo varchar NOT NULL
+// );
+
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
       DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS dispinfo;
       `);
 
     console.log("Finished dropping tables!");
@@ -44,7 +106,7 @@ async function createInitialUsers() {
       console.log("First User");
       bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
         const arman = await createUser({
-          username: "arman",
+          username: "nels",
           password: hashedPassword,
           email: "test1@yahoo.com",
         });
@@ -70,7 +132,7 @@ async function createInitialUsers() {
       console.log("Third User");
       bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
         const robin = await createUser({
-          username: "robin",
+          username: "josh",
           password: hashedPassword,
           email: "test3@yahoo.com",
         });
@@ -105,9 +167,11 @@ async function testDB() {
     const userRobin = await getUserByUsername("robin");
     const users = await getAllUsers();
     const user1 = await getUsersByID(1);
+    const dispinfo = await getAllSites();
     console.log("username", userArman, userJames, userRobin);
     console.log("All users", users);
     console.log("User #1", user1);
+    console.log("Dispenser", dispinfo);
   } catch (error) {
     console.error(error);
   } finally {

@@ -7,19 +7,32 @@ const {
   getUserByUsername,
   getUser,
   getAllUsers,
+  getAllSites,
 } = require("../db");
 const SALT_COUNT = 10;
 
 usersRouter.get("/", async (req, res, next) => {
   try {
-    console.log(test);
-    const users = await getUserByUsername(james);
+    console.log("test");
+    const users = await getAllUsers();
+    // getUserByUsername("james");
     console.log(users);
     // getAllUsers();
-    res.send({
-      message: "Users is under construction!",
-    });
-    // res.send({ users });
+    // res.send({
+    //   message: "Users is under construction!",
+    // });
+    res.send({ users });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/disp", async (req, res, next) => {
+  try {
+    console.log("test");
+    const dispinfo = await getAllSites();
+    console.log(dispinfo);
+    res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
   }
