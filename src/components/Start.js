@@ -8,6 +8,7 @@ import { Typography } from "@mui/material";
 const Start = ({ message, setMessage }) => {
   let history = useHistory();
   const [searchInput, setSearchInput] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     getSomething()
@@ -43,7 +44,11 @@ const Start = ({ message, setMessage }) => {
               }
             })
             .map((site) => (
-              <div className="main" key={site.id}>
+              <div
+                className="main"
+                key={site.id}
+                onClick={() => setIsActive(!isActive)}
+              >
                 <div className="info">
                   <Typography variant="h4">
                     <div>GVR ID - {site.gvrid}</div>
@@ -54,7 +59,7 @@ const Start = ({ message, setMessage }) => {
                     <div>Number of Dispensers - {site.totaldisp}</div>
                   </Typography>
                 </div>
-                <Dispcards site={site} />
+                {isActive && <Dispcards site={site} />}
               </div>
             ))}
         </h2>
