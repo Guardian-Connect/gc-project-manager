@@ -43,7 +43,7 @@ const Start = ({ message, setMessage }) => {
               }
             })
             .map((site) => (
-              <div className="main">
+              <div className="main" key={site.id}>
                 <div className="info">
                   <Typography variant="h4">
                     <div>GVR ID - {site.gvrid}</div>

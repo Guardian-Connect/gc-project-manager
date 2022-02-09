@@ -18,7 +18,11 @@ function AppAppBar({ searchInput, setSearchInput }) {
     <div>
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: "center" }}>
-          <Box sx={{ flex: 0 }} />
+          <Box
+            sx={{
+              flex: 0,
+            }}
+          />
           <input
             className="search"
             type="text"
@@ -26,25 +30,25 @@ function AppAppBar({ searchInput, setSearchInput }) {
             value={searchInput}
             onChange={handleTextChange}
           />
-          {/* <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          {/* <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
             <Link
               color="inherit"
               variant="h6"
               underline="none"
-              href="/premium-themes/onepirate/sign-in/"
+              href="/second"
               sx={rightLink}
             >
-              {'Sign In'}
-            </Link>
-            <Link
+              {"Sign In"}
+            </Link> */}
+          {/* <Link
               variant="h6"
               underline="none"
               href="/premium-themes/onepirate/sign-up/"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
               {'Sign Up'}
-            </Link>
-          </Box> */}
+            </Link> */}
+          {/* </Box> */}
         </Toolbar>
       </AppBar>
       <Toolbar />

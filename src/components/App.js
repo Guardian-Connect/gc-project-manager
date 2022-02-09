@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Second from "./Second";
 import Start from "./Start";
-
+import SignIn from "./SignIn";
 const App = () => {
   const [message, setMessage] = useState([]);
 
@@ -13,7 +13,7 @@ const App = () => {
           <Start message={message} setMessage={setMessage} />
         </Route>
         <Route path="/second">
-          <Second />
+          <SignIn />
         </Route>
       </Switch>
     </Router>
