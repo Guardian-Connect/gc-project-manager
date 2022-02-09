@@ -13,14 +13,7 @@ const SALT_COUNT = 10;
 
 usersRouter.get("/", async (req, res, next) => {
   try {
-    console.log("test");
     const users = await getAllUsers();
-    // getUserByUsername("james");
-    console.log(users);
-    // getAllUsers();
-    // res.send({
-    //   message: "Users is under construction!",
-    // });
     res.send({ users });
   } catch ({ name, message }) {
     next({ name, message });
@@ -29,9 +22,7 @@ usersRouter.get("/", async (req, res, next) => {
 
 usersRouter.get("/disp", async (req, res, next) => {
   try {
-    console.log("test");
     const dispinfo = await getAllSites();
-    console.log(dispinfo);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -40,7 +31,6 @@ usersRouter.get("/disp", async (req, res, next) => {
 
 usersRouter.get("/getUserInfo", async (req, res, next) => {
   try {
-    console.log(req.user);
     if (req.user) {
       res.send({ user: req.user });
     }
@@ -51,7 +41,6 @@ usersRouter.get("/getUserInfo", async (req, res, next) => {
 
 usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
-  console.log(req.body);
 
   if (!username || !password) {
     next({

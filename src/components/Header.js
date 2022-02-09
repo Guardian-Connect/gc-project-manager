@@ -20,11 +20,6 @@ const Header = ({ setSearchInput, searchInput }) => {
           onChange={handleTextChange}
         />
       </div>
-      {/* <Search
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        clearModal={clearModal}
-      /> */}
     </div>
   );
 };
