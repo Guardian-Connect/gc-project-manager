@@ -15,7 +15,7 @@ const Header = ({ setSearchInput, searchInput }) => {
         <input
           className="search"
           type="text"
-          placeholder="Search By GVR ID or Address"
+          placeholder="Search By GVR ID,Address, or GP Customer ID."
           value={searchInput}
           onChange={handleTextChange}
         />

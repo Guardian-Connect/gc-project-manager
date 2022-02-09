@@ -26,7 +26,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
           <input
             className="search"
             type="text"
-            placeholder="Search By GVR ID or Address"
+            placeholder="Search By GVR ID, Address, or GP Customer Number."
             value={searchInput}
             onChange={handleTextChange}
           />

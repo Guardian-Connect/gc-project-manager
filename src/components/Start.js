@@ -42,6 +42,10 @@ const Start = ({ message, setMessage }) => {
               if (clientsId.includes(searchInput.toLowerCase())) {
                 return true;
               }
+              const clientsGp = client.gp;
+              if (clientsGp.includes(searchInput.toUpperCase())) {
+                return true;
+              }
             })
             .map((site) => (
               <div className="main">

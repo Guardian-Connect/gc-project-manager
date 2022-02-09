@@ -19,7 +19,7 @@ const Dispcards = ({ site }) => {
           id="panel1a-header"
         >
           <div className="info">
-            <Typography variant="h4">
+            <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
               <div>GVR ID - {site.gvrid}</div>
               <div>GP Customer - {site.gp}</div>
               <div>
