@@ -8,7 +8,7 @@ import AppAppBar from "./modules/views/AppAppBar";
 import AppForm from "./modules/views/AppForm";
 import { email, required } from "./modules/form/validation";
 import RFTextField from "./modules/form/RFTextField";
-import FormButton from "./modules/form/FormButton";
+// import FormButton from "./modules/form/FormButton";
 import FormFeedback from "./modules/form/FormFeedback";
 import withRoot from "./modules/withRoot";
 
@@ -107,7 +107,7 @@ function SignIn() {
                   ) : null
                 }
               </FormSpy>
-              <FormButton
+              {/* <FormButton
                 sx={{ mt: 3, mb: 2 }}
                 disabled={submitting || sent}
                 size="large"
@@ -118,7 +118,7 @@ function SignIn() {
                 }}
               >
                 {submitting || sent ? "In progress…" : "Sign In"}
-              </FormButton>
+              </FormButton> */}
             </Box>
           )}
         </Form>
