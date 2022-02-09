@@ -44,12 +44,8 @@ const Start = ({ message, setMessage }) => {
               }
             })
             .map((site) => (
-              <div
-                className="main"
-                key={site.id}
-                onClick={() => setIsActive(!isActive)}
-              >
-                <div className="info">
+              <div className="main">
+                {/* <div className="info">
                   <Typography variant="h4">
                     <div>GVR ID - {site.gvrid}</div>
                     <div>GP Customer - {site.gp}</div>
@@ -58,8 +54,8 @@ const Start = ({ message, setMessage }) => {
                     </div>
                     <div>Number of Dispensers - {site.totaldisp}</div>
                   </Typography>
-                </div>
-                {isActive && <Dispcards site={site} />}
+                </div> */}
+                <Dispcards site={site} />
               </div>
             ))}
         </h2>
