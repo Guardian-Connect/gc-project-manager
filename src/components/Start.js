@@ -9,22 +9,17 @@ const Start = ({ message, setMessage }) => {
   let history = useHistory();
   const [searchInput, setSearchInput] = useState("");
   const [isActive, setIsActive] = useState(false);
-
   useEffect(() => {
     getSomething()
       .then((response) => {
         setMessage(response.dispinfo);
+        // console.log(response.dispinfo);
       })
       .catch((error) => {
         setMessage(error.message);
       });
   }, []);
 
-  function handleDate(activation) {
-    // console.log("running", activation);
-    let date = new Date(activation);
-    return format(date, "MMMM do, yyyy");
-  }
   return (
     <>
       <div id="header">

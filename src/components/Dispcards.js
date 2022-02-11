@@ -7,16 +7,14 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 // import AddCircleIcon from "@mui/icons-material/ExpandMore";
 
 const Dispcards = ({ site }) => {
+  let today = format(new Date(), "MM/dd/yyyy");
+
   function handleDate(d) {
-    // console.log("running", activation);
     let date = new Date(d);
     return format(date, "MM/dd/yyyy");
   }
-  // console.log(site);
   return (
     <>
-      {/* <div>GVR ID - {site.gvrid}</div> */}
-      {/* <div>{site.disp1}</div> */}
       <Accordion>
         <AccordionSummary
           expandIcon={<AddCircleIcon />}
@@ -33,6 +31,14 @@ const Dispcards = ({ site }) => {
               <div>Number of Dispensers - {site.totaldisp}</div>
               <div>Registration Date - {handleDate(site.activation)}</div>
               <div>Renewal Date - {handleDate(site.renewal)}</div>
+              {handleDate(site.warranty) >= today ? (
+                <div className="yellow">
+                  Expired - {handleDate(site.warranty)}
+                </div>
+              ) : (
+                <div>Warranty Date - {handleDate(site.warranty)}</div>
+              )}
+              {/* <div>Warranty Date - {handleDate(site.warranty)}</div> */}
             </Typography>
           </div>
         </AccordionSummary>
