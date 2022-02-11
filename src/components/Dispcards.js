@@ -1,12 +1,17 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import { format } from "date-fns";
 import Accordion from "@mui/material/Accordion";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 // import AddCircleIcon from "@mui/icons-material/ExpandMore";
 
 const Dispcards = ({ site }) => {
+  function handleDate(d) {
+    // console.log("running", activation);
+    let date = new Date(d);
+    return format(date, "MM/dd/yyyy");
+  }
   // console.log(site);
   return (
     <>
@@ -26,6 +31,8 @@ const Dispcards = ({ site }) => {
                 Site Address - {site.address}, {site.city}, {site.state}
               </div>
               <div>Number of Dispensers - {site.totaldisp}</div>
+              <div>Registration Date - {handleDate(site.activation)}</div>
+              <div>Renewal Date - {handleDate(site.renewal)}</div>
             </Typography>
           </div>
         </AccordionSummary>

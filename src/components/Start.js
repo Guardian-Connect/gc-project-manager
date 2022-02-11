@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Dispcards from "./Dispcards";
 import Header from "./Header";
 import AppAppBar from "./modules/views/AppAppBar";
-import { Typography } from "@mui/material";
+import { format } from "date-fns";
 const Start = ({ message, setMessage }) => {
   let history = useHistory();
   const [searchInput, setSearchInput] = useState("");
@@ -13,7 +13,7 @@ const Start = ({ message, setMessage }) => {
   useEffect(() => {
     getSomething()
       .then((response) => {
-        console.log(response.dispinfo);
+        // console.log(response.dispinfo);
         setMessage(response.dispinfo);
       })
       .catch((error) => {
@@ -21,8 +21,10 @@ const Start = ({ message, setMessage }) => {
       });
   }, []);
 
-  function handleClick() {
-    history.push("/second");
+  function handleDate(activation) {
+    // console.log("running", activation);
+    let date = new Date(activation);
+    return format(date, "MMMM do, yyyy");
   }
   return (
     <>
@@ -48,7 +50,8 @@ const Start = ({ message, setMessage }) => {
               }
             })
             .map((site) => (
-              <div className="main">
+              <div className="main" key={site.id}>
+                {/* {console.log(handleDate(site.activation))} */}
                 {/* <div className="info">
                   <Typography variant="h4">
                     <div>GVR ID - {site.gvrid}</div>
