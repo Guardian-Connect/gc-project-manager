@@ -13,7 +13,6 @@ const Start = ({ message, setMessage }) => {
   useEffect(() => {
     getSomething()
       .then((response) => {
-        // console.log(response.dispinfo);
         setMessage(response.dispinfo);
       })
       .catch((error) => {
@@ -30,7 +29,6 @@ const Start = ({ message, setMessage }) => {
     <>
       <div id="header">
         <AppAppBar searchInput={searchInput} setSearchInput={setSearchInput} />
-        {/* <Header searchInput={searchInput} setSearchInput={setSearchInput} /> */}
       </div>
       <div className="App">
         <h2>
@@ -51,17 +49,6 @@ const Start = ({ message, setMessage }) => {
             })
             .map((site) => (
               <div className="main" key={site.id}>
-                {/* {console.log(handleDate(site.activation))} */}
-                {/* <div className="info">
-                  <Typography variant="h4">
-                    <div>GVR ID - {site.gvrid}</div>
-                    <div>GP Customer - {site.gp}</div>
-                    <div>
-                      Site Address - {site.address}, {site.city}, {site.state}
-                    </div>
-                    <div>Number of Dispensers - {site.totaldisp}</div>
-                  </Typography>
-                </div> */}
                 <Dispcards site={site} />
               </div>
             ))}

@@ -30,25 +30,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
             value={searchInput}
             onChange={handleTextChange}
           />
-          {/* <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/second"
-              sx={rightLink}
-            >
-              {"Sign In"}
-            </Link> */}
-          {/* <Link
-              variant="h6"
-              underline="none"
-              href="/premium-themes/onepirate/sign-up/"
-              sx={{ ...rightLink, color: 'secondary.main' }}
-            >
-              {'Sign Up'}
-            </Link> */}
-          {/* </Box> */}
         </Toolbar>
       </AppBar>
       <Toolbar />
