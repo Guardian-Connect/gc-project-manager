@@ -31,14 +31,14 @@ const Dispcards = ({ site }) => {
               <div>Number of Dispensers - {site.totaldisp}</div>
               <div>Registration Date - {handleDate(site.activation)}</div>
               <div>Renewal Date - {handleDate(site.renewal)}</div>
-              {handleDate(site.warranty) >= today ? (
+              {/* {handleDate(site.warranty) >= today ? (
                 <div className="yellow">
                   Warranty Expired - {handleDate(site.warranty)}
                 </div>
               ) : (
-                <div>Warranty Date - {handleDate(site.warranty)}</div>
-              )}
-              {/* <div>Warranty Date - {handleDate(site.warranty)}</div> */}
+              <div>Warranty Date - {handleDate(site.warranty)}</div>
+              )} */}
+              <div>Warranty Date - {handleDate(site.warranty)}</div>
             </Typography>
           </div>
         </AccordionSummary>
