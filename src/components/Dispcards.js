@@ -4,14 +4,29 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import { format } from "date-fns";
 import Accordion from "@mui/material/Accordion";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+const moment = require("moment");
+
 // import AddCircleIcon from "@mui/icons-material/ExpandMore";
 
 const Dispcards = ({ site }) => {
-  let today = format(new Date(), "MM/dd/yyyy");
+  let today = moment().format("MM/DD/yyyy");
 
   function handleDate(d) {
-    let date = new Date(d);
-    return format(date, "MM/dd/yyyy");
+    let date = moment(d).format("MM/DD/yyyy");
+    return date;
+  }
+  function isLater(date1, today) {
+    let d = handleDate(date1);
+    console.log(handleDate(date1), today);
+    if (moment(d).isAfter(today)) {
+      return <div>Warranty Date - {handleDate(site.warranty)}</div>;
+    } else {
+      return (
+        <div className="yellow">
+          Warranty Expired - {handleDate(site.warranty)}
+        </div>
+      );
+    }
   }
   return (
     <>
@@ -31,14 +46,8 @@ const Dispcards = ({ site }) => {
               <div>Number of Dispensers - {site.totaldisp}</div>
               <div>Registration Date - {handleDate(site.activation)}</div>
               <div>Renewal Date - {handleDate(site.renewal)}</div>
-              {/* {handleDate(site.warranty) >= today ? (
-                <div className="yellow">
-                  Warranty Expired - {handleDate(site.warranty)}
-                </div>
-              ) : (
-              <div>Warranty Date - {handleDate(site.warranty)}</div>
-              )} */}
-              <div>Warranty Date - {handleDate(site.warranty)}</div>
+              {isLater(site.warranty, today)}
+              {/* <div>Warranty Date - {handleDate(site.warranty)}</div> */}
             </Typography>
           </div>
         </AccordionSummary>
