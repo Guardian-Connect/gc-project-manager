@@ -9,7 +9,8 @@ const Drawer = ({ setSearchInput }) => {
     <Menu>
       <Typography variant="h5">Open Projects</Typography>
       <Button
-        variant="outlined"
+        sx={{ marginTop: 2 }}
+        variant="contained"
         onClick={() => {
           setSearchInput("MAJ0001");
         }}
@@ -17,7 +18,8 @@ const Drawer = ({ setSearchInput }) => {
         Major's Management
       </Button>
       <Button
-        variant="outlined"
+        sx={{ marginTop: 2 }}
+        variant="contained"
         onClick={() => {
           setSearchInput("LIO");
         }}
@@ -25,16 +27,23 @@ const Drawer = ({ setSearchInput }) => {
         Lion's Pride
       </Button>
       <Button
-        variant="outlined"
+        sx={{ marginTop: 2 }}
+        variant="contained"
         onClick={() => {
           setSearchInput("SOU");
         }}
       >
         South East Petro
       </Button>
-      {/* <a className="menu-item" href="/desserts">
-        Desserts
-      </a> */}
+      <Button
+        sx={{ marginTop: 2 }}
+        variant="contained"
+        onClick={() => {
+          setSearchInput("");
+        }}
+      >
+        Clear
+      </Button>
     </Menu>
   );
 };
