@@ -8,7 +8,7 @@ import logo from "../assests/logo.gif";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
-  const [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +27,16 @@ const App = () => {
       setLoading(false);
     }, 2000);
   }, []);
+
+  // useEffect(() => {
+  //   message.map((site) => {
+  //     if (site.totaldisp === null) {
+  //       setCount(count++);
+  //       console.log("counting");
+  //     } else {
+  //     }
+  //   });
+  // }, []);
 
   return (
     <>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import Dispcards from "./Dispcards";
-import Header from "./Header";
+// import Header from "./Header";
 import AppAppBar from "./modules/views/AppAppBar";
-import { format } from "date-fns";
-import { getSomething } from "../api";
-import ResponsiveDrawer from "./Drawer";
+// import { format } from "date-fns";
+// import { getSomething } from "../api";
+// import ResponsiveDrawer from "./Drawer";
 // import logo from "../assests/logo.gif";
 const Start = ({
   setMessage,
@@ -15,7 +15,7 @@ const Start = ({
   setSearchInput,
 }) => {
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -23,25 +23,18 @@ const Start = ({
   //   }, 2000);
   // }, []);
 
-  useEffect(() => {
-    console.log("test", message);
-    message.map((site) => {
-      if (site.totaldisp === null) {
-        setCount(count++);
-        console.log("count");
-      } else {
-        console.log("fail");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   console.log("test", message);
+  //   message.map((site) => {
+  //     if (site.totaldisp === null) {
+  //       setCount(count++);
+  //     } else {
+  //     }
+  //   });
+  // }, []);
 
   return (
     <>
-      {/* {loading ? (
-        <div className="AppLoading">
-          <img src={logo} alt="Loading..." className="loading" />
-        </div>
-      ) : ( */}
       <>
         <div id="header">
           <AppAppBar
@@ -75,7 +68,6 @@ const Start = ({
           </h2>
         </div>
       </>
-      {/* )} */}
     </>
   );
 };

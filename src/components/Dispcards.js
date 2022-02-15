@@ -6,8 +6,6 @@ import Accordion from "@mui/material/Accordion";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 const moment = require("moment");
 
-// import AddCircleIcon from "@mui/icons-material/ExpandMore";
-
 const Dispcards = ({ site, setCount, count }) => {
   let today = moment().format("MM/DD/yyyy");
 
@@ -18,7 +16,6 @@ const Dispcards = ({ site, setCount, count }) => {
 
   function isLater(date1, today) {
     let d = handleDate(date1);
-    // console.log(handleDate(date1), today);
     if (moment(d).isAfter(today)) {
       return <div>Warranty Date - {handleDate(site.warranty)}</div>;
     } else {
@@ -28,10 +25,6 @@ const Dispcards = ({ site, setCount, count }) => {
         </div>
       );
     }
-  }
-  if (site.totaldisp === null) {
-    // console.log("triggering");
-    setCount(count++);
   }
 
   if (site.totaldisp != null) {

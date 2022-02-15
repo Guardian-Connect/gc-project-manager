@@ -30,7 +30,7 @@ function AppAppBar({ searchInput, setSearchInput, count }) {
             value={searchInput}
             onChange={handleTextChange}
           />
-          {/* <div>Not Connected - {count}</div> */}
+          <div>Not Connected - {count}</div>
           <div className="drawer">
             <Drawer
               setSearchInput={setSearchInput}
