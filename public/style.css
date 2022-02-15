@@ -39,3 +39,10 @@
 .yellow {
   background-color: yellow;
 }
+
+.drawer {
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

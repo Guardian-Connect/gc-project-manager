@@ -3,14 +3,14 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
-
+import Drawer from "../../Drawer";
 const rightLink = {
   fontSize: 16,
   color: "common.white",
   ml: 3,
 };
 
-function AppAppBar({ searchInput, setSearchInput }) {
+function AppAppBar({ searchInput, setSearchInput, count }) {
   const handleTextChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -30,6 +30,14 @@ function AppAppBar({ searchInput, setSearchInput }) {
             value={searchInput}
             onChange={handleTextChange}
           />
+          {/* <div>Not Connected - {count}</div> */}
+          <div className="drawer">
+            <Drawer
+              setSearchInput={setSearchInput}
+              pageWrapId={"page-wrap"}
+              outerContainerId={"outer-container"}
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <Toolbar />
