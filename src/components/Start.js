@@ -6,7 +6,7 @@ import AppAppBar from "./modules/views/AppAppBar";
 import { format } from "date-fns";
 import { getSomething } from "../api";
 import ResponsiveDrawer from "./Drawer";
-import logo from "../assests/logo.gif";
+// import logo from "../assests/logo.gif";
 const Start = ({
   setMessage,
   count,
@@ -17,11 +17,11 @@ const Start = ({
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
 
   useEffect(() => {
     console.log("test", message);
@@ -37,45 +37,45 @@ const Start = ({
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <div className="AppLoading">
           <img src={logo} alt="Loading..." className="loading" />
         </div>
-      ) : (
-        <>
-          <div id="header">
-            <AppAppBar
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              count={count}
-            />
-          </div>
-          <div className="App">
-            <h2>
-              {message
-                .filter((client, index) => {
-                  const clientsAdd = client.address;
-                  if (clientsAdd.includes(searchInput.toLowerCase())) {
-                    return true;
-                  }
-                  const clientsId = client.gvrid;
-                  if (clientsId.includes(searchInput.toLowerCase())) {
-                    return true;
-                  }
-                  const clientsGp = client.gp;
-                  if (clientsGp.includes(searchInput.toUpperCase())) {
-                    return true;
-                  }
-                })
-                .map((site) => (
-                  <div className="main" key={site.id}>
-                    <Dispcards site={site} setCount={setCount} count={count} />
-                  </div>
-                ))}
-            </h2>
-          </div>
-        </>
-      )}
+      ) : ( */}
+      <>
+        <div id="header">
+          <AppAppBar
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            count={count}
+          />
+        </div>
+        <div className="App">
+          <h2>
+            {message
+              .filter((client, index) => {
+                const clientsAdd = client.address;
+                if (clientsAdd.includes(searchInput.toLowerCase())) {
+                  return true;
+                }
+                const clientsId = client.gvrid;
+                if (clientsId.includes(searchInput.toLowerCase())) {
+                  return true;
+                }
+                const clientsGp = client.gp;
+                if (clientsGp.includes(searchInput.toUpperCase())) {
+                  return true;
+                }
+              })
+              .map((site) => (
+                <div className="main" key={site.id}>
+                  <Dispcards site={site} setCount={setCount} count={count} />
+                </div>
+              ))}
+          </h2>
+        </div>
+      </>
+      {/* )} */}
     </>
   );
 };
