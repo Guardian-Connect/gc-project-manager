@@ -15,10 +15,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
   let countDis;
   let countCon;
 
-  // let countDis;
-  // let countCon;
-
-  // func check() {
   if (site.length === 5) {
     countDis = JSON.parse(sessionStorage.getItem("sitedisc")).length;
   } else {
