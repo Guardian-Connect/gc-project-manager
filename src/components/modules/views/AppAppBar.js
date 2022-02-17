@@ -10,7 +10,27 @@ const rightLink = {
   ml: 3,
 };
 
-function AppAppBar({ searchInput, setSearchInput, count }) {
+function AppAppBar({ searchInput, setSearchInput }) {
+  let site = JSON.parse(sessionStorage.getItem("site"));
+  let countDis;
+  let countCon;
+
+  // let countDis;
+  // let countCon;
+
+  // func check() {
+  if (site.length === 5) {
+    countDis = JSON.parse(sessionStorage.getItem("sitedisc")).length;
+  } else {
+    countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
+  }
+
+  if (site.length === 5) {
+    countCon = JSON.parse(sessionStorage.getItem("siteconnected")).length;
+  } else {
+    countCon = JSON.parse(sessionStorage.getItem("connected")).length;
+  }
+
   const handleTextChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -23,6 +43,7 @@ function AppAppBar({ searchInput, setSearchInput, count }) {
               flex: 0,
             }}
           />
+          <div>Connected - {countCon}</div>
           <input
             className="search"
             type="text"
@@ -30,7 +51,8 @@ function AppAppBar({ searchInput, setSearchInput, count }) {
             value={searchInput}
             onChange={handleTextChange}
           />
-          <div>Not Connected - {count}</div>
+          <div>Not Connected - {countDis} </div>
+
           <div className="drawer">
             <Drawer
               setSearchInput={setSearchInput}

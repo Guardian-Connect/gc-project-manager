@@ -5,15 +5,16 @@ import Start from "./Start";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
 import logo from "../assests/logo.gif";
+import Project from "./Project";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
   let [count, setCount] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getSomething()
+  const [nameButton, setNameButton] = useState("");
+  useEffect(async () => {
+    await getSomething()
       .then((response) => {
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
       })
@@ -25,18 +26,8 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
-
-  // useEffect(() => {
-  //   message.map((site) => {
-  //     if (site.totaldisp === null) {
-  //       setCount(count++);
-  //       console.log("counting");
-  //     } else {
-  //     }
-  //   });
-  // }, []);
 
   return (
     <>
@@ -57,7 +48,12 @@ const App = () => {
                 setSearchInput={setSearchInput}
               />
             </Route>
-            <Route path="/second"></Route>
+            <Route path="/second">
+              <Project
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+              />
+            </Route>
           </Switch>
         </Router>
       )}

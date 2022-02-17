@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
 import Dispcards from "./Dispcards";
-// import Header from "./Header";
 import AppAppBar from "./modules/views/AppAppBar";
-// import { format } from "date-fns";
-// import { getSomething } from "../api";
-// import ResponsiveDrawer from "./Drawer";
-// import logo from "../assests/logo.gif";
+import { getSomething } from "../api";
 const Start = ({
   setMessage,
   count,
@@ -15,27 +10,15 @@ const Start = ({
   setSearchInput,
 }) => {
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
-  // const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log("test", message);
-  //   message.map((site) => {
-  //     if (site.totaldisp === null) {
-  //       setCount(count++);
-  //     } else {
-  //     }
-  //   });
-  // }, []);
+  function setSite() {
+    sessionStorage.setItem("site", JSON.stringify("12"));
+  }
 
   return (
     <>
       <>
+        {setSite()}
         <div id="header">
           <AppAppBar
             searchInput={searchInput}

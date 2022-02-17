@@ -8,6 +8,7 @@ const {
   getUser,
   getAllUsers,
   getAllSites,
+  getSites,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -23,6 +24,18 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/disp/:id", async (req, res, next) => {
+  try {
+    
+    const {id} = req.params
+    console.log("test", id)
+    const dispinfo = await getSites(id);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
