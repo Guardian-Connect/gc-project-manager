@@ -233,10 +233,22 @@ const Dispcards = ({ site, setCount, count }) => {
                 <div>
                   Site Address - {site.address}, {site.city}, {site.state}
                 </div>
+                <div className="center">
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      justifyContent: "center",
+                    }}
+                  >
+                    {site.notes != null && <div>See Notes</div>}
+                  </Typography>
+                </div>
               </Typography>
             </div>
           </AccordionSummary>
-          <>{site.notes != null && <div>Notes - {site.notes}</div>}</>
+          <Typography variant="h4" sx={{ width: "50%" }}>
+            {site.notes != null && <div>Notes - {site.notes}</div>}
+          </Typography>
         </Accordion>
       </>
     );
