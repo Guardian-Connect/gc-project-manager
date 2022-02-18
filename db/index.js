@@ -2,18 +2,18 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function createUser({ username, password, email }) {
   try {
@@ -81,7 +81,8 @@ async function getAllSites() {
   console.log("GAS log");
   const { rows } = await client.query(
     `SELECT *
-    FROM dispinfo;
+    FROM dispinfo
+    ORDER BY gvrid;
   `
   );
 
@@ -89,11 +90,12 @@ async function getAllSites() {
 }
 
 async function getSites(id) {
-  console.log(id, "back");
+  console.log(id, "back", typeof id);
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
-    WHERE gp=$1;
+    WHERE gp=$1
+    ORDER BY gvrid;
   `,
     [id]
   );
