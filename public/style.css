@@ -8,19 +8,22 @@
 }
 
 .main {
+  /* display: flex;
+  flex: 1; */
   border: 2px solid black;
-  width: 100%;
+  width: 1000px;
   height: 100%;
   margin-bottom: 10px;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
+  justify-content: flex-start;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .disp {
   border-bottom: 1px solid black;
-  width: 80%;
+  width: 100%;
   text-align: center;
 }
 
