@@ -7,16 +7,16 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 const moment = require("moment");
 
 const Dispcards = ({ site, setCount, count }) => {
-  let today = moment().format("MM/DD/yyyy");
+  let today = moment.utc().format("MM/DD/yyyy");
 
   function handleDate(d) {
-    let date = moment(d).format("MM/DD/yyyy");
+    let date = moment.utc(d).format("MM/DD/yyyy");
     return date;
   }
 
   function isLater(date1, today) {
     let d = handleDate(date1);
-    if (moment(d).isAfter(today)) {
+    if (moment.utc(d).isAfter(today)) {
       return <div>Warranty Date - {handleDate(site.warranty)}</div>;
     } else {
       return (
