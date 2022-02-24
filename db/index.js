@@ -7,7 +7,8 @@ const DB_NAME = "equipment";
 //     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
 // );
 
-// Turn on when uploading to heroku
+// Turn on when uploading to heroku\
+//
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
