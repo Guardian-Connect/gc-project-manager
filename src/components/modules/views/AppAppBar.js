@@ -31,16 +31,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
               flex: 0,
             }}
           />
-          <div>Connected - {countCon}</div>
-          <input
-            className="search"
-            type="text"
-            placeholder="Search By GVR ID, Address, or GP Customer Number."
-            value={searchInput}
-            onChange={handleTextChange}
-          />
-          <div>Not Connected - {countDis} </div>
-
           <div className="drawer">
             <Button
               variant="contained"
@@ -66,6 +56,41 @@ function AppAppBar({ searchInput, setSearchInput }) {
               Clear
             </Button>
           </div>
+          <div>Connected - {countCon}</div>
+          <input
+            className="search"
+            type="text"
+            placeholder="Search By GVR ID, Address, or GP Customer Number."
+            value={searchInput}
+            onChange={handleTextChange}
+          />
+          <div>Not Connected - {countDis} </div>
+
+          {/* <div className="drawer">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                await getInfo();
+                history.push("/second");
+                sessionStorage.setItem("site", JSON.stringify("12345"));
+
+                window.location.reload();
+              }}
+            >
+              Open Notes
+            </Button>
+          </div>
+          <div className="drawertwo">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                history.push("/");
+                // window.location.reload();
+              }}
+            >
+              Clear
+            </Button>
+          </div> */}
         </Toolbar>
       </AppBar>
       <Toolbar />
