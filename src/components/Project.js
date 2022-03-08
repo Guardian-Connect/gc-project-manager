@@ -18,12 +18,9 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
   return (
     <>
       <div id="header">
-        <AppAppBar
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        />
+        <AppAppBar searchInput={searchInput} setSearchInput={setSearchInput} />
       </div>
-      <div className="App">
+      <div className="app">
         {message
           .filter((client, index) => {
             const clientsAdd = client.address;
@@ -38,10 +35,14 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
             if (clientsGp.includes(searchInput.toUpperCase())) {
               return true;
             }
+            const company = client.company;
+            if (company.includes(searchInput.toUpperCase())) {
+              return true;
+            }
           })
           .map((site) => (
             <div className="main" key={site.id}>
-              <Dispcards site={site}  />
+              <Dispcards site={site} />
             </div>
           ))}
       </div>

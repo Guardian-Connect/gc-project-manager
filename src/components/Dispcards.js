@@ -4,6 +4,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import { format } from "date-fns";
 import Accordion from "@mui/material/Accordion";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 const moment = require("moment");
 
 const Dispcards = ({ site, setCount, count }) => {
@@ -39,7 +40,15 @@ const Dispcards = ({ site, setCount, count }) => {
             <div className="info">
               {site.totaldisp != null && (
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
-                  <div>GVR ID - {site.gvrid}</div>
+                  {site.onboarding === false ? (
+                    <div>GVR ID NEGATIVE - {site.gvrid}</div>
+                  ) : (
+                    <div>
+                      <StarBorderPurple500Icon /> GVR ID - {site.gvrid}
+                      <StarBorderPurple500Icon />
+                    </div>
+                  )}
+                  {/* <div>GVR ID - {site.gvrid}</div> */}
                   <div>GP Customer - {site.gp}</div>
                   <div>
                     Site Address - {site.address}, {site.city}, {site.state}
@@ -228,7 +237,14 @@ const Dispcards = ({ site, setCount, count }) => {
             <div className="yellow">
               <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                 <div>Site Not Yet Activated.</div>
-                <div>GVR ID - {site.gvrid}</div>
+                {site.onboarding === false ? (
+                  <div>GVR ID NEGATIVE - {site.gvrid}</div>
+                ) : (
+                  <div>
+                    <StarBorderPurple500Icon /> GVR ID - {site.gvrid}
+                    <StarBorderPurple500Icon />
+                  </div>
+                )}
                 <div>GP Customer - {site.gp}</div>
                 <div>
                   Site Address - {site.address}, {site.city}, {site.state}

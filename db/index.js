@@ -90,6 +90,19 @@ async function getAllSites() {
   return rows;
 }
 
+async function getAllSitesNotes() {
+  console.log("GAS log");
+  const { rows } = await client.query(
+    `SELECT *
+    FROM dispinfo
+    WHERE notes IS NOT NULL
+    AND totaldisp IS NULL
+  `
+  );
+
+  return rows;
+}
+
 async function getSites(id) {
   console.log(id, "back", typeof id);
   const { rows } = await client.query(
@@ -132,4 +145,5 @@ module.exports = {
   getUser,
   getAllSites,
   getSites,
+  getAllSitesNotes,
 };

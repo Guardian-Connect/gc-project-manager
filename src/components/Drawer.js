@@ -14,7 +14,8 @@ const Drawer = ({ setSearchInput }) => {
         sx={{ marginTop: 2 }}
         variant="contained"
         onClick={async () => {
-          await getInfo("MAJ0001");
+          // await getInfo("MAJ0001");
+          console.log(await getInfo());
           history.push("/second");
           sessionStorage.setItem("site", JSON.stringify("12345"));
 

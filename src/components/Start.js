@@ -19,14 +19,14 @@ const Start = ({
     <>
       <>
         {setSite()}
-        <div id="header">
+        <div>
           <AppAppBar
             searchInput={searchInput}
             setSearchInput={setSearchInput}
             count={count}
           />
         </div>
-        <div className="App">
+        <div className="app">
           <h2>
             {message
               .filter((client, index) => {
@@ -40,6 +40,10 @@ const Start = ({
                 }
                 const clientsGp = client.gp;
                 if (clientsGp.includes(searchInput.toUpperCase())) {
+                  return true;
+                }
+                const company = client.company;
+                if (company.includes(searchInput.toUpperCase())) {
                   return true;
                 }
               })

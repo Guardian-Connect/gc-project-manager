@@ -6,6 +6,7 @@ import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
+import SideBar from "./SideBar";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
@@ -37,6 +38,7 @@ const App = () => {
         </div>
       ) : (
         <Router>
+          <SideBar />
           <Switch>
             <Route exact path="/">
               <Start
