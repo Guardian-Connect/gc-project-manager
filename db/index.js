@@ -2,19 +2,19 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-const client = new Client(
-  process.env.DATABASE_URL ||
-    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-);
+// const client = new Client(
+//   process.env.DATABASE_URL ||
+//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+// );
 
 // Turn on when uploading to heroku\
 //
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 async function createUser({ username, password, email }) {
   try {
