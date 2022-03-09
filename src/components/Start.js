@@ -13,7 +13,6 @@ const Start = ({
 
   return (
     <div className="app">
-      {console.log(message)}
       <h2>
         {message
           .filter((client, index) => {

@@ -17,7 +17,6 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
 
   return (
     <div className="app">
-      {console.log(message)}
       {message
         .filter((client, index) => {
           const clientsAdd = client.address;
