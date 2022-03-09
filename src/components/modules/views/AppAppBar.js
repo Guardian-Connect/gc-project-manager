@@ -35,11 +35,10 @@ function AppAppBar({ searchInput, setSearchInput }) {
             <Button
               variant="contained"
               onClick={async () => {
+                console.log("firing");
                 await getInfo();
                 history.push("/second");
-                sessionStorage.setItem("site", JSON.stringify("12345"));
-
-                window.location.reload();
+                // window.location.reload();
               }}
             >
               Open Notes

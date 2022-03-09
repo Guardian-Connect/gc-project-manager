@@ -48,6 +48,7 @@ export async function getSomething() {
         return pThreeDis++;
       }
     });
+    sessionStorage.setItem("render", JSON.stringify("1"));
     sessionStorage.setItem("ponecon", JSON.stringify(pOneCon));
     sessionStorage.setItem("ponedis", JSON.stringify(pOneDis));
     sessionStorage.setItem("pTwoCon", JSON.stringify(pTwoCon));
@@ -66,7 +67,7 @@ export async function getInfo() {
     const { data } = await axios.get(`/api/users/disp/notes`);
     let info = data.dispinfo;
     console.log(info);
-    sessionStorage.setItem("custinfo", JSON.stringify(info));
+    sessionStorage.setItem("dispinfo", JSON.stringify(info));
     return info;
   } catch (error) {
     throw error;

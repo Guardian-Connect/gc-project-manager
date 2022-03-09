@@ -32,6 +32,7 @@ const App = () => {
 
   return (
     <>
+      {/* loading icon to help with re-rendering etc*/}
       {loading ? (
         <div className="AppLoading">
           <img src={logo} alt="Loading..." className="loading" />
@@ -39,8 +40,16 @@ const App = () => {
       ) : (
         <Router>
           <SideBar />
+          <div>
+            <AppAppBar
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              count={count}
+            />
+          </div>
           <Switch>
             <Route exact path="/">
+              {/* Initial loading */}
               <Start
                 message={message}
                 setMessage={setMessage}
@@ -50,6 +59,7 @@ const App = () => {
                 setSearchInput={setSearchInput}
               />
             </Route>
+            {/* What Renders when open notes button is clicked */}
             <Route path="/second">
               <Project
                 searchInput={searchInput}

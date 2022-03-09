@@ -9,53 +9,38 @@ const Start = ({
   searchInput,
   setSearchInput,
 }) => {
-  const message = JSON.parse(sessionStorage.getItem("dispinf"));
-
-  function setSite() {
-    sessionStorage.setItem("site", JSON.stringify("12"));
-  }
+  let message = JSON.parse(sessionStorage.getItem("dispinf"));
 
   return (
-    <>
-      <>
-        {setSite()}
-        <div>
-          <AppAppBar
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            count={count}
-          />
-        </div>
-        <div className="app">
-          <h2>
-            {message
-              .filter((client, index) => {
-                const clientsAdd = client.address;
-                if (clientsAdd.includes(searchInput.toLowerCase())) {
-                  return true;
-                }
-                const clientsId = client.gvrid;
-                if (clientsId.includes(searchInput.toLowerCase())) {
-                  return true;
-                }
-                const clientsGp = client.gp;
-                if (clientsGp.includes(searchInput.toUpperCase())) {
-                  return true;
-                }
-                const company = client.company;
-                if (company.includes(searchInput.toUpperCase())) {
-                  return true;
-                }
-              })
-              .map((site) => (
-                <div className="main" key={site.id}>
-                  <Dispcards site={site} setCount={setCount} count={count} />
-                </div>
-              ))}
-          </h2>
-        </div>
-      </>
-    </>
+    <div className="app">
+      {console.log(message)}
+      <h2>
+        {message
+          .filter((client, index) => {
+            const clientsAdd = client.address;
+            if (clientsAdd.includes(searchInput.toLowerCase())) {
+              return true;
+            }
+            const clientsId = client.gvrid;
+            if (clientsId.includes(searchInput.toLowerCase())) {
+              return true;
+            }
+            const clientsGp = client.gp;
+            if (clientsGp.includes(searchInput.toUpperCase())) {
+              return true;
+            }
+            const company = client.company;
+            if (company.includes(searchInput.toUpperCase())) {
+              return true;
+            }
+          })
+          .map((site) => (
+            <div className="main" key={site.id}>
+              <Dispcards site={site} setCount={setCount} count={count} />
+            </div>
+          ))}
+      </h2>
+    </div>
   );
 };
 
