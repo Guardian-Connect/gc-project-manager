@@ -66,7 +66,17 @@ export async function getInfo() {
   try {
     const { data } = await axios.get(`/api/users/disp/notes`);
     let info = data.dispinfo;
-    console.log(info);
+    sessionStorage.setItem("dispinfo", JSON.stringify(info));
+    return info;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getInfoInstalls() {
+  try {
+    const { data } = await axios.get(`/api/users/disp/open`);
+    let info = data.dispinfo;
     sessionStorage.setItem("dispinfo", JSON.stringify(info));
     return info;
   } catch (error) {

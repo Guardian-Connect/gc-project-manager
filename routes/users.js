@@ -11,6 +11,7 @@ const {
   getAllSites,
   getSites,
   getAllSitesNotes,
+  getAllSitesOpen,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -39,6 +40,15 @@ usersRouter.get("/disp/notes", async (req, res, next) => {
     const dispinfo = await getAllSitesNotes();
     // console.log(process.env.cust1);
     // console.log(dispinfo);
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/disp/open", async (req, res, next) => {
+  try {
+    const dispinfo = await getAllSitesOpen();
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });

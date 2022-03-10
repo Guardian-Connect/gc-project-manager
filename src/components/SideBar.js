@@ -17,6 +17,7 @@ const SideBar = () => {
         <div className="spacecenter">Project Counts</div>
         <div className="bottom"></div>
       </Typography>
+      {/* ALL PROJECTS START HERE */}
       <Typography variant="h5" sx={{ flexShrink: 1, alignSelf: "center" }}>
         <div className="space">Major's Management</div>
       </Typography>

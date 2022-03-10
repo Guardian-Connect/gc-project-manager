@@ -5,7 +5,7 @@ import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
 import Drawer from "../../Drawer";
 import { Button } from "@mui/material";
-import { getInfo, getSomething } from "../../../api";
+import { getInfo, getInfoInstalls } from "../../../api";
 import { useHistory } from "react-router-dom";
 const rightLink = {
   fontSize: 16,
@@ -36,6 +36,19 @@ function AppAppBar({ searchInput, setSearchInput }) {
               variant="contained"
               onClick={async () => {
                 console.log("firing");
+                await getInfoInstalls();
+                history.push("/second");
+                // window.location.reload();
+              }}
+            >
+              Open Installs
+            </Button>
+          </div>
+          <div className="drawertwo">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                console.log("firing");
                 await getInfo();
                 history.push("/second");
                 // window.location.reload();
@@ -44,17 +57,18 @@ function AppAppBar({ searchInput, setSearchInput }) {
               Open Notes
             </Button>
           </div>
-          <div className="drawertwo">
+          {/* <div className="drawertwo">
             <Button
               variant="contained"
               onClick={async () => {
+                setSearchInput("");
                 history.push("/");
                 // window.location.reload();
               }}
             >
               Clear
             </Button>
-          </div>
+          </div> */}
           <div>Connected - {countCon}</div>
           <input
             className="search"
@@ -64,7 +78,18 @@ function AppAppBar({ searchInput, setSearchInput }) {
             onChange={handleTextChange}
           />
           <div>Not Connected - {countDis} </div>
-
+          <div className="drawertwo">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                setSearchInput("");
+                history.push("/");
+                // window.location.reload();
+              }}
+            >
+              Clear
+            </Button>
+          </div>
           {/* <div className="drawer">
             <Button
               variant="contained"
