@@ -21,6 +21,12 @@ const SideBar = () => {
       <Typography variant="h5" sx={{ flexShrink: 1, alignSelf: "center" }}>
         <div className="space">Major's Management</div>
       </Typography>
+      {/* <Typography
+        variant="h6"
+        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
+      >
+        <div>Start Date 3/17/22</div>
+      </Typography> */}
       <Typography
         variant="h6"
         sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}

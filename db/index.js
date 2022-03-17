@@ -8,7 +8,7 @@ const DB_NAME = "equipment";
 // );
 
 // Turn on when uploading to heroku\
-//
+
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {

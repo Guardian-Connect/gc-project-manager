@@ -17,6 +17,7 @@ const App = () => {
   useEffect(async () => {
     await getSomething()
       .then((response) => {
+        console.log(response.dispinfo);
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
       })
       .catch((error) => {
