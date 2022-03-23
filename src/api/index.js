@@ -57,6 +57,9 @@ export async function getSomething() {
     sessionStorage.setItem("pThreeDis", JSON.stringify(pThreeDis));
     sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
     sessionStorage.setItem("connected", JSON.stringify(connected));
+    let mockData = JSON.stringify(info)
+   
+    console.log(JSON.stringify(info));
     return data;
   } catch (error) {
     throw error;
@@ -83,6 +86,22 @@ export async function getInfoInstalls() {
     throw error;
   }
 }
+
+export async function getReportData(start, end, gp) {
+  try {
+    console.log(start, end, gp)
+    const { data } = await axios.post("/api/users/report", {
+      start,
+      end,
+      gp,
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 // export async function getInfo(gp) {
 //   try {
 //     console.log(gp);

@@ -16,6 +16,22 @@ const client = new Client({
   },
 });
 
+async function getRecordByDate(start, end, gp) {
+  try {
+    console.log(start, end, gp);
+    const { rows } = await client.query(
+      ` select gp, company, gvrid, annual, contract, activation, renewal 
+        from dispinfo
+        where activation BETWEEN '${start}' and '${end}' and gp LIKE'%${gp}%';
+`
+    );
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createUser({ username, password, email }) {
   try {
     const result = await client.query(
@@ -160,4 +176,5 @@ module.exports = {
   getSites,
   getAllSitesNotes,
   getAllSitesOpen,
+  getRecordByDate,
 };

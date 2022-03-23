@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./Main";
 import Start from "./Start";
 import AppAppBar from "./modules/views/AppAppBar";
-import { getSomething } from "../api";
+import { getSomething, getReportData } from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
 import SideBar from "./SideBar";
+import Report from "./Report";
+import CsvDownload from "react-json-to-csv";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
@@ -14,11 +16,13 @@ const App = () => {
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(true);
   const [nameButton, setNameButton] = useState("");
+  const [mockData, setMockData] = useState("");
   useEffect(async () => {
     await getSomething()
       .then((response) => {
         console.log(response.dispinfo);
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+        setMockData(response.dispinfo);
       })
       .catch((error) => {
         setMessage(error.message);
@@ -31,16 +35,22 @@ const App = () => {
     }, 2000);
   }, []);
 
+  useEffect(() => {
+    getReportData("2022-3-10", "2022-3-15", "%").then((response) => {
+      console.log(response);
+    });
+  }, []);
   return (
     <>
       {/* loading icon to help with re-rendering etc*/}
+
       {loading ? (
         <div className="AppLoading">
           <img src={logo} alt="Loading..." className="loading" />
         </div>
       ) : (
         <Router>
-          <SideBar />
+          <SideBar mockData={mockData} />
           <div>
             <AppAppBar
               searchInput={searchInput}
@@ -66,6 +76,9 @@ const App = () => {
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
               />
+            </Route>
+            <Route path="/report">
+              <Report />
             </Route>
           </Switch>
         </Router>

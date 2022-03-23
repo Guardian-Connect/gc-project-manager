@@ -51,6 +51,7 @@ const Dispcards = ({ site, setCount, count }) => {
                     </div>
                   )}
                   <div>GP Customer - {site.gp}</div>
+                  <div>Contract Number - {site.contract}</div>
                   <div>
                     Site Address - {site.address}, {site.city}, {site.state}
                   </div>

@@ -12,6 +12,7 @@ const {
   getSites,
   getAllSitesNotes,
   getAllSitesOpen,
+  getRecordByDate,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -142,6 +143,26 @@ usersRouter.post("/register", async (req, res, next) => {
       });
     }
   } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.post("/report", async (req, res, next) => {
+  const { start, end, gp } = req.body;
+  let startNew = new Date(start)
+  let endNew = new Date(end)
+  console.log(req.body)
+  console.log(start, end, gp, "full data")
+  let startDate = startNew.toISOString()
+  let useStartDate = startDate.split('T')[0]
+  let endDate = endNew.toISOString()
+  let useEndDate = endDate.split('T')[0]
+  console.log(useStartDate, useEndDate, 'base info')
+  try {
+    const report = await getRecordByDate(start, end, gp);
+    res.send({report})
+  } catch (error) {
+    console.log(error);
     next(error);
   }
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
-
-const SideBar = () => {
+import CsvDownload from "react-json-to-csv";
+const SideBar = ({ mockData }) => {
   let proOneCon = sessionStorage.getItem("ponecon");
   let proOneDis = sessionStorage.getItem("ponedis");
   let pTwoCon = sessionStorage.getItem("pTwoCon");
@@ -21,12 +21,6 @@ const SideBar = () => {
       <Typography variant="h5" sx={{ flexShrink: 1, alignSelf: "center" }}>
         <div className="space">Major's Management</div>
       </Typography>
-      {/* <Typography
-        variant="h6"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        <div>Start Date 3/17/22</div>
-      </Typography> */}
       <Typography
         variant="h6"
         sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
@@ -60,6 +54,8 @@ const SideBar = () => {
         <div>Connected - {pThreeCon}</div>
         <div className="bottom">Not Connected - {pThreeDis}</div>
       </Typography>
+      {/* CSV Download Option */}
+      {/* <CsvDownload data={mockData} /> */}
     </div>
   );
 };
