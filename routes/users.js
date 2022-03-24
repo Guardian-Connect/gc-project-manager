@@ -28,8 +28,6 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
-    // console.log(process.env.cust1);
-    // console.log(dispinfo);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -59,7 +57,6 @@ usersRouter.get("/disp/open", async (req, res, next) => {
 usersRouter.get("/disp/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log("test", id);
     const dispinfo = await getSites(id);
     res.send({ dispinfo });
   } catch ({ name, message }) {
@@ -149,18 +146,16 @@ usersRouter.post("/register", async (req, res, next) => {
 
 usersRouter.post("/report", async (req, res, next) => {
   const { start, end, gp } = req.body;
-  let startNew = new Date(start)
-  let endNew = new Date(end)
-  console.log(req.body)
-  console.log(start, end, gp, "full data")
-  let startDate = startNew.toISOString()
-  let useStartDate = startDate.split('T')[0]
-  let endDate = endNew.toISOString()
-  let useEndDate = endDate.split('T')[0]
-  console.log(useStartDate, useEndDate, 'base info')
+  console.log(start, end, "gp", gp);
+  let startNew = new Date(start);
+  let endNew = new Date(end);
+  let startDate = startNew.toISOString();
+  let useStartDate = startDate.split("T")[0];
+  let endDate = endNew.toISOString();
+  let useEndDate = endDate.split("T")[0];
   try {
-    const report = await getRecordByDate(start, end, gp);
-    res.send({report})
+    const report = await getRecordByDate(useStartDate, useEndDate, gp);
+    res.send({ report });
   } catch (error) {
     console.log(error);
     next(error);

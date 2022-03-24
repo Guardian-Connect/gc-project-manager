@@ -6,6 +6,7 @@ export let projectThree = "SOU0008";
 export async function getSomething() {
   try {
     const { data } = await axios.get("/api/users/disp");
+    // console.log(data);
     sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;
     let disconnected = [];
@@ -18,7 +19,6 @@ export async function getSomething() {
     let pThreeDis = 0;
     info.map((site) => {
       if (site.totaldisp === null) {
-        console.log("running now");
         return disconnected.push(site.gvrid);
       } else {
         return connected.push(site.gvrid);
@@ -47,7 +47,30 @@ export async function getSomething() {
       } else if (site.gp === projectThree && site.totaldisp === null) {
         return pThreeDis++;
       }
+
+      let rows = [];
+      let columns = [];
+      info.map((site) => {
+        let gp = site.gp;
+        let company = site.company;
+        if (!columns.includes(gp)) {
+          columns.push(gp);
+        }
+        if (!rows.includes(company)) {
+          rows.push(company);
+        }
+      });
+      // let result = rows.reduce(function (result, field, index) {
+      //   result[columns[index]] = field;
+      //   return result;
+      // }, {});
+      let result = rows.map(function (x, i) {
+        return { label: x, value: columns[i] };
+      });
+      // console.log(result);
+      sessionStorage.setItem("menuItems", JSON.stringify(result));
     });
+
     sessionStorage.setItem("render", JSON.stringify("1"));
     sessionStorage.setItem("ponecon", JSON.stringify(pOneCon));
     sessionStorage.setItem("ponedis", JSON.stringify(pOneDis));
@@ -57,9 +80,7 @@ export async function getSomething() {
     sessionStorage.setItem("pThreeDis", JSON.stringify(pThreeDis));
     sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
     sessionStorage.setItem("connected", JSON.stringify(connected));
-    let mockData = JSON.stringify(info)
-   
-    console.log(JSON.stringify(info));
+
     return data;
   } catch (error) {
     throw error;
@@ -89,13 +110,13 @@ export async function getInfoInstalls() {
 
 export async function getReportData(start, end, gp) {
   try {
-    console.log(start, end, gp)
+    console.log(start, end, "gp", gp);
     const { data } = await axios.post("/api/users/report", {
       start,
       end,
       gp,
     });
-    console.log(data);
+    sessionStorage.setItem("mockData", JSON.stringify(data.report));
     return data;
   } catch (error) {
     throw error;

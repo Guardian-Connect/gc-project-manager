@@ -35,7 +35,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
             <Button
               variant="contained"
               onClick={async () => {
-                console.log("firing");
                 await getInfoInstalls();
                 history.push("/second");
                 // window.location.reload();
@@ -48,7 +47,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
             <Button
               variant="contained"
               onClick={async () => {
-                console.log("firing");
                 await getInfo();
                 history.push("/second");
                 // window.location.reload();

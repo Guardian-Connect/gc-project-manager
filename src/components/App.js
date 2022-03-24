@@ -20,7 +20,6 @@ const App = () => {
   useEffect(async () => {
     await getSomething()
       .then((response) => {
-        console.log(response.dispinfo);
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
         setMockData(response.dispinfo);
       })
@@ -35,11 +34,11 @@ const App = () => {
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    getReportData("2022-3-10", "2022-3-15", "%").then((response) => {
-      console.log(response);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getReportData("2022-3-10", "2022-3-15", "%").then((response) => {
+  //     console.log(response);
+  //   });
+  // }, []);
   return (
     <>
       {/* loading icon to help with re-rendering etc*/}

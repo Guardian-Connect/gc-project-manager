@@ -15,7 +15,6 @@ const Drawer = ({ setSearchInput }) => {
         variant="contained"
         onClick={async () => {
           // await getInfo("MAJ0001");
-          console.log(await getInfo());
           history.push("/second");
           sessionStorage.setItem("site", JSON.stringify("12345"));
 
