@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import CsvDownload from "react-json-to-csv";
+import { CSVLink } from "react-csv";
 import { Typography, MenuItem, Menu, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Select from "react-select";
 import { getReportData } from "../api";
+import useLocalStorage from "./Export";
 const Report = ({ children }) => {
   let mockData = JSON.parse(sessionStorage.getItem("mockData"));
   const [startDate, setStartDate] = useState("2022-1-1");
   const [endDate, setEndDate] = useState("2022-1-1");
   const [gpComp, setGpComp] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
+  const [buttonState, setButtonState] = useLocalStorage(false);
   const handleStartChange = (e) => {
     setStartDate(e.target.value);
   };
@@ -24,6 +27,7 @@ const Report = ({ children }) => {
 
   const clickReport = (e) => {
     e.preventDefault();
+    setButtonState(true);
     getReportData(startDate, endDate, gpComp).then((resp) => {
       window.location.reload();
     });
@@ -41,7 +45,7 @@ const Report = ({ children }) => {
         defaultValue="2022-01-01"
         value={startDate}
         onChange={handleStartChange}
-        sx={{ width: 220 }}
+        sx={{ width: 220, marginTop: 5 }}
         InputLabelProps={{
           shrink: true,
         }}
@@ -53,30 +57,58 @@ const Report = ({ children }) => {
         defaultValue="2022-01-01"
         value={endDate}
         onChange={handleEndChange}
-        sx={{ width: 220 }}
+        sx={{ width: 220, marginLeft: 2, marginTop: 5 }}
         InputLabelProps={{
           shrink: true,
         }}
       />
-      {/* <Button>
-        {options.map((item, pos) => {
-          // console.log(item.gpid, pos);
-          return (
-            <MenuItem key={pos} value={item.gpid}>
-              {item.company}
-              Test
-            </MenuItem>
-          );
-        })}
-      </Button> */}
-      <Select
-        defaultValue={selectedOption}
-        onChange={handleGpChange}
-        options={options}
-      />
-      <Button onClick={clickReport}>Click</Button>
-      <Typography variant="h4" sx={{ width: "100%", flexShrink: 0 }}>
-        <CsvDownload
+      <>
+        {buttonState ? (
+          <Typography
+            variant="h4"
+            sx={{ width: "100%", flexShrink: 1, marginTop: 10 }}
+          >
+            <CSVLink
+              data={mockData}
+              filename={"Guardian Connect DB.csv"}
+              className="btn btn-primary"
+              target="_blank"
+              onClick={() => {
+                setButtonState(false);
+              }}
+            >
+              Click to Download CSV
+            </CSVLink>
+          </Typography>
+        ) : (
+          <Typography
+            variant="h4"
+            sx={{ width: 455, flexShrink: 1, marginTop: 3 }}
+          >
+            <Select
+              defaultValue={selectedOption}
+              onChange={handleGpChange}
+              options={options}
+            />
+            <Button
+              variant="contained"
+              onClick={clickReport}
+              sx={{ width: 455, flexShrink: 1, marginTop: 3 }}
+            >
+              Click to Search for CSV Report
+            </Button>
+          </Typography>
+        )}
+      </>
+      {/* </Typography> */}
+    </div>
+  );
+};
+
+export default Report;
+
+{
+  /* <CsvDownload
           // onClick={(e) => handleData()}
           data={mockData}
           filename="good_data.csv"
@@ -97,10 +129,5 @@ const Report = ({ children }) => {
           }}
         >
           Click to Download CSV
-        </CsvDownload>
-      </Typography>
-    </div>
-  );
-};
-
-export default Report;
+        </CsvDownload> */
+}

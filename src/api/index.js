@@ -48,8 +48,8 @@ export async function getSomething() {
         return pThreeDis++;
       }
 
-      let rows = [];
-      let columns = [];
+      let rows = ["ALL"];
+      let columns = ["%"];
       info.map((site) => {
         let gp = site.gp;
         let company = site.company;
