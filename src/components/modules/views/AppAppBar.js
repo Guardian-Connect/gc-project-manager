@@ -49,7 +49,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
               onClick={async () => {
                 await getInfo();
                 history.push("/second");
-                // window.location.reload();
+                window.location.reload();
               }}
             >
               Open Notes
@@ -86,6 +86,18 @@ function AppAppBar({ searchInput, setSearchInput }) {
               }}
             >
               Clear
+            </Button>
+          </div>
+          <div className="drawertwo">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                setSearchInput("");
+                history.push("/report");
+                // window.location.reload();
+              }}
+            >
+              Reporting
             </Button>
           </div>
           {/* <div className="drawer">

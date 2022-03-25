@@ -22,7 +22,8 @@ async function getRecordByDate(start, end, gp) {
     const { rows } = await client.query(
       ` select gp, company, gvrid, annual, contract, activation, renewal 
         from dispinfo
-        where activation BETWEEN '${start}' and '${end}' and gp LIKE '%${gp}%';
+        where activation BETWEEN '${start}' and '${end}' and gp LIKE '%${gp}%'
+        order by gp;
 `
     );
     console.log(rows);
@@ -99,7 +100,7 @@ async function getAllSites() {
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
-    ORDER BY gvrid;
+    ORDER BY gp;
   `
   );
 
