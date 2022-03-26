@@ -21,6 +21,7 @@ const App = () => {
     await getSomething()
       .then((response) => {
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+        // sessionStorage.setItem("dispinfo", 1);
         setMockData(response.dispinfo);
       })
       .catch((error) => {
@@ -31,7 +32,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   // useEffect(() => {

@@ -100,9 +100,10 @@ export async function getInfo() {
 export async function getInfoInstalls() {
   try {
     const { data } = await axios.get(`/api/users/disp/open`);
-    let info = data.dispinfo;
-    sessionStorage.setItem("dispinfo", JSON.stringify(info));
-    return info;
+    // let info = data.dispinfo;
+    console.log(data);
+    sessionStorage.setItem("dispinfo", JSON.stringify(data));
+    return data;
   } catch (error) {
     throw error;
   }

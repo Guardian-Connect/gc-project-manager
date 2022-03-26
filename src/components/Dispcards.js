@@ -8,7 +8,6 @@ import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 import PosAtg from "./PosAtg";
 import Dispensers from "./Dispensers";
 const moment = require("moment");
-
 const Dispcards = ({ site, setCount, count }) => {
   let today = moment.utc().format("MM/DD/yyyy");
 
@@ -29,7 +28,13 @@ const Dispcards = ({ site, setCount, count }) => {
       );
     }
   }
-
+  // if (blank === 1) {
+  //   return (
+  //     <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
+  //       Nothing Found
+  //     </Typography>
+  //   );
+  // } else {
   if (site.totaldisp != null) {
     return (
       <>
@@ -117,6 +122,7 @@ const Dispcards = ({ site, setCount, count }) => {
       </>
     );
   }
+  // }
 };
 
 export default Dispcards;

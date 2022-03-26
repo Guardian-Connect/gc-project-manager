@@ -48,7 +48,21 @@ usersRouter.get("/disp/notes", async (req, res, next) => {
 usersRouter.get("/disp/open", async (req, res, next) => {
   try {
     const dispinfo = await getAllSitesOpen();
-    res.send({ dispinfo });
+    console.log(dispinfo);
+    if (dispinfo.length >= 1) {
+    res.send(dispinfo);
+    } else {
+    //   // need to add default nothing here message here
+    res.send([
+      {
+        id: 5000000,
+        gp: "MAJ0001",
+        company: "MAJORS MANAGEMENT",
+        address: "NA",
+        gvrid: "NA",
+      },
+    ]);
+    }
   } catch ({ name, message }) {
     next({ name, message });
   }

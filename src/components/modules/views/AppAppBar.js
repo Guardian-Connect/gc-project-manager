@@ -37,7 +37,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
               onClick={async () => {
                 await getInfoInstalls();
                 history.push("/second");
-                // window.location.reload();
+                window.location.reload();
               }}
             >
               Open Installs
@@ -55,18 +55,6 @@ function AppAppBar({ searchInput, setSearchInput }) {
               Open Notes
             </Button>
           </div>
-          {/* <div className="drawertwo">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                setSearchInput("");
-                history.push("/");
-                // window.location.reload();
-              }}
-            >
-              Clear
-            </Button>
-          </div> */}
           <div>Connected - {countCon}</div>
           <input
             className="search"
@@ -82,6 +70,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
               onClick={async () => {
                 setSearchInput("");
                 history.push("/");
+                // sessionStorage.setItem("false", false);
                 // window.location.reload();
               }}
             >

@@ -85,11 +85,16 @@ const Report = ({ children }) => {
             variant="h4"
             sx={{ width: 455, flexShrink: 1, marginTop: 3 }}
           >
-            <Select
-              defaultValue={selectedOption}
-              onChange={handleGpChange}
-              options={options}
-            />
+            <Typography
+              variant="h6"
+              sx={{ width: 455, flexShrink: 1, marginTop: 3 }}
+            >
+              <Select
+                defaultValue={selectedOption}
+                onChange={handleGpChange}
+                options={options}
+              />
+            </Typography>
             <Button
               variant="contained"
               onClick={clickReport}
