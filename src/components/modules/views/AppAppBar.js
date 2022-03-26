@@ -74,7 +74,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
                 // window.location.reload();
               }}
             >
-              Clear
+              Clear/Home
             </Button>
           </div>
           <div className="drawertwo">

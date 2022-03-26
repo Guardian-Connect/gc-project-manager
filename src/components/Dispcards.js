@@ -28,13 +28,7 @@ const Dispcards = ({ site, setCount, count }) => {
       );
     }
   }
-  // if (blank === 1) {
-  //   return (
-  //     <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
-  //       Nothing Found
-  //     </Typography>
-  //   );
-  // } else {
+
   if (site.totaldisp != null) {
     return (
       <>
@@ -122,7 +116,6 @@ const Dispcards = ({ site, setCount, count }) => {
       </>
     );
   }
-  // }
 };
 
 export default Dispcards;

@@ -50,7 +50,7 @@ const App = () => {
         </div>
       ) : (
         <Router>
-          <SideBar mockData={mockData} />
+          <SideBar mockData={mockData} setSearchInput={setSearchInput} />
           <div>
             <AppAppBar
               searchInput={searchInput}
