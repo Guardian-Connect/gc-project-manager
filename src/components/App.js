@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./Main";
 import Start from "./Start";
+import Details from "./Details";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething, getReportData } from "../api";
 import logo from "../assests/logo.gif";
@@ -78,7 +79,16 @@ const App = () => {
               />
             </Route>
             <Route path="/report">
-              <Report />
+              <Report
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+              />
+            </Route>
+            <Route path="/details">
+              <Details
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+              />
             </Route>
           </Switch>
         </Router>

@@ -120,6 +120,42 @@ async function getAllSitesNotes() {
   return rows;
 }
 
+async function getSpecificSiteInfoIncom(gp) {
+  console.log("specifics running");
+  const { rows } = await client.query(
+    `SELECT *
+    FROM dispinfo
+    WHERE gp=$1
+    AND totaldisp IS NULL
+    ORDER BY gvrid;
+  `,
+    [gp]
+  );
+  console.log(rows, gp);
+  return rows;
+}
+
+async function getSpecificSiteInfoComplete(gp) {
+  // console.log("specifics running");
+  const { rows } = await client.query(
+    `SELECT *
+    FROM dispinfo
+    WHERE gp=$1
+    AND totaldisp IS NOT NULL
+    ORDER BY gvrid;
+  `,
+    [gp]
+  );
+
+  return rows;
+}
+
+//   `SELECT *
+//   FROM dispinfo
+//   WHERE notes IS NOT NULL
+//   AND totaldisp IS NULL
+// `;
+
 async function getAllSitesOpen() {
   console.log("GAS log");
   const { rows } = await client.query(
@@ -178,4 +214,6 @@ module.exports = {
   getAllSitesNotes,
   getAllSitesOpen,
   getRecordByDate,
+  getSpecificSiteInfoIncom,
+  getSpecificSiteInfoComplete,
 };

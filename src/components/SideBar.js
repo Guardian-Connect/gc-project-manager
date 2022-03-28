@@ -1,6 +1,11 @@
 import React from "react";
 import { Typography, Card, ButtonBase } from "@mui/material";
 import CsvDownload from "react-json-to-csv";
+import { getSpecificData, getCompleteData } from "../api/index";
+import { useHistory } from "react-router-dom";
+let projOne = "MAJ0001";
+let projTwo = "LIO0002";
+let projThree = "SOU0008";
 const SideBar = ({ mockData, setSearchInput }) => {
   let proOneCon = sessionStorage.getItem("ponecon");
   let proOneDis = sessionStorage.getItem("ponedis");
@@ -8,11 +13,31 @@ const SideBar = ({ mockData, setSearchInput }) => {
   let pTwoDis = sessionStorage.getItem("pTwoDis");
   let pThreeCon = sessionStorage.getItem("pThreeCon");
   let pThreeDis = sessionStorage.getItem("pThreeDis");
+  let history = useHistory();
+
   const clickyMaj = (event) => {
-    let input = event.target.attributes[1].value
+    let input = event.target.attributes[0].value;
     event.preventDefault();
-    console.log("Clicked", event.target.attributes[1].value)
-    setSearchInput(input)
+    // console.log("Clicked", event.target.attributes[1].value);
+    setSearchInput(input);
+  };
+
+  async function clickData(event) {
+    let input = event.target.attributes[1].value;
+    event.preventDefault();
+    console.log(input);
+    // console.log("Clicked", event.target.attributes[1].value);
+    await getSpecificData(input);
+    history.push("/details");
+    window.location.reload(``);
+  }
+
+  async function clickCon(event) {
+    let input = event.target.attributes[0].value;
+    event.preventDefault();
+    await getCompleteData(input);
+    history.push("/details");
+    window.location.reload(``);
   }
   return (
     <div className="sidebar">
@@ -27,60 +52,106 @@ const SideBar = ({ mockData, setSearchInput }) => {
       {/* Starting Project 1 */}
       <Card variant="outlined">
         <ButtonBase
-        onClick={clickyMaj}>
-      <Typography variant="h5" sx={{ flexShrink: 1, alignSelf: "center" }}>
-        <div className="space" value="MAJ0001">Major's Management</div>
-      </Typography>
-      </ButtonBase>
-      <Typography
-        variant="h6"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        <div>Connected - {proOneCon}</div>
-        <div className="bottom">Not Connected - {proOneDis}</div>
-      </Typography>
+          onClick={clickyMaj}
+          sx={{ typography: "h6", width: "100%" }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
+          >
+            <div value={projOne}>Major's Management</div>
+          </Typography>
+        </ButtonBase>
+        <Typography
+          variant="h6"
+          sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
+        >
+          <ButtonBase
+            onClick={clickCon}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div value={projOne}>Connected - {proOneCon}</div>
+          </ButtonBase>
+          <ButtonBase
+            onClick={clickData}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div className="bottom" value={projOne}>
+              Not Connected - {proOneDis}
+            </div>
+          </ButtonBase>
+        </Typography>
       </Card>
       {/* Starting Project 2 */}
       <Card variant="outlined">
-      <ButtonBase
-        onClick={clickyMaj}>
-      <Typography
-        variant="h5"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        <div className="space" value="LIO0002">Lion's Pride</div>
-      </Typography>
-      </ButtonBase>
-      <Typography
-        variant="h6"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        <div>Connected - {pTwoCon}</div>
-        <div className="bottom">Not Connected - {pTwoDis}</div>
-      </Typography>
+        <ButtonBase
+          onClick={clickyMaj}
+          sx={{ typography: "h6", width: "100%" }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
+          >
+            <div className="space" value={projTwo}>
+              Lion's Pride
+            </div>
+          </Typography>
+        </ButtonBase>
+        <Typography
+          variant="h6"
+          sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
+        >
+          <ButtonBase
+            onClick={clickCon}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div value={projTwo}>Connected - {pTwoCon}</div>
+          </ButtonBase>
+          <ButtonBase
+            onClick={clickData}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div className="bottom" value={projTwo}>
+              Not Connected - {pTwoDis}
+            </div>
+          </ButtonBase>
+        </Typography>
       </Card>
       {/* Starting Project 3 */}
       <Card variant="outlined">
-      <ButtonBase
-        onClick={clickyMaj}>
-      <Typography
-        variant="h5"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        
-        <div className="space" value="SOU0008">SE Petro</div>
-      </Typography>
-      </ButtonBase>
-      <Typography
-        variant="h6"
-        sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
-      >
-        <div>Connected - {pThreeCon}</div>
-        <div className="bottom">Not Connected - {pThreeDis}</div>
-      </Typography>
+        <ButtonBase
+          onClick={clickyMaj}
+          sx={{ typography: "h6", width: "100%" }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
+          >
+            <div className="space" value={projThree}>
+              SE Petro
+            </div>
+          </Typography>
+        </ButtonBase>
+        <Typography
+          variant="h6"
+          sx={{ width: "100%", flexShrink: 1, alignSelf: "center" }}
+        >
+          <ButtonBase
+            onClick={clickCon}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div value={projThree}>Connected - {pThreeCon}</div>
+          </ButtonBase>
+          <ButtonBase
+            onClick={clickData}
+            sx={{ typography: "h6", width: "100%" }}
+          >
+            <div className="bottom" value={projThree}>
+              Not Connected - {pThreeDis}
+            </div>
+          </ButtonBase>
+        </Typography>
       </Card>
-      {/* CSV Download Option */}
-      {/* <CsvDownload data={mockData} /> */}
     </div>
   );
 };

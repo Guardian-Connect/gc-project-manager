@@ -13,6 +13,8 @@ const {
   getAllSitesNotes,
   getAllSitesOpen,
   getRecordByDate,
+  getSpecificSiteInfoIncom,
+  getSpecificSiteInfoComplete,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -50,18 +52,18 @@ usersRouter.get("/disp/open", async (req, res, next) => {
     const dispinfo = await getAllSitesOpen();
     console.log(dispinfo);
     if (dispinfo.length >= 1) {
-    res.send(dispinfo);
+      res.send(dispinfo);
     } else {
-    //   // need to add default nothing here message here
-    res.send([
-      {
-        id: 5000000,
-        gp: "MAJ0001",
-        company: "MAJORS MANAGEMENT",
-        address: "NA",
-        gvrid: "NA",
-      },
-    ]);
+      //   // need to add default nothing here message here
+      res.send([
+        {
+          id: 5000000,
+          gp: "MAJ0001",
+          company: "MAJORS MANAGEMENT",
+          address: "NA",
+          gvrid: "NA",
+        },
+      ]);
     }
   } catch ({ name, message }) {
     next({ name, message });
@@ -83,6 +85,29 @@ usersRouter.get("/getUserInfo", async (req, res, next) => {
     if (req.user) {
       res.send({ user: req.user });
     }
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/records/:gp", async (req, res, next) => {
+  try {
+    const { gp } = req.params;
+    console.log(gp, "gp records");
+    const dispinfo = await getSpecificSiteInfoIncom(gp);
+    // console.log(dispinfo, "disp");
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/complete/:gp", async (req, res, next) => {
+  try {
+    const { gp } = req.params;
+    const dispinfo = await getSpecificSiteInfoComplete(gp);
+    // console.log(dispinfo, "disp");
+    res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
   }
@@ -157,6 +182,17 @@ usersRouter.post("/register", async (req, res, next) => {
     next(error);
   }
 });
+
+// usersRouter.get("/records", async (req, res, next) => {
+//   try {
+//     const { gp } = req.body;
+//     console.log("firing", gp);
+//     // const dispinfo = await getSpecificSiteInfoIncom(gp);
+//     // res.send({ dispinfo });
+//   } catch ({ name, message }) {
+//     next({ name, message });
+//   }
+// });
 
 usersRouter.post("/report", async (req, res, next) => {
   const { start, end, gp } = req.body;

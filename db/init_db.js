@@ -1,3 +1,4 @@
+const { CropLandscapeOutlined } = require("@mui/icons-material");
 const bcrypt = require("bcrypt");
 const moment = require("moment");
 const SALT_COUNT = 10;
@@ -10,15 +11,16 @@ const {
   getUserByUsername,
   getAllSites,
   getRecordByDate,
+  getSpecificSiteInfoIncom,
 } = require("./index");
 
-   let start = new Date('2022-3-10')
-    let end = new Date('2022-3-15')
-    let startDate = start.toISOString()
-    let useStartDate = startDate.split('T')[0]
-    let endDate = end.toISOString()
-    let useEndDate = endDate.split('T')[0]
-    let gp = 'MAJ0001'
+let start = new Date("2022-3-10");
+let end = new Date("2022-3-15");
+let startDate = start.toISOString();
+let useStartDate = startDate.split("T")[0];
+let endDate = end.toISOString();
+let useEndDate = endDate.split("T")[0];
+let gp = "MAJ0001";
 async function createTables() {
   try {
     await client.query(`
@@ -170,6 +172,7 @@ async function testDB() {
     // const users = await getAllUsers();
     // const user1 = await getUsersByID(1);
     // const dispinfo = await getAllSites();
+    const testing = await getSpecificSiteInfoIncom("MAJ0001");
     // console.log(useStartDate, useEndDate, "dates")
     // const dateRange = await getRecordByDate(start, end, gp)
     // console.log("username", userArman, userJames, userRobin);
@@ -178,6 +181,7 @@ async function testDB() {
     // console.log("Dispenser", dispinfo);
     // console.log("range", dateRange);
     // console.log("allsites", dispinfo)
+    console.log(testing);
   } catch (error) {
     console.error(error);
   } finally {

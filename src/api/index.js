@@ -124,6 +124,32 @@ export async function getReportData(start, end, gp) {
   }
 }
 
+export async function getSpecificData(gp) {
+  try {
+    // console.log("gp", gp);
+    const { data } = await axios.get(`/api/users/records/${gp}`);
+    // console.log(data);
+    sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
+    // return data;
+    console.log("complete", data.dispinfo);
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getCompleteData(gp) {
+  try {
+    // console.log("gp", gp);
+    const { data } = await axios.get(`/api/users/complete/${gp}`);
+    console.log(data);
+    sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
+    // return data;
+    console.log("complete", data.dispinfo);
+  } catch (error) {
+    throw error;
+  }
+}
+
 // export async function getInfo(gp) {
 //   try {
 //     console.log(gp);
