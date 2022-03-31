@@ -20,7 +20,7 @@ async function getRecordByDate(start, end, gp) {
   try {
     console.log(start, end, "gp", gp);
     const { rows } = await client.query(
-      ` select gp, company, gvrid, annual, contract, activation, renewal 
+      ` select gp, company, address, gvrid, annual, contract, activation, renewal 
         from dispinfo
         where activation BETWEEN '${start}' and '${end}' and gp LIKE '%${gp}%'
         order by gp;
