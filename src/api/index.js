@@ -24,7 +24,7 @@ export async function getSomething() {
         return connected.push(site.gvrid);
       }
     });
-    //project one site
+    //project one sites
     info.map((site) => {
       if (site.gp === projectOne && site.totaldisp != null) {
         return pOneCon++;
