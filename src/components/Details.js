@@ -34,6 +34,10 @@ const Details = ({ setMessage, searchInput, setSearchInput }) => {
           if (company.includes(searchInput.toUpperCase())) {
             return true;
           }
+          const siteName = client.s_name.toUpperCase();
+          if (siteName.includes(searchInput.toUpperCase())) {
+            return true;
+          }
         })
         .map((site) => (
           <div className="main" key={site.id}>
