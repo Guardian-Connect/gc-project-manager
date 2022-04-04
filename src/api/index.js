@@ -6,7 +6,6 @@ export let projectThree = "SOU0008";
 export async function getSomething() {
   try {
     const { data } = await axios.get("/api/users/disp");
-    // console.log(data);
     sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;
     let disconnected = [];
