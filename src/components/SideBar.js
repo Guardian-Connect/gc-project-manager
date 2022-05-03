@@ -33,6 +33,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
   }
 
   async function clickCon(event) {
+    console.log(event);
     let input = event.target.attributes[0].value;
     event.preventDefault();
     await getCompleteData(input);
@@ -92,7 +93,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
             variant="h5"
             sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
           >
-            <div className="space" value={projTwo}>
+            <div value={projTwo} className="space">
               Lion's Pride
             </div>
           </Typography>
@@ -127,7 +128,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
             variant="h5"
             sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
           >
-            <div className="space" value={projThree}>
+            <div value={projThree} className="space">
               SE Petro
             </div>
           </Typography>

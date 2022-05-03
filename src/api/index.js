@@ -110,7 +110,6 @@ export async function getInfoInstalls() {
 
 export async function getReportData(start, end, gp) {
   try {
-    console.log(start, end, "gp", gp);
     const { data } = await axios.post("/api/users/report", {
       start,
       end,
