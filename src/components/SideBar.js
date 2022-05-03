@@ -94,7 +94,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
             sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
           >
             <div value={projTwo} className="space">
-              Lion's Pride
+              Lion's Pride (changes)
             </div>
           </Typography>
         </ButtonBase>
