@@ -21,7 +21,7 @@ const Report = ({ children }) => {
   };
   const handleGpChange = async (selectedOption) => {
     setGpComp(selectedOption.value);
-    // console.log(gpComp, startDate, endDate);
+    // console.log(selectedOption);
     // await getReportData(startDate, endDate, gpComp);
   };
 
