@@ -12,6 +12,7 @@ const {
   getAllSites,
   getRecordByDate,
   getSpecificSiteInfoIncom,
+  getEmailByGvr,
 } = require("./index");
 
 let start = new Date("2022-3-10");
@@ -30,13 +31,24 @@ async function createTables() {
           password varchar NOT NULL,
           email varchar NOT NULL
         );
-
       `);
   } catch (error) {
     throw error;
   }
 }
 
+// CREATE TABLE allsites (
+//   id SERIAL PRIMARY KEY,
+//   gvr_id varchar NOT NULL,
+//   gp_cust varchar NOT NULL,
+//   cus_name varchar
+// );
+// CREATE TABLE allsitesemails (
+//   id SERIAL PRIMARY KEY,
+//   cust_gp varchar NOT NULL,
+//   cus_name varchar NOT NULL,
+//   cus_email varchar NOT NULL
+//   );
 // CREATE TABLE dispinfo (
 //   id SERIAL PRIMARY KEY,
 //   gp varchar NOT NULL,
@@ -155,7 +167,7 @@ async function createInitialUsers() {
 async function rebuildDB() {
   try {
     client.connect();
-    console.log;
+    // console.log;
   } catch (error) {
     throw error;
   }
@@ -172,7 +184,7 @@ async function testDB() {
     // const users = await getAllUsers();
     // const user1 = await getUsersByID(1);
     // const dispinfo = await getAllSites();
-    const testing = await getSpecificSiteInfoIncom("MAJ0001");
+    const testing = await getEmailByGvr(168919);
     // console.log(useStartDate, useEndDate, "dates")
     // const dateRange = await getRecordByDate(start, end, gp)
     // console.log("username", userArman, userJames, userRobin);
@@ -181,7 +193,7 @@ async function testDB() {
     // console.log("Dispenser", dispinfo);
     // console.log("range", dateRange);
     // console.log("allsites", dispinfo)
-    console.log(testing);
+    console.log("test", testing);
   } catch (error) {
     console.error(error);
   } finally {

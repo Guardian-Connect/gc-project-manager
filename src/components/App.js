@@ -4,12 +4,13 @@ import Main from "./Main";
 import Start from "./Start";
 import Details from "./Details";
 import AppAppBar from "./modules/views/AppAppBar";
-import { getSomething, getReportData } from "../api";
+import { getSomething, getReportData, getEmail } from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
 import SideBar from "./SideBar";
 import Report from "./Report";
 import CsvDownload from "react-json-to-csv";
+import Contact from "./Contact";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
@@ -86,6 +87,12 @@ const App = () => {
             </Route>
             <Route path="/details">
               <Details
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+              />
+            </Route>
+            <Route path="/contact">
+              <Contact
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
               />

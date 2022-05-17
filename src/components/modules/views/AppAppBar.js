@@ -5,7 +5,7 @@ import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
 import Drawer from "../../Drawer";
 import { Button } from "@mui/material";
-import { getInfo, getInfoInstalls } from "../../../api";
+import { getInfo, getInfoInstalls, getEmail } from "../../../api";
 import { useHistory } from "react-router-dom";
 const rightLink = {
   fontSize: 16,
@@ -18,7 +18,26 @@ function AppAppBar({ searchInput, setSearchInput }) {
   let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
 
   const handleTextChange = (e) => {
+    // e.preventDefault();
+
     setSearchInput(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    if (e.keyCode === 13) {
+      await getEmail(searchInput).then((resp) => {
+        console.log(resp.emailInfo);
+      });
+    }
+    // or you can send data to backend
+  };
+
+  const handleKeypress = (e) => {
+    // it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
   };
 
   let history = useHistory();
@@ -43,7 +62,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
               Open Installs
             </Button>
           </div>
-          <div className="drawertwo">
+          <div className="drawer">
             <Button
               variant="contained"
               onClick={async () => {
@@ -59,9 +78,10 @@ function AppAppBar({ searchInput, setSearchInput }) {
           <input
             className="search"
             type="text"
-            placeholder="Search By GVR ID, Address, or GP Customer Number."
+            placeholder="Search By GVR ID,Address, or GP Customer ID."
             value={searchInput}
             onChange={handleTextChange}
+            onKeyDown={handleSubmit}
           />
           <div>Not Connected - {countDis} </div>
           <div className="drawertwo">
@@ -87,6 +107,18 @@ function AppAppBar({ searchInput, setSearchInput }) {
               }}
             >
               Reporting
+            </Button>
+          </div>
+          <div className="drawertwo">
+            <Button
+              variant="contained"
+              onClick={async () => {
+                setSearchInput("");
+                history.push("/contact");
+                // window.location.reload();
+              }}
+            >
+              Contacts
             </Button>
           </div>
           {/* <div className="drawer">

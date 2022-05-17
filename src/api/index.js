@@ -135,6 +135,16 @@ export async function getSpecificData(gp) {
   }
 }
 
+export async function getEmail(id) {
+  try {
+    console.log("gp", id);
+    const { data } = await axios.get(`/api/users/email/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getCompleteData(gp) {
   try {
     // console.log("gp", gp);

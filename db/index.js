@@ -2,19 +2,19 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -202,6 +202,33 @@ async function getUsersByID(id) {
   }
 }
 
+async function getEmailByGvr(id) {
+  try {
+    const { rows } = await client.query(
+      `
+    SELECT *
+    FROM allsites
+    INNER JOIN allsitesemails on gp_cust = cust_gp
+    WHERE gvr_id=$1;
+    `,
+      [id]
+    );
+    console.log(rows.length, id, "user");
+    if (rows.length === 0) {
+      return [
+        {
+          gvr_id:
+            "No Contact Info Found, Please Check the GVR ID and Try Again.",
+        },
+      ];
+    } else {
+      return rows;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -216,4 +243,5 @@ module.exports = {
   getRecordByDate,
   getSpecificSiteInfoIncom,
   getSpecificSiteInfoComplete,
+  getEmailByGvr,
 };
