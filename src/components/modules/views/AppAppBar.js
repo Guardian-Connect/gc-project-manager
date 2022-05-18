@@ -5,7 +5,7 @@ import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
 import Drawer from "../../Drawer";
 import { Button } from "@mui/material";
-import { getInfo, getInfoInstalls, getEmail } from "../../../api";
+import { getInfo, getInfoInstalls, getEmail, getGp } from "../../../api";
 import { useHistory } from "react-router-dom";
 const rightLink = {
   fontSize: 16,
@@ -13,32 +13,47 @@ const rightLink = {
   ml: 3,
 };
 
-function AppAppBar({ searchInput, setSearchInput }) {
+function AppAppBar({
+  searchInput,
+  setSearchInput,
+  contactInfo,
+  setContactInfo,
+}) {
   let countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
   let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
 
   const handleTextChange = (e) => {
-    // e.preventDefault();
-
     setSearchInput(e.target.value);
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
     if (e.keyCode === 13) {
-      await getEmail(searchInput).then((resp) => {
-        console.log(resp.emailInfo);
-      });
+      if (searchInput.length != 0) {
+        if (searchInput.length === 6) {
+          await getEmail(searchInput).then((resp) => {
+            setContactInfo(resp.emailInfo);
+            history.push("/contact");
+            console.log(resp.emailInfo);
+          });
+        } else {
+          await getGp(searchInput).then((resp) => {
+            setContactInfo(resp.emailInfo);
+            history.push("/contact");
+            console.log(resp.emailInfo);
+          });
+        }
+      } else {
+        return;
+      }
     }
-    // or you can send data to backend
   };
 
-  const handleKeypress = (e) => {
-    // it triggers by pressing the enter key
-    if (e.keyCode === 13) {
-      handleSubmit();
-    }
-  };
+  // const handleKeypress = (e) => {
+  //   // it triggers by pressing the enter key
+  //   if (e.keyCode === 13) {
+  //     handleSubmit();
+  //   }
+  // };
 
   let history = useHistory();
   return (
@@ -78,7 +93,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
           <input
             className="search"
             type="text"
-            placeholder="Search By GVR ID,Address, or GP Customer ID."
+            placeholder="Search By GVR ID,Address, or GP Customer ID. To see contact info enter the GVR ID and press enter"
             value={searchInput}
             onChange={handleTextChange}
             onKeyDown={handleSubmit}
@@ -109,18 +124,7 @@ function AppAppBar({ searchInput, setSearchInput }) {
               Reporting
             </Button>
           </div>
-          <div className="drawertwo">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                setSearchInput("");
-                history.push("/contact");
-                // window.location.reload();
-              }}
-            >
-              Contacts
-            </Button>
-          </div>
+
           {/* <div className="drawer">
             <Button
               variant="contained"

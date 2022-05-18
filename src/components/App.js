@@ -13,6 +13,7 @@ import CsvDownload from "react-json-to-csv";
 import Contact from "./Contact";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
+  const [contactInfo, setContactInfo] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
   let [count, setCount] = useState(0);
   const [searchInput, setSearchInput] = useState("");
@@ -55,6 +56,8 @@ const App = () => {
           <SideBar mockData={mockData} setSearchInput={setSearchInput} />
           <div>
             <AppAppBar
+              contactInfo={contactInfo}
+              setContactInfo={setContactInfo}
               searchInput={searchInput}
               setSearchInput={setSearchInput}
               count={count}
@@ -93,6 +96,7 @@ const App = () => {
             </Route>
             <Route path="/contact">
               <Contact
+                contactInfo={contactInfo}
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
               />

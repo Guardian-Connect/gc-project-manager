@@ -13,6 +13,7 @@ const {
   getRecordByDate,
   getSpecificSiteInfoIncom,
   getEmailByGvr,
+  getEmailByGp,
 } = require("./index");
 
 let start = new Date("2022-3-10");
@@ -185,6 +186,7 @@ async function testDB() {
     // const user1 = await getUsersByID(1);
     // const dispinfo = await getAllSites();
     const testing = await getEmailByGvr(168919);
+    const second = await getEmailByGp("LIO");
     // console.log(useStartDate, useEndDate, "dates")
     // const dateRange = await getRecordByDate(start, end, gp)
     // console.log("username", userArman, userJames, userRobin);
@@ -193,7 +195,7 @@ async function testDB() {
     // console.log("Dispenser", dispinfo);
     // console.log("range", dateRange);
     // console.log("allsites", dispinfo)
-    console.log("test", testing);
+    console.log("test", testing, "second", second);
   } catch (error) {
     console.error(error);
   } finally {

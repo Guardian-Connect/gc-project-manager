@@ -16,6 +16,7 @@ const {
   getSpecificSiteInfoIncom,
   getSpecificSiteInfoComplete,
   getEmailByGvr,
+  getEmailByGp,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -40,8 +41,19 @@ usersRouter.get("/disp", async (req, res, next) => {
 usersRouter.get("/email/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(id, req.params, "ID USERS ROUTER");
+    // console.log(id, req.params, "ID USERS ROUTER");
     const emailInfo = await getEmailByGvr(id);
+    res.send({ emailInfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/gp/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    // console.log(id, req.params, "ID USERS ROUTER");
+    const emailInfo = await getEmailByGp(id);
     res.send({ emailInfo });
   } catch ({ name, message }) {
     next({ name, message });
