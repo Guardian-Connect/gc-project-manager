@@ -25,7 +25,6 @@ const SideBar = ({ mockData, setSearchInput }) => {
   async function clickData(event) {
     let input = event.target.attributes[1].value;
     event.preventDefault();
-    console.log(input);
     // console.log("Clicked", event.target.attributes[1].value);
     await getSpecificData(input);
     history.push("/details");
@@ -33,7 +32,6 @@ const SideBar = ({ mockData, setSearchInput }) => {
   }
 
   async function clickCon(event) {
-    console.log(event);
     let input = event.target.attributes[0].value;
     event.preventDefault();
     await getCompleteData(input);

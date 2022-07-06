@@ -66,7 +66,6 @@ export async function getSomething() {
       let result = rows.map(function (x, i) {
         return { label: x, value: columns[i] };
       });
-      // console.log(result);
       sessionStorage.setItem("menuItems", JSON.stringify(result));
     });
 
@@ -100,7 +99,6 @@ export async function getInfoInstalls() {
   try {
     const { data } = await axios.get(`/api/users/disp/open`);
     // let info = data.dispinfo;
-    console.log(data);
     sessionStorage.setItem("dispinfo", JSON.stringify(data));
     return data;
   } catch (error) {
@@ -148,17 +146,6 @@ export async function addEmail(
   cus_email6
 ) {
   try {
-    console.log(
-      cust_gp,
-      cus_name,
-      rrs,
-      cus_email1,
-      cus_email2,
-      cus_email3,
-      cus_email4,
-      cus_email5,
-      cus_email6
-    );
     const { data } = await axios.post("/api/users/custemail", {
       cust_gp,
       cus_name,
@@ -178,12 +165,9 @@ export async function addEmail(
 
 export async function getSpecificData(gp) {
   try {
-    // console.log("gp", gp);
     const { data } = await axios.get(`/api/users/records/${gp}`);
-    // console.log(data);
     sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
     // return data;
-    console.log("complete", data.dispinfo);
   } catch (error) {
     throw error;
   }
@@ -191,7 +175,6 @@ export async function getSpecificData(gp) {
 
 export async function getEmail(id) {
   try {
-    console.log("gp", id);
     const { data } = await axios.get(`/api/users/email/${id}`);
     return data;
   } catch (error) {
@@ -201,7 +184,6 @@ export async function getEmail(id) {
 
 export async function getGp(id) {
   try {
-    console.log("gp", id);
     const { data } = await axios.get(`/api/users/gp/${id}`);
     return data;
   } catch (error) {
@@ -211,12 +193,9 @@ export async function getGp(id) {
 
 export async function getCompleteData(gp) {
   try {
-    // console.log("gp", gp);
     const { data } = await axios.get(`/api/users/complete/${gp}`);
-    console.log(data);
     sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
     // return data;
-    console.log("complete", data.dispinfo);
   } catch (error) {
     throw error;
   }
@@ -239,22 +218,6 @@ export async function addTicket(
   notes
 ) {
   try {
-    console.log(
-      date,
-      gvr_id,
-      gp,
-      dispatch_type,
-      fm_ticket,
-      location,
-      address,
-      grade,
-      fp,
-      sb,
-      gp_ticket,
-      atl_po,
-      warranty_status,
-      notes
-    );
     const { data } = await axios.post("/api/users/gcticket", {
       date,
       gvr_id,
@@ -279,9 +242,7 @@ export async function addTicket(
 
 // export async function getInfo(gp) {
 //   try {
-//     console.log(gp);
 //     const { data } = await axios.get(`/api/users/disp/${gp}`);
-//     console.log(data);
 //     let info = data.dispinfo;
 //     let disconnected = [];
 //     let connected = [];

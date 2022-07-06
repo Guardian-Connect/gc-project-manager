@@ -44,7 +44,6 @@ usersRouter.get("/disp", async (req, res, next) => {
 usersRouter.get("/email/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    // console.log(id, req.params, "ID USERS ROUTER");
     const emailInfo = await getEmailByGvr(id);
     res.send({ emailInfo });
   } catch ({ name, message }) {
@@ -55,7 +54,6 @@ usersRouter.get("/email/:id", async (req, res, next) => {
 usersRouter.get("/gp/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    // console.log(id, req.params, "ID USERS ROUTER");
     const emailInfo = await getEmailByGp(id);
     res.send({ emailInfo });
   } catch ({ name, message }) {
@@ -66,8 +64,6 @@ usersRouter.get("/gp/:id", async (req, res, next) => {
 usersRouter.get("/disp/notes", async (req, res, next) => {
   try {
     const dispinfo = await getAllSitesNotes();
-    // console.log(process.env.cust1);
-    // console.log(dispinfo);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -77,7 +73,6 @@ usersRouter.get("/disp/notes", async (req, res, next) => {
 usersRouter.get("/disp/open", async (req, res, next) => {
   try {
     const dispinfo = await getAllSitesOpen();
-    console.log(dispinfo);
     if (dispinfo.length >= 1) {
       res.send(dispinfo);
     } else {
@@ -120,9 +115,7 @@ usersRouter.get("/getUserInfo", async (req, res, next) => {
 usersRouter.get("/records/:gp", async (req, res, next) => {
   try {
     const { gp } = req.params;
-    console.log(gp, "gp records");
     const dispinfo = await getSpecificSiteInfoIncom(gp);
-    // console.log(dispinfo, "disp");
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -133,7 +126,6 @@ usersRouter.get("/complete/:gp", async (req, res, next) => {
   try {
     const { gp } = req.params;
     const dispinfo = await getSpecificSiteInfoComplete(gp);
-    // console.log(dispinfo, "disp");
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -166,7 +158,6 @@ usersRouter.post("/login", async (req, res, next) => {
       res.send({ message: "you're logged in!", token, user });
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 });
@@ -213,7 +204,6 @@ usersRouter.post("/register", async (req, res, next) => {
 // usersRouter.get("/records", async (req, res, next) => {
 //   try {
 //     const { gp } = req.body;
-//     console.log("firing", gp);
 //     // const dispinfo = await getSpecificSiteInfoIncom(gp);
 //     // res.send({ dispinfo });
 //   } catch ({ name, message }) {
@@ -223,7 +213,6 @@ usersRouter.post("/register", async (req, res, next) => {
 
 usersRouter.post("/allsites", async (req, res, next) => {
   const { gvr_id, gp_cust, cus_name, site_address } = req.body;
-  console.log("test", gvr_id, gp_cust, cus_name, site_address);
   try {
     const allsites = await createSite(gvr_id, gp_cust, cus_name, site_address);
     if (allsites.rowCount === 1) {
@@ -249,18 +238,6 @@ usersRouter.post("/custemail", async (req, res, next) => {
     cus_email5,
     cus_email6,
   } = req.body;
-  console.log(
-    "test",
-    cust_gp,
-    cus_name,
-    rrs,
-    cus_email1,
-    cus_email2,
-    cus_email3,
-    cus_email4,
-    cus_email5,
-    cus_email6
-  );
   try {
     const custemail = await createEmailList(
       cust_gp,
@@ -301,23 +278,6 @@ usersRouter.post("/gcticket", async (req, res, next) => {
     warranty_status,
     notes,
   } = req.body;
-  console.log(
-    "test",
-    date,
-    gvr_id,
-    gp,
-    dispatch_type,
-    fm_ticket,
-    location,
-    address,
-    grade,
-    fp,
-    sb,
-    gp_ticket,
-    atl_po,
-    warranty_status,
-    notes
-  );
   try {
     const custemail = await createGctracker(
       date,
@@ -348,7 +308,6 @@ usersRouter.post("/gcticket", async (req, res, next) => {
 
 usersRouter.post("/report", async (req, res, next) => {
   const { start, end, gp } = req.body;
-  console.log(start, end, "gp", gp);
   let startNew = new Date(start);
   let endNew = new Date(end);
   let startDate = startNew.toISOString();
@@ -359,7 +318,6 @@ usersRouter.post("/report", async (req, res, next) => {
     const report = await getRecordByDate(useStartDate, useEndDate, gp);
     res.send({ report });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 });

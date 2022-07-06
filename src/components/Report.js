@@ -28,8 +28,6 @@ const Report = ({ children }) => {
         sx={{ ml: 10 }}
         variant="contained"
         onClick={() => {
-          setDate("11/23/1980");
-          console.log(date);
           history.push("/allsites");
         }}
       >
@@ -39,8 +37,6 @@ const Report = ({ children }) => {
         sx={{ ml: 2 }}
         variant="contained"
         onClick={() => {
-          setDate("11/23/1980");
-          console.log(date);
           history.push("/gctracker");
         }}
       >

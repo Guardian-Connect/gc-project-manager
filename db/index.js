@@ -18,7 +18,6 @@ const client = new Client({
 
 async function getRecordByDate(start, end, gp) {
   try {
-    console.log(start, end, "gp", gp);
     const { rows } = await client.query(
       ` select gp, company, address, gvrid, annual, contract, activation, renewal 
         from dispinfo
@@ -26,7 +25,6 @@ async function getRecordByDate(start, end, gp) {
         order by gp;
 `
     );
-    console.log(rows);
     return rows;
   } catch (error) {
     throw error;
@@ -51,7 +49,6 @@ async function createUser({ username, password, email }) {
 
 async function createSite(gvr_id, gp_cust, cus_name, site_address) {
   try {
-    console.log(gvr_id, gp_cust, cus_name, site_address);
     const result = await client.query(
       `
       INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
@@ -78,18 +75,6 @@ async function createEmailList(
   cus_email6
 ) {
   try {
-    console.log(
-      "result",
-      cust_gp,
-      cus_name,
-      rrs,
-      cus_email1,
-      cus_email2,
-      cus_email3,
-      cus_email4,
-      cus_email5,
-      cus_email6
-    );
     const result = await client.query(
       `
       INSERT INTO customeremail(cust_gp, cus_name, rrs, cus_email1, cus_email2, cus_email3, cus_email4, cus_email5, cus_email6)
@@ -107,7 +92,6 @@ async function createEmailList(
         cus_email6,
       ]
     );
-    console.log(result);
     return result;
   } catch (error) {
     throw error;
@@ -116,7 +100,6 @@ async function createEmailList(
 
 async function getUserByUsername(userName) {
   try {
-    console.log("Firing User by Username");
     const { rows } = await client.query(
       `
       SELECT *
@@ -134,7 +117,6 @@ async function getUserByUsername(userName) {
 }
 
 async function getUser({ username, password }) {
-  console.log("running");
   if (!username || !password) {
     return;
   }
@@ -161,7 +143,6 @@ async function getAllUsers() {
 }
 
 async function getAllSites() {
-  console.log("GAS log");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -173,7 +154,6 @@ async function getAllSites() {
 }
 
 async function getAllSitesNotes() {
-  console.log("GAS log");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -186,7 +166,6 @@ async function getAllSitesNotes() {
 }
 
 async function getSpecificSiteInfoIncom(gp) {
-  console.log("specifics running");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -196,12 +175,10 @@ async function getSpecificSiteInfoIncom(gp) {
   `,
     [gp]
   );
-  console.log(rows, gp);
   return rows;
 }
 
 async function getSpecificSiteInfoComplete(gp) {
-  // console.log("specifics running");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -222,7 +199,6 @@ async function getSpecificSiteInfoComplete(gp) {
 // `;
 
 async function getAllSitesOpen() {
-  console.log("GAS log");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -235,7 +211,6 @@ async function getAllSitesOpen() {
 }
 
 async function getSites(id) {
-  console.log(id, "back", typeof id);
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo
@@ -260,7 +235,6 @@ async function getUsersByID(id) {
     `,
       [id]
     );
-    console.log("user", user);
     return user;
   } catch (error) {
     throw error;
@@ -278,7 +252,6 @@ async function getEmailByGvr(id) {
     `,
       [id]
     );
-    console.log(rows.length, id, "user");
     if (rows.length === 0) {
       return [
         {
@@ -305,7 +278,6 @@ async function getEmailByGp(id) {
     WHERE gp_cust LIKE '${correctId}%'
     `
     );
-    console.log(rows.length, id, "user");
     if (rows.length === 0) {
       return [
         {
@@ -338,23 +310,6 @@ async function createGctracker(
   notes
 ) {
   try {
-    console.log(
-      "result",
-      date,
-      gvr_id,
-      gp,
-      dispatch_type,
-      fm_ticket,
-      location,
-      address,
-      grade,
-      fp,
-      sb,
-      gp_ticket,
-      atl_po,
-      warranty_status,
-      notes
-    );
     const result = await client.query(
       `
       INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes)
@@ -377,7 +332,6 @@ async function createGctracker(
         notes,
       ]
     );
-    console.log(result);
     return result;
   } catch (error) {
     throw error;

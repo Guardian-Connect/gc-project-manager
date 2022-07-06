@@ -33,7 +33,6 @@ function AppAppBar({
           await getEmail(searchInput).then((resp) => {
             setContactInfo(resp.emailInfo);
             history.push("/contact");
-            console.log(resp.emailInfo);
           });
         }
         // else {

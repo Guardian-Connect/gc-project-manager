@@ -71,7 +71,6 @@ const Gctracker = ({ addTicket }) => {
   };
 
   const handleTextChangeGvr = (e) => {
-    console.log(gvr_id.length);
     setGvr_id(e.target.value);
   };
 
@@ -251,7 +250,6 @@ const Gctracker = ({ addTicket }) => {
             variant="contained"
             endIcon={<SendIcon />}
             onClick={() => {
-              console.log(now);
               addTicket(
                 now,
                 gvr_id,

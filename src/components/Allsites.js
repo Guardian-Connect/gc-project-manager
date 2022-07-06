@@ -25,7 +25,6 @@ const Allsites = ({ addSite, addEmail }) => {
   const [cus_email6, setCus_email6] = useState("");
 
   const handleTextChangeGvr = (e) => {
-    console.log(gvr_id.length);
     setGvr_id(e.target.value);
   };
 
@@ -123,7 +122,6 @@ const Allsites = ({ addSite, addEmail }) => {
             addSite(gvr_id, gp_cust, cus_name, site_address).then(
               (response) => {
                 window.location.reload();
-                console.log(response);
               }
             );
           }}
@@ -233,18 +231,6 @@ const Allsites = ({ addSite, addEmail }) => {
           variant="contained"
           endIcon={<SendIcon />}
           onClick={() => {
-            console.log(
-              "base",
-              gp_cust,
-              cus_name,
-              rrs,
-              cus_email1,
-              cus_email2,
-              cus_email3,
-              cus_email4,
-              cus_email5,
-              cus_email6
-            );
             addEmail(
               gp_cust,
               cus_name,
@@ -257,7 +243,6 @@ const Allsites = ({ addSite, addEmail }) => {
               cus_email6
             ).then((response) => {
               // window.location.reload();
-              console.log(response);
             });
           }}
         >

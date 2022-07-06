@@ -7,7 +7,6 @@ const Contact = ({ contactInfo }) => {
       <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
         {contactInfo.map((site) => (
           <div className="main" key={site.id}>
-            {console.log(site)}
             {site.gp_cust ? (
               <>
                 <div>GVR ID - {site.gvr_id}</div>
