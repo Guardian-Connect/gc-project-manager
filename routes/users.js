@@ -19,6 +19,7 @@ const {
   getEmailByGp,
   createSite,
   createEmailList,
+  createGctracker,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -271,6 +272,68 @@ usersRouter.post("/custemail", async (req, res, next) => {
       cus_email4,
       cus_email5,
       cus_email6
+    );
+    if (custemail.rowCount === 1) {
+      res.send("Success");
+    } else {
+      res.send("Error");
+    }
+    // res.send({ allsites });
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.post("/gcticket", async (req, res, next) => {
+  const {
+    date,
+    gvr_id,
+    gp,
+    dispatch_type,
+    fm_ticket,
+    location,
+    address,
+    grade,
+    fp,
+    sb,
+    gp_ticket,
+    atl_po,
+    warranty_status,
+    notes,
+  } = req.body;
+  console.log(
+    "test",
+    date,
+    gvr_id,
+    gp,
+    dispatch_type,
+    fm_ticket,
+    location,
+    address,
+    grade,
+    fp,
+    sb,
+    gp_ticket,
+    atl_po,
+    warranty_status,
+    notes
+  );
+  try {
+    const custemail = await createGctracker(
+      date,
+      gvr_id,
+      gp,
+      dispatch_type,
+      fm_ticket,
+      location,
+      address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes
     );
     if (custemail.rowCount === 1) {
       res.send("Success");

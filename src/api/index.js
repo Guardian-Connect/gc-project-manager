@@ -222,6 +222,61 @@ export async function getCompleteData(gp) {
   }
 }
 
+export async function addTicket(
+  date,
+  gvr_id,
+  gp,
+  dispatch_type,
+  fm_ticket,
+  location,
+  address,
+  grade,
+  fp,
+  sb,
+  gp_ticket,
+  atl_po,
+  warranty_status,
+  notes
+) {
+  try {
+    console.log(
+      date,
+      gvr_id,
+      gp,
+      dispatch_type,
+      fm_ticket,
+      location,
+      address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes
+    );
+    const { data } = await axios.post("/api/users/gcticket", {
+      date,
+      gvr_id,
+      gp,
+      dispatch_type,
+      fm_ticket,
+      location,
+      address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 // export async function getInfo(gp) {
 //   try {
 //     console.log(gp);

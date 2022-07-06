@@ -25,6 +25,7 @@ const Report = ({ children }) => {
     <div className="app">
       <Typography sx={{ ml: 49 }}>DB Entry Forms</Typography>
       <Button
+        sx={{ ml: 10 }}
         variant="contained"
         onClick={() => {
           setDate("11/23/1980");
@@ -33,6 +34,17 @@ const Report = ({ children }) => {
         }}
       >
         All Sites
+      </Button>
+      <Button
+        sx={{ ml: 2 }}
+        variant="contained"
+        onClick={() => {
+          setDate("11/23/1980");
+          console.log(date);
+          history.push("/gctracker");
+        }}
+      >
+        GC Tracker
       </Button>
     </div>
   );

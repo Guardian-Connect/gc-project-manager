@@ -321,6 +321,69 @@ async function getEmailByGp(id) {
   }
 }
 
+async function createGctracker(
+  date,
+  gvr_id,
+  gp,
+  dispatch_type,
+  fm_ticket,
+  location,
+  address,
+  grade,
+  fp,
+  sb,
+  gp_ticket,
+  atl_po,
+  warranty_status,
+  notes
+) {
+  try {
+    console.log(
+      "result",
+      date,
+      gvr_id,
+      gp,
+      dispatch_type,
+      fm_ticket,
+      location,
+      address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes
+    );
+    const result = await client.query(
+      `
+      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+    `,
+      [
+        date,
+        gvr_id,
+        gp,
+        dispatch_type,
+        fm_ticket,
+        location,
+        address,
+        grade,
+        fp,
+        sb,
+        gp_ticket,
+        atl_po,
+        warranty_status,
+        notes,
+      ]
+    );
+    console.log(result);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -339,4 +402,5 @@ module.exports = {
   getEmailByGp,
   createSite,
   createEmailList,
+  createGctracker,
 };

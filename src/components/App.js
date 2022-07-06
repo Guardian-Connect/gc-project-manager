@@ -18,6 +18,8 @@ import Report from "./Report";
 import CsvDownload from "react-json-to-csv";
 import Contact from "./Contact";
 import Allsites from "./Allsites";
+import Gctracker from "./Gctracker";
+import { addTicket } from "../api";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const [contactInfo, setContactInfo] = useState([]);
@@ -110,6 +112,9 @@ const App = () => {
             </Route>
             <Route path="/allsites">
               <Allsites addSite={addSite} addEmail={addEmail} />
+            </Route>
+            <Route path="/gctracker">
+              <Gctracker addTicket={addTicket} />
             </Route>
           </Switch>
         </Router>
