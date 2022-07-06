@@ -49,6 +49,71 @@ async function createUser({ username, password, email }) {
   }
 }
 
+async function createSite(gvr_id, gp_cust, cus_name, site_address) {
+  try {
+    console.log(gvr_id, gp_cust, cus_name, site_address);
+    const result = await client.query(
+      `
+      INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
+      VALUES ($1, $2, $3, $4);
+    `,
+      [gvr_id, gp_cust, cus_name, site_address]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function createEmailList(
+  cust_gp,
+  cus_name,
+  rrs,
+  cus_email1,
+  cus_email2,
+  cus_email3,
+  cus_email4,
+  cus_email5,
+  cus_email6
+) {
+  try {
+    console.log(
+      "result",
+      cust_gp,
+      cus_name,
+      rrs,
+      cus_email1,
+      cus_email2,
+      cus_email3,
+      cus_email4,
+      cus_email5,
+      cus_email6
+    );
+    const result = await client.query(
+      `
+      INSERT INTO customeremail(cust_gp, cus_name, rrs, cus_email1, cus_email2, cus_email3, cus_email4, cus_email5, cus_email6)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    `,
+      [
+        cust_gp,
+        cus_name,
+        rrs,
+        cus_email1,
+        cus_email2,
+        cus_email3,
+        cus_email4,
+        cus_email5,
+        cus_email6,
+      ]
+    );
+    console.log(result);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getUserByUsername(userName) {
   try {
     console.log("Firing User by Username");
@@ -272,4 +337,6 @@ module.exports = {
   getSpecificSiteInfoComplete,
   getEmailByGvr,
   getEmailByGp,
+  createSite,
+  createEmailList,
 };

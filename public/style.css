@@ -46,6 +46,10 @@
   width: 100%;
 }
 
+.spaceform {
+  margin-top: 20px;
+  margin-bottom: 150px;
+}
 .search {
   border: 1px solid black;
   width: 800px;
@@ -57,6 +61,11 @@
 .yellow {
   width: 100%;
   background-color: yellow;
+}
+
+.test {
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .drawer {

@@ -122,6 +122,60 @@ export async function getReportData(start, end, gp) {
   }
 }
 
+export async function addSite(gvr_id, gp_cust, cus_name, site_address) {
+  try {
+    const { data } = await axios.post("/api/users/allsites", {
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addEmail(
+  cust_gp,
+  cus_name,
+  rrs,
+  cus_email1,
+  cus_email2,
+  cus_email3,
+  cus_email4,
+  cus_email5,
+  cus_email6
+) {
+  try {
+    console.log(
+      cust_gp,
+      cus_name,
+      rrs,
+      cus_email1,
+      cus_email2,
+      cus_email3,
+      cus_email4,
+      cus_email5,
+      cus_email6
+    );
+    const { data } = await axios.post("/api/users/custemail", {
+      cust_gp,
+      cus_name,
+      rrs,
+      cus_email1,
+      cus_email2,
+      cus_email3,
+      cus_email4,
+      cus_email5,
+      cus_email6,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getSpecificData(gp) {
   try {
     // console.log("gp", gp);

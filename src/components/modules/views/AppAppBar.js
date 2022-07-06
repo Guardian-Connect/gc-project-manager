@@ -35,13 +35,14 @@ function AppAppBar({
             history.push("/contact");
             console.log(resp.emailInfo);
           });
-        } else {
-          await getGp(searchInput).then((resp) => {
-            setContactInfo(resp.emailInfo);
-            history.push("/contact");
-            console.log(resp.emailInfo);
-          });
         }
+        // else {
+        //   await getGp(searchInput).then((resp) => {
+        //     setContactInfo(resp.emailInfo);
+        //     history.push("/contact");
+        //     console.log(resp.emailInfo);
+        //   });
+        // }
       } else {
         return;
       }
@@ -121,7 +122,7 @@ function AppAppBar({
                 // window.location.reload();
               }}
             >
-              Reporting
+              DB Entry
             </Button>
           </div>
 

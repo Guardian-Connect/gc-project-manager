@@ -4,13 +4,20 @@ import Main from "./Main";
 import Start from "./Start";
 import Details from "./Details";
 import AppAppBar from "./modules/views/AppAppBar";
-import { getSomething, getReportData, getEmail } from "../api";
+import {
+  getSomething,
+  getReportData,
+  getEmail,
+  addSite,
+  addEmail,
+} from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
 import SideBar from "./SideBar";
 import Report from "./Report";
 import CsvDownload from "react-json-to-csv";
 import Contact from "./Contact";
+import Allsites from "./Allsites";
 const App = () => {
   const [errormessage, setMessage] = useState([]);
   const [contactInfo, setContactInfo] = useState([]);
@@ -100,6 +107,9 @@ const App = () => {
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
               />
+            </Route>
+            <Route path="/allsites">
+              <Allsites addSite={addSite} addEmail={addEmail} />
             </Route>
           </Switch>
         </Router>

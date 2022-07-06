@@ -17,6 +17,8 @@ const {
   getSpecificSiteInfoComplete,
   getEmailByGvr,
   getEmailByGp,
+  createSite,
+  createEmailList,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -217,6 +219,69 @@ usersRouter.post("/register", async (req, res, next) => {
 //     next({ name, message });
 //   }
 // });
+
+usersRouter.post("/allsites", async (req, res, next) => {
+  const { gvr_id, gp_cust, cus_name, site_address } = req.body;
+  console.log("test", gvr_id, gp_cust, cus_name, site_address);
+  try {
+    const allsites = await createSite(gvr_id, gp_cust, cus_name, site_address);
+    if (allsites.rowCount === 1) {
+      res.send("Success");
+    } else {
+      res.send("Error");
+    }
+    // res.send({ allsites });
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.post("/custemail", async (req, res, next) => {
+  const {
+    cust_gp,
+    cus_name,
+    rrs,
+    cus_email1,
+    cus_email2,
+    cus_email3,
+    cus_email4,
+    cus_email5,
+    cus_email6,
+  } = req.body;
+  console.log(
+    "test",
+    cust_gp,
+    cus_name,
+    rrs,
+    cus_email1,
+    cus_email2,
+    cus_email3,
+    cus_email4,
+    cus_email5,
+    cus_email6
+  );
+  try {
+    const custemail = await createEmailList(
+      cust_gp,
+      cus_name,
+      rrs,
+      cus_email1,
+      cus_email2,
+      cus_email3,
+      cus_email4,
+      cus_email5,
+      cus_email6
+    );
+    if (custemail.rowCount === 1) {
+      res.send("Success");
+    } else {
+      res.send("Error");
+    }
+    // res.send({ allsites });
+  } catch (error) {
+    next(error);
+  }
+});
 
 usersRouter.post("/report", async (req, res, next) => {
   const { start, end, gp } = req.body;
