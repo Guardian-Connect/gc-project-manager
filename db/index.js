@@ -310,6 +310,23 @@ async function createGctracker(
   notes
 ) {
   try {
+    console.log(
+      "new ticket",
+      date,
+      gvr_id,
+      gp,
+      dispatch_type,
+      fm_ticket,
+      location,
+      address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes
+    );
     const result = await client.query(
       `
       INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes)
