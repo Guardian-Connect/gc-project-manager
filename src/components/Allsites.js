@@ -242,7 +242,7 @@ const Allsites = ({ addSite, addEmail }) => {
               cus_email5,
               cus_email6
             ).then((response) => {
-              // window.location.reload();
+              window.location.reload();
             });
           }}
         >

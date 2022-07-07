@@ -265,7 +265,9 @@ const Gctracker = ({ addTicket }) => {
                 atl_po,
                 warranty_status,
                 notes
-              );
+              ).then((response) => {
+                window.location.reload();
+              });
             }}
           >
             Submit
