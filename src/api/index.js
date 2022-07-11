@@ -18,40 +18,40 @@ export async function getSomething() {
     let pThreeDis = 0;
     info.map((site) => {
       if (site.totaldisp === null) {
-        return disconnected.push(site.gvrid);
+        return disconnected.push(site.gvr_id);
       } else {
-        return connected.push(site.gvrid);
+        return connected.push(site.gvr_id);
       }
     });
     //project one sites
     info.map((site) => {
-      if (site.gp === projectOne && site.totaldisp != null) {
+      if (site.gp_cust === projectOne && site.totaldisp != null) {
         return pOneCon++;
-      } else if (site.gp === projectOne && site.totaldisp === null) {
+      } else if (site.gp_cust === projectOne && site.totaldisp === null) {
         return pOneDis++;
       }
     });
     //project two sites
     info.map((site) => {
-      if (site.gp === projectTwo && site.totaldisp != null) {
+      if (site.gp_cust === projectTwo && site.totaldisp != null) {
         return pTwoCon++;
-      } else if (site.gp === projectTwo && site.totaldisp === null) {
+      } else if (site.gp_cust === projectTwo && site.totaldisp === null) {
         return pTwoDis++;
       }
     });
     //project three sites
     info.map((site) => {
-      if (site.gp === projectThree && site.totaldisp != null) {
+      if (site.gp_cust === projectThree && site.totaldisp != null) {
         return pThreeCon++;
-      } else if (site.gp === projectThree && site.totaldisp === null) {
+      } else if (site.gp_cust === projectThree && site.totaldisp === null) {
         return pThreeDis++;
       }
 
       let rows = ["ALL"];
       let columns = ["%"];
       info.map((site) => {
-        let gp = site.gp;
-        let company = site.company;
+        let gp = site.gp_cust;
+        let company = site.cus_name;
         if (!columns.includes(gp)) {
           columns.push(gp);
         }
