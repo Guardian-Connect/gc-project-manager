@@ -49,6 +49,7 @@ async function createUser({ username, password, email }) {
 
 async function createSite(gvr_id, gp_cust, cus_name, site_address) {
   try {
+    console.log("site creation", gvr_id, gp_cust, cus_name, site_address);
     const result = await client.query(
       `
       INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
@@ -71,6 +72,7 @@ async function createSiteDisp(
   contract
 ) {
   try {
+    console.log("dispdb", gvr_id, gp_cust, cus_name, site_address, contract);
     const result = await client.query(
       `
       INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
