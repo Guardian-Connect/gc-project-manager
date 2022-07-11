@@ -10,6 +10,7 @@ import {
   getEmail,
   addSite,
   addEmail,
+  createDisp,
 } from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
@@ -111,7 +112,11 @@ const App = () => {
               />
             </Route>
             <Route path="/allsites">
-              <Allsites addSite={addSite} addEmail={addEmail} />
+              <Allsites
+                addSite={addSite}
+                addEmail={addEmail}
+                createDisp={createDisp}
+              />
             </Route>
             <Route path="/gctracker">
               <Gctracker addTicket={addTicket} />

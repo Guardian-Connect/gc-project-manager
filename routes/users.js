@@ -20,6 +20,7 @@ const {
   createSite,
   createEmailList,
   createGctracker,
+  createSiteDisp,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -211,8 +212,24 @@ usersRouter.post("/register", async (req, res, next) => {
 //   }
 // });
 
+usersRouter.post("/createdisp", async (req, res, next) => {
+  const { gvr_id, gp_cust, cus_name, site_address, contract } = req.body;
+  try {
+    const dispinfo = await createSiteDisp(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract
+    );
+    // res.send({ allsites });
+  } catch (error) {
+    next(error);
+  }
+});
+
 usersRouter.post("/allsites", async (req, res, next) => {
-  const { gvr_id, gp_cust, cus_name, site_address } = req.body;
+  const { gvr_id, gp_cust, cus_name, site_address, contract } = req.body;
   try {
     const allsites = await createSite(gvr_id, gp_cust, cus_name, site_address);
     if (allsites.rowCount === 1) {

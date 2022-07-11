@@ -10,7 +10,7 @@ import {
   Box,
 } from "@mui/material";
 
-const Allsites = ({ addSite, addEmail }) => {
+const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
   const [cus_name, setCus_name] = useState("");
@@ -23,6 +23,7 @@ const Allsites = ({ addSite, addEmail }) => {
   const [cus_email4, setCus_email4] = useState("");
   const [cus_email5, setCus_email5] = useState("");
   const [cus_email6, setCus_email6] = useState("");
+  const [contract, setContract] = useState("");
 
   const handleTextChangeGvr = (e) => {
     setGvr_id(e.target.value);
@@ -64,6 +65,16 @@ const Allsites = ({ addSite, addEmail }) => {
 
   const handleTextChangeSite = (e) => {
     setSite_address(e.target.value);
+  };
+
+  const handleContract = (e) => {
+    setContract(e.target.value);
+  };
+
+  const addData = (gvr_id, gp_cust, cus_name, site_address, contract) => {
+    addSite(gvr_id, gp_cust, cus_name, site_address);
+    createDisp(gvr_id, gp_cust, cus_name, site_address, contract);
+    window.location.reload();
   };
 
   return (
@@ -114,16 +125,23 @@ const Allsites = ({ addSite, addEmail }) => {
           onChange={handleTextChangeSite}
         />
 
+        <TextField
+          sx={{ ml: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GP Contract #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleContract}
+        />
+
         <Button
           sx={{ ml: 10, mt: 1 }}
           variant="contained"
           endIcon={<SendIcon />}
           onClick={() => {
-            addSite(gvr_id, gp_cust, cus_name, site_address).then(
-              (response) => {
-                window.location.reload();
-              }
-            );
+            addData(gvr_id, gp_cust, cus_name, site_address, contract);
           }}
         >
           Submit

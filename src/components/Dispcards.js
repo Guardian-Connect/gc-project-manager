@@ -42,18 +42,16 @@ const Dispcards = ({ site, setCount, count }) => {
               {site.totaldisp != null && (
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                   {site.onboarding === false ? (
-                    <div>GVR ID - {site.gvrid}</div>
+                    <div>GVR ID - {site.gvr_id}</div>
                   ) : (
                     <div>
-                      <StarBorderPurple500Icon /> GVR ID - {site.gvrid}
+                      <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
                       <StarBorderPurple500Icon />
                     </div>
                   )}
-                  <div>GP Customer - {site.gp}</div>
+                  <div>GP Customer - {site.gp_cust}</div>
                   <div>Contract Number - {site.contract}</div>
-                  <div>
-                    Site Address - {site.address}, {site.city}, {site.state}
-                  </div>
+                  <div>Site Address - {site.site_address}</div>
                   <div>Number of Dispensers - {site.totaldisp}</div>
                   <div>Registration Date - {handleDate(site.activation)}</div>
                   <div>Renewal Date - {handleDate(site.renewal)}</div>
@@ -85,17 +83,15 @@ const Dispcards = ({ site, setCount, count }) => {
               <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                 <div>Site Not Yet Activated.</div>
                 {site.onboarding === false ? (
-                  <div>GVR ID NEGATIVE - {site.gvrid}</div>
+                  <div>GVR ID NEGATIVE - {site.gvr_id}</div>
                 ) : (
                   <div>
-                    <StarBorderPurple500Icon /> GVR ID - {site.gvrid}
+                    <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
                     <StarBorderPurple500Icon />
                   </div>
                 )}
-                <div>GP Customer - {site.gp}</div>
-                <div>
-                  Site Address - {site.address}, {site.city}, {site.state}
-                </div>
+                <div>GP Customer - {site.gp_cust}</div>
+                <div>Site Address - {site.site_address}</div>
                 <div className="center">
                   <Typography
                     variant="h3"

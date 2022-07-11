@@ -63,6 +63,28 @@ async function createSite(gvr_id, gp_cust, cus_name, site_address) {
   }
 }
 
+async function createSiteDisp(
+  gvr_id,
+  gp_cust,
+  cus_name,
+  site_address,
+  contract
+) {
+  try {
+    const result = await client.query(
+      `
+      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
+      VALUES ($1, $2, $3, $4, $5);
+    `,
+      [gvr_id, gp_cust, cus_name, site_address, contract]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createEmailList(
   cust_gp,
   cus_name,
@@ -145,8 +167,8 @@ async function getAllUsers() {
 async function getAllSites() {
   const { rows } = await client.query(
     `SELECT *
-    FROM dispinfo
-    ORDER BY gp;
+    FROM dispinfo;
+    
   `
   );
 
@@ -374,4 +396,5 @@ module.exports = {
   createSite,
   createEmailList,
   createGctracker,
+  createSiteDisp,
 };
