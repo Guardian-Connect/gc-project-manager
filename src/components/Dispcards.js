@@ -1,5 +1,6 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import { Typography, Button, TextField, Modal, Box } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { format } from "date-fns";
 import Accordion from "@mui/material/Accordion";
@@ -7,9 +8,24 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 import PosAtg from "./PosAtg";
 import Dispensers from "./Dispensers";
+import Dispmodal from "./Dispmodal";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 const moment = require("moment");
 const Dispcards = ({ site, setCount, count }) => {
   let today = moment.utc().format("MM/DD/yyyy");
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function handleDate(d) {
     let date = moment.utc(d).format("MM/DD/yyyy");
@@ -42,12 +58,9 @@ const Dispcards = ({ site, setCount, count }) => {
               {site.totaldisp != null && (
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                   {site.onboarding === false ? (
-                    <div>GVR ID - {site.gvr_id}</div>
+                    <div>GVR ID - {site.gvr_id} </div>
                   ) : (
-                    <div>
-                      <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
-                      <StarBorderPurple500Icon />
-                    </div>
+                    <div>GVR ID - {site.gvr_id} </div>
                   )}
                   <div>GP Customer - {site.gp_cust}</div>
                   <div>Contract Number - {site.contract}</div>
@@ -67,6 +80,12 @@ const Dispcards = ({ site, setCount, count }) => {
 
           {/* Any Dispenser Serial / Grade Mapping Are Going Here */}
           <Dispensers site={site} />
+          {/* <Button variant="outlined" onClick={handleClickOpen}>
+            Edit Dispenser
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <Dispmodal site={site} />
+          </Dialog> */}
         </Accordion>
       </>
     );
@@ -83,7 +102,7 @@ const Dispcards = ({ site, setCount, count }) => {
               <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                 <div>Site Not Yet Activated.</div>
                 {site.onboarding === false ? (
-                  <div>GVR ID NEGATIVE - {site.gvr_id}</div>
+                  <div>GVR ID - {site.gvr_id}</div>
                 ) : (
                   <div>
                     <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
@@ -105,10 +124,17 @@ const Dispcards = ({ site, setCount, count }) => {
               </Typography>
             </div>
           </AccordionSummary>
-          <Typography variant="h4" sx={{ width: "50%" }}>
+          <Typography variant="h4" sx={{ width: "100%" }}>
             {site.notes != null && <div>Notes - {site.notes}</div>}
           </Typography>
+          {/* <Button variant="outlined" onClick={handleClickOpen}>
+            Edit Dispenser
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <Dispmodal site={site} />
+          </Dialog> */}
         </Accordion>
+        <div></div>
       </>
     );
   }

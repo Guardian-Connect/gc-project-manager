@@ -129,7 +129,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           sx={{ ml: 1 }}
           required
           id="outlined-required"
-          label="Enter GP Contract #"
+          label="Enter Job Costs Contract #"
           InputLabelProps={{
             shrink: true,
           }}
