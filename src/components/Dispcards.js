@@ -58,6 +58,7 @@ const Dispcards = ({ site, setCount, count }) => {
             <div className="info">
               {site.totaldisp != null && (
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
+                  {console.log(site)}
                   {site.onboarding === false ? (
                     <div>GVR ID - {site.gvr_id} </div>
                   ) : (
