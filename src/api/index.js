@@ -155,6 +155,94 @@ export async function createDisp(
   }
 }
 
+export async function updateDisp(
+  id,
+  gvr_id,
+  gp_cust,
+  contract,
+  site_address,
+  totaldisp,
+  activation_date,
+  warranty_date,
+  posvn,
+  posmain,
+  posreg1,
+  posreg2,
+  posreg3,
+  atgmodel,
+  disp1,
+  grades1,
+  disp2,
+  grades2,
+  disp3,
+  grades3,
+  disp4,
+  grades4,
+  disp5,
+  grades5,
+  disp6,
+  grades6,
+  disp7,
+  grades7,
+  disp8,
+  grades8,
+  disp9,
+  grades9,
+  disp10,
+  grades10
+) {
+  try {
+    let split = activation_date;
+    let split2 = split.split("-");
+    let split3 = Number(split2[0]) + 1;
+    let remove = split2.shift();
+    let combine = split2.join("-");
+    let renewal = split3 + "-" + combine;
+    // let activation = split3.toString() + '-' split2[1]+ '-' + '-' split2[2];
+    // let split4 = split3.toString();
+    console.log("running index.js api", renewal);
+    await axios.post("api/users/update", {
+      id,
+      gvr_id,
+      gp_cust,
+      contract,
+      site_address,
+      totaldisp,
+      activation_date,
+      warranty_date,
+      renewal,
+      posvn,
+      posmain,
+      posreg1,
+      posreg2,
+      posreg3,
+      atgmodel,
+      disp1,
+      grades1,
+      disp2,
+      grades2,
+      disp3,
+      grades3,
+      disp4,
+      grades4,
+      disp5,
+      grades5,
+      disp6,
+      grades6,
+      disp7,
+      grades7,
+      disp8,
+      grades8,
+      disp9,
+      grades9,
+      disp10,
+      grades10,
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function addEmail(
   cust_gp,
   cus_name,

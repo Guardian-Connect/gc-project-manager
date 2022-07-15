@@ -2,19 +2,19 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -247,6 +247,33 @@ async function getSites(id) {
   return rows;
 }
 
+async function updateDisp(id, fields = {}) {
+  try {
+    console.log(fields, "fields");
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(id, setString);
+    console.log(Object.values(fields));
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE dispinfo
+      SET ${setString}
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows);
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getUsersByID(id) {
   try {
     const {
@@ -271,7 +298,7 @@ async function getEmailByGvr(id) {
       `
     SELECT *
     FROM allsites
-    INNER JOIN allsitesemails on gp_cust = cust_gp
+    INNER JOIN customeremail on gp_cust = cust_gp
     WHERE gvr_id=$1;
     `,
       [id]
@@ -399,4 +426,5 @@ module.exports = {
   createEmailList,
   createGctracker,
   createSiteDisp,
+  updateDisp,
 };

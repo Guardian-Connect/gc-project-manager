@@ -35,11 +35,11 @@ const Dispcards = ({ site, setCount, count }) => {
   function isLater(date1, today) {
     let d = handleDate(date1);
     if (moment.utc(d).isAfter(today)) {
-      return <div>Warranty Date - {handleDate(site.warranty)}</div>;
+      return <div>Warranty Date - {handleDate(site.warranty_date)}</div>;
     } else {
       return (
         <div className="yellow">
-          Warranty Expired - {handleDate(site.warranty)}
+          Warranty Expired - {handleDate(site.warranty_date)}
         </div>
       );
     }
@@ -66,9 +66,11 @@ const Dispcards = ({ site, setCount, count }) => {
                   <div>Contract Number - {site.contract}</div>
                   <div>Site Address - {site.site_address}</div>
                   <div>Number of Dispensers - {site.totaldisp}</div>
-                  <div>Registration Date - {handleDate(site.activation)}</div>
+                  <div>
+                    Registration Date - {handleDate(site.activation_date)}
+                  </div>
                   <div>Renewal Date - {handleDate(site.renewal)}</div>
-                  {isLater(site.warranty, today)}
+                  {isLater(site.warranty_date, today)}
                 </Typography>
               )}
             </div>
@@ -80,12 +82,12 @@ const Dispcards = ({ site, setCount, count }) => {
 
           {/* Any Dispenser Serial / Grade Mapping Are Going Here */}
           <Dispensers site={site} />
-          {/* <Button variant="outlined" onClick={handleClickOpen}>
+          <Button variant="outlined" onClick={handleClickOpen}>
             Edit Dispenser
           </Button>
           <Dialog open={open} onClose={handleClose}>
             <Dispmodal site={site} />
-          </Dialog> */}
+          </Dialog>
         </Accordion>
       </>
     );
@@ -127,12 +129,12 @@ const Dispcards = ({ site, setCount, count }) => {
           <Typography variant="h4" sx={{ width: "100%" }}>
             {site.notes != null && <div>Notes - {site.notes}</div>}
           </Typography>
-          {/* <Button variant="outlined" onClick={handleClickOpen}>
+          <Button variant="outlined" onClick={handleClickOpen}>
             Edit Dispenser
           </Button>
           <Dialog open={open} onClose={handleClose}>
             <Dispmodal site={site} />
-          </Dialog> */}
+          </Dialog>
         </Accordion>
         <div></div>
       </>
