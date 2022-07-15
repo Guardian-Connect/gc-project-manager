@@ -15,6 +15,12 @@ const {
   getEmailByGvr,
   getEmailByGp,
 } = require("./index");
+let gvr_id = "123456";
+let gp_cust = "MAJ0001";
+let cus_name = "JAMES";
+let site_address = "1234 Test";
+let contract = "123124321";
+let totaldisp = "0";
 
 let start = new Date("2022-3-10");
 let end = new Date("2022-3-15");
@@ -23,6 +29,30 @@ let useStartDate = startDate.split("T")[0];
 let endDate = end.toISOString();
 let useEndDate = endDate.split("T")[0];
 let gp = "MAJ0001";
+
+async function createSiteDisp(
+  gvr_id,
+  gp_cust,
+  cus_name,
+  site_address,
+  contract,
+  totaldisp
+) {
+  try {
+    console.log("dispdb", gvr_id, gp_cust, cus_name, site_address, contract);
+    const result = await client.query(
+      `
+      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract, totaldisp)
+      VALUES ($1, $2, $3, $4, $5, $6);
+    `,
+      [gvr_id, gp_cust, cus_name, site_address, contract, totaldisp]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
 async function createTables() {
   try {
     await client.query(`
@@ -159,46 +189,6 @@ DROP TABLE IF EXISTS gctracker;
 
 async function createInitialUsers() {
   try {
-    console.log("Starting to create users...");
-    await new Promise((resolve, reject) => {
-      console.log("First User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-        const arman = await createUser({
-          username: "nels",
-          password: hashedPassword,
-          email: "test1@yahoo.com",
-        });
-        resolve();
-        console.log("Completed");
-      });
-    });
-
-    await new Promise((resolve, reject) => {
-      console.log("Second User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-        const james = await createUser({
-          username: "james",
-          password: hashedPassword,
-          email: "test2@yahoo.com",
-        });
-        resolve();
-        console.log("Completed");
-      });
-    });
-
-    await new Promise((resolve, reject) => {
-      console.log("Third User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-        const robin = await createUser({
-          username: "josh",
-          password: hashedPassword,
-          email: "test3@yahoo.com",
-        });
-        resolve();
-        console.log("Completed");
-      });
-    });
-
     console.log("Finished creating users!");
   } catch (error) {
     console.error("Error creating users!");
@@ -220,6 +210,14 @@ async function testDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
+    await createSiteDisp(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract,
+      totaldisp
+    );
   } catch (error) {
     console.error(error);
   } finally {
