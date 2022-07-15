@@ -243,6 +243,7 @@ export async function updateDisp(
       grades10,
     });
   } catch (error) {
+    console.log(error);
     throw error;
   }
 }

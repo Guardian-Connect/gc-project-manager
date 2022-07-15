@@ -514,6 +514,8 @@ usersRouter.post("/update", async (req, res, next) => {
   try {
     const updatedTicket = await updateDisp(id, updateFields);
   } catch ({ name, message }) {
+    console.log(name, message);
+    console.log(name, message);
     next({ name, message });
   }
 });
