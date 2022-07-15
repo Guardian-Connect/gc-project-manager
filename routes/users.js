@@ -411,7 +411,7 @@ usersRouter.post("/update", async (req, res, next) => {
   if (activation_date) {
     let split2 = activation_date.split("T");
     let activation_date_final = split2[0].toString();
-    updateFields.activation_date = activation_date_final;
+    updateFields.activation = activation_date_final;
   }
 
   if (warranty_date) {
