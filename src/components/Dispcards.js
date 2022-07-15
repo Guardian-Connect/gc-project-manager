@@ -66,11 +66,9 @@ const Dispcards = ({ site, setCount, count }) => {
                   <div>Contract Number - {site.contract}</div>
                   <div>Site Address - {site.site_address}</div>
                   <div>Number of Dispensers - {site.totaldisp}</div>
-                  <div>
-                    Registration Date - {handleDate(site.activation_date)}
-                  </div>
+                  <div>Registration Date - {handleDate(site.activation)}</div>
                   <div>Renewal Date - {handleDate(site.renewal)}</div>
-                  {isLater(site.warranty_date, today)}
+                  {isLater(site.warranty, today)}
                 </Typography>
               )}
             </div>
