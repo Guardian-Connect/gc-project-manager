@@ -323,7 +323,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    // window.location.reload();
+    window.location.reload();
   };
   return (
     <>
