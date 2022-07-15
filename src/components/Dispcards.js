@@ -29,18 +29,18 @@ const Dispcards = ({ site, setCount, count }) => {
 
   function handleDate(d) {
     let date = moment.utc(d).format("MM/DD/yyyy");
-    console.log(date);
+    // console.log(date);
     return date;
   }
 
   function isLater(date1, today) {
     let d = handleDate(date1);
     if (moment.utc(d).isAfter(today)) {
-      return <div>Warranty Date - {handleDate(site.warranty_date)}</div>;
+      return <div>Warranty Date - {handleDate(site.warranty)}</div>;
     } else {
       return (
         <div className="yellow">
-          Warranty Expired - {handleDate(site.warranty_date)}
+          Warranty Expired - {handleDate(site.warranty)}
         </div>
       );
     }
