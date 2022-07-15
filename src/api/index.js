@@ -164,6 +164,7 @@ export async function updateDisp(
   totaldisp,
   activation_date,
   warranty_date,
+  renewal,
   posvn,
   posmain,
   posreg1,
@@ -192,15 +193,18 @@ export async function updateDisp(
   grades10
 ) {
   try {
-    let split = activation_date;
-    let split2 = split.split("-");
-    let split3 = Number(split2[0]) + 1;
-    let remove = split2.shift();
-    let combine = split2.join("-");
-    let renewal = split3 + "-" + combine;
+    // if (activation_date) {
+    //   let split = activation_date;
+    //   let split2 = split.split("-");
+    //   let split3 = Number(split2[0]) + 1;
+    //   let remove = split2.shift();
+    //   let combine = split2.join("-");
+    //   let renewal = split3 + "-" + combine;
+    //   return renewal;
+    // }
     // let activation = split3.toString() + '-' split2[1]+ '-' + '-' split2[2];
     // let split4 = split3.toString();
-    console.log("running index.js api", renewal);
+    // console.log("running index.js api", renewal);
     await axios.post("api/users/update", {
       id,
       gvr_id,

@@ -23,6 +23,7 @@ const Dispmodal = ({ site }) => {
     setTotaldisp(site.totaldisp);
     setActivation(site.activation);
     setWarranty(site.warranty);
+    // setRenewal(site.renewal);
     setPosvn(site.posvn);
     setPosmain(site.posmain);
     setPosreg1(site.posreg1);
@@ -84,6 +85,7 @@ const Dispmodal = ({ site }) => {
   const [grades9, setGrades9] = React.useState("");
   const [disp10, setDisp10] = React.useState("");
   const [grades10, setGrades10] = React.useState("");
+  const [renewal, setRenewal] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -101,7 +103,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp10 = (e) => {
-    setDisp10(e.target.value);
+    setDisp10("19/20" + " " + e.target.value);
   };
 
   const handleGrades9 = (e) => {
@@ -109,7 +111,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp9 = (e) => {
-    setDisp9(e.target.value);
+    setDisp9("17/18" + " " + e.target.value);
   };
 
   const handleGrades8 = (e) => {
@@ -117,7 +119,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp8 = (e) => {
-    setDisp8(e.target.value);
+    setDisp8("15/16" + " " + e.target.value);
   };
 
   const handleGrades7 = (e) => {
@@ -125,7 +127,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp7 = (e) => {
-    setDisp7(e.target.value);
+    setDisp7("13/14" + " " + e.target.value);
   };
 
   const handleGrades6 = (e) => {
@@ -133,7 +135,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp6 = (e) => {
-    setDisp6(e.target.value);
+    setDisp6("11/12" + " " + e.target.value);
   };
 
   const handleGrades5 = (e) => {
@@ -141,7 +143,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp5 = (e) => {
-    setDisp5(e.target.value);
+    setDisp5("9/10" + " " + e.target.value);
   };
 
   const handleGrades4 = (e) => {
@@ -149,7 +151,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp4 = (e) => {
-    setDisp4(e.target.value);
+    setDisp4("7/8" + " " + e.target.value);
   };
 
   const handleGrades3 = (e) => {
@@ -157,7 +159,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp3 = (e) => {
-    setDisp3(e.target.value);
+    setDisp3("5/6" + " " + e.target.value);
   };
 
   const handleGrades2 = (e) => {
@@ -165,7 +167,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp2 = (e) => {
-    setDisp2(e.target.value);
+    setDisp2("3/4" + " " + e.target.value);
   };
 
   const handleGrades1 = (e) => {
@@ -173,7 +175,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleDisp1 = (e) => {
-    setDisp1(e.target.value);
+    setDisp1("1/2" + " " + e.target.value);
   };
 
   const handleAtgmodel = (e) => {
@@ -205,7 +207,15 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleTotalActivationDate = (e) => {
+    let split = e.target.value;
+    let split2 = split.split("-");
+    let split3 = Number(split2[0]) + 1;
+    let remove = split2.shift();
+    let combine = split2.join("-");
+    let renewal_date = split3 + "-" + combine;
     setActivation(e.target.value);
+    console.log(renewal_date);
+    setRenewal(renewal_date);
   };
 
   const handleTotaldisp = (e) => {
@@ -229,10 +239,15 @@ const Dispmodal = ({ site }) => {
 
   const consoleTest = () => {
     let id = site.id;
-    // let split = warranty.split("T");
-    // let warranty_date = split[0].toString();
-    // let split2 = activation.split("T");
-    // let activation_date = split2[0].toString();
+    // if (activation_date) {
+    //   let split = activation_date;
+    //   let split2 = split.split("-");
+    //   let split3 = Number(split2[0]) + 1;
+    //   let remove = split2.shift();
+    //   let combine = split2.join("-");
+    //   let renewal = split3 + "-" + combine;
+    //   return renewal;
+    // }
     console.log(
       id,
       gvr_id,
@@ -242,6 +257,7 @@ const Dispmodal = ({ site }) => {
       totaldisp,
       activation_date,
       warranty_date,
+      renewal,
       posvn,
       posmain,
       posreg1,
@@ -269,6 +285,17 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
+    // if (activation_date.length != 0) {
+    //   console.log("firing");
+    //   let split = activation_date;
+    //   let split2 = split.split("-");
+    //   let split3 = Number(split2[0]) + 1;
+    //   let remove = split2.shift();
+    //   let combine = split2.join("-");
+    //   let renewal = split3 + "-" + combine;
+    //   return renewal;
+    // }
+    console.log(renewal);
     updateDisp(
       id,
       gvr_id,
@@ -278,6 +305,7 @@ const Dispmodal = ({ site }) => {
       totaldisp,
       activation_date,
       warranty_date,
+      renewal,
       posvn,
       posmain,
       posreg1,
@@ -305,7 +333,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    window.location.reload();
+    // window.location.reload();
   };
   return (
     <>
