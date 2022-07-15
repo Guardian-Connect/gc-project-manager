@@ -214,7 +214,6 @@ const Dispmodal = ({ site }) => {
     let combine = split2.join("-");
     let renewal_date = split3 + "-" + combine;
     setActivation(e.target.value);
-    console.log(renewal_date);
     setRenewal(renewal_date);
   };
 
@@ -239,52 +238,43 @@ const Dispmodal = ({ site }) => {
 
   const consoleTest = () => {
     let id = site.id;
-    // if (activation_date) {
-    //   let split = activation_date;
-    //   let split2 = split.split("-");
-    //   let split3 = Number(split2[0]) + 1;
-    //   let remove = split2.shift();
-    //   let combine = split2.join("-");
-    //   let renewal = split3 + "-" + combine;
-    //   return renewal;
-    // }
-    console.log(
-      id,
-      gvr_id,
-      gp_cust,
-      contract,
-      site_address,
-      totaldisp,
-      activation_date,
-      warranty_date,
-      renewal,
-      posvn,
-      posmain,
-      posreg1,
-      posreg2,
-      posreg3,
-      atgmodel,
-      disp1,
-      grades1,
-      disp2,
-      grades2,
-      disp3,
-      grades3,
-      disp4,
-      grades4,
-      disp5,
-      grades5,
-      disp6,
-      grades6,
-      disp7,
-      grades7,
-      disp8,
-      grades8,
-      disp9,
-      grades9,
-      disp10,
-      grades10
-    );
+    // console.log(
+    //   id,
+    //   gvr_id,
+    //   gp_cust,
+    //   contract,
+    //   site_address,
+    //   totaldisp,
+    //   activation_date,
+    //   warranty_date,
+    //   renewal,
+    //   posvn,
+    //   posmain,
+    //   posreg1,
+    //   posreg2,
+    //   posreg3,
+    //   atgmodel,
+    //   disp1,
+    //   grades1,
+    //   disp2,
+    //   grades2,
+    //   disp3,
+    //   grades3,
+    //   disp4,
+    //   grades4,
+    //   disp5,
+    //   grades5,
+    //   disp6,
+    //   grades6,
+    //   disp7,
+    //   grades7,
+    //   disp8,
+    //   grades8,
+    //   disp9,
+    //   grades9,
+    //   disp10,
+    //   grades10
+    // );
     // if (activation_date.length != 0) {
     //   console.log("firing");
     //   let split = activation_date;
@@ -295,7 +285,7 @@ const Dispmodal = ({ site }) => {
     //   let renewal = split3 + "-" + combine;
     //   return renewal;
     // }
-    console.log(renewal);
+    // console.log(renewal);
     updateDisp(
       id,
       gvr_id,

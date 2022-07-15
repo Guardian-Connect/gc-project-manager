@@ -32,81 +32,122 @@ async function createTables() {
           password varchar NOT NULL,
           email varchar NOT NULL
         );
+        CREATE TABLE dispinfo (
+  id SERIAL PRIMARY KEY,
+  gp_cust varchar,
+  s_name varchar,
+  cus_name varchar, 
+  onboarding boolean,
+  gvr_id varchar UNIQUE,
+  annual varchar,
+  contract varchar,
+  warranty_date date,
+  activation_date date,
+  renewal date,
+  site_address varchar,
+  totaldisp varchar,
+  notes varchar,
+  posvn varchar,
+  posmain varchar,
+  posreg1 varchar,
+  posreg2 varchar,
+  posreg3 varchar,
+  atgmodel varchar,
+  disp1 varchar,
+  grades1 varchar,
+  disp2 varchar,
+  grades2 varchar,
+  disp3 varchar,
+  grades3 varchar,
+  disp4 varchar,
+  grades4 varchar,
+  disp5 varchar,
+  grades5 varchar,
+  disp6 varchar,
+  grades6 varchar,
+  disp7 varchar,
+  grades7 varchar,
+  disp8 varchar,
+  grades8 varchar,
+  disp9 varchar,
+  grades9 varchar,
+  disp10 varchar,
+  grades10 varchar,
+  disp11 varchar,
+  grades11 varchar,
+  disp12 varchar,
+  grades12 varchar,
+  disp13 varchar,
+  grades13 varchar,
+  disp14 varchar,
+  grades14 varchar,
+  disp15 varchar,
+  grades15 varchar,
+  disp16 varchar,
+  grades16 varchar,
+  disp17 varchar,
+  grades17 varchar,
+  disp18 varchar,
+  grades18 varchar,
+  disp19 varchar,
+  grades19 varchar,
+  disp20 varchar,
+  grades20 varchar,
+  disp21 varchar,
+  grades21 varchar
+);
+
+CREATE TABLE allsites (
+   id SERIAL PRIMARY KEY,
+   gvr_id varchar NOT NULL,
+   gp_cust varchar NOT NULL,
+   cus_name varchar,
+   site_address varchar
+);
+ CREATE TABLE customeremail (
+    id SERIAL PRIMARY KEY,
+    cust_gp varchar NOT NULL,
+    cus_name varchar NOT NULL,
+    rrs varchar,
+    cus_email1 varchar NOT NULL,
+    cus_email2 varchar,
+    cus_email3 varchar,
+   cus_email4 varchar,
+   cus_email5 varchar,
+   cus_email6 varchar     
+);
+CREATE TABLE gctracker (
+   id SERIAL PRIMARY KEY,
+   date date,
+   gvr_id varchar NOT NULL,
+   gp varchar,	
+   dispatch_type varchar,
+   fm_ticket varchar,
+   location varchar,
+   address varchar,
+   grade varchar,
+   fp varchar,
+   sb varchar,
+   gp_ticket varchar,
+   atl_po varchar,
+   warranty_status varchar,
+   notes varchar 
+);
       `);
   } catch (error) {
     throw error;
   }
 }
 
-// CREATE TABLE allsites (
-//   id SERIAL PRIMARY KEY,
-//   gvr_id varchar NOT NULL,
-//   gp_cust varchar NOT NULL,
-//   cus_name varchar
-// );
-// CREATE TABLE allsitesemails (
-//   id SERIAL PRIMARY KEY,
-//   cust_gp varchar NOT NULL,
-//   cus_name varchar NOT NULL,
-//   cus_email varchar NOT NULL
-//   );
-// CREATE TABLE dispinfo (
-//   id SERIAL PRIMARY KEY,
-//   gp varchar NOT NULL,
-//   gvrid varchar UNIQUE NOT NULL,
-//   address varchar NOT NULL,
-//   city varchar NOT NULL,
-//   state varchar NOT NULL,
-//   totaldisp varchar NOT NULL,
-//   disp1 varchar,
-//   grades1 varchar,
-//   disp2 varchar,
-//   grades2 varchar,
-//   disp3 varchar,
-//   grades3 varchar,
-//   disp4 varchar,
-//   grades4 varchar,
-//   disp5 varchar,
-//   grades5 varchar,
-//   disp6 varchar,
-//   grades6 varchar,
-//   disp7 varchar,
-//   grades7 varchar,
-//   disp8 varchar,
-//   grades8 varchar,
-//   disp9 varchar,
-//   grades9 varchar,
-//   disp10 varchar,
-//   grades10 varchar,
-//   disp11 varchar,
-//   grades11 varchar,
-//   disp12 varchar,
-//   grades12 varchar,
-//   disp13 varchar,
-//   grades13 varchar,
-//   disp14 varchar,
-//   grades14 varchar,
-//   disp15 varchar,
-//   grades15 varchar,
-//   disp16 varchar,
-//   grades16 varchar,
-//   disp17 varchar,
-//   grades17 varchar,
-//   disp18 varchar,
-//   grades18 varchar,
-//   disp19 varchar,
-//   grades19 varchar,
-//   disp20 varchar,
-//   grades20 varchar,
-//   disp21 varchar,
-//   grades21 varchar
-// );
-
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
       DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS dispinfo;
+DROP TABLE IF EXISTS allsites;
+DROP TABLE IF EXISTS customeremail;
+DROP TABLE IF EXISTS gctracker;
       `);
 
     console.log("Finished dropping tables!");
@@ -179,23 +220,6 @@ async function testDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
-    // const userArman = await getUserByUsername("arman");
-    // const userJames = await getUserByUsername("james");
-    // const userRobin = await getUserByUsername("robin");
-    // const users = await getAllUsers();
-    // const user1 = await getUsersByID(1);
-    // const dispinfo = await getAllSites();
-    const testing = await getEmailByGvr(168919);
-    const second = await getEmailByGp("LIO");
-    // console.log(useStartDate, useEndDate, "dates")
-    // const dateRange = await getRecordByDate(start, end, gp)
-    // console.log("username", userArman, userJames, userRobin);
-    // console.log("All users", users);
-    // console.log("User #1", user1);
-    // console.log("Dispenser", dispinfo);
-    // console.log("range", dateRange);
-    // console.log("allsites", dispinfo)
-    console.log("test", testing, "second", second);
   } catch (error) {
     console.error(error);
   } finally {
