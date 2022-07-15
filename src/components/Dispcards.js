@@ -29,6 +29,7 @@ const Dispcards = ({ site, setCount, count }) => {
 
   function handleDate(d) {
     let date = moment.utc(d).format("MM/DD/yyyy");
+    console.log(date);
     return date;
   }
 
