@@ -74,7 +74,11 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const addData = (gvr_id, gp_cust, cus_name, site_address, contract) => {
     console.log(gvr_id, gp_cust, cus_name, site_address, contract);
     addSite(gvr_id, gp_cust, cus_name, site_address);
-    createDisp(gvr_id, gp_cust, cus_name, site_address, contract);
+    createDisp(gvr_id, gp_cust, cus_name, site_address, contract).then(
+      (resp) => {
+        console.log(resp);
+      }
+    );
     // window.location.reload();
   };
 
