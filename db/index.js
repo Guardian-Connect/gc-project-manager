@@ -57,9 +57,10 @@ async function createSite(gvr_id, gp_cust, cus_name, site_address) {
     `,
       [gvr_id, gp_cust, cus_name, site_address]
     );
-
+    console.log(result);
     return result;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 }
@@ -80,7 +81,8 @@ async function createSiteDisp(
     `,
       [gvr_id, gp_cust, cus_name, site_address, contract]
     );
-
+    console.log(result);
+    console.log(error);
     return result;
   } catch (error) {
     throw error;

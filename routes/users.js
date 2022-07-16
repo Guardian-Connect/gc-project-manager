@@ -224,7 +224,11 @@ usersRouter.post("/createdisp", async (req, res, next) => {
       site_address,
       contract
     );
-    // res.send({ allsites });
+    if (dispinfo.rowCount === 1) {
+      res.send("Success");
+    } else {
+      console.log(error);
+    }
   } catch (error) {
     next(error);
   }
@@ -243,7 +247,7 @@ usersRouter.post("/allsites", async (req, res, next) => {
     if (allsites.rowCount === 1) {
       res.send("Success");
     } else {
-      res.send("Error");
+      console.log(error);
     }
     // res.send({ allsites });
   } catch (error) {
