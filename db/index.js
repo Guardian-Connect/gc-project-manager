@@ -81,7 +81,7 @@ async function createSiteDisp(
     `,
       [gvr_id, gp_cust, cus_name, site_address, contract]
     );
-    console.log(result);
+    console.log("disp", result);
     console.log(error);
     return result;
   } catch (error) {
