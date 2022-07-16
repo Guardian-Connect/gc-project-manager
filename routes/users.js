@@ -224,6 +224,7 @@ usersRouter.post("/createdisp", async (req, res, next) => {
       site_address,
       contract
     );
+    console.log(dispinfo.rowCount);
     if (dispinfo.rowCount === 1) {
       res.send("Success");
     } else {
