@@ -82,7 +82,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       <Typography sx={{ ml: 56 }}>Site DB</Typography>
       <div className="spaceform">
         <TextField
-          sx={{ ml: 1 }}
+          sx={{ ml: 1, mt: 1 }}
           required
           id="outlined-required"
           label="Enter GVR ID"
@@ -93,7 +93,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
-          sx={{ ml: 1 }}
+          sx={{ ml: 1, mt: 1 }}
           required
           id="outlined-required"
           label="Enter GP Customer Number"
@@ -104,7 +104,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
-          sx={{ ml: 1 }}
+          sx={{ ml: 1, mt: 1 }}
           required
           id="outlined-required"
           label="Enter Customer Name"
@@ -115,7 +115,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
-          sx={{ ml: 1 }}
+          sx={{ ml: 1, mt: 1 }}
           required
           id="outlined-required"
           label="Enter Site Address"
@@ -126,7 +126,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
-          sx={{ ml: 1 }}
+          sx={{ ml: 1, mt: 1 }}
           required
           id="outlined-required"
           label="Enter Job Costs Contract #"
@@ -137,7 +137,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <Button
-          sx={{ ml: 10, mt: 1 }}
+          sx={{ ml: 10, mt: 2 }}
           variant="contained"
           endIcon={<SendIcon />}
           onClick={() => {

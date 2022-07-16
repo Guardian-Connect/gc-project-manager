@@ -16,6 +16,7 @@ import { makeStyles } from "@mui/styles";
 const moment = require("moment");
 const Dispmodal = ({ site }) => {
   useEffect(() => {
+    console.log(site.warranty, site.activation);
     setGvr_id(site.gvr_id);
     setGp_cust(site.gp_cust);
     setContract(site.contract);
@@ -58,7 +59,7 @@ const Dispmodal = ({ site }) => {
   const [site_address, setAddress] = React.useState("");
   const [totaldisp, setTotaldisp] = React.useState("");
   const [activation_date, setActivation] = React.useState("");
-  const [warranty_date, setWarranty] = React.useState(date);
+  const [warranty_date, setWarranty] = React.useState("");
   const [posvn, setPosvn] = React.useState("");
   const [posmain, setPosmain] = React.useState("");
   const [posreg1, setPosreg1] = React.useState("");
@@ -203,7 +204,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleWarranty = (e) => {
-    setWarranty(e.target.value);
+    setWarranty(handleDate(e.target.value));
   };
 
   const handleTotalActivationDate = (e) => {
@@ -323,7 +324,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    window.location.reload();
+    // window.location.reload();
   };
   return (
     <>
@@ -389,7 +390,7 @@ const Dispmodal = ({ site }) => {
           required
           id="outlined-required"
           label="Enter Registration Date"
-          defaultValue={handleDate(site.activation_date)}
+          defaultValue={handleDate(site.activation)}
           InputLabelProps={{
             shrink: true,
           }}
@@ -401,7 +402,7 @@ const Dispmodal = ({ site }) => {
           required
           id="outlined-required"
           label="Enter Warranty Expiration Date"
-          defaultValue={handleDate(site.warranty_date)}
+          defaultValue={handleDate(site.warranty)}
           InputLabelProps={{
             shrink: true,
           }}
