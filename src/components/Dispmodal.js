@@ -236,10 +236,11 @@ const Dispmodal = ({ site }) => {
   const handleTextChangeContract = (e) => {
     setContract(e.target.value);
   };
-
-  setTimeout(function () {
-    window.location.reload();
-  }, 5000);
+  const reload = () => {
+    setTimeout(function () {
+      window.location.reload();
+    }, 5000);
+  };
 
   const consoleTest = () => {
     let id = site.id;
@@ -328,7 +329,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    setTimeout();
+    reload();
   };
   return (
     <>
