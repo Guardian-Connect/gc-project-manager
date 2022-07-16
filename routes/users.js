@@ -204,12 +204,33 @@ usersRouter.post("/register", async (req, res, next) => {
   }
 });
 
-// usersRouter.get("/records", async (req, res, next) => {
+// FUTURE MERGING OF CODE FOR ALL SITES AND DISPINFO
+// linkRouter.post("/", async (req, res, next) => {
+//   const { url: link, date, comment, clicks = 0, tags = [] } = req.body;
+//   console.log(req.body);
+//   const tagArr = tags.trim().split(/\s+/);
+//   const linkData = {};
+
+//   console.log("something");
 //   try {
-//     const { gp } = req.body;
-//     // const dispinfo = await getSpecificSiteInfoIncom(gp);
-//     // res.send({ dispinfo });
+//     linkData.link = link;
+//     linkData.date = date;
+//     linkData.comment = comment;
+//     linkData.clicks = clicks;
+//     linkData.tags = tagArr;
+//     console.log("28");
+//     const createdLink = await createLink(linkData);
+//     console.log("called create link");
+//     if (createdLink) {
+//       res.send({ createdLink });
+//     } else {
+//       ({
+//         name: "Missing Post Data",
+//         message: "Post Data is missing",
+//       });
+//     }
 //   } catch ({ name, message }) {
+//     console.log(name, message);
 //     next({ name, message });
 //   }
 // });
@@ -224,13 +245,15 @@ usersRouter.post("/createdisp", async (req, res, next) => {
       site_address,
       contract
     );
-    console.log(dispinfo.rowCount);
-    if (dispinfo.rowCount === 1) {
-      res.send("Success");
-    } else {
-      console.log(error);
-    }
+    // console.log(dispinfo.rowCount);
+    // if (dispinfo.rowCount === 1) {
+    //   res.send("Success");
+    // } else {
+    //   console.log(error);
+    // }
+    console.log(dispinfo);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 });
@@ -245,12 +268,12 @@ usersRouter.post("/allsites", async (req, res, next) => {
       site_address,
       contract
     );
-    if (allsites.rowCount === 1) {
-      res.send("Success");
-    } else {
-      console.log(error);
-    }
-    // res.send({ allsites });
+    // if (allsites.rowCount === 1) {
+    //   res.send("Success");
+    // } else {
+    //   console.log(error);
+    // }
+    res.send({ allsites });
   } catch (error) {
     next(error);
   }
@@ -280,11 +303,11 @@ usersRouter.post("/custemail", async (req, res, next) => {
       cus_email5,
       cus_email6
     );
-    if (custemail.rowCount === 1) {
-      res.send("Success");
-    } else {
-      res.send("Error");
-    }
+    // if (custemail.rowCount === 1) {
+    //   res.send("Success");
+    // } else {
+    //   res.send("Error");
+    // }
     // res.send({ allsites });
   } catch (error) {
     next(error);
@@ -325,11 +348,11 @@ usersRouter.post("/gcticket", async (req, res, next) => {
       warranty_status,
       notes
     );
-    if (custemail.rowCount === 1) {
-      res.send("Success");
-    } else {
-      res.send("Error");
-    }
+    // if (custemail.rowCount === 1) {
+    //   res.send("Success");
+    // } else {
+    //   res.send("Error");
+    // }
     // res.send({ allsites });
   } catch (error) {
     next(error);

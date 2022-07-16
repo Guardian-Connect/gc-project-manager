@@ -46,10 +46,48 @@ async function createUser({ username, password, email }) {
     throw error;
   }
 }
+// SAMPLE CODE TO COMBINE CREATE SITE AND CREATE SITE DISP ON THE BACKEND INSTEAD OF CALLING 2 FUNCTIONS
+// async function createLink({ link, date, comment, tags }) {
+//   console.log("139");
+//   try {
+//     const tagResults = await Promise.all(tags.map((tag) => createTags(tag)));
+//     const {
+//       rows: [result],
+//     } = await client.query(
+//       `
+//       INSERT INTO link(link, date, comment)
+//       VALUES ($1, $2, $3)
+//       RETURNING *;
+//     `,
+//       [link, date, comment]
+//     );
+//     await Promise.all(tagResults.map(({ id }) => createTagLink(result.id, id)));
+//     result.tags = tagResults;
+//     console.log("153", result);
+//     return result;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
-async function createSite(gvr_id, gp_cust, cus_name, site_address) {
+async function createSite(gvr_id, gp_cust, cus_name, site_address, contract) {
   try {
-    console.log("site creation", gvr_id, gp_cust, cus_name, site_address);
+    console.log(
+      "site creation",
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract
+    );
+    const siteCreate = await createSiteDisp(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract
+    );
+    // console.log("site", siteCreate);
     const result = await client.query(
       `
       INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
@@ -57,7 +95,7 @@ async function createSite(gvr_id, gp_cust, cus_name, site_address) {
     `,
       [gvr_id, gp_cust, cus_name, site_address]
     );
-    console.log(result);
+    console.log("allsite", result);
     return result;
   } catch (error) {
     console.log(error);
@@ -73,7 +111,14 @@ async function createSiteDisp(
   contract
 ) {
   try {
-    console.log("dispdb", gvr_id, gp_cust, cus_name, site_address, contract);
+    console.log(
+      "site creation",
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract
+    );
     const result = await client.query(
       `
       INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
@@ -81,13 +126,55 @@ async function createSiteDisp(
     `,
       [gvr_id, gp_cust, cus_name, site_address, contract]
     );
-    console.log("disp", result);
-    console.log(error);
-    return result;
+    console.log("dispinfo", result);
+    // return result;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 }
+
+// async function createSiteDisp(
+//   gvr_id,
+//   gp_cust,
+//   cus_name,
+//   site_address,
+//   contract
+// ) {
+//   try {
+//     // const siteCreate = await createSite(
+//     //   gvr_id,
+//     //   gp_cust,
+//     //   cus_name,
+//     //   site_address,
+//     //   contract
+//     // );
+//     console.log(
+//       "gvrid",
+//       gvr_id,
+//       "gp cust",
+//       gp_cust,
+//       "cus name",
+//       cus_name,
+//       "site add",
+//       site_address,
+//       "contract",
+//       contract
+//     );
+//     const result = await client.query(
+//       `
+//       INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
+//       VALUES ($1, $2, $3, $4, $5);
+//     `,
+//       [gvr_id, gp_cust, cus_name, site_address, contract]
+//     );
+//     console.log("disp", result);
+//     console.log(error);
+//     // return result;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 async function createEmailList(
   cust_gp,
@@ -118,6 +205,7 @@ async function createEmailList(
         cus_email6,
       ]
     );
+    console.log(result);
     return result;
   } catch (error) {
     throw error;

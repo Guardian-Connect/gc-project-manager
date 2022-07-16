@@ -120,13 +120,20 @@ export async function getReportData(start, end, gp) {
   }
 }
 
-export async function addSite(gvr_id, gp_cust, cus_name, site_address) {
+export async function addSite(
+  gvr_id,
+  gp_cust,
+  cus_name,
+  site_address,
+  contract
+) {
   try {
     const { data } = await axios.post("/api/users/allsites", {
       gvr_id,
       gp_cust,
       cus_name,
       site_address,
+      contract,
     });
     return data;
   } catch (error) {
