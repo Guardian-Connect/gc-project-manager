@@ -237,6 +237,10 @@ const Dispmodal = ({ site }) => {
     setContract(e.target.value);
   };
 
+  setTimeout(function () {
+    window.location.reload();
+  }, 5000);
+
   const consoleTest = () => {
     let id = site.id;
     // console.log(
@@ -324,7 +328,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    window.location.reload();
+    setTimeout();
   };
   return (
     <>
