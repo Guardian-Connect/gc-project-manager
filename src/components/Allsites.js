@@ -79,7 +79,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         console.log(resp);
       }
     );
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (

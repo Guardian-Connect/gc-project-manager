@@ -324,7 +324,7 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10
     );
-    // window.location.reload();
+    window.location.reload();
   };
   return (
     <>
@@ -449,7 +449,7 @@ const Dispmodal = ({ site }) => {
           sx={{ m: 2 }}
           required
           id="outlined-required"
-          label="Register 1 / Manager Work Station"
+          label="Register 2 / Manager Work Station"
           defaultValue={site.posreg2}
           InputLabelProps={{
             shrink: true,
@@ -461,7 +461,7 @@ const Dispmodal = ({ site }) => {
           sx={{ m: 2 }}
           required
           id="outlined-required"
-          label="Register 1 / Manager Work Station"
+          label="Register 3 / Manager Work Station"
           defaultValue={site.posreg3}
           InputLabelProps={{
             shrink: true,
