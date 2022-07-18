@@ -58,6 +58,9 @@
   margin: 10px;
 }
 
+.displayNone {
+  display: none;
+}
 .yellow {
   width: 100%;
   background-color: yellow;

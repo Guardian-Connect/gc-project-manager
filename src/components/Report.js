@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, MenuItem, Menu, Button } from "@mui/material";
+import { Typography, MenuItem, Menu, Button, Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Select from "react-select";
 import { getReportData } from "../api";
@@ -23,25 +23,27 @@ const Report = ({ children }) => {
   let history = useHistory();
   return (
     <div className="app">
-      <Typography sx={{ ml: 49 }}>DB Entry Forms</Typography>
-      <Button
-        sx={{ ml: 10 }}
-        variant="contained"
-        onClick={() => {
-          history.push("/allsites");
-        }}
-      >
-        All Sites
-      </Button>
-      <Button
-        sx={{ ml: 2 }}
-        variant="contained"
-        onClick={() => {
-          history.push("/gctracker");
-        }}
-      >
-        GC Tracker
-      </Button>
+      <Box sx={{ textAlign: "center" }}>
+        <Typography sx={{ m: 1 }}>DB Entry Forms</Typography>
+        <Button
+          sx={{ ml: 10 }}
+          variant="contained"
+          onClick={() => {
+            history.push("/allsites");
+          }}
+        >
+          All Sites
+        </Button>
+        <Button
+          sx={{ ml: 2 }}
+          variant="contained"
+          onClick={() => {
+            history.push("/gctracker");
+          }}
+        >
+          GC Tracker
+        </Button>
+      </Box>
     </div>
   );
 };

@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
+import Loader from "react-loader-spinner";
 import { updateDisp } from "../api";
+import logo from "../assests/logo.gif";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   Typography,
   Select,
@@ -87,6 +91,7 @@ const Dispmodal = ({ site }) => {
   const [disp10, setDisp10] = React.useState("");
   const [grades10, setGrades10] = React.useState("");
   const [renewal, setRenewal] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -292,6 +297,7 @@ const Dispmodal = ({ site }) => {
     //   return renewal;
     // }
     // console.log(renewal);
+    setLoading(true);
     updateDisp(
       id,
       gvr_id,
@@ -772,6 +778,17 @@ const Dispmodal = ({ site }) => {
         >
           Submit
         </Button>
+        <LoadingButton
+          sx={{ m: 2, width: "82%" }}
+          color="secondary"
+          onClick={consoleTest}
+          loading={loading}
+          loadingPosition="start"
+          startIcon={<SaveIcon />}
+          variant="contained"
+        >
+          Save
+        </LoadingButton>
       </div>
     </>
   );
