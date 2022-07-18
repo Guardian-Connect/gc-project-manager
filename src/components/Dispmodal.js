@@ -771,13 +771,13 @@ const Dispmodal = ({ site }) => {
           </Select>
         </FormControl>
 
-        <Button
+        {/* <Button
           sx={{ m: 2, width: "82%" }}
           variant="contained"
           onClick={consoleTest}
         >
           Submit
-        </Button>
+        </Button> */}
         <LoadingButton
           sx={{ m: 2, width: "82%" }}
           color="secondary"
