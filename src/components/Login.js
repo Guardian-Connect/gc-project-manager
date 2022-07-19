@@ -27,10 +27,10 @@ const Login = () => {
 
   const handleLogin = () => {
     console.log("test", login, password);
-    // loginUser(login, password).then((resp) => {
-    //   window.location.reload();
-    // });
-    registerUser(login, password);
+    loginUser(login, password).then((resp) => {
+      window.location.reload();
+    });
+    // registerUser(login, password);
   };
 
   const handleUser = (e) => {
