@@ -137,7 +137,7 @@ usersRouter.get("/complete/:gp", async (req, res, next) => {
 
 usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
-
+  console.log(username, password);
   if (!username || !password) {
     next({
       name: "MissingUserNameOrPassword",
@@ -167,7 +167,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 usersRouter.post("/register", async (req, res, next) => {
   try {
-    const { username, password, email } = req.body;
+    const { username, password } = req.body;
     const queriedUser = await getUserByUsername(username);
     if (queriedUser) {
       next({
@@ -184,8 +184,6 @@ usersRouter.post("/register", async (req, res, next) => {
         const user = await createUser({
           username,
           password: hashedPassword,
-          email,
-          seller: false,
         });
         if (err) {
           next(err);

@@ -31,14 +31,14 @@ async function getRecordByDate(start, end, gp) {
   }
 }
 
-async function createUser({ username, password, email }) {
+async function createUser({ username, password }) {
   try {
     const result = await client.query(
       `
-      INSERT INTO users(username, password, email)
-      VALUES ($1, $2, $3);
+      INSERT INTO users(username, password)
+      VALUES ($1, $2);
     `,
-      [username, password, email]
+      [username, password]
     );
 
     return result;

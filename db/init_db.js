@@ -1,67 +1,72 @@
-// const { CropLandscapeOutlined } = require("@mui/icons-material");
-// const bcrypt = require("bcrypt");
-// const moment = require("moment");
-// const SALT_COUNT = 10;
+const { CropLandscapeOutlined } = require("@mui/icons-material");
+const bcrypt = require("bcrypt");
+const moment = require("moment");
+const SALT_COUNT = 10;
 
-// const {
-//   client,
-//   getAllUsers,
-//   createUser,
-//   getUsersByID,
-//   getUserByUsername,
-//   getAllSites,
-//   getRecordByDate,
-//   getSpecificSiteInfoIncom,
-//   getEmailByGvr,
-//   getEmailByGp,
-// } = require("./index");
-// let gvr_id = "123456";
-// let gp_cust = "MAJ0001";
-// let cus_name = "JAMES";
-// let site_address = "1234 Test";
-// let contract = "123124321";
-// let totaldisp = "0";
+const {
+  client,
+  getAllUsers,
+  createUser,
+  getUsersByID,
+  getUserByUsername,
+  getAllSites,
+  getRecordByDate,
+  getSpecificSiteInfoIncom,
+  getEmailByGvr,
+  getEmailByGp,
+} = require("./index");
+let gvr_id = "123456";
+let gp_cust = "MAJ0001";
+let cus_name = "JAMES";
+let site_address = "1234 Test";
+let contract = "123124321";
+let totaldisp = "0";
 
-// let start = new Date("2022-3-10");
-// let end = new Date("2022-3-15");
-// let startDate = start.toISOString();
-// let useStartDate = startDate.split("T")[0];
-// let endDate = end.toISOString();
-// let useEndDate = endDate.split("T")[0];
-// let gp = "MAJ0001";
+let start = new Date("2022-3-10");
+let end = new Date("2022-3-15");
+let startDate = start.toISOString();
+let useStartDate = startDate.split("T")[0];
+let endDate = end.toISOString();
+let useEndDate = endDate.split("T")[0];
+let gp = "MAJ0001";
 
-// async function createSiteDisp(
-//   gvr_id,
-//   gp_cust,
-//   cus_name,
-//   site_address,
-//   contract,
-//   totaldisp
-// ) {
-//   try {
-//     console.log("dispdb", gvr_id, gp_cust, cus_name, site_address, contract);
-//     const result = await client.query(
-//       `
-//       INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract, totaldisp)
-//       VALUES ($1, $2, $3, $4, $5, $6);
-//     `,
-//       [gvr_id, gp_cust, cus_name, site_address, contract, totaldisp]
-//     );
+async function createSiteDisp(
+  gvr_id,
+  gp_cust,
+  cus_name,
+  site_address,
+  contract,
+  totaldisp
+) {
+  try {
+    console.log("dispdb", gvr_id, gp_cust, cus_name, site_address, contract);
+    const result = await client.query(
+      `
+      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract, totaldisp)
+      VALUES ($1, $2, $3, $4, $5, $6);
+    `,
+      [gvr_id, gp_cust, cus_name, site_address, contract, totaldisp]
+    );
 
-//     return result;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-// async function createTables() {
-//   try {
-//     await client.query(`
-//         CREATE TABLE users (
-//           id SERIAL PRIMARY KEY,
-//           username varchar UNIQUE NOT NULL,
-//           password varchar NOT NULL,
-//           email varchar NOT NULL
-//         );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+async function createTables() {
+  try {
+    await client.query(`
+        CREATE TABLE users (
+          id SERIAL PRIMARY KEY,
+          username varchar UNIQUE NOT NULL,
+          password varchar NOT NULL
+        );
+
+      `);
+  } catch (error) {
+    throw error;
+  }
+}
 //         CREATE TABLE dispinfo (
 //   id SERIAL PRIMARY KEY,
 //   gp_cust varchar,
@@ -163,69 +168,60 @@
 //    warranty_status varchar,
 //    notes varchar
 // );
-//       `);
-//   } catch (error) {
-//     throw error;
-//   }
-// }
 
-// async function dropTables() {
-//   try {
-//     console.log("Starting to drop tables...");
-//     await client.query(`
-//       DROP TABLE IF EXISTS users;
-//       DROP TABLE IF EXISTS dispinfo;
-// DROP TABLE IF EXISTS allsites;
-// DROP TABLE IF EXISTS customeremail;
-// DROP TABLE IF EXISTS gctracker;
-//       `);
+async function dropTables() {
+  try {
+    console.log("Starting to drop tables...");
+    await client.query(`
+      DROP TABLE IF EXISTS users;
+      `);
 
-//     console.log("Finished dropping tables!");
-//   } catch (error) {
-//     console.error("Error dropping tables!");
-//     throw error;
-//   }
-// }
+    console.log("Finished dropping tables!");
+  } catch (error) {
+    console.error("Error dropping tables!");
+    throw error;
+  }
+}
 
-// async function createInitialUsers() {
-//   try {
-//     console.log("Finished creating users!");
-//   } catch (error) {
-//     console.error("Error creating users!");
-//     throw error;
-//   }
-// }
+async function createInitialUsers() {
+  try {
+    console.log("Finished creating users!");
+  } catch (error) {
+    console.error("Error creating users!");
+    throw error;
+  }
+}
 
-// async function rebuildDB() {
-//   try {
-//     client.connect();
-//     // console.log;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+async function rebuildDB() {
+  try {
+    client.connect();
+    // console.log;
+  } catch (error) {
+    throw error;
+  }
+}
 
-// async function testDB() {
-//   try {
-//     await dropTables();
-//     await createTables();
-//     await createInitialUsers();
-//     await createSiteDisp(
-//       gvr_id,
-//       gp_cust,
-//       cus_name,
-//       site_address,
-//       contract,
-//       totaldisp
-//     );
-//   } catch (error) {
-//     console.error(error);
-//   } finally {
-//     client.end();
-//   }
-// }
+async function testDB() {
+  try {
+    await dropTables();
+    await createTables();
+    await createInitialUsers();
+    await createSiteDisp(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract,
+      totaldisp
+    );
+  } catch (error) {
+    console.error(error);
+  } finally {
+    client.end();
+  }
+}
 
-// rebuildDB()
-//   .then(testDB)
-//   .catch(console.error)
-//   .finally(() => client.end());
+rebuildDB()
+  .then(testDB)
+  .catch(console.error)
+  .finally(() => client.end());

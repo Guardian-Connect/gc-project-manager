@@ -361,6 +361,38 @@ export async function addTicket(
   }
 }
 
+export async function loginUser(username, password) {
+  try {
+    console.log(username, password);
+    const { data } = await axios.post("/api/users/login", {
+      username,
+      password,
+    });
+    sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("user", data.user.username);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function registerUser(username, password) {
+  try {
+    const { data } = await axios.post("/api/users/register", {
+      username,
+      password,
+    });
+    sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("user", data.user.username);
+    // sessionStorage.setItem("id", data.user.id);
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 // export async function getInfo(gp) {
 //   try {
 //     const { data } = await axios.get(`/api/users/disp/${gp}`);

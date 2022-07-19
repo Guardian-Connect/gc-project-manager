@@ -21,7 +21,9 @@ import Contact from "./Contact";
 import Allsites from "./Allsites";
 import Gctracker from "./Gctracker";
 import { addTicket } from "../api";
+import Login from "./Login";
 const App = () => {
+  // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
   const [contactInfo, setContactInfo] = useState([]);
   const message = JSON.parse(sessionStorage.getItem("dispinf"));
@@ -53,79 +55,86 @@ const App = () => {
   //     console.log(response);
   //   });
   // }, []);
-  return (
-    <>
-      {/* loading icon to help with re-rendering etc*/}
-
-      {loading ? (
-        <div className="AppLoading">
-          <img src={logo} alt="Loading..." className="loading" />
-        </div>
-      ) : (
-        <Router>
-          <SideBar mockData={mockData} setSearchInput={setSearchInput} />
-          <div>
-            <AppAppBar
-              contactInfo={contactInfo}
-              setContactInfo={setContactInfo}
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              count={count}
-            />
+  if (sessionStorage.getItem("token") < 27) {
+    return <Login />;
+  } else {
+    return (
+      <>
+        {/* loading icon to help with re-rendering etc*/}
+        {/* {console.log("user?", user.length)} */}
+        {loading ? (
+          <div className="AppLoading">
+            <img src={logo} alt="Loading..." className="loading" />
           </div>
-          <Switch>
-            <Route exact path="/">
-              {/* Initial loading */}
-              <Start
-                message={message}
-                setMessage={setMessage}
-                count={count}
-                setCount={setCount}
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-              />
-            </Route>
-            {/* What Renders when open notes button is clicked */}
-            <Route path="/second">
-              <Project
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-              />
-            </Route>
-            <Route path="/report">
-              <Report
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-              />
-            </Route>
-            <Route path="/details">
-              <Details
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-              />
-            </Route>
-            <Route path="/contact">
-              <Contact
+        ) : (
+          <Router>
+            <SideBar mockData={mockData} setSearchInput={setSearchInput} />
+            <div>
+              <AppAppBar
                 contactInfo={contactInfo}
+                setContactInfo={setContactInfo}
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
+                count={count}
               />
-            </Route>
-            <Route path="/allsites">
-              <Allsites
-                addSite={addSite}
-                addEmail={addEmail}
-                createDisp={createDisp}
-              />
-            </Route>
-            <Route path="/gctracker">
-              <Gctracker addTicket={addTicket} />
-            </Route>
-          </Switch>
-        </Router>
-      )}
-    </>
-  );
+            </div>
+            <Switch>
+              <Route exact path="/">
+                {/* Initial loading */}
+                <Start
+                  message={message}
+                  setMessage={setMessage}
+                  count={count}
+                  setCount={setCount}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              {/* What Renders when open notes button is clicked */}
+              <Route path="/second">
+                <Project
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/report">
+                <Report
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/details">
+                <Details
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/contact">
+                <Contact
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/allsites">
+                <Allsites
+                  addSite={addSite}
+                  addEmail={addEmail}
+                  createDisp={createDisp}
+                />
+              </Route>
+              <Route path="/gctracker">
+                <Gctracker addTicket={addTicket} />
+              </Route>
+              {/* <Route path="/login">
+                <Login />
+              </Route> */}
+            </Switch>
+          </Router>
+        )}
+      </>
+    );
+  }
 };
 
 export default App;

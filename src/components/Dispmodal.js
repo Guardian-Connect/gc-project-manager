@@ -26,9 +26,16 @@ const Dispmodal = ({ site }) => {
     setContract(site.contract);
     setAddress(site.site_address);
     setTotaldisp(site.totaldisp);
-    setActivation(site.activation);
-    setWarranty(site.warranty);
-    // setRenewal(site.renewal);
+    if (site.activation === null) {
+      setActivation("");
+    } else {
+      setActivation(site.activation);
+    }
+    if (site.warranty === null) {
+      setWarranty("");
+    } else {
+      setWarranty(site.warranty);
+    }
     setPosvn(site.posvn);
     setPosmain(site.posmain);
     setPosreg1(site.posreg1);
@@ -62,8 +69,8 @@ const Dispmodal = ({ site }) => {
   const [contract, setContract] = React.useState("");
   const [site_address, setAddress] = React.useState("");
   const [totaldisp, setTotaldisp] = React.useState("");
-  const [activation_date, setActivation] = React.useState("");
-  const [warranty_date, setWarranty] = React.useState("");
+  const [activation_date, setActivation] = React.useState("YYYY-MM-DD");
+  const [warranty_date, setWarranty] = React.useState("YYYY-MM-DD");
   const [posvn, setPosvn] = React.useState("");
   const [posmain, setPosmain] = React.useState("");
   const [posreg1, setPosreg1] = React.useState("");
@@ -100,8 +107,14 @@ const Dispmodal = ({ site }) => {
   const classes = useStyles();
 
   function handleDate(d) {
-    let date = moment.utc(d).format("yyyy-MM-DD");
-    return date;
+    console.log(d);
+    if (d === null) {
+      let date = "";
+      return date;
+    } else {
+      let date = moment.utc(d).format("yyyy-MM-DD");
+      return date;
+    }
   }
 
   const handleGrades10 = (e) => {
@@ -401,6 +414,7 @@ const Dispmodal = ({ site }) => {
           required
           id="outlined-required"
           label="Enter Registration Date"
+          placeholder="YYYY-MM-DD"
           defaultValue={handleDate(site.activation)}
           InputLabelProps={{
             shrink: true,
@@ -413,6 +427,7 @@ const Dispmodal = ({ site }) => {
           required
           id="outlined-required"
           label="Enter Warranty Expiration Date"
+          placeholder="YYYY-MM-DD"
           defaultValue={handleDate(site.warranty)}
           InputLabelProps={{
             shrink: true,
