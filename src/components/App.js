@@ -20,6 +20,7 @@ import CsvDownload from "react-json-to-csv";
 import Contact from "./Contact";
 import Allsites from "./Allsites";
 import Gctracker from "./Gctracker";
+import Gctrackerdisplay from "./Gctrackerdisplay";
 import { addTicket } from "../api";
 import Login from "./Login";
 const App = () => {
@@ -99,6 +100,12 @@ const App = () => {
               </Route>
               <Route path="/report">
                 <Report
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/gctrackerdisplay">
+                <Gctrackerdisplay
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                 />

@@ -65,8 +65,20 @@ function AppAppBar({
               flex: 0,
             }}
           />
-          <div className="drawer">
+          <div>
             <Button
+              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+              variant="contained"
+              onClick={async () => {
+                await getInfoInstalls();
+                history.push("/gctrackerdisplay");
+                window.location.reload();
+              }}
+            >
+              GC Tracker
+            </Button>
+            <Button
+              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
               variant="contained"
               onClick={async () => {
                 await getInfoInstalls();
@@ -77,8 +89,9 @@ function AppAppBar({
               Open Installs
             </Button>
           </div>
-          <div className="drawer">
+          <div>
             <Button
+              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
               variant="contained"
               onClick={async () => {
                 await getInfo();
@@ -99,31 +112,31 @@ function AppAppBar({
             onKeyDown={handleSubmit}
           />
           <div>Not Connected - {countDis} </div>
-          <div className="drawertwo">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                setSearchInput("");
-                history.push("/");
-                // sessionStorage.setItem("false", false);
-                // window.location.reload();
-              }}
-            >
-              Clear/Home
-            </Button>
-          </div>
-          <div className="drawertwo">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                setSearchInput("");
-                history.push("/report");
-                // window.location.reload();
-              }}
-            >
-              DB Entry
-            </Button>
-          </div>
+
+          <Button
+            sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+            variant="contained"
+            onClick={async () => {
+              setSearchInput("");
+              history.push("/");
+              // sessionStorage.setItem("false", false);
+              window.location.reload();
+            }}
+          >
+            Clear/Home
+          </Button>
+
+          <Button
+            sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+            variant="contained"
+            onClick={async () => {
+              setSearchInput("");
+              history.push("/report");
+              // window.location.reload();
+            }}
+          >
+            DB Entry
+          </Button>
 
           {/* <div className="drawer">
             <Button

@@ -22,6 +22,7 @@ const {
   createGctracker,
   createSiteDisp,
   updateDisp,
+  getAllGcTracker,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -37,6 +38,15 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/gctracker", async (req, res, next) => {
+  try {
+    const dispinfo = await getAllGcTracker();
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });

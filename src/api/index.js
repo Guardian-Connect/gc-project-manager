@@ -95,6 +95,15 @@ export async function getInfo() {
   }
 }
 
+export async function getGcTracker() {
+  try {
+    const { data } = await axios.get(`/api/users/gctracker`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getInfoInstalls() {
   try {
     const { data } = await axios.get(`/api/users/disp/open`);

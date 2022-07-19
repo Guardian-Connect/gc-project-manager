@@ -267,6 +267,17 @@ async function getAllSites() {
   return rows;
 }
 
+async function getAllGcTracker() {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM gctracker;
+    
+  `
+  );
+
+  return rows;
+}
+
 async function getAllSitesNotes() {
   const { rows } = await client.query(
     `SELECT *
@@ -517,4 +528,5 @@ module.exports = {
   createGctracker,
   createSiteDisp,
   updateDisp,
+  getAllGcTracker,
 };
