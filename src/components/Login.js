@@ -18,7 +18,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const paperStyle = {
     padding: 20,
-    height: "30vh",
+    height: "35vh",
     width: 280,
     margin: "20px auto",
   };

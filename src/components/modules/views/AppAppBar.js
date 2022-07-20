@@ -67,7 +67,7 @@ function AppAppBar({
           />
           <div>
             <Button
-              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+              sx={{ mr: 2, border: 1, borderColor: "white" }}
               variant="contained"
               onClick={async () => {
                 await getInfoInstalls();
@@ -77,8 +77,10 @@ function AppAppBar({
             >
               GC Tracker
             </Button>
+          </div>
+          <div>
             <Button
-              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+              sx={{ mr: 2, ml: 1, border: 1, borderColor: "white" }}
               variant="contained"
               onClick={async () => {
                 await getInfoInstalls();
@@ -91,7 +93,7 @@ function AppAppBar({
           </div>
           <div>
             <Button
-              sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+              sx={{ ml: 1, mr: 1, border: 1, borderColor: "white" }}
               variant="contained"
               onClick={async () => {
                 await getInfo();
