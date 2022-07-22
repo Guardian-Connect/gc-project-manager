@@ -131,7 +131,11 @@ const App = () => {
                 />
               </Route>
               <Route path="/gctracker">
-                <Gctracker addTicket={addTicket} />
+                <Gctracker
+                  addTicket={addTicket}
+                  message={message}
+                  setMessage={setMessage}
+                />
               </Route>
               {/* <Route path="/login">
                 <Login />

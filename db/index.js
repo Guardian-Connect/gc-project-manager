@@ -270,7 +270,8 @@ async function getAllSites() {
 async function getAllGcTracker() {
   const { rows } = await client.query(
     `SELECT *
-    FROM gctracker;
+    FROM gctracker
+    ORDER BY date DESC;
     
   `
   );
@@ -348,6 +349,19 @@ async function getSites(id) {
   return rows;
 }
 
+async function getTracker(id) {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM gctracker
+    WHERE id=$1
+    ORDER BY gp_ticket DESC;
+  `,
+    [id]
+  );
+
+  return rows;
+}
+
 async function updateDisp(id, fields = {}) {
   try {
     console.log(fields, "fields");
@@ -360,6 +374,33 @@ async function updateDisp(id, fields = {}) {
       const { rows } = await client.query(
         `
       UPDATE dispinfo
+      SET ${setString}
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows);
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateTracker(id, fields = {}) {
+  try {
+    console.log(fields, "fields");
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(id, setString);
+    console.log(Object.values(fields));
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE gctracker
       SET ${setString}
       WHERE id=${id}
       RETURNING *;
@@ -459,7 +500,8 @@ async function createGctracker(
   gp_ticket,
   atl_po,
   warranty_status,
-  notes
+  notes,
+  status
 ) {
   try {
     console.log(
@@ -477,12 +519,13 @@ async function createGctracker(
       gp_ticket,
       atl_po,
       warranty_status,
-      notes
+      notes,
+      status
     );
     const result = await client.query(
       `
-      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
     `,
       [
         date,
@@ -499,6 +542,7 @@ async function createGctracker(
         atl_po,
         warranty_status,
         notes,
+        status,
       ]
     );
     return result;
@@ -529,4 +573,6 @@ module.exports = {
   createSiteDisp,
   updateDisp,
   getAllGcTracker,
+  getTracker,
+  updateTracker,
 };

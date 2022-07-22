@@ -36,6 +36,7 @@ const Gctracker = ({ addTicket }) => {
   const [atl_po, setAtl_po] = useState("");
   const [warranty_status, setWarrantystatus] = useState("");
   const [notes, setNotes] = useState("");
+  const [status, setStatus] = useState("Open");
   const classes = useStyles();
 
   const handleNotes = (e) => {
@@ -200,7 +201,7 @@ const Gctracker = ({ addTicket }) => {
             onChange={handleFueling}
           />
 
-          <TextField
+          {/* <TextField
             sx={{ m: 1 }}
             required
             id="outlined-required"
@@ -209,7 +210,27 @@ const Gctracker = ({ addTicket }) => {
               shrink: true,
             }}
             onChange={handleBranch}
-          />
+          /> */}
+          <FormControl className={classes.formControl} sx={{ m: 1 }}>
+            <InputLabel>Branch</InputLabel>
+            <Select onChange={handleBranch}>
+              <MenuItem value={"ATL"}>Atlanta</MenuItem>
+              <MenuItem value={"BIR"}>Birmingham</MenuItem>
+              <MenuItem value={"CHA"}>Charlotte</MenuItem>
+              <MenuItem value={"COL"}>Columbia</MenuItem>
+              <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
+              <MenuItem value={"FTM"}>Fort Myers</MenuItem>
+              <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
+              <MenuItem value={"JAX"}>Jacksonville</MenuItem>
+              <MenuItem value={"KNX"}>Knoxville</MenuItem>
+              <MenuItem value={"NAS"}>Nashville</MenuItem>
+              <MenuItem value={"RAL"}>Raleigh</MenuItem>
+              <MenuItem value={"SAN"}>Sanford</MenuItem>
+              <MenuItem value={"SAV"}>Savannah</MenuItem>
+              <MenuItem value={"TAL"}>Tallahassee</MenuItem>
+              <MenuItem value={"TAM"}>Tampa</MenuItem>
+            </Select>
+          </FormControl>
 
           <TextField
             sx={{ m: 1 }}
@@ -274,7 +295,8 @@ const Gctracker = ({ addTicket }) => {
                   gp_ticket,
                   atl_po,
                   warranty_status,
-                  notes
+                  notes,
+                  status
                 );
                 // .then((response) => {
                 window.location.reload();

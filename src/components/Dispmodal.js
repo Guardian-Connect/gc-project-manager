@@ -4,6 +4,7 @@ import { updateDisp } from "../api";
 import logo from "../assests/logo.gif";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
+import { handleDate } from "../api";
 import {
   Typography,
   Select,
@@ -106,16 +107,16 @@ const Dispmodal = ({ site }) => {
   }));
   const classes = useStyles();
 
-  function handleDate(d) {
-    console.log(d);
-    if (d === null) {
-      let date = "";
-      return date;
-    } else {
-      let date = moment.utc(d).format("yyyy-MM-DD");
-      return date;
-    }
-  }
+  // function handleDate(d) {
+  //   console.log(d);
+  //   if (d === null) {
+  //     let date = "";
+  //     return date;
+  //   } else {
+  //     let date = moment.utc(d).format("yyyy-MM-DD");
+  //     return date;
+  //   }
+  // }
 
   const handleGrades10 = (e) => {
     setGrades10(e.target.value);

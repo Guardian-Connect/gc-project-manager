@@ -1,5 +1,6 @@
 import axios from "axios";
 require("dotenv").config();
+const moment = require("moment");
 export let projectOne = "MAJ0001";
 export let projectTwo = "LIO0002";
 export let projectThree = "SOU0008";
@@ -209,18 +210,6 @@ export async function updateDisp(
   grades10
 ) {
   try {
-    // if (activation_date) {
-    //   let split = activation_date;
-    //   let split2 = split.split("-");
-    //   let split3 = Number(split2[0]) + 1;
-    //   let remove = split2.shift();
-    //   let combine = split2.join("-");
-    //   let renewal = split3 + "-" + combine;
-    //   return renewal;
-    // }
-    // let activation = split3.toString() + '-' split2[1]+ '-' + '-' split2[2];
-    // let split4 = split3.toString();
-    // console.log("running index.js api", renewal);
     await axios.post("api/users/update", {
       id,
       gvr_id,
@@ -257,6 +246,47 @@ export async function updateDisp(
       grades9,
       disp10,
       grades10,
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function updateTicket(
+  date,
+  dispatch_type,
+  fm_ticket,
+  fp,
+  gp,
+  gp_ticket,
+  grade,
+  gvr_id,
+  id,
+  location,
+  notes,
+  sb,
+  warranty_status,
+  atl_po,
+  status
+) {
+  try {
+    await axios.post("api/users/update/tracker", {
+      date,
+      dispatch_type,
+      fm_ticket,
+      fp,
+      gp,
+      gp_ticket,
+      grade,
+      gvr_id,
+      id,
+      location,
+      notes,
+      sb,
+      warranty_status,
+      atl_po,
+      status,
     });
   } catch (error) {
     console.log(error);
@@ -312,6 +342,15 @@ export async function getEmail(id) {
   }
 }
 
+export async function getTracker(id) {
+  try {
+    const { data } = await axios.get(`/api/users/tracker/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getGp(id) {
   try {
     const { data } = await axios.get(`/api/users/gp/${id}`);
@@ -345,7 +384,8 @@ export async function addTicket(
   gp_ticket,
   atl_po,
   warranty_status,
-  notes
+  notes,
+  status
 ) {
   try {
     const { data } = await axios.post("/api/users/gcticket", {
@@ -363,6 +403,7 @@ export async function addTicket(
       atl_po,
       warranty_status,
       notes,
+      status,
     });
     return data;
   } catch (error) {
@@ -400,6 +441,24 @@ export async function registerUser(username, password) {
   } catch (error) {
     throw error;
   }
+}
+
+export function handleDate(d) {
+  // console.log(d);
+  if (d === null) {
+    let date = "";
+    return date;
+  } else {
+    let date = moment.utc(d).format("yyyy-MM-DD");
+    console.log(date);
+    return date;
+  }
+}
+
+export function handleDateTwo(d) {
+  let date = moment.utc(d).format("MM/DD/yyyy");
+  // console.log(date);
+  return date;
 }
 
 // export async function getInfo(gp) {

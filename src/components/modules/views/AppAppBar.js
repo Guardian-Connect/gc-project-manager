@@ -104,7 +104,7 @@ function AppAppBar({
               Open Notes
             </Button>
           </div>
-          <div>Connected - {countCon}</div>
+          <div>Sites w/ Data - {countCon}</div>
           <input
             className="search"
             type="text"
@@ -113,7 +113,7 @@ function AppAppBar({
             onChange={handleTextChange}
             onKeyDown={handleSubmit}
           />
-          <div>Not Connected - {countDis} </div>
+          <div>Sites w/out Data - {countDis} </div>
 
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}

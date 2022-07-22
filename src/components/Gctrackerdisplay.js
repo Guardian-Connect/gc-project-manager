@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Dispcards from "./Dispcards";
-import AppAppBar from "./modules/views/AppAppBar";
-import { Typography, Card, CardContent, CardActionArea } from "@mui/material";
+import Trackermodal from "./Trackermodal";
+import { handleDateTwo as handleDate } from "../api";
+import {
+  Typography,
+  Card,
+  CardContent,
+  CardActionArea,
+  Button,
+  Dialog,
+} from "@mui/material";
 import { getGcTracker } from "../api";
 const moment = require("moment");
 const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
@@ -14,10 +21,16 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
     });
   }, []);
 
-  function handleDate(d) {
-    let date = moment.utc(d).format("MM/DD/yyyy");
-    return date;
-  }
+  const [open, setOpen] = React.useState(false);
+  const [gctix, setGctix] = React.useState({});
+  const handleClickOpen = (gctix) => {
+    setGctix(gctix);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="app">
@@ -36,14 +49,10 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
           if (clientsGp.includes(searchInput.toUpperCase())) {
             return true;
           }
-          //   const company = client.fm_ticket;
-          //   if (company.includes(searchInput.toUpperCase())) {
-          //     return true;
-          //   }
-          //   const siteName = client.s_name.toUpperCase();
-          //   if (siteName.includes(searchInput.toUpperCase())) {
-          //     return true;
-          //   }
+          const clientsGptick = client.gp_ticket;
+          if (clientsGptick.includes(searchInput.toUpperCase())) {
+            return true;
+          }
         })
         .map((gctix) => (
           <Card
@@ -62,7 +71,7 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
             }}
             key={gctix.id}
           >
-            <CardActionArea>
+            <CardActionArea onClick={() => handleClickOpen(gctix)}>
               <CardContent>
                 <Typography
                   variant="h5"
@@ -74,7 +83,9 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
                 <Typography variant="h5" component="div">
                   GP Ticket # {gctix.gp_ticket}
                 </Typography>
-
+                <Typography variant="h5" component="div">
+                  Ticket Status - {gctix.status}
+                </Typography>
                 <Typography variant="h5" component="div">
                   {gctix.fm_ticket != null && (
                     <>Fm Ticket - {gctix.fm_ticket}</>
@@ -109,6 +120,10 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
                     )}
                   </Typography>
                   <Typography variant="h5" component="div">
+                    {gctix.sb != null && <>Service Branch - {gctix.sb} </>}
+                    {gctix.asb === null && <>No Service Branch Entered</>}
+                  </Typography>
+                  <Typography variant="h5" component="div">
                     {gctix.notes != null && <>Call Notes : {gctix.notes} </>}
                     {gctix.notes === null && <>No Call Notes Entered</>}
                   </Typography>
@@ -117,6 +132,9 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
             </CardActionArea>
           </Card>
         ))}
+      <Dialog open={open} onClose={handleClose}>
+        <Trackermodal gctix={gctix} />
+      </Dialog>
     </div>
   );
 };

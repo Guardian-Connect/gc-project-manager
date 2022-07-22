@@ -10,6 +10,7 @@ import PosAtg from "./PosAtg";
 import Dispensers from "./Dispensers";
 import Dispmodal from "./Dispmodal";
 import Dialog from "@mui/material/Dialog";
+import { handleDateTwo as handleDate } from "../api";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -27,11 +28,11 @@ const Dispcards = ({ site, setCount, count }) => {
     setOpen(false);
   };
 
-  function handleDate(d) {
-    let date = moment.utc(d).format("MM/DD/yyyy");
-    // console.log(date);
-    return date;
-  }
+  // function handleDate(d) {
+  //   let date = moment.utc(d).format("MM/DD/yyyy");
+  //   // console.log(date);
+  //   return date;
+  // }
 
   function isLater(date1, today) {
     let d = handleDate(date1);
