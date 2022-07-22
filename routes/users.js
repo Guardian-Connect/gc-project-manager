@@ -350,7 +350,6 @@ usersRouter.post("/gcticket", async (req, res, next) => {
     atl_po,
     warranty_status,
     notes,
-    status,
   } = req.body;
   try {
     const custemail = await createGctracker(
@@ -367,8 +366,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
       gp_ticket,
       atl_po,
       warranty_status,
-      notes,
-      status
+      notes
     );
     // if (custemail.rowCount === 1) {
     //   res.send("Success");
@@ -394,6 +392,179 @@ usersRouter.post("/report", async (req, res, next) => {
     res.send({ report });
   } catch (error) {
     next(error);
+  }
+});
+
+usersRouter.post("/update", async (req, res, next) => {
+  const {
+    id,
+    gvr_id,
+    gp_cust,
+    contract,
+    site_address,
+    totaldisp,
+    activation_date,
+    warranty_date,
+    renewal,
+    posvn,
+    posmain,
+    posreg1,
+    posreg2,
+    posreg3,
+    atgmodel,
+    disp1,
+    grades1,
+    disp2,
+    grades2,
+    disp3,
+    grades3,
+    disp4,
+    grades4,
+    disp5,
+    grades5,
+    disp6,
+    grades6,
+    disp7,
+    grades7,
+    disp8,
+    grades8,
+    disp9,
+    grades9,
+    disp10,
+    grades10,
+  } = req.body;
+  console.log("Users Running");
+  const updateFields = {};
+
+  if (gvr_id) {
+    updateFields.gvr_id = gvr_id;
+  }
+
+  if (gp_cust) {
+    updateFields.gp_cust = gp_cust;
+  }
+
+  if (contract) {
+    updateFields.contract = contract;
+  }
+
+  if (site_address) {
+    updateFields.site_address = site_address;
+  }
+
+  if (totaldisp) {
+    updateFields.totaldisp = totaldisp;
+  }
+
+  if (activation_date) {
+    let split2 = activation_date.split("T");
+    let activation_date_final = split2[0].toString();
+    updateFields.activation = activation_date_final;
+  }
+
+  if (warranty_date) {
+    let split = warranty_date.split("T");
+    let warranty_date_final = split[0].toString();
+    updateFields.warranty = warranty_date_final;
+  }
+
+  if (renewal) {
+    updateFields.renewal = renewal;
+  }
+
+  if (posvn) {
+    updateFields.posvn = posvn;
+  }
+
+  if (posmain) {
+    updateFields.posmain = posmain;
+  }
+
+  if (posreg1) {
+    updateFields.posreg1 = posreg1;
+  }
+
+  if (posreg2) {
+    updateFields.posreg2 = posreg2;
+  }
+  if (posreg3) {
+    updateFields.posreg3 = posreg3;
+  }
+  if (atgmodel) {
+    updateFields.atgmodel = atgmodel;
+  }
+  if (disp1) {
+    updateFields.disp1 = disp1;
+  }
+  if (grades1) {
+    updateFields.grades1 = grades1;
+  }
+  if (disp2) {
+    updateFields.disp2 = disp2;
+  }
+
+  if (grades2) {
+    updateFields.grades2 = grades2;
+  }
+  if (disp3) {
+    updateFields.disp3 = disp3;
+  }
+  if (grades3) {
+    updateFields.grades3 = grades3;
+  }
+  if (disp4) {
+    updateFields.disp4 = disp4;
+  }
+
+  if (grades4) {
+    updateFields.grades4 = grades4;
+  }
+  if (disp5) {
+    updateFields.disp5 = disp5;
+  }
+  if (grades5) {
+    updateFields.grades5 = grades5;
+  }
+  if (disp6) {
+    updateFields.disp6 = disp6;
+  }
+  if (grades6) {
+    updateFields.grades6 = grades6;
+  }
+  if (disp7) {
+    updateFields.disp7 = disp7;
+  }
+  if (grades7) {
+    updateFields.grades7 = grades7;
+  }
+  if (disp8) {
+    updateFields.disp8 = disp8;
+  }
+  if (grades8) {
+    updateFields.grades8 = grades8;
+  }
+  if (disp9) {
+    updateFields.disp9 = disp9;
+  }
+  if (grades9) {
+    updateFields.grades9 = grades9;
+  }
+  if (disp10) {
+    updateFields.disp10 = disp10;
+  }
+  if (grades10) {
+    updateFields.grades10 = grades10;
+  }
+  // if (posreg1) {
+  //   updateFields.posreg1 = posreg1;
+  // }
+
+  try {
+    const updatedTicket = await updateDisp(id, updateFields);
+  } catch ({ name, message }) {
+    console.log(name, message);
+    console.log(name, message);
+    next({ name, message });
   }
 });
 
@@ -478,5 +649,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
     next({ name, message });
   }
 });
+
+module.exports = usersRouter;
 
 module.exports = usersRouter;
