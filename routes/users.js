@@ -265,12 +265,12 @@ usersRouter.post("/createdisp", async (req, res, next) => {
       site_address,
       contract
     );
-    // console.log(dispinfo.rowCount);
-    // if (dispinfo.rowCount === 1) {
-    //   res.send("Success");
-    // } else {
-    //   console.log(error);
-    // }
+    console.log(dispinfo.rowCount);
+    if (dispinfo.rowCount === 1) {
+      res.send("Success");
+    } else {
+      console.log(error);
+    }
     console.log(dispinfo);
   } catch (error) {
     console.log(error);
@@ -293,7 +293,8 @@ usersRouter.post("/allsites", async (req, res, next) => {
     // } else {
     //   console.log(error);
     // }
-    res.send({ allsites });
+    // res.send({ message: "Site Added!" });
+    res.send(allsites);
   } catch (error) {
     next(error);
   }
@@ -329,6 +330,7 @@ usersRouter.post("/custemail", async (req, res, next) => {
     //   res.send("Error");
     // }
     // res.send({ allsites });
+    res.send({ message: "Site Added!" });
   } catch (error) {
     next(error);
   }
@@ -350,6 +352,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
     atl_po,
     warranty_status,
     notes,
+    status,
   } = req.body;
   try {
     const custemail = await createGctracker(
@@ -366,7 +369,8 @@ usersRouter.post("/gcticket", async (req, res, next) => {
       gp_ticket,
       atl_po,
       warranty_status,
-      notes
+      notes,
+      status
     );
     // if (custemail.rowCount === 1) {
     //   res.send("Success");

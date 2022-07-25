@@ -220,6 +220,7 @@ const Gctracker = ({ addTicket }) => {
               <MenuItem value={"COL"}>Columbia</MenuItem>
               <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
               <MenuItem value={"FTM"}>Fort Myers</MenuItem>
+              <MenuItem value={"GRE"}>Greensboro</MenuItem>
               <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
               <MenuItem value={"JAX"}>Jacksonville</MenuItem>
               <MenuItem value={"KNX"}>Knoxville</MenuItem>

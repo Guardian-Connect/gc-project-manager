@@ -80,23 +80,30 @@ async function createSite(gvr_id, gp_cust, cus_name, site_address, contract) {
       site_address,
       contract
     );
-    const siteCreate = await createSiteDisp(
-      gvr_id,
-      gp_cust,
-      cus_name,
-      site_address,
-      contract
-    );
-    // console.log("site", siteCreate);
-    const result = await client.query(
-      `
+    const check = await getSiteGvr(gvr_id);
+    if (check && check.length > 0) {
+      console.log("check", check.length);
+      return { message: "Site Exists" };
+    } else {
+      console.log(check.length, "check");
+      const siteCreate = await createSiteDisp(
+        gvr_id,
+        gp_cust,
+        cus_name,
+        site_address,
+        contract
+      );
+      // console.log("site", siteCreate);
+      const result = await client.query(
+        `
       INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
       VALUES ($1, $2, $3, $4);
     `,
-      [gvr_id, gp_cust, cus_name, site_address]
-    );
-    console.log("allsite", result);
-    return result;
+        [gvr_id, gp_cust, cus_name, site_address]
+      );
+      console.log("allsite", result);
+      return { message: "Site Created" };
+    }
   } catch (error) {
     console.log(error);
     throw error;
@@ -119,6 +126,12 @@ async function createSiteDisp(
       site_address,
       contract
     );
+    // const check = await getSiteGvr(gvr_id);
+    // if (check && check.length < 0) {
+    //   console.log("check", check.length);
+    //   return check;
+    // } else {
+    // console.log(check);
     const result = await client.query(
       `
       INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
@@ -127,7 +140,7 @@ async function createSiteDisp(
       [gvr_id, gp_cust, cus_name, site_address, contract]
     );
     console.log("dispinfo", result);
-    // return result;
+    return result;
   } catch (error) {
     console.log(error);
     throw error;
@@ -349,6 +362,17 @@ async function getSites(id) {
   return rows;
 }
 
+async function getSiteGvr(gvr_id) {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM dispinfo
+    WHERE gvr_id=$1
+  `,
+    [gvr_id]
+  );
+  return rows;
+}
+
 async function getTracker(id) {
   const { rows } = await client.query(
     `SELECT *
@@ -381,6 +405,7 @@ async function updateDisp(id, fields = {}) {
         Object.values(fields)
       );
       console.log(rows);
+      return rows;
     } catch (error) {
       throw error;
     }
@@ -408,6 +433,7 @@ async function updateTracker(id, fields = {}) {
         Object.values(fields)
       );
       console.log(rows);
+      return rows;
     } catch (error) {
       throw error;
     }
