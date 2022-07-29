@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import CheckIcon from "@mui/icons-material/Check";
+import { useAlert } from "react-alert";
 import {
   Typography,
   MenuItem,
@@ -26,6 +27,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [cus_email5, setCus_email5] = useState("");
   const [cus_email6, setCus_email6] = useState("");
   const [contract, setContract] = useState("");
+  const alert = useAlert();
 
   const handleTextChangeGvr = (e) => {
     setGvr_id(e.target.value);
@@ -74,16 +76,15 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   };
 
   const addData = (gvr_id, gp_cust, cus_name, site_address, contract) => {
-    console.log(gvr_id, gp_cust, cus_name, site_address, contract);
     addSite(gvr_id, gp_cust, cus_name, site_address, contract).then((res) => {
-      console.log(res);
-      return (
-        <Stack sx={{ width: "100%" }} spacing={2}>
-          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-            {res}
-          </Alert>
-        </Stack>
-      );
+      console.log(res.message);
+      if (res.message === "Site Exists") {
+        alert.show(res.message);
+      } else {
+        alert.show(res.message);
+        window.location.reload();
+      }
+      // CustomAlert();
       // window.location.reload();
     });
     // window.location.reload();
@@ -196,16 +197,6 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
             }}
             onChange={handleTextChangeCus}
           />
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter RRS Amount or 0"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeRrs}
-          />
 
           <TextField
             sx={{ m: 1 }}
@@ -287,8 +278,13 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
                   cus_email4,
                   cus_email5,
                   cus_email6
-                ).then((response) => {
-                  window.location.reload();
+                ).then((res) => {
+                  if (res.message === "Site Exists") {
+                    alert.show(res.message);
+                  } else {
+                    alert.show(res.message);
+                    window.location.reload();
+                  }
                 });
               }}
             >

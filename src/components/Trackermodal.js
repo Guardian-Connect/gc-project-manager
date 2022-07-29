@@ -11,6 +11,7 @@ import { makeStyles } from "@mui/styles";
 import { updateTicket } from "../api";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
+import { useAlert } from "react-alert";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: 226,
@@ -33,6 +34,7 @@ const Trackermodal = ({ gctix }) => {
   const [atl_po, setatl_po] = React.useState("");
   const [status, setstatus] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const alert = useAlert();
   const classes = useStyles();
   React.useEffect(() => {
     setdate(handleDateTwo(gctix.date));
@@ -75,8 +77,14 @@ const Trackermodal = ({ gctix }) => {
       warranty_status,
       atl_po,
       status
-    );
-    console.log(id);
+    ).then((res) => {
+      console.log(res);
+      if (res.message === "Update Successful") {
+        alert.show("Updated!");
+      } else {
+        alert.show("An Error Has Occured");
+      }
+    });
     reload();
   };
 

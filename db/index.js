@@ -405,7 +405,7 @@ async function updateDisp(id, fields = {}) {
         Object.values(fields)
       );
       console.log(rows);
-      return rows;
+      return { message: "Update Successful" };
     } catch (error) {
       throw error;
     }
@@ -433,7 +433,7 @@ async function updateTracker(id, fields = {}) {
         Object.values(fields)
       );
       console.log(rows);
-      return rows;
+      return { message: "Update Successful" };
     } catch (error) {
       throw error;
     }
@@ -571,7 +571,7 @@ async function createGctracker(
         status,
       ]
     );
-    return result;
+    return { message: "Ticket Created Successfully" };
   } catch (error) {
     throw error;
   }

@@ -565,6 +565,8 @@ usersRouter.post("/update", async (req, res, next) => {
 
   try {
     const updatedTicket = await updateDisp(id, updateFields);
+    console.log(updatedTicket.length);
+    return { message: "Update Successful" };
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);
@@ -647,13 +649,13 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
   }
   try {
     const updatedTicket = await updateTracker(id, updateFields);
+    console.log(updatedTicket, "users");
+    return { message: "Update Successful" };
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);
     next({ name, message });
   }
 });
-
-module.exports = usersRouter;
 
 module.exports = usersRouter;

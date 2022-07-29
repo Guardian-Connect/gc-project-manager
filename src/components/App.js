@@ -51,11 +51,6 @@ const App = () => {
     }, 1000);
   }, []);
 
-  // useEffect(() => {
-  //   getReportData("2022-3-10", "2022-3-15", "%").then((response) => {
-  //     console.log(response);
-  //   });
-  // }, []);
   if (sessionStorage.getItem("token") < 27) {
     return <Login />;
   } else {

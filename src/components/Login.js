@@ -16,6 +16,7 @@ import { loginUser, registerUser } from "../api";
 const Login = () => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+
   const paperStyle = {
     padding: 20,
     height: "35vh",
@@ -24,13 +25,17 @@ const Login = () => {
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
-
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // e.preventDefault();
+      handleLogin();
+    }
+  };
   const handleLogin = () => {
-    console.log("test", login, password);
-    loginUser(login, password).then((resp) => {
-      window.location.reload();
-    });
-    // registerUser(login, password);
+    // loginUser(login, password).then((resp) => {
+    //   window.location.reload();
+    // });
+    registerUser(login, password);
   };
 
   const handleUser = (e) => {
@@ -61,6 +66,7 @@ const Login = () => {
           defaultValue={password}
           fullWidth
           required
+          onKeyPress={handleKeyPress}
           onChange={handleUser}
         />
         <TextField
@@ -72,6 +78,7 @@ const Login = () => {
           required
           defaultValue={login}
           onChange={handlePassword}
+          onKeyPress={handleKeyPress}
         />
         <Button
           type="submit"

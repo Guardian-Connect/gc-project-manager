@@ -1,4 +1,5 @@
 import axios from "axios";
+
 require("dotenv").config();
 const moment = require("moment");
 export let projectOne = "MAJ0001";
@@ -210,7 +211,7 @@ export async function updateDisp(
   grades10
 ) {
   try {
-    await axios.post("api/users/update", {
+    const { disp } = await axios.post("api/users/update", {
       id,
       gvr_id,
       gp_cust,
@@ -247,6 +248,7 @@ export async function updateDisp(
       disp10,
       grades10,
     });
+    return disp;
   } catch (error) {
     console.log(error);
     throw error;
@@ -271,7 +273,7 @@ export async function updateTicket(
   status
 ) {
   try {
-    await axios.post("api/users/update/tracker", {
+    const { tracker } = await axios.post("api/users/update/tracker", {
       date,
       dispatch_type,
       fm_ticket,
@@ -288,6 +290,7 @@ export async function updateTicket(
       atl_po,
       status,
     });
+    return tracker;
   } catch (error) {
     console.log(error);
     throw error;
@@ -450,7 +453,6 @@ export function handleDate(d) {
     return date;
   } else {
     let date = moment.utc(d).format("yyyy-MM-DD");
-    console.log(date);
     return date;
   }
 }
@@ -460,27 +462,3 @@ export function handleDateTwo(d) {
   // console.log(date);
   return date;
 }
-
-// export async function getInfo(gp) {
-//   try {
-//     const { data } = await axios.get(`/api/users/disp/${gp}`);
-//     let info = data.dispinfo;
-//     let disconnected = [];
-//     let connected = [];
-
-//     info.map((site) => {
-//       if (site.totaldisp === null && site.gp === gp) {
-//         return disconnected.push(site.gvrid);
-//       } else if (site.totaldisp != null && site.gp === gp) {
-//         return connected.push(site.gvrid);
-//       }
-//     });
-
-//     sessionStorage.setItem("site", JSON.stringify("12345"));
-//     sessionStorage.setItem("custinfo", JSON.stringify(info));
-//     sessionStorage.setItem("sitedisc", JSON.stringify(disconnected));
-//     sessionStorage.setItem("siteconnected", JSON.stringify(connected));
-//   } catch (error) {
-//     throw error;
-//   }
-// }
