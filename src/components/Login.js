@@ -32,10 +32,10 @@ const Login = () => {
     }
   };
   const handleLogin = () => {
-    // loginUser(login, password).then((resp) => {
-    //   window.location.reload();
-    // });
-    registerUser(login, password);
+    loginUser(login, password).then((resp) => {
+      window.location.reload();
+    });
+    // registerUser(login, password);
   };
 
   const handleUser = (e) => {
