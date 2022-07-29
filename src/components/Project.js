@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dispcards from "./Dispcards";
 import AppAppBar from "./modules/views/AppAppBar";
-import { Typography } from "@mui/material";
+import { Typography, Card } from "@mui/material";
 
 const Project = ({ setMessage, searchInput, setSearchInput }) => {
   let test = [];
@@ -15,7 +15,7 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
   }, []);
 
   return (
-    <div className="app">
+    <>
       {message
         .filter((client, index) => {
           const clientsAdd = client.site_address;
@@ -40,7 +40,7 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
           //   }
         })
         .map((site) => (
-          <div className="main" key={site.id}>
+          <>
             {site.id === 5000000 ? (
               <div className="yellow">
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
@@ -50,9 +50,9 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
             ) : (
               <Dispcards site={site} />
             )}
-          </div>
+          </>
         ))}
-    </div>
+    </>
   );
 };
 export default Project;

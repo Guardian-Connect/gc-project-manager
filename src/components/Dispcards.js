@@ -1,6 +1,6 @@
 import React from "react";
 import SendIcon from "@mui/icons-material/Send";
-import { Typography, Button, TextField, Modal, Box } from "@mui/material";
+import { Typography, Button, TextField, Modal, Box, Card } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { format } from "date-fns";
 import Accordion from "@mui/material/Accordion";
@@ -47,43 +47,64 @@ const Dispcards = ({ site, setCount, count }) => {
     }
   }
 
-  if (site.totaldisp != null) {
-    return (
-      <>
-        <Accordion>
+  // if (site.totaldisp != null) {
+  return (
+    <>
+      Test
+      {/* <Accordion
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            p: 1,
+            m: 1,
+            bgcolor: "background.paper",
+            width: "55%",
+            borderRadius: 1,
+          }}
+        >
           <AccordionSummary
-            expandIcon={<AddCircleIcon />}
+            // expandIcon={<AddCircleIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <div className="info">
-              {site.totaldisp != null && (
-                <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
-                  {/* {console.log(site)} */}
-                  {site.onboarding === false ? (
-                    <div>GVR ID - {site.gvr_id} </div>
-                  ) : (
-                    <div>GVR ID - {site.gvr_id} </div>
-                  )}
-                  <div>GP Customer - {site.gp_cust}</div>
-                  <div>Contract Number - {site.contract}</div>
-                  <div>Site Address - {site.site_address}</div>
-                  <div>Number of Dispensers - {site.totaldisp}</div>
-                  <div>Registration Date - {handleDate(site.activation)}</div>
-                  <div>Renewal Date - {handleDate(site.renewal)}</div>
-                  {isLater(site.warranty, today)}
-                </Typography>
-              )}
-            </div>
+            {site.totaldisp != null && (
+              <Typography variant="h4">
+                {site.onboarding === false ? (
+                  <div>GVR ID - {site.gvr_id} </div>
+                ) : (
+                  <div>GVR ID - {site.gvr_id} </div>
+                )}
+                <div>GP Customer - {site.gp_cust}</div>
+                <div>Contract Number - {site.contract}</div>
+                <div>Site Address - {site.site_address}</div>
+                <div>Number of Dispensers - {site.totaldisp}</div>
+                <div>Registration Date - {handleDate(site.activation)}</div>
+                <div>Renewal Date - {handleDate(site.renewal)}</div>
+                {isLater(site.warranty, today)}
+              </Typography>
+            )}
           </AccordionSummary>
           <>{site.notes != null && <div>Notes - {site.notes}</div>}</>
 
-          {/* Any ATG or POS Systems Get Created Here */}
           <PosAtg site={site} />
 
-          {/* Any Dispenser Serial / Grade Mapping Are Going Here */}
-          <Dispensers site={site} />
-          <Button variant="outlined" onClick={handleClickOpen}>
+          <Card
+            sx={{
+              width: "100%",
+              alignSelf: "center",
+              alignText: "center",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Dispensers site={site} />
+          </Card>
+          <Button
+            variant="outlined"
+            onClick={handleClickOpen}
+            sx={{ alignText: "" }}
+          >
             Edit Dispenser
           </Button>
           <Dialog open={open} onClose={handleClose}>
@@ -95,39 +116,48 @@ const Dispcards = ({ site, setCount, count }) => {
   } else {
     return (
       <>
-        <Accordion className="yellow">
+        <Accordion
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            p: 1,
+            m: 1,
+            bgcolor: "background.paper",
+            width: "68%",
+            borderRadius: 1,
+          }}
+        >
           <AccordionSummary
-            expandIcon={<AddCircleIcon />}
+            // expandIcon={<AddCircleIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <div className="yellow">
-              <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
-                <div>Site Not Yet Activated.</div>
-                {site.onboarding === false ? (
-                  <div>GVR ID - {site.gvr_id}</div>
-                ) : (
-                  <div>
-                    <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
-                    <StarBorderPurple500Icon />
-                  </div>
-                )}
-                <div>GP Customer - {site.gp_cust}</div>
-                <div>Site Address - {site.site_address}</div>
-                <div className="center">
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      justifyContent: "center",
-                    }}
-                  >
-                    {site.notes != null && <div>See Notes</div>}
-                  </Typography>
+            <Typography variant="h4">
+              <div>Site Not Yet Activated.</div>
+              {site.onboarding === false ? (
+                <div>GVR ID - {site.gvr_id}</div>
+              ) : (
+                <div>
+                  <StarBorderPurple500Icon /> GVR ID - {site.gvr_id}
+                  <StarBorderPurple500Icon />
                 </div>
-              </Typography>
-            </div>
+              )}
+              <div>GP Customer - {site.gp_cust}</div>
+              <div>Site Address - {site.site_address}</div>
+              <div className="center">
+                <Typography
+                  variant="h3"
+                  sx={{
+                    justifyContent: "center",
+                  }}
+                >
+                  {site.notes != null && <div>See Notes</div>}
+                </Typography>
+              </div>
+            </Typography>
           </AccordionSummary>
-          <Typography variant="h4" sx={{ width: "100%" }}>
+          <Typography variant="h4">
             {site.notes != null && <div>Notes - {site.notes}</div>}
           </Typography>
           <Button variant="outlined" onClick={handleClickOpen}>
@@ -136,11 +166,10 @@ const Dispcards = ({ site, setCount, count }) => {
           <Dialog open={open} onClose={handleClose}>
             <Dispmodal site={site} />
           </Dialog>
-        </Accordion>
-        <div></div>
-      </>
-    );
-  }
+        </Accordion> */}
+    </>
+  );
+  // }
 };
 
 export default Dispcards;

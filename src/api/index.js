@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import React from "react";
 require("dotenv").config();
 const moment = require("moment");
 export let projectOne = "MAJ0001";
@@ -461,4 +461,18 @@ export function handleDateTwo(d) {
   let date = moment.utc(d).format("MM/DD/yyyy");
   // console.log(date);
   return date;
+}
+
+export function isLater(date1, site) {
+  let d = handleDate(date1);
+  let today = moment.utc().format("MM/DD/yyyy");
+  if (moment.utc(d).isAfter(today)) {
+    return <div>Warranty Date - {handleDate(site.warranty)}</div>;
+  } else {
+    return (
+      <div className="yellow">
+        Warranty Expired - {handleDate(site.warranty)}
+      </div>
+    );
+  }
 }

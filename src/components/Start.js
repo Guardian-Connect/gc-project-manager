@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Dispcards from "./Dispcards";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
+import { Typography, Card } from "@mui/material";
+import Dispcardz from "./Dispcardz";
 const Start = ({
   setMessage,
   count,
@@ -38,9 +40,9 @@ const Start = ({
             // }
           })
           .map((site) => (
-            <div className="main" key={site.id}>
-              <Dispcards site={site} setCount={setCount} count={count} />
-            </div>
+            <>
+              <Dispcardz site={site} setCount={setCount} count={count} />
+            </>
           ))}
       </h2>
     </div>

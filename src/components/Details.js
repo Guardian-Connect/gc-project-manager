@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Dispcards from "./Dispcards";
+import Dispcardz from "./Dispcardz";
 import AppAppBar from "./modules/views/AppAppBar";
 import { Typography } from "@mui/material";
 
@@ -18,19 +18,19 @@ const Details = ({ setMessage, searchInput, setSearchInput }) => {
     <div className="app">
       {message
         .filter((client, index) => {
-          const clientsAdd = client.address;
+          const clientsAdd = client.site_address;
           if (clientsAdd.includes(searchInput.toLowerCase())) {
             return true;
           }
-          const clientsId = client.gvrid;
+          const clientsId = client.gvr_id;
           if (clientsId.includes(searchInput.toLowerCase())) {
             return true;
           }
-          const clientsGp = client.gp;
+          const clientsGp = client.gp_cust;
           if (clientsGp.includes(searchInput.toUpperCase())) {
             return true;
           }
-          const company = client.company;
+          const company = client.cus_name;
           if (company.includes(searchInput.toUpperCase())) {
             return true;
           }
@@ -40,7 +40,7 @@ const Details = ({ setMessage, searchInput, setSearchInput }) => {
           }
         })
         .map((site) => (
-          <div className="main" key={site.id}>
+          <div key={site.id}>
             {site.id === 5000000 ? (
               <div className="yellow">
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
@@ -48,7 +48,7 @@ const Details = ({ setMessage, searchInput, setSearchInput }) => {
                 </Typography>
               </div>
             ) : (
-              <Dispcards site={site} />
+              <Dispcardz site={site} />
             )}
           </div>
         ))}
