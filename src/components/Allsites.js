@@ -94,204 +94,204 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     <div className="app">
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          // display: "flex",
+          // flexDirection: "row",
           p: 1,
-          m: 1,
+          ml: -30,
+          width: "85%",
           bgcolor: "background.paper",
           borderRadius: 1,
         }}
       >
+        <Typography sx={{ textAlign: "center" }}>Site DB</Typography>
+
+        {/* <div className="spaceform"> */}
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GVR ID"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeGvr}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GP Customer Number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeGp}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Customer Name"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeCus}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Site Address"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeSite}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Job Costs Contract #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleContract}
+        />
         <Box textAlign="center">
-          <Typography>Site DB</Typography>
+          <Button
+            sx={{ width: "15%" }}
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={() => {
+              addData(gvr_id, gp_cust, cus_name, site_address, contract);
+            }}
+          >
+            Submit
+          </Button>
         </Box>
-        <div className="spaceform">
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GVR ID"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeGvr}
-          />
+        {/* </div> */}
+        <Typography sx={{ textAlign: "center", mt: 5 }}>
+          Customer Contact DB
+        </Typography>
+        {/* <div className="spaceform"> */}
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GP Customer Number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeGp}
+        />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Customer Name"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeCus}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GP Customer Number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeGp}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Primary Email Address"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail1}
+        />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 2"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail2}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Customer Name"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeCus}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 3"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail3}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Site Address"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeSite}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 4"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail4}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Job Costs Contract #"
-            InputLabelProps={{
-              shrink: true,
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 5"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail5}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 6"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail6}
+        />
+        <Box sx={{ textAlign: "center" }}>
+          <Button
+            sx={{ width: "15%" }}
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={() => {
+              addEmail(
+                gp_cust,
+                cus_name,
+                rrs,
+                cus_email1,
+                cus_email2,
+                cus_email3,
+                cus_email4,
+                cus_email5,
+                cus_email6
+              ).then((res) => {
+                if (res.message === "Site Exists") {
+                  alert.show(res.message);
+                } else {
+                  alert.show(res.message);
+                  window.location.reload();
+                }
+              });
             }}
-            onChange={handleContract}
-          />
-          <Box textAlign="center">
-            <Button
-              sx={{ width: "15%" }}
-              variant="contained"
-              endIcon={<SendIcon />}
-              onClick={() => {
-                addData(gvr_id, gp_cust, cus_name, site_address, contract);
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
-        </div>
-        <Box textAlign="center">
-          <Typography>Customer Contact DB</Typography>
+          >
+            Submit
+          </Button>
         </Box>
-        <div className="spaceform">
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GP Customer Number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeGp}
-          />
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Customer Name"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeCus}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Primary Email Address"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail1}
-          />
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Email Address 2"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail2}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Email Address 3"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail3}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Email Address 4"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail4}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Email Address 5"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail5}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Email Address 6"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeEmail6}
-          />
-          <Box sx={{ textAlign: "center" }}>
-            <Button
-              sx={{ width: "15%" }}
-              variant="contained"
-              endIcon={<SendIcon />}
-              onClick={() => {
-                addEmail(
-                  gp_cust,
-                  cus_name,
-                  rrs,
-                  cus_email1,
-                  cus_email2,
-                  cus_email3,
-                  cus_email4,
-                  cus_email5,
-                  cus_email6
-                ).then((res) => {
-                  if (res.message === "Site Exists") {
-                    alert.show(res.message);
-                  } else {
-                    alert.show(res.message);
-                    window.location.reload();
-                  }
-                });
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
-        </div>
+        {/* </div> */}
       </Box>
     </div>
   );

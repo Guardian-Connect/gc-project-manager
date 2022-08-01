@@ -4,6 +4,7 @@ import Main from "./Main";
 import Start from "./Start";
 import Details from "./Details";
 import AppAppBar from "./modules/views/AppAppBar";
+import Right from "./Right";
 import {
   getSomething,
   getReportData,
@@ -65,6 +66,8 @@ const App = () => {
         ) : (
           <Router>
             <SideBar mockData={mockData} setSearchInput={setSearchInput} />
+            <Right />
+
             <div>
               <AppAppBar
                 contactInfo={contactInfo}

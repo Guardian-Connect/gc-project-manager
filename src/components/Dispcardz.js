@@ -66,6 +66,9 @@ const Dispcardz = ({ site, setCount, count }) => {
             <Typography variant="h5" component="div">
               Renewal Date - {handleDate(site.renewal)}
             </Typography>
+            <Typography variant="h5" component="div">
+              Warranty Date - {handleDate(site.warranty_date)}
+            </Typography>
           </CardContent>
         </AccordionSummary>
         <PosAtg site={site} />

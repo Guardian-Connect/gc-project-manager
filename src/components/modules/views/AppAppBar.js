@@ -65,45 +65,6 @@ function AppAppBar({
               flex: 0,
             }}
           />
-          <div>
-            <Button
-              sx={{ mr: 2, border: 1, borderColor: "white" }}
-              variant="contained"
-              onClick={async () => {
-                await getInfoInstalls();
-                history.push("/gctrackerdisplay");
-                window.location.reload();
-              }}
-            >
-              GC Tracker
-            </Button>
-          </div>
-          <div>
-            <Button
-              sx={{ mr: 2, ml: 1, border: 1, borderColor: "white" }}
-              variant="contained"
-              onClick={async () => {
-                await getInfoInstalls();
-                history.push("/second");
-                window.location.reload();
-              }}
-            >
-              Open Installs
-            </Button>
-          </div>
-          <div>
-            <Button
-              sx={{ ml: 1, mr: 1, border: 1, borderColor: "white" }}
-              variant="contained"
-              onClick={async () => {
-                await getInfo();
-                history.push("/second");
-                window.location.reload();
-              }}
-            >
-              Open Notes
-            </Button>
-          </div>
           <div>Sites w/ Data - {countCon}</div>
           <input
             className="search"
@@ -127,7 +88,7 @@ function AppAppBar({
           >
             Clear/Home
           </Button>
-
+          {/* 
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"
@@ -138,7 +99,7 @@ function AppAppBar({
             }}
           >
             DB Entry
-          </Button>
+          </Button> */}
 
           {/* <div className="drawer">
             <Button

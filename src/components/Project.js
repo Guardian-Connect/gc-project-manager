@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Dispcards from "./Dispcards";
+import Dispcardz from "./Dispcardz";
 import AppAppBar from "./modules/views/AppAppBar";
 import { Typography, Card } from "@mui/material";
 
@@ -15,7 +15,7 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
   }, []);
 
   return (
-    <>
+    <div className="app">
       {message
         .filter((client, index) => {
           const clientsAdd = client.site_address;
@@ -48,11 +48,13 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
                 </Typography>
               </div>
             ) : (
-              <Dispcards site={site} />
+              <>
+                <Dispcardz site={site} />
+              </>
             )}
           </>
         ))}
-    </>
+    </div>
   );
 };
 export default Project;

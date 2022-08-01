@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Dispcards from "./Dispcards";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
 import { Typography, Card } from "@mui/material";

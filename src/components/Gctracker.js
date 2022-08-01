@@ -92,13 +92,14 @@ const Gctracker = ({ addTicket }) => {
   };
 
   return (
-    <div className="app">
+    <div className="appform">
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          // display: "flex",
+          // flexDirection: "column",
           p: 1,
-          m: 1,
+          ml: -30,
+          width: "85%",
           bgcolor: "background.paper",
           borderRadius: 1,
         }}
@@ -106,102 +107,101 @@ const Gctracker = ({ addTicket }) => {
         <Box textAlign="center">
           <Typography>GC Ticket Tracker</Typography>
         </Box>
-        <div className="spaceform">
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GVR ID"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeGvr}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GVR ID"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeGvr}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GP Customer Number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleTextChangeGp}
-          />
-          <FormControl className={classes.formControl} sx={{ m: 1 }}>
-            <InputLabel>Dispatch Type</InputLabel>
-            <Select onChange={handleDispatch}>
-              <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
-              <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
-              <MenuItem value={"Printer"}>Printer</MenuItem>
-              <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
-              <MenuItem value={"Serial Interface"}>Serial Interface</MenuItem>
-              <MenuItem value={"UPM"}>UPM</MenuItem>
-              <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
-              <MenuItem value={"Display"}>Display</MenuItem>
-              <MenuItem value={"Omnia"}>Omnia</MenuItem>
-              <MenuItem value={"PCN Update"}>PCN Update</MenuItem>
-              <MenuItem value={"UPM Update"}>UPM Update</MenuItem>
-              <MenuItem value={"Omnia Update"}>Omnia Update</MenuItem>
-              <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
-            </Select>
-          </FormControl>
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter FM Ticket #"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleFmticket}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GP Customer Number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeGp}
+        />
+        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+          <InputLabel>Dispatch Type</InputLabel>
+          <Select onChange={handleDispatch}>
+            <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
+            <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
+            <MenuItem value={"Printer"}>Printer</MenuItem>
+            <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
+            <MenuItem value={"Serial Interface"}>Serial Interface</MenuItem>
+            <MenuItem value={"UPM"}>UPM</MenuItem>
+            <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
+            <MenuItem value={"Display"}>Display</MenuItem>
+            <MenuItem value={"Omnia"}>Omnia</MenuItem>
+            <MenuItem value={"PCN Update"}>PCN Update</MenuItem>
+            <MenuItem value={"UPM Update"}>UPM Update</MenuItem>
+            <MenuItem value={"Omnia Update"}>Omnia Update</MenuItem>
+            <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter FM Ticket #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleFmticket}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Location Name"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleLocation}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Location Name"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleLocation}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Location Address"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleAddress}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Location Address"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleAddress}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Dispenser Grade # Affected"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleGrade}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Dispenser Grade # Affected"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleGrade}
+        />
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Fueling Point # Affected"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleFueling}
-          />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Fueling Point # Affected"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleFueling}
+        />
 
-          {/* <TextField
+        {/* <TextField
             sx={{ m: 1 }}
             required
             id="outlined-required"
@@ -211,104 +211,103 @@ const Gctracker = ({ addTicket }) => {
             }}
             onChange={handleBranch}
           /> */}
-          <FormControl className={classes.formControl} sx={{ m: 1 }}>
-            <InputLabel>Branch</InputLabel>
-            <Select onChange={handleBranch}>
-              <MenuItem value={"ATL"}>Atlanta</MenuItem>
-              <MenuItem value={"BIR"}>Birmingham</MenuItem>
-              <MenuItem value={"CHA"}>Charlotte</MenuItem>
-              <MenuItem value={"COL"}>Columbia</MenuItem>
-              <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
-              <MenuItem value={"FTM"}>Fort Myers</MenuItem>
-              <MenuItem value={"GRE"}>Greensboro</MenuItem>
-              <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
-              <MenuItem value={"GUL"}>Gulf/Pensacola</MenuItem>
-              <MenuItem value={"JAX"}>Jacksonville</MenuItem>
-              <MenuItem value={"KNX"}>Knoxville</MenuItem>
-              <MenuItem value={"NAS"}>Nashville</MenuItem>
-              <MenuItem value={"RAL"}>Raleigh</MenuItem>
-              <MenuItem value={"SAN"}>Sanford</MenuItem>
-              <MenuItem value={"SAV"}>Savannah</MenuItem>
-              <MenuItem value={"TAL"}>Tallahassee</MenuItem>
-              <MenuItem value={"TAM"}>Tampa</MenuItem>
-            </Select>
-          </FormControl>
+        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+          <InputLabel>Branch</InputLabel>
+          <Select onChange={handleBranch}>
+            <MenuItem value={"ATL"}>Atlanta</MenuItem>
+            <MenuItem value={"BIR"}>Birmingham</MenuItem>
+            <MenuItem value={"CHA"}>Charlotte</MenuItem>
+            <MenuItem value={"COL"}>Columbia</MenuItem>
+            <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
+            <MenuItem value={"FTM"}>Fort Myers</MenuItem>
+            <MenuItem value={"GRE"}>Greensboro</MenuItem>
+            <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
+            <MenuItem value={"GUL"}>Gulf/Pensacola</MenuItem>
+            <MenuItem value={"JAX"}>Jacksonville</MenuItem>
+            <MenuItem value={"KNX"}>Knoxville</MenuItem>
+            <MenuItem value={"NAS"}>Nashville</MenuItem>
+            <MenuItem value={"RAL"}>Raleigh</MenuItem>
+            <MenuItem value={"SAN"}>Sanford</MenuItem>
+            <MenuItem value={"SAV"}>Savannah</MenuItem>
+            <MenuItem value={"TAL"}>Tallahassee</MenuItem>
+            <MenuItem value={"TAM"}>Tampa</MenuItem>
+          </Select>
+        </FormControl>
 
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter GP Ticket #"
-            InputLabelProps={{
-              shrink: true,
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter GP Ticket #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleGpticket}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter ATL PO #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleAtl}
+        />
+
+        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+          <InputLabel>Warranty Status</InputLabel>
+          <Select onChange={handleWarranty}>
+            <MenuItem value={"In Warranty"}>In Warranty</MenuItem>
+            <MenuItem value={"Out of Warranty"}>Out of Warranty</MenuItem>
+          </Select>
+        </FormControl>
+
+        <TextField
+          sx={{ width: "91%", m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Ticket Notes"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          fullWidth
+          multiline
+          rows={6}
+          onChange={handleNotes}
+        />
+        <Box textAlign="center">
+          <Button
+            sx={{ width: "15%" }}
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={() => {
+              addTicket(
+                now,
+                gvr_id,
+                gp_cust,
+                dispatch,
+                fm_ticket,
+                site_name,
+                site_address,
+                grade,
+                fp,
+                sb,
+                gp_ticket,
+                atl_po,
+                warranty_status,
+                notes,
+                status
+              );
+              // .then((response) => {
+              window.location.reload();
+              // });
             }}
-            onChange={handleGpticket}
-          />
-
-          <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter ATL PO #"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleAtl}
-          />
-
-          <FormControl className={classes.formControl} sx={{ m: 1 }}>
-            <InputLabel>Warranty Status</InputLabel>
-            <Select onChange={handleWarranty}>
-              <MenuItem value={"In Warranty"}>In Warranty</MenuItem>
-              <MenuItem value={"Out of Warranty"}>Out of Warranty</MenuItem>
-            </Select>
-          </FormControl>
-
-          <TextField
-            sx={{ width: "87%", m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Ticket Notes"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            fullWidth
-            multiline
-            rows={6}
-            onChange={handleNotes}
-          />
-          <Box textAlign="center">
-            <Button
-              sx={{ width: "15%" }}
-              variant="contained"
-              endIcon={<SendIcon />}
-              onClick={() => {
-                addTicket(
-                  now,
-                  gvr_id,
-                  gp_cust,
-                  dispatch,
-                  fm_ticket,
-                  site_name,
-                  site_address,
-                  grade,
-                  fp,
-                  sb,
-                  gp_ticket,
-                  atl_po,
-                  warranty_status,
-                  notes,
-                  status
-                );
-                // .then((response) => {
-                window.location.reload();
-                // });
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
-        </div>
+          >
+            Submit
+          </Button>
+        </Box>
       </Box>
     </div>
   );
