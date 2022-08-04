@@ -38,20 +38,10 @@ const Alertmodal = ({ gctix }) => {
   const [site, setSite] = React.useState("");
   const [gvr, setGvr] = React.useState("");
   const classes = useStyles();
-  const id = gctix.id;
+
   const consoleTest = () => {
-    console.log(
-      majorsrrs,
-      parkers,
-      others,
-      confirmation,
-      sr,
-      gpticket,
-      fp,
-      gc,
-      site,
-      gvr
-    );
+    let id = gctix.id;
+    setLoading(true);
     updateAlertTicket(
       id,
       majorsrrs,
@@ -64,7 +54,15 @@ const Alertmodal = ({ gctix }) => {
       gc,
       site,
       gvr
-    );
+    ).then((res) => {
+      console.log(res);
+      if (res.message === "Update Successful") {
+        alert.show("Updated!");
+      } else {
+        alert.show("An Error Has Occured");
+      }
+    });
+    reload();
   };
 
   const handleTextChangeSite = (e) => {
