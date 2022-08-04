@@ -189,19 +189,13 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.majors_rrs != null && (
-                  <>Majors RRS {gctix.majors_rrs} </>
-                )}
+                {gctix.majors_rrs != null && <>Majors RRS </>}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.parkers_rrs != null && (
-                  <>Parkers RRS {gctix.parkers_rrs} </>
-                )}
+                {gctix.parkers_rrs != null && <>Parkers RRS </>}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.rrs_charges != null && (
-                  <>Other RRS Charges {gctix.rrs_charges} </>
-                )}
+                {gctix.rrs_charges != null && <>Other RRS Charges</>}
               </Typography>
             </CardContent>
           </CardActionArea>
