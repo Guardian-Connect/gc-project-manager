@@ -536,9 +536,9 @@ async function getTicketing() {
   try {
     const tickets = await client.query(
       `
-       SELECT allsites.gp_cust, ticketing.* FROM ticketing
+      SELECT allsites.gp_cust, ticketing.* FROM ticketing
        INNER JOIN allsites on allsites.gvr_id = ticketing.gvr_id
-       ORDER BY date DESC;
+       ORDER BY gp_ticket DESC, date DESC;
       `
     );
     return tickets;
