@@ -297,6 +297,40 @@ export async function updateTicket(
   }
 }
 
+export async function updateAlertTicket(
+  id,
+  majorsrrs,
+  parkers,
+  others,
+  confirmation,
+  sr,
+  gpticket,
+  fp,
+  gc,
+  site,
+  gvr
+) {
+  try {
+    const { tracker } = await axios.post("api/users/update/ticketing", {
+      id,
+      majorsrrs,
+      parkers,
+      others,
+      confirmation,
+      sr,
+      gpticket,
+      fp,
+      gc,
+      site,
+      gvr,
+    });
+    return tracker;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 export async function addEmail(
   cust_gp,
   cus_name,
@@ -320,6 +354,15 @@ export async function addEmail(
       cus_email5,
       cus_email6,
     });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getTicketing() {
+  try {
+    const { data } = await axios.get(`/api/users/ticketing`);
     return data;
   } catch (error) {
     throw error;

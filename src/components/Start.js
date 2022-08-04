@@ -13,7 +13,7 @@ const Start = ({
   let message = JSON.parse(sessionStorage.getItem("dispinf"));
 
   return (
-    <div className="app">
+    <div className="appform">
       <h2>
         {message
           .filter((client, index) => {
@@ -39,9 +39,9 @@ const Start = ({
             // }
           })
           .map((site) => (
-            <>
+            <div key={site.id}>
               <Dispcardz site={site} setCount={setCount} count={count} />
-            </>
+            </div>
           ))}
       </h2>
     </div>

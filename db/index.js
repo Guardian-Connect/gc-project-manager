@@ -369,6 +369,34 @@ async function updateTracker(id, fields = {}) {
   }
 }
 
+async function updateAlertTickets(id, fields = {}) {
+  try {
+    console.log(fields, "fields");
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(id, setString);
+    console.log(Object.values(fields));
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE ticketing
+      SET ${setString}
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows);
+      return { message: "Update Successful" };
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getUsersByID(id) {
   try {
     const {
@@ -504,6 +532,20 @@ async function createGctracker(
   }
 }
 
+async function getTicketing() {
+  try {
+    const tickets = await client.query(
+      `
+       SELECT allsites.gp_cust, ticketing.* FROM ticketing
+       INNER JOIN allsites on allsites.gvr_id = ticketing.gvr_id
+       ORDER BY date DESC;
+      `
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
 module.exports = {
   client,
   getAllUsers,
@@ -528,4 +570,6 @@ module.exports = {
   getAllGcTracker,
   getTracker,
   updateTracker,
+  getTicketing,
+  updateAlertTickets,
 };

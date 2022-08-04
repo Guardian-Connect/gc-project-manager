@@ -25,6 +25,8 @@ const {
   getAllGcTracker,
   getTracker,
   updateTracker,
+  getTicketing,
+  updateAlertTickets,
 } = require("../db");
 const SALT_COUNT = 10;
 
@@ -40,6 +42,15 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/ticketing", async (req, res, next) => {
+  try {
+    const dispinfo = await getTicketing();
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });
@@ -649,6 +660,64 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
   }
   try {
     const updatedTicket = await updateTracker(id, updateFields);
+    console.log(updatedTicket, "users");
+    return { message: "Update Successful" };
+  } catch ({ name, message }) {
+    console.log(name, message);
+    console.log(name, message);
+    next({ name, message });
+  }
+});
+
+usersRouter.post("/update/ticketing", async (req, res, next) => {
+  const {
+    majorsrrs,
+    parkers,
+    others,
+    confirmation,
+    sr,
+    gpticket,
+    fp,
+    gc,
+    site,
+    gvr,
+    id,
+  } = req.body;
+  console.log("Ticket Update Running");
+  const updateFields = {};
+
+  if (majorsrrs) {
+    updateFields.majors_rrs = majorsrrs;
+  }
+  if (parkers) {
+    updateFields.parkers_rrs = parkers;
+  }
+  if (others) {
+    updateFields.rrs_charges = others;
+  }
+  if (confirmation) {
+    updateFields.confirmation_number = confirmation;
+  }
+  if (sr) {
+    updateFields.sr_number = sr;
+  }
+  if (gpticket) {
+    updateFields.gp_ticket = gpticket;
+  }
+  if (fp) {
+    updateFields.fueling_position = fp;
+  }
+  if (gc) {
+    updateFields.ticket_number = gc;
+  }
+  if (site) {
+    updateFields.s_name = site;
+  }
+  if (gvr) {
+    updateFields.gvr_id = gvr;
+  }
+  try {
+    const updatedTicket = await updateAlertTickets(id, updateFields);
     console.log(updatedTicket, "users");
     return { message: "Update Successful" };
   } catch ({ name, message }) {

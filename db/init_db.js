@@ -14,6 +14,7 @@ const {
   getSpecificSiteInfoIncom,
   getEmailByGvr,
   getEmailByGp,
+  getTicketing,
 } = require("./index");
 let gvr_id = "123456";
 let gp_cust = "MAJ0001";
@@ -203,17 +204,19 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    await dropTables();
-    await createTables();
-    await createInitialUsers();
-    await createSiteDisp(
-      gvr_id,
-      gp_cust,
-      cus_name,
-      site_address,
-      contract,
-      totaldisp
-    );
+    // await dropTables();
+    // await createTables();
+    // await createInitialUsers();
+    // await createSiteDisp(
+    //   gvr_id,
+    //   gp_cust,
+    //   cus_name,
+    //   site_address,
+    //   contract,
+    //   totaldisp
+    // );
+    const tickets = await getTicketing();
+    console.log(typeof tickets);
   } catch (error) {
     console.error(error);
   } finally {

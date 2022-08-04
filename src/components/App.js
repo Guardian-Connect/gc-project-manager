@@ -12,6 +12,7 @@ import {
   addSite,
   addEmail,
   createDisp,
+  getTicketing,
 } from "../api";
 import logo from "../assests/logo.gif";
 import Project from "./Project";
@@ -24,6 +25,7 @@ import Gctracker from "./Gctracker";
 import Gctrackerdisplay from "./Gctrackerdisplay";
 import { addTicket } from "../api";
 import Login from "./Login";
+import Alerticket from "./Alerticket";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -40,6 +42,7 @@ const App = () => {
         sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
         // sessionStorage.setItem("dispinfo", 1);
         setMockData(response.dispinfo);
+        // getTicketing();
       })
       .catch((error) => {
         setMessage(error.message);
@@ -92,6 +95,12 @@ const App = () => {
               {/* What Renders when open notes button is clicked */}
               <Route path="/second">
                 <Project
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/alerticket">
+                <Alerticket
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                 />

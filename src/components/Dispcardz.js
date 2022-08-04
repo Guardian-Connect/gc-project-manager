@@ -33,6 +33,8 @@ const Dispcardz = ({ site, setCount, count }) => {
       <Accordion
         sx={{
           m: 1,
+          // mb: 1,
+          // mr: 200,
           bgcolor: "background.paper",
           width: "65%",
           borderRadius: 1,
@@ -67,7 +69,7 @@ const Dispcardz = ({ site, setCount, count }) => {
               Renewal Date - {handleDate(site.renewal)}
             </Typography>
             <Typography variant="h5" component="div">
-              Warranty Date - {handleDate(site.warranty_date)}
+              Warranty Date - {handleDate(site.warranty)}
             </Typography>
           </CardContent>
         </AccordionSummary>

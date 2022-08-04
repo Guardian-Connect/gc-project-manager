@@ -92,7 +92,7 @@ const Gctracker = ({ addTicket }) => {
   };
 
   return (
-    <div className="appform">
+    <>
       <Box
         sx={{
           // display: "flex",
@@ -309,7 +309,7 @@ const Gctracker = ({ addTicket }) => {
           </Button>
         </Box>
       </Box>
-    </div>
+    </>
   );
 };
 

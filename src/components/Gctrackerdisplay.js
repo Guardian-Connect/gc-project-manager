@@ -33,8 +33,7 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
   };
 
   return (
-    <div className="app">
-      {console.log(tracker)}
+    <div className="apptrack">
       {tracker
         .filter((client, index) => {
           const clientsAdd = client.address;

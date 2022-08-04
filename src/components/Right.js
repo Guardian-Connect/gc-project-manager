@@ -100,6 +100,17 @@ const Right = () => {
               Open Notes
             </Button>
           </ListItem>
+          <ListItem>
+            <Button
+              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              variant="contained"
+              onClick={() => {
+                history.push("/alerticket");
+              }}
+            >
+              Alert Tickets
+            </Button>
+          </ListItem>
         </List>
         <Divider />
         <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>

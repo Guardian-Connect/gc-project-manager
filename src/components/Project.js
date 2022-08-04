@@ -15,7 +15,7 @@ const Project = ({ setMessage, searchInput, setSearchInput }) => {
   }, []);
 
   return (
-    <div className="app">
+    <div className="appform">
       {message
         .filter((client, index) => {
           const clientsAdd = client.site_address;
