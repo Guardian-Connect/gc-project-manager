@@ -92,12 +92,13 @@ const Gctracker = ({ addTicket }) => {
   };
 
   return (
-    <>
+    <div className="app">
       <Box
         sx={{
           // display: "flex",
           // flexDirection: "column",
           p: 1,
+
           ml: -30,
           width: "85%",
           bgcolor: "background.paper",
@@ -309,7 +310,7 @@ const Gctracker = ({ addTicket }) => {
           </Button>
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 
