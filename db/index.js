@@ -2,19 +2,19 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -46,7 +46,8 @@ async function createUser({ username, password }) {
     throw error;
   }
 }
-async function createSite(gvr_id, gp_cust, cus_name, site_address, contract) {
+async function createSite(gvrid, gp_cust, cus_name, site_address, contract) {
+  let gvr_id = gvrid;
   try {
     console.log(
       "site creation",
@@ -56,6 +57,10 @@ async function createSite(gvr_id, gp_cust, cus_name, site_address, contract) {
       site_address,
       contract
     );
+
+    if (gvr_id === 0) {
+      gvr_id = "Customer Number" + " " + Math.floor(Math.random() * 500000);
+    }
     const check = await getSiteGvr(gvr_id);
     if (check && check.length > 0) {
       console.log("check", check.length);
@@ -319,8 +324,11 @@ async function updateDisp(id, fields = {}) {
     const setString = Object.keys(fields)
       .map((key, index) => `${key}=$${index + 1}`)
       .join(", ");
-    console.log(id, setString);
-    console.log(Object.values(fields));
+    console.log(setString);
+    if (fields.gvr_id) {
+      const test = await updateAllSitesGvr(fields);
+      console.log(test, "Testing");
+    }
     try {
       const { rows } = await client.query(
         `
@@ -341,6 +349,24 @@ async function updateDisp(id, fields = {}) {
   }
 }
 
+async function updateAllSitesGvr({ gvr_id, site_address }) {
+  console.log(typeof gvr_id, typeof site_address);
+  try {
+    const result = await client.query(
+      `
+      UPDATE allsites
+      SET gvr_id=$1
+      WHERE site_address=$2
+      RETURNING *;
+    `,
+      [gvr_id, site_address]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
 async function updateTracker(id, fields = {}) {
   try {
     console.log(fields, "fields");
@@ -538,7 +564,7 @@ async function getTicketing() {
       `
       SELECT allsites.gp_cust, ticketing.* FROM ticketing
        INNER JOIN allsites on allsites.gvr_id = ticketing.gvr_id
-       ORDER BY gp_ticket DESC, date DESC;
+       ORDER BY gp_ticket DESC, date ASC;
       `
     );
     return tickets;

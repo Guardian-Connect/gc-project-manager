@@ -28,6 +28,7 @@ const {
   getTicketing,
   updateAlertTickets,
 } = require("../db");
+const { NotesSharp } = require("@mui/icons-material");
 const SALT_COUNT = 10;
 
 usersRouter.get("/", async (req, res, next) => {
@@ -447,9 +448,16 @@ usersRouter.post("/update", async (req, res, next) => {
     grades9,
     disp10,
     grades10,
+    notes,
   } = req.body;
   console.log("Users Running");
   const updateFields = {};
+  console.log(notes.length, "notes length");
+  if (notes != null && notes.length > 1) {
+    updateFields.notes = notes;
+  } else if (notes.length <= 1) {
+    updateFields.notes = null;
+  }
 
   if (gvr_id) {
     updateFields.gvr_id = gvr_id;

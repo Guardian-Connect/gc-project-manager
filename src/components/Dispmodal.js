@@ -63,6 +63,7 @@ const Dispmodal = ({ site }) => {
     setGrades9(site.grades9);
     setDisp10(site.disp10);
     setGrades10(site.grades10);
+    // setNotes(site.notes);
   }, []);
   let date = moment.utc().format("yyyy-MM-DD");
   const [gvr_id, setGvr_id] = React.useState(0);
@@ -100,6 +101,7 @@ const Dispmodal = ({ site }) => {
   const [grades10, setGrades10] = React.useState("");
   const [renewal, setRenewal] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [notes, setNotes] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -117,6 +119,10 @@ const Dispmodal = ({ site }) => {
   //     return date;
   //   }
   // }
+
+  const handleNotes = (e) => {
+    setNotes(e.target.value);
+  };
 
   const handleGrades10 = (e) => {
     setGrades10(e.target.value);
@@ -347,7 +353,8 @@ const Dispmodal = ({ site }) => {
       disp9,
       grades9,
       disp10,
-      grades10
+      grades10,
+      notes
     );
     reload();
   };
@@ -505,6 +512,17 @@ const Dispmodal = ({ site }) => {
             shrink: true,
           }}
           onChange={handleAtgmodel}
+        />
+        <TextField
+          sx={{ m: 2, width: "81%" }}
+          required
+          id="outlined-required"
+          label="Notes"
+          defaultValue={site.notes}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleNotes}
         />
 
         <TextField

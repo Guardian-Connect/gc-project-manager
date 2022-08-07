@@ -208,7 +208,8 @@ export async function updateDisp(
   disp9,
   grades9,
   disp10,
-  grades10
+  grades10,
+  notes
 ) {
   try {
     const { disp } = await axios.post("api/users/update", {
@@ -247,6 +248,7 @@ export async function updateDisp(
       grades9,
       disp10,
       grades10,
+      notes,
     });
     return disp;
   } catch (error) {
