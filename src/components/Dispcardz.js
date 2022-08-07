@@ -115,6 +115,10 @@ const Dispcardz = ({ site, setCount, count }) => {
             </Typography>
           </CardContent>
         </AccordionSummary>
+        <Typography variant="h5" component="div">
+          {site.notes != null && <> Notes : {site.notes} </>}
+          {site.notes === null && <>No Notes Entered</>}
+        </Typography>
         <PosAtg site={site} />
         <Dispensers site={site} />
         <Button variant="contained" onClick={handleClickOpen} sx={{ m: 1 }}>
