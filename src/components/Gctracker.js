@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   Typography,
   Select,
@@ -37,7 +39,35 @@ const Gctracker = ({ addTicket }) => {
   const [warranty_status, setWarrantystatus] = useState("");
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState("Open");
+  const [loading, setLoading] = React.useState(false);
   const classes = useStyles();
+
+  const reload = () => {
+    setTimeout(function () {
+      window.location.reload();
+    }, 5000);
+  };
+
+  const consoleTest = (e) => {
+    addTicket(
+      now,
+      gvr_id,
+      gp_cust,
+      dispatch,
+      fm_ticket,
+      site_name,
+      site_address,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes,
+      status
+    );
+    reload();
+  };
 
   const handleNotes = (e) => {
     setNotes(e.target.value);
@@ -279,7 +309,7 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleNotes}
         />
         <Box textAlign="center">
-          <Button
+          {/* <Button
             sx={{ width: "15%" }}
             variant="contained"
             endIcon={<SendIcon />}
@@ -302,12 +332,23 @@ const Gctracker = ({ addTicket }) => {
                 status
               );
               // .then((response) => {
-              window.location.reload();
+              // window.location.reload();
               // });
             }}
           >
             Submit
-          </Button>
+          </Button> */}
+          <LoadingButton
+            sx={{ m: 2, width: "82%" }}
+            color="secondary"
+            onClick={consoleTest}
+            loading={loading}
+            loadingPosition="start"
+            startIcon={<SaveIcon />}
+            variant="contained"
+          >
+            Save
+          </LoadingButton>
         </Box>
       </Box>
     </div>

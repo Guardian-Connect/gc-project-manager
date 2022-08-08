@@ -367,6 +367,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
     status,
   } = req.body;
   try {
+    console.log("firing in users, gcticket");
     const custemail = await createGctracker(
       date,
       gvr_id,

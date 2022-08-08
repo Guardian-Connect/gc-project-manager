@@ -436,6 +436,7 @@ export async function addTicket(
   status
 ) {
   try {
+    console.log("api index firing, gcticket");
     const { data } = await axios.post("/api/users/gcticket", {
       date,
       gvr_id,
