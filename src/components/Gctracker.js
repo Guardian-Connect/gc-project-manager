@@ -49,6 +49,8 @@ const Gctracker = ({ addTicket }) => {
   };
 
   const consoleTest = (e) => {
+    setLoading(true);
+
     addTicket(
       now,
       gvr_id,
