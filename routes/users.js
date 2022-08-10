@@ -283,7 +283,7 @@ usersRouter.post("/createdisp", async (req, res, next) => {
     } else {
       console.log(error);
     }
-    console.log(dispinfo);
+    res.send({ dispinfo });
   } catch (error) {
     console.log(error);
     next(error);
@@ -306,7 +306,7 @@ usersRouter.post("/allsites", async (req, res, next) => {
     //   console.log(error);
     // }
     // res.send({ message: "Site Added!" });
-    res.send(allsites);
+    res.send({ allsites });
   } catch (error) {
     next(error);
   }
@@ -368,7 +368,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
   } = req.body;
   try {
     console.log("firing in users, gcticket");
-    const custemail = await createGctracker(
+    const gctracker = await createGctracker(
       date,
       gvr_id,
       gp,
@@ -390,7 +390,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
     // } else {
     //   res.send("Error");
     // }
-    // res.send({ allsites });
+    res.send({ gctracker });
   } catch (error) {
     next(error);
   }
@@ -586,7 +586,7 @@ usersRouter.post("/update", async (req, res, next) => {
   try {
     const updatedTicket = await updateDisp(id, updateFields);
     console.log(updatedTicket.length);
-    return { message: "Update Successful" };
+    res.setDefaultEncoding({ updatedTicket });
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);
@@ -670,7 +670,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
   try {
     const updatedTicket = await updateTracker(id, updateFields);
     console.log(updatedTicket, "users");
-    return { message: "Update Successful" };
+    res.send({ updatedTicket });
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);
@@ -728,7 +728,7 @@ usersRouter.post("/update/ticketing", async (req, res, next) => {
   try {
     const updatedTicket = await updateAlertTickets(id, updateFields);
     console.log(updatedTicket, "users");
-    return { message: "Update Successful" };
+    res.send({ updatedTicket });
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);

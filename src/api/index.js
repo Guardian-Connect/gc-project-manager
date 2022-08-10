@@ -412,7 +412,7 @@ export async function getCompleteData(gp) {
   try {
     const { data } = await axios.get(`/api/users/complete/${gp}`);
     sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
-    // return data;
+    return data;
   } catch (error) {
     throw error;
   }

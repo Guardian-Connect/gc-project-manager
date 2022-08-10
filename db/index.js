@@ -362,7 +362,7 @@ async function updateAllSitesGvr({ gvr_id, site_address }) {
       [gvr_id, site_address]
     );
 
-    return result;
+    return { message: "Update Successful" };
   } catch (error) {
     throw error;
   }
