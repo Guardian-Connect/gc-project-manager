@@ -375,7 +375,16 @@ export async function getSpecificData(gp) {
   try {
     const { data } = await axios.get(`/api/users/records/${gp}`);
     sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
-    // return data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteAlert(id) {
+  try {
+    const { data } = await axios.get(`/api/users/delete/ticketing/${id}`);
+    return data;
   } catch (error) {
     throw error;
   }

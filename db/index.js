@@ -572,6 +572,21 @@ async function getTicketing() {
     thrown(error);
   }
 }
+
+async function deleteAlertTicket(id) {
+  try {
+    const tickets = await client.query(
+      `
+      DELETE FROM ticketing
+      WHERE id=$1
+      `,
+      [id]
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
 module.exports = {
   client,
   getAllUsers,
@@ -598,4 +613,5 @@ module.exports = {
   updateTracker,
   getTicketing,
   updateAlertTickets,
+  deleteAlertTicket,
 };

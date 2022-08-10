@@ -27,6 +27,7 @@ const {
   updateTracker,
   getTicketing,
   updateAlertTickets,
+  deleteAlertTicket,
 } = require("../db");
 const { NotesSharp } = require("@mui/icons-material");
 const SALT_COUNT = 10;
@@ -163,6 +164,16 @@ usersRouter.get("/complete/:gp", async (req, res, next) => {
   try {
     const { gp } = req.params;
     const dispinfo = await getSpecificSiteInfoComplete(gp);
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/delete/ticketing/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const dispinfo = await deleteAlertTicket(id);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });

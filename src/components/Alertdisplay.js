@@ -1,5 +1,5 @@
 import React from "react";
-import { handleDateTwo as handleDate } from "../api";
+import { handleDateTwo as handleDate, deleteAlert } from "../api";
 import {
   Typography,
   Card,
@@ -8,9 +8,15 @@ import {
   Button,
   Dialog,
 } from "@mui/material";
+import { DeleteIcon } from "@mui/icons-material/Delete";
 import Alertmodal from "./Alertmodal";
 const Alertdisplay = ({ gctix }) => {
   const [open, setOpen] = React.useState(false);
+
+  const handleDelete = (gctix) => {
+    let id = gctix.id;
+    deleteAlert(id);
+  };
 
   const handleClickOpen = (gctix) => {
     setOpen(true);

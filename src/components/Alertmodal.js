@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { handleDate, handleDateTwo } from "../api";
+import { handleDate, handleDateTwo, deleteAlert } from "../api";
 import {
   TextField,
   FormControl,
   MenuItem,
   Select,
   InputLabel,
+  Button,
 } from "@mui/material";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { makeStyles } from "@mui/styles";
 import { updateTicket } from "../api";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -105,8 +107,26 @@ const Alertmodal = ({ gctix }) => {
     setParkersRRS(e.target.value);
   };
 
+  const handleDelete = () => {
+    let id = gctix.id;
+    setLoading(true);
+    deleteAlert(id);
+    reload();
+  };
+
   return (
     <div>
+      <LoadingButton
+        sx={{ m: 2, width: "82%" }}
+        color="secondary"
+        onClick={handleDelete}
+        loading={loading}
+        loadingPosition="start"
+        variant="contained"
+        startIcon={<DeleteForeverIcon />}
+      >
+        Delete
+      </LoadingButton>
       <TextField
         sx={{ m: 2, width: "81%" }}
         required
