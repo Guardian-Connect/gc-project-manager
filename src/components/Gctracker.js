@@ -164,6 +164,7 @@ const Gctracker = ({ addTicket }) => {
         <FormControl className={classes.formControl} sx={{ m: 1 }}>
           <InputLabel>Dispatch Type</InputLabel>
           <Select onChange={handleDispatch}>
+            <MenuItem value={"Install - Repair "}>Install - Repair </MenuItem>
             <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
             <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
             <MenuItem value={"Printer"}>Printer</MenuItem>
