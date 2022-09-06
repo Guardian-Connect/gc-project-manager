@@ -188,6 +188,9 @@ const Trackermodal = ({ gctix }) => {
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Dispatch Type - {gctix.dispatch_type}</InputLabel>
         <Select onChange={handleTextChangeDispatch}>
+          <MenuItem value={"Install - Repair"}>Install - Repair </MenuItem>
+          <MenuItem value={"Repair"}>Repair </MenuItem>
+          <MenuItem value={"Upgrade"}>Upgrade </MenuItem>
           <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
           <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
           <MenuItem value={"Printer"}>Printer</MenuItem>
