@@ -62,7 +62,7 @@ const Right = () => {
               variant="contained"
               onClick={() => {
                 history.push("/");
-                window.location.reload();
+                // window.location.reload();
               }}
             >
               Site Information
@@ -75,7 +75,7 @@ const Right = () => {
               onClick={async () => {
                 await getInfoInstalls();
                 history.push("/gctrackerdisplay");
-                window.location.reload();
+                // window.location.reload();
               }}
             >
               GC Tracker
@@ -93,7 +93,7 @@ const Right = () => {
               onClick={async () => {
                 await getInfoInstalls();
                 history.push("/second");
-                window.location.reload();
+                // window.location.reload();
               }}
             >
               Open Installs
@@ -106,7 +106,7 @@ const Right = () => {
               onClick={async () => {
                 await getInfo();
                 history.push("/second");
-                window.location.reload();
+                // window.location.reload();
               }}
             >
               Open Notes
