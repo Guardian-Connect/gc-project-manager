@@ -26,6 +26,8 @@ import Gctrackerdisplay from "./Gctrackerdisplay";
 import { addTicket } from "../api";
 import Login from "./Login";
 import Alerticket from "./Alerticket";
+import Inboundcalldisplay from "./Inboundcalldisplay";
+import Inboundcall from "./Inboundcall";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -125,6 +127,20 @@ const App = () => {
               </Route>
               <Route path="/contact">
                 <Contact
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/inbounddisplay">
+                <Inboundcalldisplay
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/inboundcall">
+                <Inboundcall
                   contactInfo={contactInfo}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}

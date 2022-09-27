@@ -81,12 +81,10 @@ function AppAppBar({
             variant="contained"
             onClick={async () => {
               setSearchInput("");
-              history.push("/");
               // sessionStorage.setItem("false", false);
-              window.location.reload();
             }}
           >
-            Clear/Home
+            Search Clear
           </Button>
           {/* 
           <Button

@@ -60,6 +60,18 @@ const Right = () => {
             <Button
               sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
               variant="contained"
+              onClick={() => {
+                history.push("/");
+                window.location.reload();
+              }}
+            >
+              Site Information
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button
+              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              variant="contained"
               onClick={async () => {
                 await getInfoInstalls();
                 history.push("/gctrackerdisplay");
@@ -111,6 +123,17 @@ const Right = () => {
               Alert Tickets
             </Button>
           </ListItem>
+          {/* <ListItem>
+            <Button
+              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              variant="contained"
+              onClick={() => {
+                history.push("/inbounddisplay");
+              }}
+            >
+              Inbound Calls
+            </Button>
+          </ListItem> */}
         </List>
         <Divider />
         <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
@@ -139,6 +162,17 @@ const Right = () => {
               GC Tracker
             </Button>
           </ListItem>
+          {/* <ListItem>
+            <Button
+              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              variant="contained"
+              onClick={() => {
+                history.push("/inboundcall");
+              }}
+            >
+              Inbound Calls
+            </Button>
+          </ListItem> */}
         </List>
       </Drawer>
     </Box>
