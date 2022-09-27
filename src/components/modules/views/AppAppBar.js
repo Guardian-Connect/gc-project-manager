@@ -81,6 +81,7 @@ function AppAppBar({
             variant="contained"
             onClick={async () => {
               setSearchInput("");
+              window.location.reload();
               // sessionStorage.setItem("false", false);
             }}
           >
