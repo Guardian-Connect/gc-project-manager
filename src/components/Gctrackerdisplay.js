@@ -70,6 +70,7 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
             }}
             key={gctix.id}
           >
+            {console.log(gctix.status)}
             <CardActionArea onClick={() => handleClickOpen(gctix)}>
               <CardContent>
                 <Typography
