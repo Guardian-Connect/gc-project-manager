@@ -214,7 +214,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           sx={{ m: 1 }}
           required
           id="outlined-required"
-          label="Enter Primary Email Address"
+          label="Enter Primary Contact Name"
           InputLabelProps={{
             shrink: true,
           }}
@@ -224,7 +224,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           sx={{ m: 1 }}
           required
           id="outlined-required"
-          label="Enter Email Address 2"
+          label="Enter Primary Contact Email Address"
           InputLabelProps={{
             shrink: true,
           }}
