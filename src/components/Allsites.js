@@ -132,7 +132,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         alert.show(res.message);
       } else {
         alert.show(res.message);
-        // reload();
+        reload();
       }
       // CustomAlert();
       // window.location.reload();
