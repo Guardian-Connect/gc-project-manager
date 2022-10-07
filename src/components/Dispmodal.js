@@ -581,7 +581,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -609,7 +613,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -637,7 +645,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -665,7 +677,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -693,7 +709,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -721,7 +741,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -749,7 +773,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -777,7 +805,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 
@@ -805,7 +837,11 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
               Reg Mid Prem Non-Eth
             </MenuItem>
+            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
             <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+            <MenuItem value={"Non-Ethanol Only"}>
+              Stand Alone Non-Ethanol
+            </MenuItem>
           </Select>
         </FormControl>
 

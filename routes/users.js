@@ -302,14 +302,26 @@ usersRouter.post("/createdisp", async (req, res, next) => {
 });
 
 usersRouter.post("/allsites", async (req, res, next) => {
-  const { gvr_id, gp_cust, cus_name, site_address, contract } = req.body;
+  const {
+    gvr_id,
+    gp_cust,
+    cus_name,
+    site_address,
+    contract,
+    cus_email1,
+    cus_email2,
+    rrs,
+  } = req.body;
   try {
     const allsites = await createSite(
       gvr_id,
       gp_cust,
       cus_name,
       site_address,
-      contract
+      contract,
+      cus_email1,
+      cus_email2,
+      rrs
     );
     // if (allsites.rowCount === 1) {
     //   res.send("Success");

@@ -2,24 +2,30 @@ import React, { useState, useEffect } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import CheckIcon from "@mui/icons-material/Check";
 import { useAlert } from "react-alert";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   Typography,
+  Select,
   MenuItem,
-  Stack,
+  FormControl,
+  InputLabel,
   Menu,
   Button,
   TextField,
   Alert,
   Box,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const Allsites = ({ addSite, addEmail, createDisp }) => {
+  const [loading, setLoading] = React.useState(false);
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
   const [cus_name, setCus_name] = useState("");
   const [site_address, setSite_address] = useState("");
   const [cust_gp, setCust_gp] = useState("");
-  const [rrs, setRrs] = useState(0);
+  // const [rrs, setRrs] = useState(0);
   const [cus_email1, setCus_email1] = useState("");
   const [cus_email2, setCus_email2] = useState("");
   const [cus_email3, setCus_email3] = useState("");
@@ -27,8 +33,14 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [cus_email5, setCus_email5] = useState("");
   const [cus_email6, setCus_email6] = useState("");
   const [contract, setContract] = useState("");
+  const [rrs, setRrs] = useState("");
   const alert = useAlert();
-
+  const useStyles = makeStyles((theme) => ({
+    formControl: {
+      minWidth: 226,
+    },
+  }));
+  const classes = useStyles();
   const handleTextChangeGvr = (e) => {
     setGvr_id(e.target.value);
   };
@@ -75,14 +87,52 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     setContract(e.target.value);
   };
 
-  const addData = (gvr_id, gp_cust, cus_name, site_address, contract) => {
-    addSite(gvr_id, gp_cust, cus_name, site_address, contract).then((res) => {
-      console.log(res.message);
+  const handleRrs = (e) => {
+    setRrs(e.target.value);
+  };
+  const reload = () => {
+    setTimeout(function () {
+      window.location.reload();
+    }, 5000);
+  };
+
+  const addData = (
+    gvr_id,
+    gp_cust,
+    cus_name,
+    site_address,
+    contract,
+    cus_email1,
+    cus_email2,
+    rrs
+  ) => {
+    setLoading(true);
+
+    addSite(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract,
+      cus_email1,
+      cus_email2,
+      rrs
+    ).then((res) => {
+      console.log(
+        gvr_id,
+        gp_cust,
+        cus_name,
+        site_address,
+        contract,
+        cus_email1,
+        cus_email2,
+        rrs
+      );
       if (res.message === "Site Exists") {
         alert.show(res.message);
       } else {
         alert.show(res.message);
-        window.location.reload();
+        // reload();
       }
       // CustomAlert();
       // window.location.reload();
@@ -160,23 +210,62 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           }}
           onChange={handleContract}
         />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Primary Email Address"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail1}
+        />
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Email Address 2"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeEmail2}
+        />
+        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+          <InputLabel>RRS Fees</InputLabel>
+          <Select onChange={handleRrs}>
+            <MenuItem value={"$100"}>$100</MenuItem>
+            <MenuItem value={"$200"}>$200</MenuItem>
+          </Select>
+        </FormControl>
+
         <Box textAlign="center">
-          <Button
-            sx={{ width: "15%" }}
-            variant="contained"
-            endIcon={<SendIcon />}
+          <LoadingButton
+            sx={{ m: 2, width: "25%" }}
+            color="secondary"
             onClick={() => {
-              addData(gvr_id, gp_cust, cus_name, site_address, contract);
+              addData(
+                gvr_id,
+                gp_cust,
+                cus_name,
+                site_address,
+                contract,
+                cus_email1,
+                cus_email2,
+                rrs
+              );
             }}
+            loading={loading}
+            loadingPosition="start"
+            startIcon={<SaveIcon />}
+            variant="contained"
           >
-            Submit
-          </Button>
+            Save
+          </LoadingButton>
         </Box>
         {/* </div> */}
-        <Typography sx={{ textAlign: "center", mt: 5 }}>
+        {/* <Typography sx={{ textAlign: "center", mt: 5 }}>
           Customer Contact DB
         </Typography>
-        {/* <div className="spaceform"> */}
         <TextField
           sx={{ m: 1 }}
           required
@@ -290,7 +379,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           >
             Submit
           </Button>
-        </Box>
+        </Box> */}
         {/* </div> */}
       </Box>
     </div>

@@ -136,7 +136,10 @@ export async function addSite(
   gp_cust,
   cus_name,
   site_address,
-  contract
+  contract,
+  cus_email1,
+  cus_email2,
+  rrs
 ) {
   try {
     const { data } = await axios.post("/api/users/allsites", {
@@ -145,6 +148,9 @@ export async function addSite(
       cus_name,
       site_address,
       contract,
+      cus_email1,
+      cus_email2,
+      rrs,
     });
     return data;
   } catch (error) {

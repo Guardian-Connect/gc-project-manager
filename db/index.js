@@ -2,19 +2,19 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "equipment";
 
-const client = new Client(
-  process.env.DATABASE_URL ||
-    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-);
+// const client = new Client(
+//   process.env.DATABASE_URL ||
+//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+// );
 
 // Turn on when uploading to heroku //
 
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -46,7 +46,16 @@ async function createUser({ username, password }) {
     throw error;
   }
 }
-async function createSite(gvrid, gp_cust, cus_name, site_address, contract) {
+async function createSite(
+  gvrid,
+  gp_cust,
+  cus_name,
+  site_address,
+  contract,
+  cus_email1,
+  cus_email2,
+  rrs
+) {
   let gvr_id = gvrid;
   try {
     console.log(
@@ -55,7 +64,10 @@ async function createSite(gvrid, gp_cust, cus_name, site_address, contract) {
       gp_cust,
       cus_name,
       site_address,
-      contract
+      contract,
+      cus_email1,
+      cus_email2,
+      rrs
     );
 
     if (gvr_id === 0) {
@@ -72,7 +84,10 @@ async function createSite(gvrid, gp_cust, cus_name, site_address, contract) {
         gp_cust,
         cus_name,
         site_address,
-        contract
+        contract,
+        cus_email1,
+        cus_email2,
+        rrs
       );
       const result = await client.query(
         `
@@ -95,7 +110,10 @@ async function createSiteDisp(
   gp_cust,
   cus_name,
   site_address,
-  contract
+  contract,
+  cus_email1,
+  cus_email2,
+  rrs
 ) {
   try {
     console.log(
@@ -104,14 +122,26 @@ async function createSiteDisp(
       gp_cust,
       cus_name,
       site_address,
-      contract
+      contract,
+      cus_email1,
+      cus_email2,
+      rrs
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract)
-      VALUES ($1, $2, $3, $4, $5);
+      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     `,
-      [gvr_id, gp_cust, cus_name, site_address, contract]
+      [
+        gvr_id,
+        gp_cust,
+        cus_name,
+        site_address,
+        contract,
+        cus_email1,
+        cus_email2,
+        rrs,
+      ]
     );
     console.log("dispinfo", result);
     return result;
