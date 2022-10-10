@@ -62,6 +62,9 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
               p: 1,
               m: 1,
               bgcolor: "background.paper",
+              ...(gctix.status === "Closed" && {
+                bgcolor: "#29b6f6",
+              }),
               width: "75%",
               borderRadius: 1,
               alignText: "center",
@@ -115,7 +118,7 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
                     {gctix.warranty_status != null && (
                       <>Warranty Status {gctix.warranty_status} </>
                     )}
-                    {gctix.awarranty_status === null && (
+                    {gctix.warranty_status === null && (
                       <>No Warranty Status Entered</>
                     )}
                   </Typography>
