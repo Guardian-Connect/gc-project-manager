@@ -608,8 +608,8 @@ usersRouter.post("/update", async (req, res, next) => {
 
   try {
     const updatedTicket = await updateDisp(id, updateFields);
-    console.log(updatedTicket.length);
-    res.setDefaultEncoding({ updatedTicket });
+    // console.log(updatedTicket.length);
+    res.send({ updatedTicket });
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);

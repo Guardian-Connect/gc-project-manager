@@ -64,8 +64,12 @@
 }
 
 .yellow {
-  width: 100%;
+  /* width: 100%; */
   background-color: yellow;
+}
+.white {
+  /* width: 100%; */
+  background-color: white;
 }
 
 .test {

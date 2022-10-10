@@ -369,7 +369,7 @@ async function updateDisp(id, fields = {}) {
     `,
         Object.values(fields)
       );
-      console.log(rows);
+      console.log(rows, "rows");
       return { message: "Update Successful" };
     } catch (error) {
       throw error;
