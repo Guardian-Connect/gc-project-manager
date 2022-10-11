@@ -34,10 +34,10 @@ const Dispcardz = ({ site, setCount, count }) => {
         sx={{
           m: 1,
           bgcolor: "white",
-          ...(site.rrs === "$100" && {
+          ...(site.rrs === "100" && {
             bgcolor: "#df78ef",
           }),
-          ...(site.rrs === "$200" && {
+          ...(site.rrs === "200" && {
             bgcolor: "orange",
           }),
           ...(site.rrs === null && {
@@ -48,6 +48,7 @@ const Dispcardz = ({ site, setCount, count }) => {
         }}
         key={site.id}
       >
+        {console.log(site.rrs)}
         <AccordionSummary
           expandIcon={<AddCircleIcon />}
           aria-controls="panel1a-content"
@@ -59,7 +60,7 @@ const Dispcardz = ({ site, setCount, count }) => {
             </Typography>
             {site.rrs ? (
               <Typography variant="h5" component="div">
-                RRS - {site.rrs}
+                RRS - ${site.rrs}
               </Typography>
             ) : (
               <></>
