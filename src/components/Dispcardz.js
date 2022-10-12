@@ -122,6 +122,13 @@ const Dispcardz = ({ site, setCount, count }) => {
             <Typography variant="h5" component="div">
               GVR ID - {site.gvr_id}
             </Typography>
+            {site.rrs ? (
+              <Typography variant="h5" component="div">
+                RRS - ${site.rrs}
+              </Typography>
+            ) : (
+              <></>
+            )}
             <Typography variant="h5" component="div">
               GP Customer - {site.gp_cust}
             </Typography>
@@ -183,6 +190,13 @@ const Dispcardz = ({ site, setCount, count }) => {
               <Typography variant="h5" component="div">
                 GVR ID - {site.gvr_id}
               </Typography>
+              {site.rrs ? (
+                <Typography variant="h5" component="div">
+                  RRS - ${site.rrs}
+                </Typography>
+              ) : (
+                <></>
+              )}
               <Typography variant="h5" component="div">
                 GP Customer - {site.gp_cust}
               </Typography>
