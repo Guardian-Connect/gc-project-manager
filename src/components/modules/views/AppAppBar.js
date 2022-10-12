@@ -4,6 +4,9 @@ import Link from "@mui/material/Link";
 import AppBar from "../components/AppBar";
 import Toolbar from "../components/Toolbar";
 import Drawer from "../../Drawer";
+import Inboundcall from "../../Inboundcall";
+import Dialog from "@mui/material/Dialog";
+
 import { Button } from "@mui/material";
 import { getInfo, getInfoInstalls, getEmail, getGp } from "../../../api";
 import { useHistory } from "react-router-dom";
@@ -21,11 +24,17 @@ function AppAppBar({
 }) {
   let countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
   let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
-
+  const [open, setOpen] = React.useState(false);
   const handleTextChange = (e) => {
     setSearchInput(e.target.value);
   };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleSubmit = async (e) => {
     if (e.keyCode === 13) {
       if (searchInput.length != 0) {
@@ -87,19 +96,17 @@ function AppAppBar({
           >
             Search Clear
           </Button>
-          {/* 
+
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"
-            onClick={async () => {
-              setSearchInput("");
-              history.push("/report");
-              // window.location.reload();
-            }}
+            onClick={handleClickOpen}
           >
-            DB Entry
-          </Button> */}
-
+            New Call
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <Inboundcall />
+          </Dialog>
           {/* <div className="drawer">
             <Button
               variant="contained"

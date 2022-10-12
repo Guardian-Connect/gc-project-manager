@@ -28,6 +28,8 @@ const {
   getTicketing,
   updateAlertTickets,
   deleteAlertTicket,
+  createInbound,
+  getAllInbound,
 } = require("../db");
 const { NotesSharp } = require("@mui/icons-material");
 const SALT_COUNT = 10;
@@ -45,6 +47,15 @@ usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
     res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/allinbound", async (req, res, next) => {
+  try {
+    const inboundCalls = await getAllInbound();
+    res.send({ inboundCalls });
   } catch ({ name, message }) {
     next({ name, message });
   }
@@ -277,6 +288,25 @@ usersRouter.post("/register", async (req, res, next) => {
 //     next({ name, message });
 //   }
 // });
+
+usersRouter.post("/inbound", async (req, res, next) => {
+  const { sb, gvr_id, notes, name, number, issue, gp } = req.body;
+  try {
+    const inboundRes = await createInbound(
+      sb,
+      gvr_id,
+      notes,
+      name,
+      number,
+      issue,
+      gp
+    );
+    res.send({ inboundRes });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 
 usersRouter.post("/createdisp", async (req, res, next) => {
   const { gvr_id, gp_cust, cus_name, site_address, contract } = req.body;

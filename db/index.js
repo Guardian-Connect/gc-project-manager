@@ -16,6 +16,14 @@ const client = new Client({
   },
 });
 
+let date_ob = new Date();
+let date2 = ("0" + date_ob.getDate()).slice(-2);
+let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+let year = date_ob.getFullYear();
+let hours = date_ob.getHours();
+let minutes = date_ob.getMinutes();
+let seconds = date_ob.getSeconds();
+
 async function getRecordByDate(start, end, gp) {
   try {
     const { rows } = await client.query(
@@ -187,6 +195,24 @@ async function createEmailList(
   }
 }
 
+async function createInbound(sb, gvr_id, notes, name, number, issue, gp) {
+  try {
+    let date = year + "-" + month + "-" + date2;
+    let time = hours + ":" + minutes;
+    const result = await client.query(
+      `
+      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, date, time)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    `,
+      [sb, gvr_id, notes, name, number, issue, gp, date, time]
+    );
+    console.log(result);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getUserByUsername(userName) {
   try {
     const { rows } = await client.query(
@@ -225,6 +251,16 @@ async function getAllUsers() {
   const { rows } = await client.query(
     `SELECT username, email
     FROM users;
+  `
+  );
+
+  return rows;
+}
+
+async function getAllInbound() {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM inbound;
   `
   );
 
@@ -644,4 +680,6 @@ module.exports = {
   getTicketing,
   updateAlertTickets,
   deleteAlertTicket,
+  createInbound,
+  getAllInbound,
 };

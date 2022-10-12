@@ -106,6 +106,15 @@ export async function getGcTracker() {
   }
 }
 
+export async function getAllInbound() {
+  try {
+    const { data } = await axios.get(`/api/users/allinbound`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getInfoInstalls() {
   try {
     const { data } = await axios.get(`/api/users/disp/open`);
@@ -172,6 +181,31 @@ export async function createDisp(
       cus_name,
       site_address,
       contract,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function createInbound(
+  sb,
+  gvr_id,
+  notes,
+  name,
+  number,
+  issue,
+  gp
+) {
+  try {
+    const { data } = await axios.post("/api/users/inbound", {
+      sb,
+      gvr_id,
+      notes,
+      name,
+      number,
+      issue,
+      gp,
     });
     return data;
   } catch (error) {
