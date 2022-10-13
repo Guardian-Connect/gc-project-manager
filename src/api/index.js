@@ -571,3 +571,11 @@ export function isLater(date1, site) {
     );
   }
 }
+
+export function findSb(sb) {
+  if (sb === "CUS") {
+    return "Customer";
+  } else if (sb === "ATL") {
+    return "Atlanta";
+  }
+}

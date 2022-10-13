@@ -16,14 +16,6 @@ const client = new Client({
   },
 });
 
-let date_ob = new Date();
-let date2 = ("0" + date_ob.getDate()).slice(-2);
-let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-let year = date_ob.getFullYear();
-let hours = date_ob.getHours() - 4;
-let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
-let seconds = date_ob.getSeconds();
-
 async function getRecordByDate(start, end, gp) {
   try {
     const { rows } = await client.query(
@@ -197,9 +189,16 @@ async function createEmailList(
 
 async function createInbound(sb, gvr_id, notes, name, number, issue, gp) {
   try {
+    let date_ob = new Date();
+    let date2 = ("0" + date_ob.getDate()).slice(-2);
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    let year = date_ob.getFullYear();
+    let hourz = date_ob.getHours() - 4;
+    let hours = (hourz < 10 ? "0" : "") + hourz;
+    let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
-    console.log(date, time);
+    console.log(date, time, hours, hourz, date_ob);
     const result = await client.query(
       `
       INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, date, time)
