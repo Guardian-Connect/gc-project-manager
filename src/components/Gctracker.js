@@ -127,10 +127,7 @@ const Gctracker = ({ addTicket }) => {
     <div className="app">
       <Box
         sx={{
-          // display: "flex",
-          // flexDirection: "column",
           p: 1,
-
           ml: -30,
           width: "85%",
           bgcolor: "background.paper",
@@ -237,16 +234,6 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleFueling}
         />
 
-        {/* <TextField
-            sx={{ m: 1 }}
-            required
-            id="outlined-required"
-            label="Enter Service Branch (Initials or UNK for Unknown)"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleBranch}
-          /> */}
         <FormControl className={classes.formControl} sx={{ m: 1 }}>
           <InputLabel>Branch</InputLabel>
           <Select onChange={handleBranch}>
@@ -314,35 +301,6 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleNotes}
         />
         <Box textAlign="center">
-          {/* <Button
-            sx={{ width: "15%" }}
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={() => {
-              addTicket(
-                now,
-                gvr_id,
-                gp_cust,
-                dispatch,
-                fm_ticket,
-                site_name,
-                site_address,
-                grade,
-                fp,
-                sb,
-                gp_ticket,
-                atl_po,
-                warranty_status,
-                notes,
-                status
-              );
-              // .then((response) => {
-              // window.location.reload();
-              // });
-            }}
-          >
-            Submit
-          </Button> */}
           <LoadingButton
             sx={{ m: 2, width: "82%" }}
             color="secondary"

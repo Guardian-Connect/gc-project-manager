@@ -199,6 +199,7 @@ async function createInbound(sb, gvr_id, notes, name, number, issue, gp) {
   try {
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
+    console.log(date, time);
     const result = await client.query(
       `
       INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, date, time)
