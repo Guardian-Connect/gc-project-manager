@@ -577,5 +577,35 @@ export function findSb(sb) {
     return "Customer";
   } else if (sb === "ATL") {
     return "Atlanta";
+  } else if (sb === "BIR") {
+    return "Birmingham";
+  } else if (sb === "CHA") {
+    return "Charlotte";
+  } else if (sb === "COL") {
+    return "Columbia";
+  } else if (sb === "FLT") {
+    return "Fort Lauderdale";
+  } else if (sb === "FTM") {
+    return "Fort Myers";
+  } else if (sb === "GRE") {
+    return "Greensboro";
+  } else if (sb === "GCS") {
+    return "Guardian Connect";
+  } else if (sb === "GUL") {
+    return "Gulf/Pensacola";
+  } else if (sb === "JAX") {
+    return "Jacksonville";
+  } else if (sb === "NAS") {
+    return "Nashville";
+  } else if (sb === "RAL") {
+    return "Raleigh";
+  } else if (sb === "SAN") {
+    return "Sanford";
+  } else if (sb === "TAL") {
+    return "Tallahassee";
+  } else if (sb === "TAM") {
+    return "Tampa";
+  } else {
+    return "Unknown";
   }
 }
