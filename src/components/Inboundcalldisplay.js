@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Trackermodal from "./Trackermodal";
-import { findSb, getAllInbound } from "../api";
+import { findSb, getAllInbound, phoneNumber } from "../api";
 import { handleDateTwo as handleDate } from "../api";
 import {
   Typography,
@@ -73,7 +73,7 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
                   Caller Name - {site.name}
                 </Typography>
                 <Typography variant="h5" component="div">
-                  Caller Number - {site.number}
+                  Caller Number - {phoneNumber(site.number)}
                 </Typography>
                 <Typography variant="h5" component="div">
                   Caller Branch - {findSb(site.sb)}
