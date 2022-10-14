@@ -583,7 +583,7 @@ export function findSb(sb) {
     return "Charlotte";
   } else if (sb === "COL") {
     return "Columbia";
-  } else if (sb === "FLT") {
+  } else if (sb === "FTL") {
     return "Fort Lauderdale";
   } else if (sb === "FTM") {
     return "Fort Myers";
