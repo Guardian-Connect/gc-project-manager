@@ -260,7 +260,8 @@ async function getAllUsers() {
 async function getAllInbound() {
   const { rows } = await client.query(
     `SELECT *
-    FROM inbound;
+    FROM inbound
+    ORDER BY date DESC, time DESC;
   `
   );
 
