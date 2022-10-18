@@ -601,6 +601,10 @@ export function findSb(sb) {
     return "Raleigh";
   } else if (sb === "SAN") {
     return "Sanford";
+  } else if (sb === "SAV") {
+    return "Savannah";
+  } else if (sb === "KNX") {
+    return "Knoxville";
   } else if (sb === "TAL") {
     return "Tallahassee";
   } else if (sb === "TAM") {
