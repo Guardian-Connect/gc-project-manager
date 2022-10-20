@@ -117,6 +117,7 @@ const Inboundcall = ({ addTicket }) => {
         <InputLabel>Branch</InputLabel>
         <Select onChange={handleBranch}>
           <MenuItem value={"CUS"}>Customer</MenuItem>
+          <MenuItem value={"PES"}>Petro Solutions</MenuItem>
           <MenuItem value={"ATL"}>Atlanta</MenuItem>
           <MenuItem value={"BIR"}>Birmingham</MenuItem>
           <MenuItem value={"CHA"}>Charlotte</MenuItem>
