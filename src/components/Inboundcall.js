@@ -142,6 +142,7 @@ const Inboundcall = ({ addTicket }) => {
         <Select onChange={handleIssue}>
           <MenuItem value={"true"}>Yes</MenuItem>
           <MenuItem value={"false"}>No</MenuItem>
+          <MenuItem value={"other"}>Other (Not GC Site)</MenuItem>
         </Select>
       </FormControl>
       <TextField
