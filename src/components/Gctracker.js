@@ -28,7 +28,7 @@ const Gctracker = ({ addTicket }) => {
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
   const [dispatch, setDispatch] = useState("");
-  const [fm_ticket, setFM_ticket] = useState("");
+  const [fm_ticket, setFM_ticket] = useState("000000");
   const [site_name, setSite_name] = useState("");
   const [site_address, setSite_address] = useState("");
   const [grade, setGrade] = useState("");

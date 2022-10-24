@@ -52,10 +52,10 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
           if (clientsGptick.includes(searchInput.toUpperCase())) {
             return true;
           }
-          // const clientsFm = client.fm_ticket;
-          // if (clientsFm.includes(searchInput.toUpperCase())) {
-          //   return true;
-          // }
+          const clientsFm = client.fm_ticket;
+          if (clientsFm.includes(searchInput.toUpperCase())) {
+            return true;
+          }
         })
         .map((gctix) => (
           <Card
@@ -77,7 +77,6 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
             }}
             key={gctix.id}
           >
-            {console.log(gctix.status)}
             <CardActionArea onClick={() => handleClickOpen(gctix)}>
               <CardContent>
                 <Typography
@@ -94,10 +93,10 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
                   Ticket Status - {gctix.status}
                 </Typography>
                 <Typography variant="h5" component="div">
-                  {gctix.fm_ticket != null && (
+                  {gctix.fm_ticket != "000000" && (
                     <>Fm Ticket - {gctix.fm_ticket}</>
                   )}
-                  {gctix.fm_ticket === null && <>No FM Ticket Listed</>}
+                  {gctix.fm_ticket === "000000" && <>No FM Ticket Listed</>}
                 </Typography>
                 <Typography variant="h5" component="div">
                   {gctix.location != null && <>Site Name - {gctix.location} </>}
