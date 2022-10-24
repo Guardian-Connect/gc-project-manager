@@ -611,6 +611,8 @@ export function findSb(sb) {
     return "Tampa";
   } else if (sb === "PES") {
     return "Petro Solutions";
+  } else if (sb === "SUB") {
+    return "Sub-Contractor (Other)";
   } else {
     return "Unknown";
   }
