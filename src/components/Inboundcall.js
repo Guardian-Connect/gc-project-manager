@@ -111,7 +111,7 @@ const Inboundcall = ({ addTicket }) => {
         sx={{ width: "44%", m: 1 }}
         required
         id="outlined-required"
-        label="Enter GP Ticket Number"
+        label="Enter GP/FM Ticket Number"
         // defaultValue={site.gvr_id}
         InputLabelProps={{
           shrink: true,
