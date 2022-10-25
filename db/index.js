@@ -187,7 +187,16 @@ async function createEmailList(
   }
 }
 
-async function createInbound(sb, gvr_id, notes, name, number, issue, gp) {
+async function createInbound(
+  sb,
+  gvr_id,
+  notes,
+  name,
+  number,
+  issue,
+  gp,
+  problemType
+) {
   try {
     let date_ob = new Date();
     let date2 = ("0" + date_ob.getDate()).slice(-2);
@@ -201,10 +210,10 @@ async function createInbound(sb, gvr_id, notes, name, number, issue, gp) {
     console.log(date, time, hours, hourz, date_ob);
     const result = await client.query(
       `
-      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, date, time)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, date, time)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
     `,
-      [sb, gvr_id, notes, name, number, issue, gp, date, time]
+      [sb, gvr_id, notes, name, number, issue, gp, problemType, date, time]
     );
     console.log(result);
     return result;

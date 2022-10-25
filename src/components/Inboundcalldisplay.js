@@ -79,6 +79,9 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
                   Caller Branch - {findSb(site.sb)}
                 </Typography>
                 <Typography variant="h5" component="div">
+                  Problem Type - {site.problem_type}
+                </Typography>
+                <Typography variant="h5" component="div">
                   Notes - {site.notes}
                 </Typography>
               </CardContent>

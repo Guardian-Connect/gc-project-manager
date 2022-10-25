@@ -40,6 +40,11 @@ const Inboundcall = ({ addTicket }) => {
   const [number, setNumber] = useState("");
   const [issue, setIssue] = useState("");
   const [gp, setGp] = useState("");
+  const [problemType, setProblemType] = useState("");
+
+  const handleProblem = (e) => {
+    setProblemType(e.target.value);
+  };
   const handleBranch = (e) => {
     setSb(e.target.value);
   };
@@ -64,7 +69,7 @@ const Inboundcall = ({ addTicket }) => {
   const consoleTest = (e) => {
     setLoading(true);
     console.log("test", sb, gvr_id, notes, name, number, issue, gp);
-    createInbound(sb, gvr_id, notes, name, number, issue, gp);
+    createInbound(sb, gvr_id, notes, name, number, issue, gp, problemType);
     reload();
   };
   return (
@@ -144,6 +149,18 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"true"}>Yes</MenuItem>
           <MenuItem value={"false"}>No</MenuItem>
           <MenuItem value={"other"}>Other (Not GC Site)</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl sx={{ width: "44%", m: 1 }}>
+        <InputLabel>Issue Type</InputLabel>
+        <Select onChange={handleProblem}>
+          <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
+          <MenuItem value={"Serial Error"}>Serial Error</MenuItem>
+          <MenuItem value={"Printer Error"}>Printer Error</MenuItem>
+          <MenuItem value={"Card Reader"}>Card Reader Error</MenuItem>
+          <MenuItem value={"UPM Error"}>UPM Error</MenuItem>
+          <MenuItem value={"Site Offline"}>Site Offline</MenuItem>
+          <MenuItem value={"None"}>None</MenuItem>
         </Select>
       </FormControl>
       <TextField
