@@ -146,9 +146,9 @@ const Inboundcall = ({ addTicket }) => {
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Found?</InputLabel>
         <Select onChange={handleIssue}>
-          <MenuItem value={"true"}>Yes</MenuItem>
-          <MenuItem value={"false"}>No</MenuItem>
-          <MenuItem value={"other"}>Other (Not GC Site)</MenuItem>
+          <MenuItem value={"TRUE"}>Yes</MenuItem>
+          <MenuItem value={"FALSE"}>No</MenuItem>
+          <MenuItem value={"OTHER"}>Other (Not GC Site)</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>
@@ -160,7 +160,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"Card Reader"}>Card Reader Error</MenuItem>
           <MenuItem value={"UPM Error"}>UPM Error</MenuItem>
           <MenuItem value={"Site Offline"}>Site Offline</MenuItem>
-          <MenuItem value={"SSOM Erro"}>SSOM Error</MenuItem>
+          <MenuItem value={"SSOM Error"}>SSOM Error</MenuItem>
           <MenuItem value={"None"}>None</MenuItem>
         </Select>
       </FormControl>
