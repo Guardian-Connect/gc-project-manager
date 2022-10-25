@@ -160,6 +160,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"Card Reader"}>Card Reader Error</MenuItem>
           <MenuItem value={"UPM Error"}>UPM Error</MenuItem>
           <MenuItem value={"Site Offline"}>Site Offline</MenuItem>
+          <MenuItem value={"SSOM Erro"}>SSOM Error</MenuItem>
           <MenuItem value={"None"}>None</MenuItem>
         </Select>
       </FormControl>
