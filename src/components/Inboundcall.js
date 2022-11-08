@@ -40,6 +40,7 @@ const Inboundcall = ({ addTicket }) => {
   const [number, setNumber] = useState("");
   const [issue, setIssue] = useState("");
   const [gp, setGp] = useState("");
+  const [gcIssue, setGcIssue] = useState("");
   const [problemType, setProblemType] = useState("");
 
   const handleProblem = (e) => {
@@ -63,13 +64,26 @@ const Inboundcall = ({ addTicket }) => {
   const handleIssue = (e) => {
     setIssue(e.target.value);
   };
+  const handleGcIssue = (e) => {
+    setGcIssue(e.target.value);
+  };
   const handleTextChangeGp = (e) => {
     setGp(e.target.value);
   };
   const consoleTest = (e) => {
     setLoading(true);
     console.log("test", sb, gvr_id, notes, name, number, issue, gp);
-    createInbound(sb, gvr_id, notes, name, number, issue, gp, problemType);
+    createInbound(
+      sb,
+      gvr_id,
+      notes,
+      name,
+      number,
+      issue,
+      gp,
+      problemType,
+      gcIssue
+    );
     reload();
   };
   return (
@@ -141,6 +155,13 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"SUB"}>Sub-Contractor (Other)</MenuItem>
           <MenuItem value={"TAL"}>Tallahassee</MenuItem>
           <MenuItem value={"TAM"}>Tampa</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl sx={{ width: "44%", m: 1 }}>
+        <InputLabel>GC Originating Issue?</InputLabel>
+        <Select onChange={handleGcIssue}>
+          <MenuItem value={"TRUE"}>Yes</MenuItem>
+          <MenuItem value={"FALSE"}>No</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>

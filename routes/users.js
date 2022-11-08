@@ -290,7 +290,8 @@ usersRouter.post("/register", async (req, res, next) => {
 // });
 
 usersRouter.post("/inbound", async (req, res, next) => {
-  const { sb, gvr_id, notes, name, number, issue, gp, problemType } = req.body;
+  const { sb, gvr_id, notes, name, number, issue, gp, problemType, gcIssue } =
+    req.body;
   try {
     const inboundRes = await createInbound(
       sb,
@@ -300,7 +301,8 @@ usersRouter.post("/inbound", async (req, res, next) => {
       number,
       issue,
       gp,
-      problemType
+      problemType,
+      gcIssue
     );
     res.send({ inboundRes });
   } catch (error) {

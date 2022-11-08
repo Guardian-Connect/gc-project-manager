@@ -195,7 +195,8 @@ async function createInbound(
   number,
   issue,
   gp,
-  problemType
+  problemType,
+  gcIssue
 ) {
   try {
     let date_ob = new Date();
@@ -216,15 +217,28 @@ async function createInbound(
       issue,
       gp,
       problemType,
+      gcIssue,
       date,
       time
     );
     const result = await client.query(
       `
-      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, date, time)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
     `,
-      [sb, gvr_id, notes, name, number, issue, gp, problemType, date, time]
+      [
+        sb,
+        gvr_id,
+        notes,
+        name,
+        number,
+        issue,
+        gp,
+        problemType,
+        gcIssue,
+        date,
+        time,
+      ]
     );
     console.log(result);
     return result;
