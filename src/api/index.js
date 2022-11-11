@@ -599,6 +599,8 @@ export function findSb(sb) {
     return "Gulf/Pensacola";
   } else if (sb === "JAX") {
     return "Jacksonville";
+  } else if (sb === "LAF") {
+    return "Lafayette";
   } else if (sb === "NAS") {
     return "Nashville";
   } else if (sb === "RAL") {

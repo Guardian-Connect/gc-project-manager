@@ -146,6 +146,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
           <MenuItem value={"GUL"}>Gulf/Pensacola</MenuItem>
           <MenuItem value={"JAX"}>Jacksonville</MenuItem>
+          <MenuItem value={"LAF"}>Lafayette</MenuItem>
           <MenuItem value={"KNX"}>Knoxville</MenuItem>
           <MenuItem value={"NAS"}>Nashville</MenuItem>
           <MenuItem value={"PES"}>Petro Solutions</MenuItem>
