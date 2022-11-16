@@ -344,6 +344,7 @@ usersRouter.post("/allsites", async (req, res, next) => {
     cus_email1,
     cus_email2,
     rrs,
+    custAddId,
   } = req.body;
   try {
     const allsites = await createSite(
@@ -354,7 +355,8 @@ usersRouter.post("/allsites", async (req, res, next) => {
       contract,
       cus_email1,
       cus_email2,
-      rrs
+      rrs,
+      custAddId
     );
     // if (allsites.rowCount === 1) {
     //   res.send("Success");

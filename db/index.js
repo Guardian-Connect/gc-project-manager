@@ -54,7 +54,8 @@ async function createSite(
   contract,
   cus_email1,
   cus_email2,
-  rrs
+  rrs,
+  custAddId
 ) {
   let gvr_id = gvrid;
   try {
@@ -67,7 +68,8 @@ async function createSite(
       contract,
       cus_email1,
       cus_email2,
-      rrs
+      rrs,
+      custAddId
     );
 
     if (gvr_id === 0) {
@@ -79,8 +81,10 @@ async function createSite(
       return { message: "Site Exists" };
     } else {
       console.log(check.length, "check");
+      let add_id = custAddId;
       const siteCreate = await createSiteDisp(
         gvr_id,
+        add_id,
         gp_cust,
         cus_name,
         site_address,
@@ -107,6 +111,7 @@ async function createSite(
 
 async function createSiteDisp(
   gvr_id,
+  add_id,
   gp_cust,
   cus_name,
   site_address,
@@ -119,6 +124,7 @@ async function createSiteDisp(
     console.log(
       "site creation",
       gvr_id,
+      add_id,
       gp_cust,
       cus_name,
       site_address,
@@ -129,11 +135,12 @@ async function createSiteDisp(
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
     `,
       [
         gvr_id,
+        add_id,
         gp_cust,
         cus_name,
         site_address,

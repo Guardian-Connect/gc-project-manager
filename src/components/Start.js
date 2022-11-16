@@ -14,7 +14,6 @@ const Start = ({
 
   return (
     <div className="appform">
-      {console.log(message)}
       <h2>
         {message
           .filter((client, index) => {

@@ -148,9 +148,11 @@ export async function addSite(
   contract,
   cus_email1,
   cus_email2,
-  rrs
+  rrs,
+  custAddId
 ) {
   try {
+    console.log("Add Id", custAddId);
     const { data } = await axios.post("/api/users/allsites", {
       gvr_id,
       gp_cust,
@@ -160,6 +162,7 @@ export async function addSite(
       cus_email1,
       cus_email2,
       rrs,
+      custAddId,
     });
     return data;
   } catch (error) {

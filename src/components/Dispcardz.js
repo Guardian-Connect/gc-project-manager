@@ -48,7 +48,6 @@ const Dispcardz = ({ site, setCount, count }) => {
         }}
         key={site.id}
       >
-        {console.log(site.rrs)}
         <AccordionSummary
           expandIcon={<AddCircleIcon />}
           aria-controls="panel1a-content"

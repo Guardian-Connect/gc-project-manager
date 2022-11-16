@@ -33,6 +33,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [cus_email5, setCus_email5] = useState("");
   const [cus_email6, setCus_email6] = useState("");
   const [contract, setContract] = useState("");
+  const [custAddId, setCustAddId] = useState("");
   const [rrs, setRrs] = useState("");
   const alert = useAlert();
   const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,11 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     },
   }));
   const classes = useStyles();
+
+  const handleTextChangeCustAddId = (e) => {
+    console.log(e.target.value);
+    setCustAddId(e.target.value);
+  };
   const handleTextChangeGvr = (e) => {
     setGvr_id(e.target.value);
   };
@@ -104,10 +110,21 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     contract,
     cus_email1,
     cus_email2,
-    rrs
+    rrs,
+    custAddId
   ) => {
     setLoading(true);
-
+    console.log(
+      gvr_id,
+      gp_cust,
+      cus_name,
+      site_address,
+      contract,
+      cus_email1,
+      cus_email2,
+      rrs,
+      custAddId
+    );
     addSite(
       gvr_id,
       gp_cust,
@@ -116,7 +133,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       contract,
       cus_email1,
       cus_email2,
-      rrs
+      rrs,
+      custAddId
     ).then((res) => {
       console.log(
         gvr_id,
@@ -126,7 +144,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         contract,
         cus_email1,
         cus_email2,
-        rrs
+        rrs,
+        custAddId
       );
       if (res.message === "Site Exists") {
         alert.show(res.message);
@@ -176,6 +195,17 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
             shrink: true,
           }}
           onChange={handleTextChangeGp}
+        />
+
+        <TextField
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Customer Address ID"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeCustAddId}
         />
 
         <TextField
@@ -251,7 +281,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
                 contract,
                 cus_email1,
                 cus_email2,
-                rrs
+                rrs,
+                custAddId
               );
             }}
             loading={loading}
