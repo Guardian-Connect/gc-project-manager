@@ -54,7 +54,7 @@ const Alertdisplay = ({ gctix }) => {
                 Address ID - {gctix.add_id}
               </Typography>
               <Typography variant="h5" component="div">
-                Warranty Date - {handleDate(gctix.warranty)}
+                Warranty Date - {handleDate(gctix.warr)}
               </Typography>
               <Typography variant="h5" component="div">
                 Dashboard Ticket # {gctix.ticket_number}
@@ -156,7 +156,7 @@ const Alertdisplay = ({ gctix }) => {
                 Address ID - {gctix.add_id}
               </Typography>
               <Typography variant="h5" component="div">
-                Warranty Date - {handleDate(gctix.warranty)}
+                Warranty Date - {handleDate(gctix.warr)}
               </Typography>
               <Typography variant="h5" component="div">
                 Dashboard Ticket # {gctix.ticket_number}
