@@ -153,6 +153,17 @@ const Alertmodal = ({ gctix }) => {
         sx={{ m: 2 }}
         required
         id="outlined-required"
+        label="Address ID Copy"
+        defaultValue={gctix.add_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={console.log("Can't Change This Cause It Does NOTHING")}
+      />
+      <TextField
+        sx={{ m: 2 }}
+        required
+        id="outlined-required"
         label="Enter GC Ticket"
         defaultValue={gctix.ticket_number}
         InputLabelProps={{

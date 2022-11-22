@@ -15,6 +15,7 @@ const Alerticket = ({ searchInput, setSearchInput }) => {
 
   React.useEffect(() => {
     getTicketing().then((resp) => {
+      console.log(resp.dispinfo.rows);
       setTicketing(resp.dispinfo.rows);
     });
   }, []);

@@ -666,15 +666,19 @@ async function createGctracker(
   }
 }
 
+// SELECT allsites.gp_cust, ticketing.* FROM ticketing
+//  INNER JOIN allsites on allsites.gvr_id = ticketing.gvr_id
+//  ORDER BY gp_ticket DESC, date ASC;
+
 async function getTicketing() {
   try {
     const tickets = await client.query(
       `
-      SELECT allsites.gp_cust, ticketing.* FROM ticketing
-       INNER JOIN allsites on allsites.gvr_id = ticketing.gvr_id
+SELECT * FROM ticketing
        ORDER BY gp_ticket DESC, date ASC;
       `
     );
+    console.log(tickets.rows);
     return tickets;
   } catch (error) {
     thrown(error);
