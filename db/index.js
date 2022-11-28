@@ -678,7 +678,6 @@ SELECT * FROM ticketing
        ORDER BY gp_ticket DESC, date ASC;
       `
     );
-    console.log(tickets.rows);
     return tickets;
   } catch (error) {
     thrown(error);
