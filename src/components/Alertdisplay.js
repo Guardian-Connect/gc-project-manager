@@ -51,6 +51,9 @@ const Alertdisplay = ({ gctix }) => {
                 GVR ID - {gctix.gvr_id}
               </Typography>
               <Typography variant="h5" component="div">
+                GP Cust - {gctix.gp_cust}
+              </Typography>
+              <Typography variant="h5" component="div">
                 Address ID - {gctix.add_id}
               </Typography>
               <Typography variant="h5" component="div">
@@ -151,6 +154,9 @@ const Alertdisplay = ({ gctix }) => {
               </Typography>
               <Typography variant="h5" component="div">
                 GVR ID - {gctix.gvr_id}
+              </Typography>
+              <Typography variant="h5" component="div">
+                GP Cust - {gctix.gp_cust}
               </Typography>
               <Typography variant="h5" component="div">
                 Address ID - {gctix.add_id}

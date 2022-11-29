@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { handleDate, handleDateTwo, deleteAlert } from "../api";
+import { handleDateTwo as handleDate, deleteAlert } from "../api";
 import {
   TextField,
   FormControl,
@@ -137,6 +137,17 @@ const Alertmodal = ({ gctix }) => {
           shrink: true,
         }}
         onChange={handleTextChangeSite}
+      />
+      <TextField
+        sx={{ m: 2, width: "81%" }}
+        required
+        id="outlined-required"
+        label="Alert Resolved Date"
+        defaultValue={handleDate(gctix.date)}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={console.log("Just a display field")}
       />
       <TextField
         sx={{ m: 2 }}
