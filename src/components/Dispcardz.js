@@ -143,6 +143,9 @@ const Dispcardz = ({ site, setCount, count }) => {
               GP Customer - {site.gp_cust}
             </Typography>
             <Typography variant="h5" component="div">
+              Customer Name - {site.cus_name}
+            </Typography>
+            <Typography variant="h5" component="div">
               Contract Number - {site.contract}
             </Typography>
             <Typography variant="h5" component="div">
@@ -212,6 +215,9 @@ const Dispcardz = ({ site, setCount, count }) => {
               )}
               <Typography variant="h5" component="div">
                 GP Customer - {site.gp_cust}
+              </Typography>
+              <Typography variant="h5" component="div">
+                Customer Name - {site.cus_name}
               </Typography>
               <Typography variant="h5" component="div">
                 Site Address - {site.site_address}
