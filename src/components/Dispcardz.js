@@ -19,7 +19,10 @@ const moment = require("moment");
 let today = moment.utc().format("yyyy-MM-DD");
 const Dispcardz = ({ site, setCount, count }) => {
   const [open, setOpen] = React.useState(false);
-
+  const withoutFirstTwo = (e) => {
+    let cStatus = e.slice(2);
+    return cStatus;
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -48,6 +51,8 @@ const Dispcardz = ({ site, setCount, count }) => {
         }}
         key={site.id}
       >
+        {/* {console.log(site)} */}
+
         <AccordionSummary
           expandIcon={<AddCircleIcon />}
           aria-controls="panel1a-content"
@@ -68,7 +73,13 @@ const Dispcardz = ({ site, setCount, count }) => {
               GP Customer - {site.gp_cust}
             </Typography>
             <Typography variant="h5" component="div">
+              Customer Name - {site.cus_name}
+            </Typography>
+            <Typography variant="h5" component="div">
               Contract Number - {site.contract}
+            </Typography>
+            <Typography variant="h5" component="div">
+              Contract Status - {site.contract_status}
             </Typography>
             <Typography variant="h5" component="div">
               Site Address - {site.site_address}
@@ -133,6 +144,9 @@ const Dispcardz = ({ site, setCount, count }) => {
             </Typography>
             <Typography variant="h5" component="div">
               Contract Number - {site.contract}
+            </Typography>
+            <Typography variant="h5" component="div">
+              Contract Status - {site.contract_status}
             </Typography>
             <Typography variant="h5" component="div">
               Site Address - {site.site_address}
