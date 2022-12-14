@@ -310,6 +310,7 @@ async function getAllInbound() {
 }
 
 async function getAllSites() {
+  console.log("getting all sites!");
   const { rows } = await client.query(
     `SELECT *
     FROM dispinfo

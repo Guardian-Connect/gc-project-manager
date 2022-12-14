@@ -48,7 +48,6 @@ usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
     const rrsmatrix = await getRrsMatrix();
-    console.log(dispinfo, rrsmatrix);
     res.send({ dispinfo, rrsmatrix });
   } catch ({ name, message }) {
     next({ name, message });
