@@ -30,6 +30,7 @@ const {
   deleteAlertTicket,
   createInbound,
   getAllInbound,
+  getRrsMatrix,
 } = require("../db");
 const { NotesSharp } = require("@mui/icons-material");
 const SALT_COUNT = 10;
@@ -46,7 +47,8 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
-    res.send({ dispinfo });
+    const rrsmatrix = await getRrsMatrix();
+    res.send({ dispinfo, rrsmatrix });
   } catch ({ name, message }) {
     next({ name, message });
   }
@@ -476,6 +478,8 @@ usersRouter.post("/update", async (req, res, next) => {
     gvr_id,
     gp_cust,
     contract,
+    add_id,
+    contractStatus,
     site_address,
     totaldisp,
     activation_date,
@@ -509,9 +513,7 @@ usersRouter.post("/update", async (req, res, next) => {
     grades10,
     notes,
   } = req.body;
-  console.log("Users Running");
   const updateFields = {};
-  console.log(notes.length, "notes length");
   if (notes != null && notes.length > 1) {
     updateFields.notes = notes;
   } else if (notes.length <= 1) {
@@ -528,6 +530,12 @@ usersRouter.post("/update", async (req, res, next) => {
 
   if (contract) {
     updateFields.contract = contract;
+  }
+  if (add_id) {
+    updateFields.add_id = add_id;
+  }
+  if (contractStatus) {
+    updateFields.contract_status = contractStatus;
   }
 
   if (site_address) {

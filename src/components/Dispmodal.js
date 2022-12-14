@@ -102,6 +102,8 @@ const Dispmodal = ({ site }) => {
   const [renewal, setRenewal] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [notes, setNotes] = React.useState("");
+  const [add_id, setAdd_id] = React.useState("");
+  const [contractStatus, setContractStatus] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -261,6 +263,14 @@ const Dispmodal = ({ site }) => {
   const handleTextChangeContract = (e) => {
     setContract(e.target.value);
   };
+
+  const handleContractStatus = (e) => {
+    setContractStatus(e.target.value);
+  };
+
+  const handleAddId = (e) => {
+    setAdd_id(e.target.value);
+  };
   const reload = () => {
     setTimeout(function () {
       window.location.reload();
@@ -269,60 +279,14 @@ const Dispmodal = ({ site }) => {
 
   const consoleTest = () => {
     let id = site.id;
-    // console.log(
-    //   id,
-    //   gvr_id,
-    //   gp_cust,
-    //   contract,
-    //   site_address,
-    //   totaldisp,
-    //   activation_date,
-    //   warranty_date,
-    //   renewal,
-    //   posvn,
-    //   posmain,
-    //   posreg1,
-    //   posreg2,
-    //   posreg3,
-    //   atgmodel,
-    //   disp1,
-    //   grades1,
-    //   disp2,
-    //   grades2,
-    //   disp3,
-    //   grades3,
-    //   disp4,
-    //   grades4,
-    //   disp5,
-    //   grades5,
-    //   disp6,
-    //   grades6,
-    //   disp7,
-    //   grades7,
-    //   disp8,
-    //   grades8,
-    //   disp9,
-    //   grades9,
-    //   disp10,
-    //   grades10
-    // );
-    // if (activation_date.length != 0) {
-    //   console.log("firing");
-    //   let split = activation_date;
-    //   let split2 = split.split("-");
-    //   let split3 = Number(split2[0]) + 1;
-    //   let remove = split2.shift();
-    //   let combine = split2.join("-");
-    //   let renewal = split3 + "-" + combine;
-    //   return renewal;
-    // }
-    // console.log(renewal);
     setLoading(true);
     updateDisp(
       id,
       gvr_id,
       gp_cust,
       contract,
+      add_id,
+      contractStatus,
       site_address,
       totaldisp,
       activation_date,
@@ -503,6 +467,33 @@ const Dispmodal = ({ site }) => {
           onChange={handlePosreg3}
         />
         <TextField
+          sx={{ m: 2 }}
+          required
+          id="outlined-required"
+          label="Address ID"
+          defaultValue={site.add_id}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleAddId}
+        />
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
+          <InputLabel>Contract Status</InputLabel>
+          <Select onChange={handleContractStatus}>
+            <MenuItem value={"0-FREETRIAL"}>Free Trial</MenuItem>
+            <MenuItem value={"1-PENDING"}>Pending</MenuItem>
+            <MenuItem value={"2-MONITORING"}>Monitoring</MenuItem>
+            <MenuItem value={"3-STATIC"}>Static</MenuItem>
+            <MenuItem value={"4-MONITORINGREADYTOBILL"}>
+              Monitoring Ready to Bill
+            </MenuItem>
+            <MenuItem value={"7-DECOMMISSIONED"}>Decommissioned</MenuItem>
+            <MenuItem value={"8-EXPIRED"}>Expired</MenuItem>
+            <MenuItem value={"9-CANCELLED"}>Cancelled</MenuItem>
+          </Select>
+        </FormControl>
+
+        <TextField
           sx={{ m: 2, width: "81%" }}
           required
           id="outlined-required"
@@ -513,6 +504,7 @@ const Dispmodal = ({ site }) => {
           }}
           onChange={handleAtgmodel}
         />
+
         <TextField
           sx={{ m: 2, width: "81%" }}
           required

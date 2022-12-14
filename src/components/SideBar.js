@@ -3,53 +3,31 @@ import { Typography, Card, ButtonBase } from "@mui/material";
 import CsvDownload from "react-json-to-csv";
 import { getSpecificData, getCompleteData } from "../api/index";
 import { useHistory } from "react-router-dom";
-let projOne = "MAJ0001";
-let projTwo = "LIO0002";
-let projThree = "SOU0008";
+
 const SideBar = ({ mockData, setSearchInput }) => {
-  let proOneCon = sessionStorage.getItem("ponecon");
-  let proOneDis = sessionStorage.getItem("ponedis");
-  let pTwoCon = sessionStorage.getItem("pTwoCon");
-  let pTwoDis = sessionStorage.getItem("pTwoDis");
-  let pThreeCon = sessionStorage.getItem("pThreeCon");
-  let pThreeDis = sessionStorage.getItem("pThreeDis");
   let history = useHistory();
-
-  const clickyMaj = (event) => {
-    let input = event.target.attributes[0].value;
-    event.preventDefault();
-    // console.log("Clicked", event.target.attributes[1].value);
-    setSearchInput(input);
-  };
-
-  async function clickData(event) {
-    let input = event.target.attributes[1].value;
-    event.preventDefault();
-    // console.log("Clicked", event.target.attributes[1].value);
-    await getSpecificData(input);
-    history.push("/details");
-    window.location.reload(``);
-  }
-
-  async function clickCon(event) {
-    let input = event.target.attributes[0].value;
-    event.preventDefault();
-    await getCompleteData(input);
-    history.push("/details");
-    window.location.reload(``);
-  }
+  let message = JSON.parse(sessionStorage.getItem("rrs"));
   return (
     <div className="sidebar">
       <Typography
         variant="h4"
         sx={{ width: "100%", flexShrink: 1, alignContent: "center" }}
       >
-        <div className="spacecenter">Project Counts</div>
+        <div className="spacecenter">RRS Pricing Matrix</div>
         <div className="bottom"></div>
       </Typography>
+      {message.map((rrs) => (
+        <Typography
+          variant="h5"
+          sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
+        >
+          {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs}
+        </Typography>
+      ))}
+
       {/* ALL PROJECTS START HERE */}
       {/* Starting Project 1 */}
-      <Card variant="outlined">
+      {/* <Card variant="outlined">
         <ButtonBase
           onClick={clickyMaj}
           sx={{ typography: "h6", width: "100%" }}
@@ -80,9 +58,9 @@ const SideBar = ({ mockData, setSearchInput }) => {
             </div>
           </ButtonBase>
         </Typography>
-      </Card>
+      </Card> */}
       {/* Starting Project 2 */}
-      <Card variant="outlined">
+      {/* <Card variant="outlined">
         <ButtonBase
           onClick={clickyMaj}
           sx={{ typography: "h6", width: "100%" }}
@@ -115,9 +93,9 @@ const SideBar = ({ mockData, setSearchInput }) => {
             </div>
           </ButtonBase>
         </Typography>
-      </Card>
+      </Card> */}
       {/* Starting Project 3 */}
-      <Card variant="outlined">
+      {/* <Card variant="outlined">
         <ButtonBase
           onClick={clickyMaj}
           sx={{ typography: "h6", width: "100%" }}
@@ -150,7 +128,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
             </div>
           </ButtonBase>
         </Typography>
-      </Card>
+      </Card> */}
     </div>
   );
 };

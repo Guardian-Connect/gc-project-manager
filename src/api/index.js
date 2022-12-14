@@ -10,14 +10,9 @@ export async function getSomething() {
     const { data } = await axios.get("/api/users/disp");
     sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;
+    let rrs = data.rrsmatrix;
     let disconnected = [];
     let connected = [];
-    let pOneCon = 0;
-    let pOneDis = 0;
-    let pTwoCon = 0;
-    let pTwoDis = 0;
-    let pThreeCon = 0;
-    let pThreeDis = 0;
     info.map((site) => {
       if (site.totaldisp === null) {
         return disconnected.push(site.gvr_id);
@@ -25,61 +20,10 @@ export async function getSomething() {
         return connected.push(site.gvr_id);
       }
     });
-    //project one sites
-    info.map((site) => {
-      if (site.gp_cust === projectOne && site.totaldisp != null) {
-        return pOneCon++;
-      } else if (site.gp_cust === projectOne && site.totaldisp === null) {
-        return pOneDis++;
-      }
-    });
-    //project two sites
-    info.map((site) => {
-      if (site.gp_cust === projectTwo && site.totaldisp != null) {
-        return pTwoCon++;
-      } else if (site.gp_cust === projectTwo && site.totaldisp === null) {
-        return pTwoDis++;
-      }
-    });
-    //project three sites
-    info.map((site) => {
-      if (site.gp_cust === projectThree && site.totaldisp != null) {
-        return pThreeCon++;
-      } else if (site.gp_cust === projectThree && site.totaldisp === null) {
-        return pThreeDis++;
-      }
 
-      let rows = ["ALL"];
-      let columns = ["%"];
-      info.map((site) => {
-        let gp = site.gp_cust;
-        let company = site.cus_name;
-        if (!columns.includes(gp)) {
-          columns.push(gp);
-        }
-        if (!rows.includes(company)) {
-          rows.push(company);
-        }
-      });
-      // let result = rows.reduce(function (result, field, index) {
-      //   result[columns[index]] = field;
-      //   return result;
-      // }, {});
-      let result = rows.map(function (x, i) {
-        return { label: x, value: columns[i] };
-      });
-      sessionStorage.setItem("menuItems", JSON.stringify(result));
-    });
-
-    sessionStorage.setItem("render", JSON.stringify("1"));
-    sessionStorage.setItem("ponecon", JSON.stringify(pOneCon));
-    sessionStorage.setItem("ponedis", JSON.stringify(pOneDis));
-    sessionStorage.setItem("pTwoCon", JSON.stringify(pTwoCon));
-    sessionStorage.setItem("pTwoDis", JSON.stringify(pTwoDis));
-    sessionStorage.setItem("pThreeCon", JSON.stringify(pThreeCon));
-    sessionStorage.setItem("pThreeDis", JSON.stringify(pThreeDis));
     sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
     sessionStorage.setItem("connected", JSON.stringify(connected));
+    sessionStorage.setItem("rrs", JSON.stringify(rrs));
 
     return data;
   } catch (error) {
@@ -164,7 +108,15 @@ export async function addSite(
       rrs,
       custAddId,
     });
-    return data;
+    let string;
+    let response = Object.values(data.allsites);
+    response.forEach(function (e) {
+      string = e.toString();
+    });
+    console.log(string);
+    console.log(Object.values(data.allsites));
+    console.log(data.allsites);
+    return string;
   } catch (error) {
     throw error;
   }
@@ -225,6 +177,8 @@ export async function updateDisp(
   gvr_id,
   gp_cust,
   contract,
+  add_id,
+  contractStatus,
   site_address,
   totaldisp,
   activation_date,
@@ -264,6 +218,8 @@ export async function updateDisp(
       gvr_id,
       gp_cust,
       contract,
+      add_id,
+      contractStatus,
       site_address,
       totaldisp,
       activation_date,

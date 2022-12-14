@@ -33,10 +33,10 @@ const Start = ({
             if (company.includes(searchInput.toUpperCase())) {
               return true;
             }
-            // const siteName = client.s_name.toUpperCase();
-            // if (siteName.includes(searchInput.toUpperCase())) {
-            //   return true;
-            // }
+            const addId = client.add_id.toUpperCase();
+            if (addId.includes(searchInput.toUpperCase())) {
+              return true;
+            }
           })
           .map((site) => (
             <div key={site.id}>

@@ -332,6 +332,17 @@ async function getAllGcTracker() {
   return rows;
 }
 
+async function getRrsMatrix() {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM rrsmatrix
+   ORDER BY gp_cust ASC;
+  `
+  );
+
+  return rows;
+}
+
 async function getAllSitesNotes() {
   const { rows } = await client.query(
     `SELECT *
@@ -728,4 +739,5 @@ module.exports = {
   deleteAlertTicket,
   createInbound,
   getAllInbound,
+  getRrsMatrix,
 };
