@@ -5,8 +5,13 @@ const moment = require("moment");
 export let projectOne = "MAJ0001";
 export let projectTwo = "LIO0002";
 export let projectThree = "SOU0008";
+
 export async function getSomething() {
   try {
+    sessionStorage.removeItem("dispinf");
+    sessionStorage.removeItem("disconnected");
+    sessionStorage.removeItem("connected");
+    sessionStorage.removeItem("rrs");
     const { data } = await axios.get("/api/users/disp");
     sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;

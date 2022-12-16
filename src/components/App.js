@@ -39,16 +39,16 @@ const App = () => {
   const [nameButton, setNameButton] = useState("");
   const [mockData, setMockData] = useState("");
   useEffect(async () => {
-    await getSomething()
-      .then((response) => {
-        sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
-        // sessionStorage.setItem("dispinfo", 1);
-        setMockData(response.dispinfo);
-        // getTicketing();
-      })
-      .catch((error) => {
-        setMessage(error.message);
-      });
+    // await getSomething()
+    //   .then((response) => {
+    //     sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+    //     // sessionStorage.setItem("dispinfo", 1);
+    //     setMockData(response.dispinfo);
+    //     // getTicketing();
+    //   })
+    //   .catch((error) => {
+    //     setMessage(error.message);
+    //   });
   }, []);
 
   useEffect(() => {
@@ -58,7 +58,13 @@ const App = () => {
   }, []);
 
   if (sessionStorage.getItem("token") < 27) {
-    return <Login />;
+    return (
+      <Login
+        setMockData={setMockData}
+        getSomething={getSomething}
+        setMessage={setMessage}
+      />
+    );
   } else {
     return (
       <>

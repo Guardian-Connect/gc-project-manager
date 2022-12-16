@@ -12,10 +12,23 @@ import {
   Box,
 } from "@mui/material";
 import { LockClockOutlined } from "@mui/icons-material";
+import { useAlert } from "react-alert";
 import { loginUser, registerUser } from "../api";
-const Login = () => {
+const Login = ({ setMockData, getSomething, setMessage }) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const alert = useAlert();
+
+  async function verifiedLogIn() {
+    getSomething()
+      .then((response) => {
+        sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+        setMockData(response.dispinfo);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  }
 
   const paperStyle = {
     padding: 20,
@@ -33,9 +46,15 @@ const Login = () => {
   };
   const handleLogin = () => {
     loginUser(login, password).then((resp) => {
-      window.location.reload();
+      console.log(typeof resp);
+      if (typeof resp != "undefined") {
+        verifiedLogIn();
+      } else if (typeof resp === "undefined") {
+        alert.show(
+          "Incorrect Username of Password, Please Check and Try Again"
+        );
+      }
     });
-    // registerUser(login, password);
   };
 
   const handleUser = (e) => {

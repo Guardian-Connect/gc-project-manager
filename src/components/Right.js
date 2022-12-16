@@ -15,7 +15,13 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Button } from "@mui/material";
 // import { getInfo, getInfoInstalls, getEmail, getGp } from "../../../api";
-import { getInfo, getInfoInstalls, getEmail, getGp } from "../api";
+import {
+  getInfo,
+  getInfoInstalls,
+  getEmail,
+  getGp,
+  getSomething,
+} from "../api";
 import { useHistory } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -61,7 +67,9 @@ const Right = () => {
               sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
-                history.push("/");
+                getSomething().then((response) => {
+                  history.push("/");
+                });
                 // window.location.reload();
               }}
             >
