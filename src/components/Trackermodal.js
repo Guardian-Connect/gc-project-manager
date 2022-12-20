@@ -12,6 +12,7 @@ import { updateTicket } from "../api";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAlert } from "react-alert";
+import Branches from "./Branches";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: 226,
@@ -34,6 +35,7 @@ const Trackermodal = ({ gctix }) => {
   const [atl_po, setatl_po] = React.useState("");
   const [status, setstatus] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [branch, setBranch] = React.useState("");
   const alert = useAlert();
   const classes = useStyles();
   React.useEffect(() => {
@@ -61,6 +63,7 @@ const Trackermodal = ({ gctix }) => {
   const consoleTest = () => {
     let id = gctix.id;
     setLoading(true);
+    console.log(sb);
     updateTicket(
       date,
       dispatch_type,
@@ -78,7 +81,6 @@ const Trackermodal = ({ gctix }) => {
       atl_po,
       status
     ).then((res) => {
-      console.log(res);
       if (res.message === "Update Successful") {
         alert.show("Updated!");
       } else {
@@ -125,6 +127,10 @@ const Trackermodal = ({ gctix }) => {
   };
   const handleTextChangeLocation = (e) => {
     setlocation(e.target.value);
+  };
+
+  const handleBranch = (e) => {
+    setsb(e.target.value);
   };
 
   return (
@@ -230,23 +236,7 @@ const Trackermodal = ({ gctix }) => {
       />
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Branch - {gctix.sb}</InputLabel>
-        <Select onChange={handleTextChangeDispatch}>
-          <MenuItem value={"ATL"}>Atlanta</MenuItem>
-          <MenuItem value={"BIR"}>Birmingham</MenuItem>
-          <MenuItem value={"CHA"}>Charlotte</MenuItem>
-          <MenuItem value={"COL"}>Columbia</MenuItem>
-          <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
-          <MenuItem value={"FTM"}>Fort Myers</MenuItem>
-          <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
-          <MenuItem value={"JAX"}>Jacksonville</MenuItem>
-          <MenuItem value={"KNX"}>Knoxville</MenuItem>
-          <MenuItem value={"NAS"}>Nashville</MenuItem>
-          <MenuItem value={"RAL"}>Raleigh</MenuItem>
-          <MenuItem value={"SAN"}>Sanford</MenuItem>
-          <MenuItem value={"SAV"}>Savannah</MenuItem>
-          <MenuItem value={"TAL"}>Tallahassee</MenuItem>
-          <MenuItem value={"TAM"}>Tampa</MenuItem>
-        </Select>
+        <Branches handleBranch={handleBranch} />
       </FormControl>
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Status - {gctix.status}</InputLabel>

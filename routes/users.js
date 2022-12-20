@@ -677,6 +677,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
     warranty_status,
     atl_po,
     status,
+    branch,
   } = req.body;
   console.log("Ticket Update Running");
   const updateFields = {};
@@ -733,6 +734,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
   if (atl_po) {
     updateFields.atl_po = atl_po;
   }
+
   try {
     const updatedTicket = await updateTracker(id, updateFields);
     console.log(updatedTicket, "users");

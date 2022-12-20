@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
-
+import Branches from "./Branches";
 const reload = () => {
   setTimeout(function () {
     window.location.reload();
@@ -134,7 +134,8 @@ const Inboundcall = ({ addTicket }) => {
       />
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Branch</InputLabel>
-        <Select onChange={handleBranch}>
+        <Branches handleBranch={handleBranch} />
+        {/* <Select onChange={handleBranch}>
           <MenuItem value={"ATL"}>Atlanta</MenuItem>
           <MenuItem value={"BIR"}>Birmingham</MenuItem>
           <MenuItem value={"CHA"}>Charlotte</MenuItem>
@@ -156,7 +157,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"SUB"}>Sub-Contractor (Other)</MenuItem>
           <MenuItem value={"TAL"}>Tallahassee</MenuItem>
           <MenuItem value={"TAM"}>Tampa</MenuItem>
-        </Select>
+        </Select> */}
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>GC Originating Issue?</InputLabel>
