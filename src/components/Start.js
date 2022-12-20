@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
 import { Typography, Card } from "@mui/material";
 import Dispcardz from "./Dispcardz";
-const Start = ({
-  setMessage,
-  count,
-  setCount,
-  searchInput,
-  setSearchInput,
-}) => {
-  let message = JSON.parse(sessionStorage.getItem("dispinf"));
+const Start = ({ count, setCount, searchInput, setSearchInput }) => {
+  const [message, setMessage] = useState([]);
+
+  useEffect(async () => {
+    await getSomething()
+      .then((response) => {
+        console.log(response);
+        setMessage(response.dispinfo);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  }, []);
 
   return (
     <div className="appform">

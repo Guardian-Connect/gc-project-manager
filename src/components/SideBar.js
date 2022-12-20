@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getSomething } from "../api";
 import { Typography, Card, ButtonBase } from "@mui/material";
 import CsvDownload from "react-json-to-csv";
 import { getSpecificData, getCompleteData } from "../api/index";
@@ -6,7 +7,17 @@ import { useHistory } from "react-router-dom";
 
 const SideBar = ({ mockData, setSearchInput }) => {
   let history = useHistory();
-  let message = JSON.parse(sessionStorage.getItem("rrs"));
+  const [message, setMessage] = useState([]);
+
+  useEffect(async () => {
+    await getSomething()
+      .then((response) => {
+        setMessage(response.rrsmatrix);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  }, []);
   return (
     <div className="sidebar">
       <Typography
@@ -16,12 +27,34 @@ const SideBar = ({ mockData, setSearchInput }) => {
         <div className="spacecenter">RRS Pricing Matrix</div>
         <div className="bottom"></div>
       </Typography>
+      <Typography
+        variant="h5"
+        sx={{
+          flexShrink: 1,
+          alignSelf: "center",
+          width: "100%",
+          ml: 1,
+          mr: 1,
+          fontSize: 18,
+        }}
+      >
+        {" "}
+        GP - Customer Name - RRS Fee - Request Before RRS
+      </Typography>
+      <div className="bottom"></div>
       {message.map((rrs) => (
         <Typography
           variant="h5"
-          sx={{ flexShrink: 1, alignSelf: "center", width: "100%" }}
+          sx={{
+            flexShrink: 1,
+            alignSelf: "center",
+            width: "100%",
+            ml: 1,
+            mr: 3,
+            fontSize: 17,
+          }}
         >
-          {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs}
+          {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs} - {rrs.warm_start}
         </Typography>
       ))}
 

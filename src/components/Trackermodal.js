@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { handleDate, handleDateTwo } from "../api";
 import {
   TextField,
@@ -27,7 +27,6 @@ const Trackermodal = ({ gctix }) => {
   const [gp_ticket, setgp_ticket] = React.useState("");
   const [grade, setgrade] = React.useState("");
   const [gvr_id, setgvr_id] = React.useState(0);
-  const [id, setid] = React.useState("");
   const [location, setlocation] = React.useState("");
   const [notes, setnotes] = React.useState("");
   const [sb, setsb] = React.useState("");
@@ -35,24 +34,23 @@ const Trackermodal = ({ gctix }) => {
   const [atl_po, setatl_po] = React.useState("");
   const [status, setstatus] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [branch, setBranch] = React.useState("");
   const alert = useAlert();
   const classes = useStyles();
-  React.useEffect(() => {
-    setdate(handleDateTwo(gctix.date));
-    setdispatch_type(gctix.dispatch_type);
-    setfm_ticket(gctix.fm_ticket);
-    setfp(gctix.setfp);
-    setgp(gctix.setgp);
-    setgp_ticket(gctix.setgp_ticket);
-    setgrade(gctix.setgrade);
-    setgvr_id(gctix.gvr_id);
-    setid(gctix.id);
-    setlocation(gctix.setlocation);
-    setnotes(gctix.setnotes);
-    setsb(gctix.setsb);
-    setwarranty_status(gctix.setwarranty_status);
-  }, []);
+  // React.useEffect(() => {
+  //   setdate(handleDateTwo(gctix.date));
+  //   setdispatch_type(gctix.dispatch_type);
+  //   setfm_ticket(gctix.fm_ticket);
+  //   setfp(gctix.setfp);
+  //   setgp(gctix.setgp);
+  //   setgp_ticket(gctix.setgp_ticket);
+  //   setgrade(gctix.setgrade);
+  //   setgvr_id(gctix.gvr_id);
+  //   setid(gctix.id);
+  //   setlocation(gctix.setlocation);
+  //   setnotes(gctix.setnotes);
+  //   setsb(gctix.setsb);
+  //   setwarranty_status(gctix.setwarranty_status);
+  // }, []);
 
   const reload = () => {
     setTimeout(function () {

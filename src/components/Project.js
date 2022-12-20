@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Dispcardz from "./Dispcardz";
 import AppAppBar from "./modules/views/AppAppBar";
+import { getSomething } from "../api";
 import { Typography, Card } from "@mui/material";
 
-const Project = ({ setMessage, searchInput, setSearchInput }) => {
+const Project = ({ searchInput, setSearchInput }) => {
   let test = [];
-  const message = JSON.parse(sessionStorage.getItem("dispinfo"));
   const [loading, setLoading] = useState(true);
+
+  const [message, setMessage] = useState([]);
+
+  useEffect(async () => {
+    await getSomething()
+      .then((response) => {
+        console.log(response);
+        setMessage(response.dispinfo);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {

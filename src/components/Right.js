@@ -89,7 +89,7 @@ const Right = () => {
               GC Tracker
             </Button>
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <Button
               sx={{
                 mr: 2,
@@ -119,7 +119,7 @@ const Right = () => {
             >
               Open Notes
             </Button>
-          </ListItem>
+          </ListItem> */}
           <ListItem>
             <Button
               sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}

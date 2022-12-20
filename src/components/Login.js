@@ -22,7 +22,7 @@ const Login = ({ setMockData, getSomething, setMessage }) => {
   async function verifiedLogIn() {
     getSomething()
       .then((response) => {
-        sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+        // sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
         setMockData(response.dispinfo);
       })
       .catch((error) => {

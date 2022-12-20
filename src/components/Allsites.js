@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import SendIcon from "@mui/icons-material/Send";
-import CheckIcon from "@mui/icons-material/Check";
+import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
@@ -10,10 +8,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Menu,
-  Button,
   TextField,
-  Alert,
   Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -24,14 +19,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [gp_cust, setGp_cust] = useState("");
   const [cus_name, setCus_name] = useState("");
   const [site_address, setSite_address] = useState("");
-  const [cust_gp, setCust_gp] = useState("");
-  // const [rrs, setRrs] = useState(0);
   const [cus_email1, setCus_email1] = useState("");
   const [cus_email2, setCus_email2] = useState("");
-  const [cus_email3, setCus_email3] = useState("");
-  const [cus_email4, setCus_email4] = useState("");
-  const [cus_email5, setCus_email5] = useState("");
-  const [cus_email6, setCus_email6] = useState("");
   const [contract, setContract] = useState("");
   const [custAddId, setCustAddId] = useState("N/A");
   const [rrs, setRrs] = useState("");
@@ -59,30 +48,12 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     setCus_name(e.target.value);
   };
 
-  const handleTextChangeRrs = (e) => {
-    setRrs(e.target.value);
-  };
-
   const handleTextChangeEmail1 = (e) => {
     setCus_email1(e.target.value);
   };
 
   const handleTextChangeEmail2 = (e) => {
     setCus_email2(e.target.value);
-  };
-  const handleTextChangeEmail3 = (e) => {
-    setCus_email3(e.target.value);
-  };
-
-  const handleTextChangeEmail4 = (e) => {
-    setCus_email4(e.target.value);
-  };
-
-  const handleTextChangeEmail5 = (e) => {
-    setCus_email5(e.target.value);
-  };
-  const handleTextChangeEmail6 = (e) => {
-    setCus_email6(e.target.value);
   };
 
   const handleTextChangeSite = (e) => {

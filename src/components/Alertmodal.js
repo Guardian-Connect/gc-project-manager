@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { handleDateTwo as handleDate, deleteAlert } from "../api";
 import {
   TextField,
@@ -6,14 +6,11 @@ import {
   MenuItem,
   Select,
   InputLabel,
-  Button,
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { makeStyles } from "@mui/styles";
-import { updateTicket } from "../api";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
-import { useAlert } from "react-alert";
 import { updateAlertTicket } from "../api";
 const reload = () => {
   setTimeout(function () {

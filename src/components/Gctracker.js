@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import SendIcon from "@mui/icons-material/Send";
+import React, { useState } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import {
@@ -8,15 +7,11 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Menu,
-  Button,
   TextField,
-  Alert,
   Box,
 } from "@mui/material";
 import Branches from "./Branches";
 import { makeStyles } from "@mui/styles";
-const moment = require("moment");
 const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: 226,
@@ -38,7 +33,7 @@ const Gctracker = ({ addTicket }) => {
   const [atl_po, setAtl_po] = useState("");
   const [warranty_status, setWarrantystatus] = useState("");
   const [notes, setNotes] = useState("");
-  const [status, setStatus] = useState("Open");
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = React.useState(false);
   const classes = useStyles();
 
@@ -50,7 +45,7 @@ const Gctracker = ({ addTicket }) => {
 
   const consoleTest = (e) => {
     setLoading(true);
-
+    setStatus("Open");
     addTicket(
       now,
       gvr_id,

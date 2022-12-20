@@ -8,14 +8,9 @@ export let projectThree = "SOU0008";
 
 export async function getSomething() {
   try {
-    sessionStorage.removeItem("dispinf");
-    sessionStorage.removeItem("disconnected");
-    sessionStorage.removeItem("connected");
-    sessionStorage.removeItem("rrs");
     const { data } = await axios.get("/api/users/disp");
-    sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
+    // sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;
-    let rrs = data.rrsmatrix;
     let disconnected = [];
     let connected = [];
     info.map((site) => {
@@ -28,7 +23,7 @@ export async function getSomething() {
 
     sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
     sessionStorage.setItem("connected", JSON.stringify(connected));
-    sessionStorage.setItem("rrs", JSON.stringify(rrs));
+    // sessionStorage.setItem("rrs", JSON.stringify(rrs));
 
     return data;
   } catch (error) {
@@ -39,7 +34,7 @@ export async function getInfo() {
   try {
     const { data } = await axios.get(`/api/users/disp/notes`);
     let info = data.dispinfo;
-    sessionStorage.setItem("dispinfo", JSON.stringify(info));
+    // sessionStorage.setItem("dispinfo", JSON.stringify(info));
     return info;
   } catch (error) {
     throw error;
@@ -68,7 +63,7 @@ export async function getInfoInstalls() {
   try {
     const { data } = await axios.get(`/api/users/disp/open`);
     // let info = data.dispinfo;
-    sessionStorage.setItem("dispinfo", JSON.stringify(data));
+    // sessionStorage.setItem("dispinfo", JSON.stringify(data));
     return data;
   } catch (error) {
     throw error;
@@ -82,7 +77,7 @@ export async function getReportData(start, end, gp) {
       end,
       gp,
     });
-    sessionStorage.setItem("mockData", JSON.stringify(data.report));
+    // sessionStorage.setItem("mockData", JSON.stringify(data.report));
     return data;
   } catch (error) {
     throw error;
@@ -382,7 +377,7 @@ export async function getTicketing() {
 export async function getSpecificData(gp) {
   try {
     const { data } = await axios.get(`/api/users/records/${gp}`);
-    sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
+    // sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
     return data;
   } catch (error) {
     throw error;
@@ -428,7 +423,7 @@ export async function getGp(id) {
 export async function getCompleteData(gp) {
   try {
     const { data } = await axios.get(`/api/users/complete/${gp}`);
-    sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
+    // sessionStorage.setItem("specinfo", JSON.stringify(data.dispinfo));
     return data;
   } catch (error) {
     throw error;
