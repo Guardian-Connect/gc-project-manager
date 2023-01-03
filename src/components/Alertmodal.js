@@ -240,7 +240,8 @@ const Alertmodal = ({ gctix }) => {
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Other RRS?</InputLabel>
         <Select onChange={handleTextChangeOtherRRS}>
-          <MenuItem value={true}>Yes</MenuItem>
+          <MenuItem value={"100"}>$100</MenuItem>
+          <MenuItem value={"200"}>$200</MenuItem>
           <MenuItem value={false}>No</MenuItem>
         </Select>
       </FormControl>
