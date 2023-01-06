@@ -672,7 +672,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
     gvr_id,
     id,
     location,
-    notes,
+    updateNotes,
     sb,
     warranty_status,
     atl_po,
@@ -721,8 +721,8 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
   if (location) {
     updateFields.location = location;
   }
-  if (notes) {
-    updateFields.notes = notes;
+  if (updateNotes) {
+    updateFields.update_notes = updateNotes;
   }
 
   if (sb) {

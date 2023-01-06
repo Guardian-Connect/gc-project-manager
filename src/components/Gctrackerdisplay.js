@@ -130,8 +130,18 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
                     {gctix.asb === null && <>No Service Branch Entered</>}
                   </Typography>
                   <Typography variant="h5" component="div">
-                    {gctix.notes != null && <>Call Notes : {gctix.notes} </>}
-                    {gctix.notes === null && <>No Call Notes Entered</>}
+                    {gctix.update_notes != null && (
+                      <>Ticket Update Notes : {gctix.update_notes} </>
+                    )}
+                    {gctix.update_notes === null && (
+                      <>No Call Update Notes Entered</>
+                    )}
+                  </Typography>
+                  <Typography variant="h5" component="div">
+                    {gctix.notes != null && (
+                      <>Dispatch Notes : {gctix.notes} </>
+                    )}
+                    {gctix.notes === null && <>No Dispatch Notes Entered</>}
                   </Typography>
                 </Typography>
               </CardContent>

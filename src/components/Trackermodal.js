@@ -29,6 +29,7 @@ const Trackermodal = ({ gctix }) => {
   const [gvr_id, setgvr_id] = React.useState(0);
   const [location, setlocation] = React.useState("");
   const [notes, setnotes] = React.useState("");
+  const [updateNotes, setUpdateNotes] = React.useState("");
   const [sb, setsb] = React.useState("");
   const [warranty_status, setwarranty_status] = React.useState("");
   const [atl_po, setatl_po] = React.useState("");
@@ -73,7 +74,7 @@ const Trackermodal = ({ gctix }) => {
       gvr_id,
       id,
       location,
-      notes,
+      updateNotes,
       sb,
       warranty_status,
       atl_po,
@@ -93,7 +94,7 @@ const Trackermodal = ({ gctix }) => {
   };
 
   const handleTextChangeNotes = (e) => {
-    setnotes(e.target.value);
+    setUpdateNotes(e.target.value);
   };
 
   const handleTextChangeAtl = (e) => {
