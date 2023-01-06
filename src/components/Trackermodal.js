@@ -249,7 +249,7 @@ const Trackermodal = ({ gctix }) => {
         required
         id="outlined-required"
         label="Enter Notes"
-        defaultValue={gctix.notes}
+        defaultValue={gctix.update_notes}
         InputLabelProps={{
           shrink: true,
         }}
