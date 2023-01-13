@@ -64,7 +64,7 @@ const Right = () => {
           </Typography>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 getSomething().then((response) => {
@@ -78,7 +78,7 @@ const Right = () => {
           </ListItem>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={async () => {
                 await getInfoInstalls();
@@ -89,40 +89,9 @@ const Right = () => {
               GC Tracker
             </Button>
           </ListItem>
-          {/* <ListItem>
-            <Button
-              sx={{
-                mr: 2,
-                border: 1,
-                borderColor: "white",
-                width: 500,
-              }}
-              variant="contained"
-              onClick={async () => {
-                await getInfoInstalls();
-                history.push("/second");
-                // window.location.reload();
-              }}
-            >
-              Open Installs
-            </Button>
-          </ListItem>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
-              variant="contained"
-              onClick={async () => {
-                await getInfo();
-                history.push("/second");
-                // window.location.reload();
-              }}
-            >
-              Open Notes
-            </Button>
-          </ListItem> */}
-          <ListItem>
-            <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 history.push("/alerticket");
@@ -133,13 +102,24 @@ const Right = () => {
           </ListItem>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 history.push("/inbounddisplay");
               }}
             >
               Inbound Calls
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button
+              sx={{ border: 1, borderColor: "white", width: 500 }}
+              variant="contained"
+              onClick={() => {
+                history.push("/project");
+              }}
+            >
+              Project Management
             </Button>
           </ListItem>
         </List>
@@ -150,7 +130,7 @@ const Right = () => {
         <List>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 history.push("/allsites");
@@ -161,7 +141,7 @@ const Right = () => {
           </ListItem>
           <ListItem>
             <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 history.push("/gctracker");
@@ -172,7 +152,7 @@ const Right = () => {
           </ListItem>
           <ListItem>
             {/* <Button
-              sx={{ mr: 2, border: 1, borderColor: "white", width: 500 }}
+              sx={{  border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
                 history.push("/inboundcall");

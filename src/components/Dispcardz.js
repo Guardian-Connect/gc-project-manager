@@ -31,7 +31,7 @@ const Dispcardz = ({ site, setCount, count }) => {
     setOpen(false);
   };
 
-  if (site.totaldisp != null && site.warranty <= today) {
+  if (site.totaldisp != "0" && site.warranty <= today) {
     return (
       <Accordion
         sx={{
@@ -99,8 +99,8 @@ const Dispcardz = ({ site, setCount, count }) => {
           </CardContent>
         </AccordionSummary>
         <Typography variant="h5" component="div">
-          {site.notes != null && <> Notes : {site.notes} </>}
-          {site.notes === null && <>No Notes Entered</>}
+          {site.notes != "X" && <> Notes : {site.notes} </>}
+          {site.notes === "X" && <>No Notes Entered</>}
         </Typography>
         <PosAtg site={site} />
         <Dispensers site={site} />
@@ -169,8 +169,8 @@ const Dispcardz = ({ site, setCount, count }) => {
           </CardContent>
         </AccordionSummary>
         <Typography variant="h5" component="div">
-          {site.notes != null && <> Notes : {site.notes} </>}
-          {site.notes === null && <>No Notes Entered</>}
+          {site.notes != "X" && <> Notes : {site.notes} </>}
+          {site.notes === "X" && <>No Notes Entered</>}
         </Typography>
         <PosAtg site={site} />
         <Dispensers site={site} />
@@ -189,7 +189,7 @@ const Dispcardz = ({ site, setCount, count }) => {
           sx={{
             m: 1,
             bgcolor: "white",
-            ...(site.totaldisp === null && {
+            ...(site.totaldisp === "0" && {
               bgcolor: "yellow",
             }),
             width: "65%",
@@ -225,8 +225,8 @@ const Dispcardz = ({ site, setCount, count }) => {
             </CardContent>
           </AccordionSummary>
           <Typography variant="h5" component="div">
-            {site.notes != null && <> Notes : {site.notes} </>}
-            {site.notes === null && <>No Notes Entered</>}
+            {site.notes != "X" && <> Notes : {site.notes} </>}
+            {site.notes === "X" && <>No Notes Entered</>}
           </Typography>
           <PosAtg site={site} />
           <Dispensers site={site} />

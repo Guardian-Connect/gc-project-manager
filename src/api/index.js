@@ -14,7 +14,7 @@ export async function getSomething() {
     let disconnected = [];
     let connected = [];
     info.map((site) => {
-      if (site.totaldisp === null) {
+      if (site.totaldisp === "0") {
         return disconnected.push(site.gvr_id);
       } else {
         return connected.push(site.gvr_id);
@@ -23,7 +23,6 @@ export async function getSomething() {
 
     sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
     sessionStorage.setItem("connected", JSON.stringify(connected));
-    // sessionStorage.setItem("rrs", JSON.stringify(rrs));
 
     return data;
   } catch (error) {
@@ -93,10 +92,11 @@ export async function addSite(
   cus_email1,
   cus_email2,
   rrs,
-  custAddId
+  custAddId,
+  contractor
 ) {
   try {
-    console.log("Add Id", custAddId);
+    console.log("RRS", rrs);
     const { data } = await axios.post("/api/users/allsites", {
       gvr_id,
       gp_cust,
@@ -107,6 +107,7 @@ export async function addSite(
       cus_email2,
       rrs,
       custAddId,
+      contractor,
     });
     let string;
     let response = Object.values(data.allsites);
@@ -210,7 +211,8 @@ export async function updateDisp(
   grades9,
   disp10,
   grades10,
-  notes
+  notes,
+  quote
 ) {
   try {
     const { disp } = await axios.post("api/users/update", {
@@ -252,6 +254,7 @@ export async function updateDisp(
       disp10,
       grades10,
       notes,
+      quote,
     });
     return disp;
   } catch (error) {

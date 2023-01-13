@@ -55,7 +55,8 @@ async function createSite(
   cus_email1,
   cus_email2,
   rrs,
-  custAddId
+  custAddId,
+  contractor
 ) {
   let gvr_id = gvrid;
   try {
@@ -69,7 +70,8 @@ async function createSite(
       cus_email1,
       cus_email2,
       rrs,
-      custAddId
+      custAddId,
+      contractor
     );
 
     if (gvr_id === 0) {
@@ -91,7 +93,8 @@ async function createSite(
         contract,
         cus_email1,
         cus_email2,
-        rrs
+        rrs,
+        contractor
       );
       const result = await client.query(
         `
@@ -118,8 +121,13 @@ async function createSiteDisp(
   contract,
   cus_email1,
   cus_email2,
-  rrs
+  rrs,
+  contractor
 ) {
+  let quote = "X";
+  let totaldisp = "0";
+  let notes = "X";
+  let phase = "0";
   try {
     console.log(
       "site creation",
@@ -131,12 +139,17 @@ async function createSiteDisp(
       contract,
       cus_email1,
       cus_email2,
-      rrs
+      rrs,
+      quote,
+      totaldisp,
+      notes,
+      phase,
+      contractor
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
     `,
       [
         gvr_id,
@@ -148,6 +161,11 @@ async function createSiteDisp(
         cus_email1,
         cus_email2,
         rrs,
+        quote,
+        totaldisp,
+        notes,
+        phase,
+        contractor,
       ]
     );
     console.log("dispinfo", result);

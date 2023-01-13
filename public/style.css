@@ -13,6 +13,57 @@
   align-content: normal;
 }
 
+.sticky {
+  display: flex;
+  position: sticky;
+  top: 120px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  height: 53px;
+  width: 78%;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  border: 1px solid grey;
+  background-color: white;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.stickytwo {
+  display: flex;
+  position: sticky;
+  top: 60px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  height: 53px;
+  width: 78%;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  border: 1px solid grey;
+  background-color: white;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.stickythree {
+  display: flex;
+  position: sticky;
+  top: 180px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  height: 53px;
+  width: 78%;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  border: 1px solid grey;
+  background-color: white;
+  overflow: hidden;
+  z-index: 999;
+}
+
 .AppLoading {
   position: absolute;
   margin-left: auto;

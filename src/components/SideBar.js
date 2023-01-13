@@ -43,19 +43,21 @@ const SideBar = ({ mockData, setSearchInput }) => {
       </Typography>
       <div className="bottom"></div>
       {message.map((rrs) => (
-        <Typography
-          variant="h5"
-          sx={{
-            flexShrink: 1,
-            alignSelf: "center",
-            width: "100%",
-            ml: 1,
-            mr: 3,
-            fontSize: 17,
-          }}
-        >
-          {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs} - {rrs.warm_start}
-        </Typography>
+        <div key={rrs.id}>
+          <Typography
+            variant="h5"
+            sx={{
+              flexShrink: 1,
+              alignSelf: "center",
+              width: "100%",
+              ml: 1,
+              mr: 3,
+              fontSize: 17,
+            }}
+          >
+            {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs} - {rrs.warm_start}
+          </Typography>
+        </div>
       ))}
 
       {/* ALL PROJECTS START HERE */}

@@ -21,7 +21,6 @@ import { makeStyles } from "@mui/styles";
 const moment = require("moment");
 const Dispmodal = ({ site }) => {
   useEffect(() => {
-    console.log(site.warranty, site.activation);
     setGvr_id(site.gvr_id);
     setGp_cust(site.gp_cust);
     setContract(site.contract);
@@ -101,9 +100,10 @@ const Dispmodal = ({ site }) => {
   const [grades10, setGrades10] = React.useState("");
   const [renewal, setRenewal] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [notes, setNotes] = React.useState("");
+  const [notes, setNotes] = React.useState("X");
   const [add_id, setAdd_id] = React.useState("");
   const [contractStatus, setContractStatus] = React.useState("");
+  const [quote, setQuote] = React.useState("X");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -234,6 +234,10 @@ const Dispmodal = ({ site }) => {
     setWarranty(handleDate(e.target.value));
   };
 
+  const handleQuote = (e) => {
+    setQuote(e.target.value);
+  };
+
   const handleTotalActivationDate = (e) => {
     let split = e.target.value;
     let split2 = split.split("-");
@@ -279,6 +283,7 @@ const Dispmodal = ({ site }) => {
 
   const consoleTest = () => {
     let id = site.id;
+    console.log(notes === "X");
     setLoading(true);
     updateDisp(
       id,
@@ -318,7 +323,8 @@ const Dispmodal = ({ site }) => {
       grades9,
       disp10,
       grades10,
-      notes
+      notes,
+      quote
     );
     reload();
   };
@@ -490,6 +496,17 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"7-DECOMMISSIONED"}>Decommissioned</MenuItem>
             <MenuItem value={"8-EXPIRED"}>Expired</MenuItem>
             <MenuItem value={"9-CANCELLED"}>Cancelled</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl
+          className={classes.formControl}
+          sx={{ m: 2, width: "81%" }}
+        >
+          <InputLabel>Quote Needed?</InputLabel>
+          <Select onChange={handleQuote}>
+            <MenuItem value={"O"}>Yes</MenuItem>
+            <MenuItem value={"X"}>No/Completed</MenuItem>
           </Select>
         </FormControl>
 

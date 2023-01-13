@@ -24,6 +24,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [contract, setContract] = useState("");
   const [custAddId, setCustAddId] = useState("N/A");
   const [rrs, setRrs] = useState("");
+  const [contractor, setContractor] = useState("Guardian");
   const alert = useAlert();
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -33,7 +34,6 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const classes = useStyles();
 
   const handleTextChangeCustAddId = (e) => {
-    console.log(e.target.value);
     setCustAddId(e.target.value);
   };
   const handleTextChangeGvr = (e) => {
@@ -67,6 +67,10 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const handleRrs = (e) => {
     setRrs(e.target.value);
   };
+
+  const handleContractor = (e) => {
+    setContractor(e.target.value);
+  };
   const reload = () => {
     setTimeout(function () {
       window.location.reload();
@@ -82,7 +86,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     cus_email1,
     cus_email2,
     rrs,
-    custAddId
+    custAddId,
+    contractor
   ) => {
     setLoading(true);
     console.log(
@@ -94,7 +99,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       cus_email1,
       cus_email2,
       rrs,
-      custAddId
+      custAddId,
+      contractor
     );
     addSite(
       gvr_id,
@@ -105,7 +111,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       cus_email1,
       cus_email2,
       rrs,
-      custAddId
+      custAddId,
+      contractor
     ).then((res) => {
       alert.show(res);
 
@@ -221,6 +228,13 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
             <MenuItem value={"200"}>$200</MenuItem>
           </Select>
         </FormControl>
+        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+          <InputLabel>Originating Contract</InputLabel>
+          <Select onChange={handleContractor}>
+            <MenuItem value={"Guardian"}>Guardian Connect</MenuItem>
+            <MenuItem value={"Nexus"}>Nexus</MenuItem>
+          </Select>
+        </FormControl>
 
         <Box textAlign="center">
           <LoadingButton
@@ -236,7 +250,8 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
                 cus_email1,
                 cus_email2,
                 rrs,
-                custAddId
+                custAddId,
+                contractor
               );
             }}
             loading={loading}

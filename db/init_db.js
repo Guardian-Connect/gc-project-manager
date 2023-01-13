@@ -16,20 +16,6 @@ const {
   getEmailByGp,
   getTicketing,
 } = require("./index");
-let gvr_id = "123456";
-let gp_cust = "MAJ0001";
-let cus_name = "JAMES";
-let site_address = "1234 Test";
-let contract = "123124321";
-let totaldisp = "0";
-
-let start = new Date("2022-3-10");
-let end = new Date("2022-3-15");
-let startDate = start.toISOString();
-let useStartDate = startDate.split("T")[0];
-let endDate = end.toISOString();
-let useEndDate = endDate.split("T")[0];
-let gp = "MAJ0001";
 
 async function createSiteDisp(
   gvr_id,
@@ -68,6 +54,7 @@ async function createTables() {
     throw error;
   }
 }
+
 //         CREATE TABLE dispinfo (
 //   id SERIAL PRIMARY KEY,
 //   gp_cust varchar,
@@ -215,8 +202,8 @@ async function testDB() {
     //   contract,
     //   totaldisp
     // );
-    const tickets = await getTicketing();
-    console.log(typeof tickets);
+    // const tickets = await getTicketing();
+    // console.log(typeof tickets);
   } catch (error) {
     console.error(error);
   } finally {

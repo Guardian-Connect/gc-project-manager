@@ -48,6 +48,7 @@ usersRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
     const rrsmatrix = await getRrsMatrix();
+    console.log(typeof dispinfo);
     res.send({ dispinfo, rrsmatrix });
   } catch ({ name, message }) {
     next({ name, message });
@@ -347,8 +348,10 @@ usersRouter.post("/allsites", async (req, res, next) => {
     cus_email2,
     rrs,
     custAddId,
+    contractor,
   } = req.body;
   try {
+    console.log("RRS", rrs);
     const allsites = await createSite(
       gvr_id,
       gp_cust,
@@ -358,7 +361,8 @@ usersRouter.post("/allsites", async (req, res, next) => {
       cus_email1,
       cus_email2,
       rrs,
-      custAddId
+      custAddId,
+      contractor
     );
     // if (allsites.rowCount === 1) {
     //   res.send("Success");
@@ -512,12 +516,17 @@ usersRouter.post("/update", async (req, res, next) => {
     disp10,
     grades10,
     notes,
+    quote,
   } = req.body;
   const updateFields = {};
   if (notes != null && notes.length > 1) {
     updateFields.notes = notes;
   } else if (notes.length <= 1) {
-    updateFields.notes = null;
+    updateFields.notes = "X";
+  }
+
+  if (quote) {
+    updateFields.quote = quote;
   }
 
   if (gvr_id) {
