@@ -74,7 +74,7 @@ function AppAppBar({
               flex: 0,
             }}
           />
-          <div>Sites w/ Data - {countCon}</div>
+          <div className="withData">Sites w/ Data - {countCon}</div>
           <input
             className="search"
             type="text"
@@ -83,7 +83,7 @@ function AppAppBar({
             onChange={handleTextChange}
             onKeyDown={handleSubmit}
           />
-          <div>Sites w/out Data - {countDis} </div>
+          <div className="withoutData">Sites w/out Data - {countDis} </div>
 
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}

@@ -31,28 +31,17 @@ const Dispcardz = ({ site, setCount, count }) => {
     setOpen(false);
   };
 
-  if (site.totaldisp != "0" && site.warranty <= today) {
+  if (site.totaldisp != "0") {
     return (
       <Accordion
         sx={{
           m: 1,
           bgcolor: "white",
-          ...(site.rrs === "100" && {
-            bgcolor: "#df78ef",
-          }),
-          ...(site.rrs === "200" && {
-            bgcolor: "orange",
-          }),
-          ...(site.rrs === null && {
-            bgcolor: "white",
-          }),
           width: "65%",
           borderRadius: 1,
         }}
         key={site.id}
       >
-        {/* {console.log(site)} */}
-
         <AccordionSummary
           expandIcon={<AddCircleIcon />}
           aria-controls="panel1a-content"
@@ -62,13 +51,6 @@ const Dispcardz = ({ site, setCount, count }) => {
             <Typography variant="h5" component="div">
               GVR ID - {site.gvr_id}
             </Typography>
-            {site.rrs ? (
-              <Typography variant="h5" component="div">
-                RRS - ${site.rrs}
-              </Typography>
-            ) : (
-              <></>
-            )}
             <Typography variant="h5" component="div">
               GP Customer - {site.gp_cust}
             </Typography>
@@ -94,77 +76,10 @@ const Dispcardz = ({ site, setCount, count }) => {
               Renewal Date - {handleDate(site.renewal)}
             </Typography>
             <Typography variant="h5" component="div">
-              Warranty Date - {handleDate(site.warranty)}
-            </Typography>
-          </CardContent>
-        </AccordionSummary>
-        <Typography variant="h5" component="div">
-          {site.notes != "X" && <> Notes : {site.notes} </>}
-          {site.notes === "X" && <>No Notes Entered</>}
-        </Typography>
-        <PosAtg site={site} />
-        <Dispensers site={site} />
-        <Button variant="contained" onClick={handleClickOpen} sx={{ m: 1 }}>
-          Edit Dispenser
-        </Button>
-        <Dialog open={open} onClose={handleClose}>
-          <Dispmodal site={site} />
-        </Dialog>
-      </Accordion>
-    );
-  } else if (site.warranty >= today) {
-    return (
-      <Accordion
-        sx={{
-          m: 1,
-          bgcolor: "white",
-          width: "65%",
-          borderRadius: 1,
-        }}
-        key={site.id}
-      >
-        <AccordionSummary
-          expandIcon={<AddCircleIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <CardContent>
-            <Typography variant="h5" component="div">
-              GVR ID - {site.gvr_id}
-            </Typography>
-            {site.rrs ? (
-              <Typography variant="h5" component="div">
-                RRS - ${site.rrs}
-              </Typography>
-            ) : (
-              <></>
-            )}
-            <Typography variant="h5" component="div">
-              GP Customer - {site.gp_cust}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Customer Name - {site.cus_name}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Contract Number - {site.contract}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Contract Status - {site.contract_status}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Site Address - {site.site_address}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Number of Dispensers - {site.totaldisp}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Registration Date - {handleDate(site.activation)}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Renewal Date - {handleDate(site.renewal)}
-            </Typography>
-            <Typography variant="h5" component="div">
-              Warranty Date - {handleDate(site.warranty)}
+              {site.warranty != null && (
+                <>Warranty Date - {handleDate(site.warranty)}</>
+              )}
+              {site.warranty === null && <>No Warranty Information Available</>}
             </Typography>
           </CardContent>
         </AccordionSummary>
@@ -206,13 +121,6 @@ const Dispcardz = ({ site, setCount, count }) => {
               <Typography variant="h5" component="div">
                 GVR ID - {site.gvr_id}
               </Typography>
-              {site.rrs ? (
-                <Typography variant="h5" component="div">
-                  RRS - ${site.rrs}
-                </Typography>
-              ) : (
-                <></>
-              )}
               <Typography variant="h5" component="div">
                 GP Customer - {site.gp_cust}
               </Typography>
@@ -221,6 +129,14 @@ const Dispcardz = ({ site, setCount, count }) => {
               </Typography>
               <Typography variant="h5" component="div">
                 Site Address - {site.site_address}
+              </Typography>
+              <Typography variant="h5" component="div">
+                {site.warranty != null && (
+                  <>Warranty Date - {handleDate(site.warranty)}</>
+                )}
+                {site.warranty === null && (
+                  <>No Warranty Information Available</>
+                )}
               </Typography>
             </CardContent>
           </AccordionSummary>

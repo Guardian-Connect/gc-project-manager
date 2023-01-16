@@ -8,21 +8,50 @@ import {
   CardActionArea,
   Button,
   Dialog,
+  FormControl,
 } from "@mui/material";
 import { getGcTracker } from "../api";
 const moment = require("moment");
-const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
-  const [tracker, setTracker] = useState([]);
+const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
+  const [message, setMessage] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const primary = "white";
+  const secondary = "blue";
+  const [open, setOpen] = React.useState(false);
+  const [gctix, setGctix] = React.useState({});
+  const [buttonOne, setButtonOne] = useState(primary);
+  const [buttonTwo, setButtonTwo] = useState("yellow");
+  const [textOne, setTextOne] = useState(secondary);
+  const [textTwo, setTextTwo] = useState(secondary);
 
   useEffect(() => {
     getGcTracker().then((resp) => {
       //   console.log(resp.dispinfo, "inbound");
-      setTracker(resp.dispinfo);
+      setMessage(resp.dispinfo);
     });
   }, []);
 
-  const [open, setOpen] = React.useState(false);
-  const [gctix, setGctix] = React.useState({});
+  const handleClickOne = () => {
+    setFilters([...filters, (item) => item.status.includes("Closed")]);
+    setButtonOne(secondary);
+    setTextOne(primary);
+  };
+
+  const handleClickTwo = () => {
+    setFilters([...filters, (item) => item.status.includes("Open")]);
+    setButtonTwo(secondary);
+    setTextTwo(primary);
+  };
+
+  const handleClear = () => {
+    setFilters([]);
+    setSearchInput("");
+    setButtonOne(primary);
+    setButtonTwo("yellow");
+    setTextOne(secondary);
+    setTextTwo(secondary);
+  };
+
   const handleClickOpen = (gctix) => {
     setGctix(gctix);
     setOpen(true);
@@ -32,9 +61,61 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
     setOpen(false);
   };
 
+  const applyFilters = (message) => {
+    return message.filter((item) => {
+      return filters.every((filter) => {
+        return filter(item);
+      });
+    });
+  };
+
+  const filteredItems = applyFilters(message);
+
   return (
     <div className="apptrack">
-      {tracker
+      <div className="stickytwo">
+        <FormControl sx={{ width: "20%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: buttonOne,
+              border: "1px solid green",
+              color: textOne,
+            }}
+            onClick={handleClickOne}
+          >
+            Closed Tickets
+          </Button>
+        </FormControl>
+        <FormControl sx={{ width: "20%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: buttonTwo,
+              border: "1px solid green",
+              color: textTwo,
+            }}
+            onClick={handleClickTwo}
+          >
+            Open Tickets
+          </Button>
+        </FormControl>
+        <FormControl sx={{ width: "15%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: "white",
+              "&:active": {
+                backgroundColor: "blue",
+              },
+              border: "1px solid green",
+              color: "blue",
+            }}
+            onClick={handleClear}
+          >
+            Clear
+          </Button>
+        </FormControl>
+      </div>
+
+      {filteredItems
         .filter((client, index) => {
           const clientsAdd = client.address;
           if (clientsAdd.includes(searchInput.toLowerCase())) {
@@ -65,9 +146,9 @@ const Gctrackerdisplay = ({ setMessage, searchInput, setSearchInput }) => {
               flexWrap: "wrap",
               p: 1,
               m: 1,
-              bgcolor: "background.paper",
+              bgcolor: "yellow",
               ...(gctix.status === "Closed" && {
-                bgcolor: "#29b6f6",
+                bgcolor: "background.paper",
               }),
               width: "75%",
               borderRadius: 1,

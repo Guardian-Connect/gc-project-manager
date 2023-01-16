@@ -13,6 +13,16 @@
   align-content: normal;
 }
 
+.withData {
+  background-color: white;
+  color: blue;
+}
+
+.withoutData {
+  background-color: yellow;
+  color: blue;
+}
+
 .sticky {
   display: flex;
   position: sticky;
