@@ -33,7 +33,7 @@ const Gctracker = ({ addTicket }) => {
   const [atl_po, setAtl_po] = useState("");
   const [warranty_status, setWarrantystatus] = useState("");
   const [notes, setNotes] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Open");
   const [loading, setLoading] = React.useState(false);
   const classes = useStyles();
 
@@ -45,7 +45,6 @@ const Gctracker = ({ addTicket }) => {
 
   const consoleTest = (e) => {
     setLoading(true);
-    setStatus("Open");
     addTicket(
       now,
       gvr_id,
