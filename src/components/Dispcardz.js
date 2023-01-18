@@ -52,13 +52,20 @@ const Dispcardz = ({ site, setCount, count }) => {
               GVR ID - {site.gvr_id}
             </Typography>
             <Typography variant="h5" component="div">
-              GP Customer - {site.gp_cust}
+              {site.add_id != "#N/A" && <>Address ID - {site.add_id} </>}
+              {site.add_id === "#N/A" && <>No Address ID Available</>}
             </Typography>
             <Typography variant="h5" component="div">
-              Customer Name - {site.cus_name}
+              {site.gp_cust != "#N/A" && <>GP Customer - {site.gp_cust}</>}
+              {site.gp_cust === "#N/A" && <>No GP Customer Listed</>}
             </Typography>
             <Typography variant="h5" component="div">
-              Contract Number - {site.contract}
+              {site.cus_name != "#N/A" && <>Customer Name - {site.cus_name}</>}
+              {site.cus_name === "#N/A" && <>No Customer Name Listed</>}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {site.contract != null && <>Contract Number - {site.contract}</>}
+              {site.contract === null && <>No Contract Number Listed</>}
             </Typography>
             <Typography variant="h5" component="div">
               Contract Status - {site.contract_status}
@@ -70,10 +77,16 @@ const Dispcardz = ({ site, setCount, count }) => {
               Number of Dispensers - {site.totaldisp}
             </Typography>
             <Typography variant="h5" component="div">
-              Registration Date - {handleDate(site.activation)}
+              {site.activation != null && (
+                <>Registration Date - {handleDate(site.activation)} </>
+              )}
+              {site.activation === null && <>No Registration Date Available</>}
             </Typography>
             <Typography variant="h5" component="div">
-              Renewal Date - {handleDate(site.renewal)}
+              {site.renewal != null && (
+                <>Renewal Date - {handleDate(site.renewal)} </>
+              )}
+              {site.renewal === null && <>No Renewal Date Available</>}
             </Typography>
             <Typography variant="h5" component="div">
               {site.warranty != null && (
@@ -122,10 +135,18 @@ const Dispcardz = ({ site, setCount, count }) => {
                 GVR ID - {site.gvr_id}
               </Typography>
               <Typography variant="h5" component="div">
-                GP Customer - {site.gp_cust}
+                {site.add_id != "#N/A" && <>Address ID - {site.add_id} </>}
+                {site.add_id === "#N/A" && <>No Address ID Available</>}
               </Typography>
               <Typography variant="h5" component="div">
-                Customer Name - {site.cus_name}
+                {site.gp_cust != "#N/A" && <>GP Customer - {site.gp_cust}</>}
+                {site.gp_cust === "#N/A" && <>No GP Customer Listed</>}
+              </Typography>
+              <Typography variant="h5" component="div">
+                {site.cus_name != "#N/A" && (
+                  <>Customer Name - {site.cus_name}</>
+                )}
+                {site.cus_name === "#N/A" && <>No Customer Name Listed</>}
               </Typography>
               <Typography variant="h5" component="div">
                 Site Address - {site.site_address}
