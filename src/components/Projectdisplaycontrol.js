@@ -98,7 +98,7 @@ const Projectdisplaycontrol = ({
             }}
             onClick={handleClickTwo}
           >
-            Parker's
+            Quick Gas / Susie Q's
           </Button>
         </FormControl>
       </div>

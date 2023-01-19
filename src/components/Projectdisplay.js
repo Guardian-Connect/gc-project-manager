@@ -77,7 +77,7 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
   };
 
   const handleClickTwo = () => {
-    setFilters([...filters, (item) => item.gp_cust.includes("GRE0017")]);
+    setFilters([...filters, (item) => item.gp_cust.includes("QUI0003")]);
     setButtonTwo(secondary);
     setTextTwo(primary);
   };
