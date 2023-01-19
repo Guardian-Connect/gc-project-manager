@@ -77,7 +77,7 @@ const Projectdisplaycontrol = ({
   return (
     <>
       <div className="stickytwo">
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "25%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: buttonOne,
@@ -89,7 +89,7 @@ const Projectdisplaycontrol = ({
             Major's
           </Button>
         </FormControl>
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "25%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: buttonTwo,
@@ -104,7 +104,7 @@ const Projectdisplaycontrol = ({
       </div>
 
       <div className="sticky">
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "20%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: buttonThree,
@@ -116,7 +116,7 @@ const Projectdisplaycontrol = ({
             Notes
           </Button>
         </FormControl>
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "20%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: buttonFour,
@@ -128,7 +128,7 @@ const Projectdisplaycontrol = ({
             Not Completed
           </Button>
         </FormControl>
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "20%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: buttonFive,
@@ -140,7 +140,7 @@ const Projectdisplaycontrol = ({
             Quotes Needed
           </Button>
         </FormControl>
-        <FormControl sx={{ width: "15%", m: 1 }}>
+        <FormControl sx={{ width: "20%", m: 1 }}>
           <Button
             sx={{
               backgroundColor: "white",
