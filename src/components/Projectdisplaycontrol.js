@@ -83,7 +83,7 @@ const Projectdisplaycontrol = ({
               backgroundColor: buttonOne,
               border: "1px solid green",
               color: textOne,
-              "@media(min-width:1080px)": {
+              "@media(min-width:1024px)": {
                 width: "120%",
               },
             }}
@@ -98,7 +98,7 @@ const Projectdisplaycontrol = ({
               backgroundColor: buttonTwo,
               border: "1px solid green",
               color: textTwo,
-              "@media(min-width:1080px)": {
+              "@media(min-width:1024px)": {
                 width: "120%",
               },
             }}

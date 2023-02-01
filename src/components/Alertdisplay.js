@@ -35,7 +35,7 @@ const Alertdisplay = ({ gctix }) => {
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:1080px)": {
+            "@media(min-width:1024px)": {
               width: "83%",
             },
           }}
@@ -146,7 +146,7 @@ const Alertdisplay = ({ gctix }) => {
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:1080px)": {
+            "@media(min-width:1024px)": {
               width: "83%",
             },
           }}
@@ -251,7 +251,7 @@ const Alertdisplay = ({ gctix }) => {
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:1080px)": {
+            "@media(min-width:1024px)": {
               width: "83%",
             },
           }}
