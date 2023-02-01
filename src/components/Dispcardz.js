@@ -37,11 +37,7 @@ const Dispcardz = ({ site, setCount, count }) => {
         sx={{
           m: 1,
           bgcolor: "white",
-          width: "65%",
-          borderRadius: 1,
-          "@media(min-width:768px)": {
-            width: "83%",
-          },
+          width: { md: "83%", lg: "75%" },
         }}
         key={site.id}
       >
@@ -123,11 +119,8 @@ const Dispcardz = ({ site, setCount, count }) => {
             ...(site.totaldisp === "0" && {
               bgcolor: "yellow",
             }),
-            width: "65%",
+            width: { md: "83%", lg: "75%" },
             borderRadius: 1,
-            "@media(min-width:768px)": {
-              width: "83%",
-            },
           }}
           key={site.id}
         >

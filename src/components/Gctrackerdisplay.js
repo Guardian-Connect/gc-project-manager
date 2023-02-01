@@ -150,14 +150,14 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
               ...(gctix.status === "Closed" && {
                 bgcolor: "background.paper",
               }),
-              width: "75%",
+              width: { md: "83%", lg: "75%" },
               borderRadius: 1,
               alignText: "center",
               alignItems: "center",
               justifyContent: "center",
-              "@media(min-width:768px)": {
-                width: "83%",
-              },
+              // "@media(min-width:768px)": {
+              //   width: "83%",
+              // },
             }}
             key={gctix.id}
           >

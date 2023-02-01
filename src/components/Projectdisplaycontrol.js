@@ -83,9 +83,7 @@ const Projectdisplaycontrol = ({
               backgroundColor: buttonOne,
               border: "1px solid green",
               color: textOne,
-              "@media(min-width:768px)": {
-                width: "120%",
-              },
+              width: { md: "120%", lg: "100%" },
             }}
             onClick={handleClickOne}
           >
@@ -98,9 +96,7 @@ const Projectdisplaycontrol = ({
               backgroundColor: buttonTwo,
               border: "1px solid green",
               color: textTwo,
-              "@media(min-width:768px)": {
-                width: "120%",
-              },
+              width: { md: "120%", lg: "100%" },
             }}
             onClick={handleClickTwo}
           >

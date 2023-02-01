@@ -46,14 +46,11 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
               p: 1,
               m: 1,
               bgcolor: "background.paper",
-              width: "75%",
+              width: { md: "83%", lg: "75%" },
               borderRadius: 1,
               alignText: "center",
               alignItems: "center",
               justifyContent: "center",
-              "@media(min-width:768px)": {
-                width: "83%",
-              },
             }}
             key={site.id}
           >

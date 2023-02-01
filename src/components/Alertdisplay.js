@@ -30,14 +30,11 @@ const Alertdisplay = ({ gctix }) => {
             p: 1,
             m: 1,
             bgcolor: "background.paper",
-            width: "75%",
+            width: { md: "90%", lg: "75%" },
             borderRadius: 1,
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:768px)": {
-              width: "83%",
-            },
           }}
           key={gctix.id}
         >
@@ -141,14 +138,11 @@ const Alertdisplay = ({ gctix }) => {
             p: 1,
             m: 1,
             bgcolor: "red",
-            width: "75%",
+            width: { md: "90%", lg: "75%" },
             borderRadius: 1,
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:768px)": {
-              width: "83%",
-            },
           }}
           key={gctix.id}
         >
@@ -246,14 +240,12 @@ const Alertdisplay = ({ gctix }) => {
             p: 1,
             m: 1,
             bgcolor: "yellow",
-            width: "75%",
+            // width: "100%",
+            width: { md: "90%", lg: "75%" },
             borderRadius: 1,
             alignText: "center",
             alignItems: "center",
             justifyContent: "center",
-            "@media(min-width:768px)": {
-              width: "83%",
-            },
           }}
           key={gctix.id}
         >

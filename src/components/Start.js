@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
-import { FormControl, Button } from "@mui/material";
+import { FormControl, Button, makeStyles, useTheme } from "@mui/material";
 import Dispcardz from "./Dispcardz";
 const Start = ({ count, setCount, searchInput, setSearchInput }) => {
   const primary = "white";
@@ -65,9 +65,12 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
                 backgroundColor: buttonOne,
                 border: "1px solid green",
                 color: textOne,
-                "@media(min-width:768px)": {
-                  width: "120%",
-                },
+
+                width: { xs: "120%", md: "120%", lg: "100%" },
+                // "@media(orientation:landscape)": {
+                //   width: "120%",
+                //   justifyContent: "space-evenly",
+                // },
               }}
               onClick={handleClickOne}
             >
