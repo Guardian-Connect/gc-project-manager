@@ -39,6 +39,9 @@ const Dispcardz = ({ site, setCount, count }) => {
           bgcolor: "white",
           width: "65%",
           borderRadius: 1,
+          "@media(min-width:1080px)": {
+            width: "83%",
+          },
         }}
         key={site.id}
       >
@@ -122,6 +125,9 @@ const Dispcardz = ({ site, setCount, count }) => {
             }),
             width: "65%",
             borderRadius: 1,
+            "@media(min-width:1080px)": {
+              width: "83%",
+            },
           }}
           key={site.id}
         >

@@ -51,6 +51,9 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
               alignText: "center",
               alignItems: "center",
               justifyContent: "center",
+              "@media(min-width:1080px)": {
+                width: "83%",
+              },
             }}
             key={site.id}
           >

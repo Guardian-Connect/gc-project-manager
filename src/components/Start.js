@@ -65,6 +65,9 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
                 backgroundColor: buttonOne,
                 border: "1px solid green",
                 color: textOne,
+                "@media(min-width:1080px)": {
+                  width: "120%",
+                },
               }}
               onClick={handleClickOne}
             >

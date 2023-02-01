@@ -124,34 +124,35 @@ const Right = () => {
           </ListItem>
         </List>
         <Divider />
-        <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
-          DB Entry
-        </Typography>
-        <List>
-          <ListItem>
-            <Button
-              sx={{ border: 1, borderColor: "white", width: 500 }}
-              variant="contained"
-              onClick={() => {
-                history.push("/allsites");
-              }}
-            >
-              All Sites
-            </Button>
-          </ListItem>
-          <ListItem>
-            <Button
-              sx={{ border: 1, borderColor: "white", width: 500 }}
-              variant="contained"
-              onClick={() => {
-                history.push("/gctracker");
-              }}
-            >
-              GC Tracker
-            </Button>
-          </ListItem>
-          <ListItem>
-            {/* <Button
+        <div className="hide">
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
+            DB Entry
+          </Typography>
+          <List>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/allsites");
+                }}
+              >
+                All Sites
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/gctracker");
+                }}
+              >
+                GC Tracker
+              </Button>
+            </ListItem>
+            <ListItem>
+              {/* <Button
               sx={{  border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
@@ -160,8 +161,9 @@ const Right = () => {
             >
               Inbound Calls
             </Button> */}
-          </ListItem>
-        </List>
+            </ListItem>
+          </List>
+        </div>
       </Drawer>
     </Box>
     // </div>
