@@ -65,7 +65,7 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
                 backgroundColor: buttonOne,
                 border: "1px solid green",
                 color: textOne,
-                "@media(min-width:1024px)": {
+                "@media(min-width:768px)": {
                   width: "120%",
                 },
               }}

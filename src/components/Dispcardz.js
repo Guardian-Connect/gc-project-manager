@@ -39,7 +39,7 @@ const Dispcardz = ({ site, setCount, count }) => {
           bgcolor: "white",
           width: "65%",
           borderRadius: 1,
-          "@media(min-width:1024px)": {
+          "@media(min-width:768px)": {
             width: "83%",
           },
         }}
@@ -125,7 +125,7 @@ const Dispcardz = ({ site, setCount, count }) => {
             }),
             width: "65%",
             borderRadius: 1,
-            "@media(min-width:1024px)": {
+            "@media(min-width:768px)": {
               width: "83%",
             },
           }}

@@ -199,7 +199,7 @@
   border-bottom: 1px solid white;
 }
 
-@media only screen and (device-width: 1024px) {
+@media only screen and (device-width: 768px) {
   .sidebar {
     display: none;
     /* width: 10px;

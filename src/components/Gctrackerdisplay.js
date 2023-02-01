@@ -155,7 +155,7 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
               alignText: "center",
               alignItems: "center",
               justifyContent: "center",
-              "@media(min-width:1024px)": {
+              "@media(min-width:768px)": {
                 width: "83%",
               },
             }}
