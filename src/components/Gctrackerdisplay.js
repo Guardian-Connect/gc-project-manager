@@ -155,9 +155,6 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
               alignText: "center",
               alignItems: "center",
               justifyContent: "center",
-              // "@media(min-width:768px)": {
-              //   width: "83%",
-              // },
             }}
             key={gctix.id}
           >
