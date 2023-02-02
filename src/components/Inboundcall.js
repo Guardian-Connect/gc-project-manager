@@ -146,19 +146,18 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"TAM"}>Tampa</MenuItem>
         </Select> */}
       </FormControl>
-      <FormControl sx={{ width: "44%", m: 1 }}>
+      {/* <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>GC Originating Issue?</InputLabel>
         <Select onChange={handleGcIssue}>
           <MenuItem value={"TRUE"}>Yes</MenuItem>
           <MenuItem value={"FALSE"}>No</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Found?</InputLabel>
         <Select onChange={handleIssue}>
           <MenuItem value={"TRUE"}>Yes</MenuItem>
           <MenuItem value={"FALSE"}>No</MenuItem>
-          <MenuItem value={"OTHER"}>Other (Not GC Site)</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>
@@ -172,7 +171,10 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"Site Offline"}>Site Offline</MenuItem>
           <MenuItem value={"SSOM Error"}>SSOM Error</MenuItem>
           <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
-          <MenuItem value={"None"}>None</MenuItem>
+          <MenuItem value={"Site Offline - Pending Contract"}>
+            Site Offline - Pending Contract
+          </MenuItem>
+          <MenuItem value={"No Issues Found"}>No Issues Found</MenuItem>
         </Select>
       </FormControl>
       <TextField
