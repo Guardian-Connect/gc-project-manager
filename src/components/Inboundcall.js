@@ -171,6 +171,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"Site Offline"}>Site Offline</MenuItem>
           <MenuItem value={"SSOM Error"}>SSOM Error</MenuItem>
           <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
+          <MenuItem value={"Not Monitoring Site"}>Not Monitoring Site</MenuItem>
           <MenuItem value={"Site Offline - Pending Contract"}>
             Site Offline - Pending Contract
           </MenuItem>
