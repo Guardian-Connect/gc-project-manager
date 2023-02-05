@@ -35,6 +35,10 @@ const Projectdisplaycontrol = ({
   setButtonTen,
   buttonEleven,
   setButtonEleven,
+  buttonTwelve,
+  setButtonTwelve,
+  buttonThirteen,
+  setButtonThirteen,
   textOne,
   setTextOne,
   textTwo,
@@ -57,6 +61,10 @@ const Projectdisplaycontrol = ({
   setTextTen,
   textEleven,
   setTextEleven,
+  textTwelve,
+  setTextTwelve,
+  textThirteen,
+  setTextThirteen,
   phase,
   setPhase,
   handleClear,
@@ -65,6 +73,8 @@ const Projectdisplaycontrol = ({
   handleClickThree,
   handleClickFour,
   handleClickFive,
+  handleClickSix,
+  handleClickSeven,
   handlePhaseOne,
   handlePhaseTwo,
   handlePhaseThree,
@@ -101,6 +111,19 @@ const Projectdisplaycontrol = ({
             onClick={handleClickTwo}
           >
             Quick Gas / Susie Q's
+          </Button>
+        </FormControl>
+        <FormControl sx={{ width: "25%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: buttonTwelve,
+              border: "1px solid green",
+              color: textTwelve,
+              width: { md: "120%", lg: "100%" },
+            }}
+            onClick={handleClickSix}
+          >
+            Quality Oil
           </Button>
         </FormControl>
       </div>
@@ -140,6 +163,18 @@ const Projectdisplaycontrol = ({
             onClick={handleClickFive}
           >
             Quotes Needed
+          </Button>
+        </FormControl>
+        <FormControl sx={{ width: "20%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: buttonThirteen,
+              border: "1px solid green",
+              color: textThirteen,
+            }}
+            onClick={handleClickSeven}
+          >
+            Static Sites
           </Button>
         </FormControl>
         <FormControl sx={{ width: "20%", m: 1 }}>

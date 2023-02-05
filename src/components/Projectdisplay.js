@@ -20,6 +20,8 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
   const [buttonNine, setButtonNine] = useState(primary);
   const [buttonTen, setButtonTen] = useState(primary);
   const [buttonEleven, setButtonEleven] = useState(primary);
+  const [buttonTwelve, setButtonTwelve] = useState(primary);
+  const [buttonThirteen, setButtonThirteen] = useState(primary);
   const [textOne, setTextOne] = useState(secondary);
   const [textTwo, setTextTwo] = useState(secondary);
   const [textThree, setTextThree] = useState(secondary);
@@ -31,6 +33,8 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
   const [textNine, setTextNine] = useState(secondary);
   const [textTen, setTextTen] = useState(secondary);
   const [textEleven, setTextEleven] = useState(secondary);
+  const [textTwelve, setTextTwelve] = useState(secondary);
+  const [textThirteen, setTextThirteen] = useState(secondary);
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -57,6 +61,8 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
     setButtonNine(primary);
     setButtonTen(primary);
     setButtonEleven(primary);
+    setButtonTwelve(primary);
+    setButtonThirteen(primary);
     setTextOne(secondary);
     setTextTwo(secondary);
     setTextThree(secondary);
@@ -68,6 +74,8 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
     setTextNine(secondary);
     setTextTen(secondary);
     setTextEleven(secondary);
+    setTextTwelve(secondary);
+    setTextThirteen(secondary);
   };
 
   const handleClickOne = () => {
@@ -95,9 +103,22 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
   };
 
   const handleClickFive = () => {
-    setFilters([...filters, (item) => !item.quote.includes("X")]);
+    setFilters([...filters, (item) => item.quote.includes("O")]);
     setButtonFive(secondary);
     setTextFive(primary);
+  };
+
+  const handleClickSix = () => {
+    setFilters([...filters, (item) => item.gp_cust.includes("QUA0006")]);
+    setButtonTwelve(secondary);
+    setTextTwelve(primary);
+  };
+
+  const handleClickSeven = () => {
+    console.log("Firing");
+    setFilters([...filters, (item) => item.quote.includes("S")]);
+    setButtonThirteen(secondary);
+    setTextThirteen(primary);
   };
 
   const handlePhaseOne = () => {
@@ -175,6 +196,10 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
         setButtonTen={setButtonTen}
         buttonEleven={buttonEleven}
         setButtonEleven={setButtonEleven}
+        buttonTwelve={buttonTwelve}
+        setButtonTwelve={setButtonTwelve}
+        buttonThirteen={buttonThirteen}
+        setButtonThirteen={setButtonThirteen}
         textOne={textOne}
         setTextOne={setTextOne}
         textTwo={textTwo}
@@ -197,6 +222,10 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
         setTextTen={setTextTen}
         textEleven={textEleven}
         setTextEleven={setTextEleven}
+        textTwelve={textTwelve}
+        setTextTwelve={setTextTwelve}
+        textThirteen={textThirteen}
+        setTextThirteen={setTextThirteen}
         handleClear={handleClear}
         handleClickOne={handleClickOne}
         handleClickTwo={handleClickTwo}
@@ -209,6 +238,8 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
         handlePhaseFour={handlePhaseFour}
         handlePhaseFive={handlePhaseFive}
         handlePhaseZero={handlePhaseZero}
+        handleClickSix={handleClickSix}
+        handleClickSeven={handleClickSeven}
       />
       {filteredItems
         .filter((client, index) => {

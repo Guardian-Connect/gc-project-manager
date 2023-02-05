@@ -130,7 +130,12 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
           })
           .map((site) => (
             <div key={site.id}>
-              <Dispcardz site={site} setCount={setCount} count={count} />
+              {site.quote === "C" && (
+                <Dispcardz site={site} setCount={setCount} count={count} />
+              )}
+              {site.quote != "C" && (
+                <Dispcardz site={site} setCount={setCount} count={count} />
+              )}
             </div>
           ))}
       </h2>

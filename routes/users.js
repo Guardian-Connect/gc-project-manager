@@ -517,12 +517,22 @@ usersRouter.post("/update", async (req, res, next) => {
     grades10,
     notes,
     quote,
+    vendorRevenue,
+    branchRevenue,
   } = req.body;
   const updateFields = {};
   if (notes != null && notes.length > 1) {
     updateFields.notes = notes;
   } else if (notes.length <= 1) {
     updateFields.notes = "X";
+  }
+
+  if (vendorRevenue) {
+    updateFields.v_revenue = vendorRevenue;
+  }
+
+  if (branchRevenue) {
+    updateFields.b_revenue = branchRevenue;
   }
 
   if (quote) {

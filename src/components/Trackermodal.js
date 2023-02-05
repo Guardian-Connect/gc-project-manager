@@ -182,7 +182,7 @@ const Trackermodal = ({ gctix }) => {
         sx={{ m: 2 }}
         required
         id="outlined-required"
-        label="Enter Site Name"
+        label="GC Ticket Date"
         placeholder="YYYY-MM-DD"
         defaultValue={handleDate(gctix.date)}
         InputLabelProps={{

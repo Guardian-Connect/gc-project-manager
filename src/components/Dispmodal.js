@@ -18,6 +18,7 @@ import {
   Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { isJSDocNullableType } from "typescript";
 const moment = require("moment");
 const Dispmodal = ({ site }) => {
   useEffect(() => {
@@ -62,6 +63,8 @@ const Dispmodal = ({ site }) => {
     setGrades9(site.grades9);
     setDisp10(site.disp10);
     setGrades10(site.grades10);
+    setQuote(site.quote);
+    setNotes(site.notes);
     // setNotes(site.notes);
   }, []);
   let date = moment.utc().format("yyyy-MM-DD");
@@ -104,6 +107,8 @@ const Dispmodal = ({ site }) => {
   const [add_id, setAdd_id] = React.useState("");
   const [contractStatus, setContractStatus] = React.useState("");
   const [quote, setQuote] = React.useState("X");
+  const [vendorRevenue, setVendorRevenue] = React.useState("");
+  const [branchRevenue, setBranchRevenue] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -235,7 +240,19 @@ const Dispmodal = ({ site }) => {
   };
 
   const handleQuote = (e) => {
-    setQuote(e.target.value);
+    if (e.target.value === "$350") {
+      setBranchRevenue("$350");
+      setVendorRevenue("0");
+      setQuote("C");
+    } else if (e.target.value === "$200") {
+      setVendorRevenue("$200");
+      setBranchRevenue("0");
+      setQuote("C");
+    } else {
+      setQuote(e.target.value);
+      setVendorRevenue("0");
+      setBranchRevenue("0");
+    }
   };
 
   const handleTotalActivationDate = (e) => {
@@ -283,7 +300,19 @@ const Dispmodal = ({ site }) => {
 
   const consoleTest = () => {
     let id = site.id;
-    console.log(notes === "X");
+    // if (branchRevenue === "$350") {
+    //   vendorRevenue = null;
+    //   quote = "X";
+    // } else if (vendorRevenue === "$250") {
+    //   branchRevenue = null;
+    //   quote = "X";
+    // } else if (quote === "O") {
+    //   vendorRevenue = null;
+    //   branchRevenue = null;
+    // }
+    if (notes.length === 0) {
+      setNotes("X");
+    }
     setLoading(true);
     updateDisp(
       id,
@@ -324,7 +353,9 @@ const Dispmodal = ({ site }) => {
       disp10,
       grades10,
       notes,
-      quote
+      quote,
+      vendorRevenue,
+      branchRevenue
     );
     reload();
   };
@@ -503,10 +534,13 @@ const Dispmodal = ({ site }) => {
           className={classes.formControl}
           sx={{ m: 2, width: "81%" }}
         >
-          <InputLabel>Quote Needed?</InputLabel>
+          <InputLabel>Site Status?</InputLabel>
           <Select onChange={handleQuote}>
-            <MenuItem value={"O"}>Yes</MenuItem>
-            <MenuItem value={"X"}>No/Completed</MenuItem>
+            <MenuItem value={"X"}>Install Open</MenuItem>
+            <MenuItem value={"O"}>Quote Needed</MenuItem>
+            <MenuItem value={"$350"}>Completed - Branch</MenuItem>
+            <MenuItem value={"$200"}>Completed - Vendor</MenuItem>
+            <MenuItem value={"S"}>Static</MenuItem>
           </Select>
         </FormControl>
 

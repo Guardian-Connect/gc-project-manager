@@ -78,10 +78,10 @@ function AppAppBar({
           <input
             className="search"
             type="text"
-            placeholder="Search By GVR ID,Address, or GP Customer ID. To see contact info enter the GVR ID and press enter"
+            placeholder="Search By GVR ID,Address, or GP Customer ID."
             value={searchInput}
             onChange={handleTextChange}
-            onKeyDown={handleSubmit}
+            // onKeyDown={handleSubmit}
           />
           <div className="withoutData">Sites w/out Data - {countDis} </div>
 

@@ -14,7 +14,7 @@ export async function getSomething() {
     let disconnected = [];
     let connected = [];
     info.map((site) => {
-      if (site.totaldisp === "0") {
+      if (site.quote != "C") {
         return disconnected.push(site.gvr_id);
       } else {
         return connected.push(site.gvr_id);
@@ -212,7 +212,9 @@ export async function updateDisp(
   disp10,
   grades10,
   notes,
-  quote
+  quote,
+  vendorRevenue,
+  branchRevenue
 ) {
   try {
     const { disp } = await axios.post("api/users/update", {
@@ -255,6 +257,8 @@ export async function updateDisp(
       grades10,
       notes,
       quote,
+      vendorRevenue,
+      branchRevenue,
     });
     return disp;
   } catch (error) {
