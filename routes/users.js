@@ -432,6 +432,7 @@ usersRouter.post("/gcticket", async (req, res, next) => {
   } = req.body;
   try {
     console.log("firing in users, gcticket");
+
     const gctracker = await createGctracker(
       date,
       gvr_id,
@@ -475,6 +476,20 @@ usersRouter.post("/report", async (req, res, next) => {
     next(error);
   }
 });
+
+function addNotesField(updateNotes) {
+  let date_ob = new Date();
+  let date2 = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  let hourz = date_ob.getHours();
+  let hours = (hourz < 10 ? "0" : "") + hourz;
+  let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
+  let note_date = year + "-" + month + "-" + date2;
+  let time = hours + ":" + minutes;
+  const newNotes = note_date + " " + "-" + " " + updateNotes;
+  return newNotes;
+}
 
 usersRouter.post("/update", async (req, res, next) => {
   const {
@@ -522,7 +537,8 @@ usersRouter.post("/update", async (req, res, next) => {
   } = req.body;
   const updateFields = {};
   if (notes != null && notes.length > 1) {
-    updateFields.notes = notes;
+    let newNotes = addNotesField(notes);
+    updateFields.notes = newNotes;
   } else if (notes.length <= 1) {
     updateFields.notes = "X";
   }
@@ -699,6 +715,8 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
     branch,
   } = req.body;
   console.log("Ticket Update Running");
+
+  let newNotes = addNotesField(updateNotes);
   const updateFields = {};
 
   if (date) {
@@ -741,7 +759,7 @@ usersRouter.post("/update/tracker", async (req, res, next) => {
     updateFields.location = location;
   }
   if (updateNotes) {
-    updateFields.update_notes = updateNotes;
+    updateFields.update_notes = newNotes;
   }
 
   if (sb) {
