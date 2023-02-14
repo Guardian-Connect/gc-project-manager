@@ -1,5 +1,6 @@
 const { Client } = require("pg");
 const bcrypt = require("bcrypt");
+const { red } = require("@mui/material/colors");
 const DB_NAME = "equipment";
 
 // const client = new Client(
@@ -729,6 +730,29 @@ async function deleteAlertTicket(id) {
     thrown(error);
   }
 }
+
+async function getProjectCount(gp) {
+  try {
+    const { rows } = await client.query(
+      `
+  SELECT COUNT(quote) as value, quote as title FROM dispinfo
+  WHERE gp_cust=$1
+  GROUP BY quote
+      `,
+      [gp]
+    );
+
+    // #ff0000 - RED
+    // #66d3ee - light blue
+    // #eac736 - Gold
+    // #c39797 - brown
+
+    return rows;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -759,4 +783,5 @@ module.exports = {
   createInbound,
   getAllInbound,
   getRrsMatrix,
+  getProjectCount,
 };

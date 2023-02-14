@@ -15,6 +15,7 @@ const {
   getEmailByGvr,
   getEmailByGp,
   getTicketing,
+  getProjectCount,
 } = require("./index");
 
 async function createSiteDisp(
@@ -191,6 +192,8 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
+    let count = await getProjectCount("QUA0006");
+    console.log(count);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();

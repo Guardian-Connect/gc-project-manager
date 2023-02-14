@@ -20,6 +20,8 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"NAS"}>Nashville</MenuItem>
       <MenuItem value={"PES"}>Petro Solutions</MenuItem>
       <MenuItem value={"RAL"}>Raleigh</MenuItem>
+      <MenuItem value={"RCH"}>Richmond</MenuItem>
+      <MenuItem value={"ROA"}>Roanoke</MenuItem>
       <MenuItem value={"SAN"}>Sanford</MenuItem>
       <MenuItem value={"SAV"}>Savannah</MenuItem>
       <MenuItem value={"SUB"}>Sub-Contractor (Other)</MenuItem>
