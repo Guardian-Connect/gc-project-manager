@@ -42,7 +42,7 @@ export async function getInfo() {
 
 export async function getGcTracker() {
   try {
-    const { data } = await axios.get(`/api/dbpost/gctracker`);
+    const { data } = await axios.get(`/api/display/gctracker`);
     return data;
   } catch (error) {
     throw error;
@@ -211,6 +211,16 @@ export async function updateDisp(
   grades9,
   disp10,
   grades10,
+  model1,
+  model2,
+  model3,
+  model4,
+  model5,
+  model6,
+  model7,
+  model8,
+  model9,
+  model10,
   notes,
   quote,
   vendorRevenue,
@@ -255,6 +265,16 @@ export async function updateDisp(
       grades9,
       disp10,
       grades10,
+      model1,
+      model2,
+      model3,
+      model4,
+      model5,
+      model6,
+      model7,
+      model8,
+      model9,
+      model10,
       notes,
       quote,
       vendorRevenue,

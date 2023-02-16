@@ -81,7 +81,7 @@ const Right = () => {
               sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={async () => {
-                await getInfoInstalls();
+                // await getInfoInstalls();
                 history.push("/gctrackerdisplay");
                 // window.location.reload();
               }}

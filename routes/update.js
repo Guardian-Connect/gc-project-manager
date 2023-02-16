@@ -56,6 +56,16 @@ updateRouter.post("/", async (req, res, next) => {
     grades9,
     disp10,
     grades10,
+    model1,
+    model2,
+    model3,
+    model4,
+    model5,
+    model6,
+    model7,
+    model8,
+    model9,
+    model10,
     notes,
     quote,
     vendorRevenue,
@@ -205,6 +215,46 @@ updateRouter.post("/", async (req, res, next) => {
   }
   if (grades10) {
     updateFields.grades10 = grades10;
+  }
+
+  if (model1) {
+    updateFields.model1 = model1;
+  }
+
+  if (model2) {
+    updateFields.model2 = model2;
+  }
+
+  if (model3) {
+    updateFields.model3 = model3;
+  }
+
+  if (model4) {
+    updateFields.model4 = model4;
+  }
+
+  if (model5) {
+    updateFields.model5 = model5;
+  }
+
+  if (model6) {
+    updateFields.model6 = model6;
+  }
+
+  if (model7) {
+    updateFields.model7 = model7;
+  }
+
+  if (model8) {
+    updateFields.model8 = model8;
+  }
+
+  if (model9) {
+    updateFields.model9 = model9;
+  }
+
+  if (model10) {
+    updateFields.model10 = model10;
   }
   // if (posreg1) {
   //   updateFields.posreg1 = posreg1;

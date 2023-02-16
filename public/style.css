@@ -7,6 +7,11 @@
   align-content: normal;
 }
 
+.border,
+.bordertop {
+  border-bottom: 1px solid black;
+}
+
 .withData {
   background-color: white;
   color: blue;

@@ -65,6 +65,16 @@ const Dispmodal = ({ site }) => {
     setGrades10(site.grades10);
     setQuote(site.quote);
     setNotes(site.notes);
+    setModel1(site.model1);
+    setModel2(site.model2);
+    setModel3(site.model3);
+    setModel4(site.model4);
+    setModel5(site.model5);
+    setModel6(site.model6);
+    setModel7(site.model7);
+    setModel8(site.model8);
+    setModel9(site.model9);
+    setModel10(site.model10);
     // setNotes(site.notes);
   }, []);
   let date = moment.utc().format("yyyy-MM-DD");
@@ -109,6 +119,17 @@ const Dispmodal = ({ site }) => {
   const [quote, setQuote] = React.useState("X");
   const [vendorRevenue, setVendorRevenue] = React.useState("");
   const [branchRevenue, setBranchRevenue] = React.useState("");
+  const [model1, setModel1] = React.useState("");
+  const [model2, setModel2] = React.useState("");
+  const [model3, setModel3] = React.useState("");
+  const [model4, setModel4] = React.useState("");
+  const [model5, setModel5] = React.useState("");
+  const [model6, setModel6] = React.useState("");
+  const [model7, setModel7] = React.useState("");
+  const [model8, setModel8] = React.useState("");
+  const [model9, setModel9] = React.useState("");
+  const [model10, setModel10] = React.useState("");
+
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -126,6 +147,46 @@ const Dispmodal = ({ site }) => {
   //     return date;
   //   }
   // }
+
+  const handleModel1 = (e) => {
+    setModel1(e.target.value);
+  };
+
+  const handleModel2 = (e) => {
+    setModel2(e.target.value);
+  };
+
+  const handleModel3 = (e) => {
+    setModel3(e.target.value);
+  };
+
+  const handleModel4 = (e) => {
+    setModel4(e.target.value);
+  };
+
+  const handleModel5 = (e) => {
+    setModel5(e.target.value);
+  };
+
+  const handleModel6 = (e) => {
+    setModel6(e.target.value);
+  };
+
+  const handleModel7 = (e) => {
+    setModel7(e.target.value);
+  };
+
+  const handleModel8 = (e) => {
+    setModel8(e.target.value);
+  };
+
+  const handleModel9 = (e) => {
+    setModel9(e.target.value);
+  };
+
+  const handleModel10 = (e) => {
+    setModel10(e.target.value);
+  };
 
   const handleNotes = (e) => {
     setNotes(e.target.value);
@@ -352,6 +413,16 @@ const Dispmodal = ({ site }) => {
       grades9,
       disp10,
       grades10,
+      model1,
+      model2,
+      model3,
+      model4,
+      model5,
+      model6,
+      model7,
+      model8,
+      model9,
+      model10,
       notes,
       quote,
       vendorRevenue,
@@ -555,339 +626,468 @@ const Dispmodal = ({ site }) => {
           }}
           onChange={handleAtgmodel}
         />
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Notes"
+            defaultValue={site.notes}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleNotes}
+          />
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 1 Serial Number + Position"
+            defaultValue={site.disp1}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp1}
+          />
 
-        <TextField
-          sx={{ m: 2, width: "81%" }}
-          required
-          id="outlined-required"
-          label="Notes"
-          defaultValue={site.notes}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleNotes}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 1 Model Number"
+            defaultValue={site.model1}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel1}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 1 Serial Number + Position"
-          defaultValue={site.disp1}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp1}
-        />
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 1 Grades</InputLabel>
+            <Select onChange={handleGrades1}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 2 Serial Number + Position"
+            defaultValue={site.disp2}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp2}
+          />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 2 Model Number"
+            defaultValue={site.model2}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel2}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 1 Grades</InputLabel>
-          <Select onChange={handleGrades1}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 2 Grades</InputLabel>
+            <Select onChange={handleGrades2}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 3 Serial Number + Position"
+            defaultValue={site.disp3}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp3}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 2 Serial Number + Position"
-          defaultValue={site.disp2}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp2}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 3 Model Number"
+            defaultValue={site.model3}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel3}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 2 Grades</InputLabel>
-          <Select onChange={handleGrades2}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 3 Grades</InputLabel>
+            <Select onChange={handleGrades3}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 4 Serial Number + Position"
+            defaultValue={site.disp4}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp4}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 3 Serial Number + Position"
-          defaultValue={site.disp3}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp3}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 4 Model Number"
+            defaultValue={site.model4}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel4}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 3 Grades</InputLabel>
-          <Select onChange={handleGrades3}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 4 Grades</InputLabel>
+            <Select onChange={handleGrades4}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 5 Serial Number + Position"
+            defaultValue={site.disp5}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp5}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 4 Serial Number + Position"
-          defaultValue={site.disp4}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp4}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 5 Model Number"
+            defaultValue={site.model5}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel5}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 4 Grades</InputLabel>
-          <Select onChange={handleGrades4}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 5 Grades</InputLabel>
+            <Select onChange={handleGrades5}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 6 Serial Number + Position"
+            defaultValue={site.disp6}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp6}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 5 Serial Number + Position"
-          defaultValue={site.disp5}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp5}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 6 Model Number"
+            defaultValue={site.model6}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel6}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 5 Grades</InputLabel>
-          <Select onChange={handleGrades5}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 6 Grades</InputLabel>
+            <Select onChange={handleGrades6}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 7 Serial Number + Position"
+            defaultValue={site.disp7}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp7}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 6 Serial Number + Position"
-          defaultValue={site.disp6}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp6}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 7 Model Number"
+            defaultValue={site.model7}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel7}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 6 Grades</InputLabel>
-          <Select onChange={handleGrades6}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 7 Grades</InputLabel>
+            <Select onChange={handleGrades7}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 8 Serial Number + Position"
+            defaultValue={site.disp8}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp8}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 7 Serial Number + Position"
-          defaultValue={site.disp7}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp7}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 8 Model Number"
+            defaultValue={site.model8}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel8}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 7 Grades</InputLabel>
-          <Select onChange={handleGrades7}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 8 Grades</InputLabel>
+            <Select onChange={handleGrades8}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 9 Serial Number + Position"
+            defaultValue={site.disp9}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp9}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 8 Serial Number + Position"
-          defaultValue={site.disp8}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp8}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 9 Model Number"
+            defaultValue={site.model9}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel9}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 8 Grades</InputLabel>
-          <Select onChange={handleGrades8}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 9 Grades</InputLabel>
+            <Select onChange={handleGrades9}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="border">
+          <TextField
+            sx={{ m: 2, width: "81%" }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 10 Serial Number + Position"
+            defaultValue={site.disp10}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleDisp10}
+          />
 
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 9 Serial Number + Position"
-          defaultValue={site.disp9}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp9}
-        />
+          <TextField
+            sx={{ m: 2 }}
+            required
+            id="outlined-required"
+            label="Set Dispenser 10 Model Number"
+            defaultValue={site.model10}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={handleModel10}
+          />
 
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 9 Grades</InputLabel>
-          <Select onChange={handleGrades9}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
-
-        <TextField
-          sx={{ m: 2 }}
-          required
-          id="outlined-required"
-          label="Set Dispenser 10 Serial Number + Position"
-          defaultValue={site.disp10}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleDisp10}
-        />
-
-        <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
-          <InputLabel>Dispenser 10 Grades</InputLabel>
-          <Select onChange={handleGrades10}>
-            <MenuItem value={"Regular Mid-Grade Premium "}>
-              Reg Mid Prem
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
-              Reg Mid Prem Dsl
-            </MenuItem>
-            <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
-              Reg Mid Prem Non-Eth
-            </MenuItem>
-            <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
-            <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
-            <MenuItem value={"Non-Ethanol Only"}>
-              Stand Alone Non-Ethanol
-            </MenuItem>
-          </Select>
-        </FormControl>
-
+          <FormControl className={classes.formControl} sx={{ ml: 1, mt: 2 }}>
+            <InputLabel>Dispenser 10 Grades</InputLabel>
+            <Select onChange={handleGrades10}>
+              <MenuItem value={"Regular Mid-Grade Premium "}>
+                Reg Mid Prem
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Diesel"}>
+                Reg Mid Prem Dsl
+              </MenuItem>
+              <MenuItem value={"Regular Mid-Grade Premium Non-Ethanol"}>
+                Reg Mid Prem Non-Eth
+              </MenuItem>
+              <MenuItem value={"Non-Ethanol Diesel"}>Non-Eth Dsl</MenuItem>
+              <MenuItem value={"Diesel"}>Stand Alone Diesel</MenuItem>
+              <MenuItem value={"Non-Ethanol Only"}>
+                Stand Alone Non-Ethanol
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
         {/* <Button
           sx={{ m: 2, width: "82%" }}
           variant="contained"
