@@ -35,6 +35,7 @@ const Trackermodal = ({ gctix }) => {
   const [atl_po, setatl_po] = React.useState("");
   const [status, setstatus] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [trip, setTripCount] = React.useState("1");
   const alert = useAlert();
   const classes = useStyles();
   // React.useEffect(() => {
@@ -62,7 +63,6 @@ const Trackermodal = ({ gctix }) => {
   const consoleTest = () => {
     let id = gctix.id;
     setLoading(true);
-    console.log(sb);
     updateTicket(
       date,
       dispatch_type,
@@ -78,7 +78,8 @@ const Trackermodal = ({ gctix }) => {
       sb,
       warranty_status,
       atl_po,
-      status
+      status,
+      trip
     ).then((res) => {
       if (res.message === "Update Successful") {
         alert.show("Updated!");
@@ -130,6 +131,10 @@ const Trackermodal = ({ gctix }) => {
 
   const handleBranch = (e) => {
     setsb(e.target.value);
+  };
+
+  const handleTrip = (e) => {
+    setTripCount(e.target.value);
   };
 
   return (
@@ -242,6 +247,13 @@ const Trackermodal = ({ gctix }) => {
         <Select onChange={handleTextChangeStatus}>
           <MenuItem value={"Open"}>Open</MenuItem>
           <MenuItem value={"Closed"}>Closed</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl className={classes.formControl} sx={{ m: 2 }}>
+        <InputLabel>First Trip Fix? - {gctix.trip}</InputLabel>
+        <Select onChange={handleTrip}>
+          <MenuItem value={"1"}>Yes</MenuItem>
+          <MenuItem value={"0"}>No</MenuItem>
         </Select>
       </FormControl>
       <TextField

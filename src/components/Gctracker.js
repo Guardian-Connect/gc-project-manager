@@ -35,6 +35,7 @@ const Gctracker = ({ addTicket }) => {
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState("Open");
   const [loading, setLoading] = React.useState(false);
+  const [trip_count, setTripCount] = useState("");
   const classes = useStyles();
 
   const reload = () => {
@@ -115,6 +116,10 @@ const Gctracker = ({ addTicket }) => {
 
   const handleLocation = (e) => {
     setSite_name(e.target.value);
+  };
+
+  const handleTrip = (e) => {
+    setTripCount(e.target.value);
   };
 
   return (

@@ -8,7 +8,7 @@ export let projectThree = "SOU0008";
 
 export async function getSomething() {
   try {
-    const { data } = await axios.get("/api/users/disp");
+    const { data } = await axios.get("/api/display/disp");
     // sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
     let info = data.dispinfo;
     let disconnected = [];
@@ -42,7 +42,7 @@ export async function getInfo() {
 
 export async function getGcTracker() {
   try {
-    const { data } = await axios.get(`/api/users/gctracker`);
+    const { data } = await axios.get(`/api/dbpost/gctracker`);
     return data;
   } catch (error) {
     throw error;
@@ -51,7 +51,7 @@ export async function getGcTracker() {
 
 export async function getAllInbound() {
   try {
-    const { data } = await axios.get(`/api/users/allinbound`);
+    const { data } = await axios.get(`/api/display/allinbound`);
     return data;
   } catch (error) {
     throw error;
@@ -97,7 +97,7 @@ export async function addSite(
 ) {
   try {
     console.log("RRS", rrs);
-    const { data } = await axios.post("/api/users/allsites", {
+    const { data } = await axios.post("/api/dbpost/allsites", {
       gvr_id,
       gp_cust,
       cus_name,
@@ -131,7 +131,7 @@ export async function createDisp(
   contract
 ) {
   try {
-    const { data } = await axios.post("/api/users/createdisp", {
+    const { data } = await axios.post("/api/dbpost/createdisp", {
       gvr_id,
       gp_cust,
       cus_name,
@@ -156,7 +156,7 @@ export async function createInbound(
   gcIssue
 ) {
   try {
-    const { data } = await axios.post("/api/users/inbound", {
+    const { data } = await axios.post("/api/dbpost/inbound", {
       sb,
       gvr_id,
       notes,
@@ -217,7 +217,7 @@ export async function updateDisp(
   branchRevenue
 ) {
   try {
-    const { disp } = await axios.post("api/users/update", {
+    const { disp } = await axios.post("api/update", {
       id,
       gvr_id,
       gp_cust,
@@ -282,10 +282,11 @@ export async function updateTicket(
   sb,
   warranty_status,
   atl_po,
-  status
+  status,
+  trip
 ) {
   try {
-    const { tracker } = await axios.post("api/users/update/tracker", {
+    const { tracker } = await axios.post("api/update/tracker", {
       date,
       dispatch_type,
       fm_ticket,
@@ -301,6 +302,7 @@ export async function updateTicket(
       warranty_status,
       atl_po,
       status,
+      trip,
     });
     return tracker;
   } catch (error) {
@@ -323,7 +325,7 @@ export async function updateAlertTicket(
   gvr
 ) {
   try {
-    const { tracker } = await axios.post("api/users/update/ticketing", {
+    const { tracker } = await axios.post("api/update/ticketing", {
       id,
       majorsrrs,
       parkers,
@@ -374,7 +376,7 @@ export async function addEmail(
 
 export async function getTicketing() {
   try {
-    const { data } = await axios.get(`/api/users/ticketing`);
+    const { data } = await axios.get(`/api/display/ticketing`);
     return data;
   } catch (error) {
     throw error;
