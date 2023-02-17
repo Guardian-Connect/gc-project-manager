@@ -478,7 +478,7 @@ export async function addTicket(
 ) {
   try {
     console.log("api index firing, gcticket");
-    const { data } = await axios.post("/api/users/gcticket", {
+    const { data } = await axios.post("/api/dbpost/gcticket", {
       date,
       gvr_id,
       gp,

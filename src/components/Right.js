@@ -2,26 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Button } from "@mui/material";
-// import { getInfo, getInfoInstalls, getEmail, getGp } from "../../../api";
-import {
-  getInfo,
-  getInfoInstalls,
-  getEmail,
-  getGp,
-  getSomething,
-} from "../api";
 import { useHistory } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -29,7 +15,6 @@ const Right = () => {
   let history = useHistory();
 
   return (
-    // <div className="rightbar">
     <Box
       sx={{
         display: "flex",
@@ -39,15 +24,10 @@ const Right = () => {
       }}
     >
       <CssBaseline />
-      {/* <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` }}
-      ></AppBar> */}
 
       <Drawer
         sx={{
           width: drawerWidth,
-          //   flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
@@ -67,10 +47,7 @@ const Right = () => {
               sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={() => {
-                getSomething().then((response) => {
-                  history.push("/");
-                });
-                // window.location.reload();
+                history.push("/");
               }}
             >
               Site Information
@@ -81,9 +58,7 @@ const Right = () => {
               sx={{ border: 1, borderColor: "white", width: 500 }}
               variant="contained"
               onClick={async () => {
-                // await getInfoInstalls();
                 history.push("/gctrackerdisplay");
-                // window.location.reload();
               }}
             >
               GC Tracker
@@ -151,22 +126,11 @@ const Right = () => {
                 GC Tracker
               </Button>
             </ListItem>
-            <ListItem>
-              {/* <Button
-              sx={{  border: 1, borderColor: "white", width: 500 }}
-              variant="contained"
-              onClick={() => {
-                history.push("/inboundcall");
-              }}
-            >
-              Inbound Calls
-            </Button> */}
-            </ListItem>
+            <ListItem></ListItem>
           </List>
         </div>
       </Drawer>
     </Box>
-    // </div>
   );
 };
 

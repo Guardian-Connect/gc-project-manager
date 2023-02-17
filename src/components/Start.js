@@ -37,7 +37,6 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
   useEffect(async () => {
     await getSomething()
       .then((response) => {
-        console.log(response);
         setMessage(response.dispinfo);
       })
       .catch((error) => {
@@ -65,12 +64,7 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
                 backgroundColor: buttonOne,
                 border: "1px solid green",
                 color: textOne,
-
                 width: { xs: "120%", md: "120%", lg: "100%" },
-                // "@media(orientation:landscape)": {
-                //   width: "120%",
-                //   justifyContent: "space-evenly",
-                // },
               }}
               onClick={handleClickOne}
             >

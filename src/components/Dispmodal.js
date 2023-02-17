@@ -1,24 +1,16 @@
 import React, { useEffect } from "react";
-import Loader from "react-loader-spinner";
 import { updateDisp } from "../api";
-import logo from "../assests/logo.gif";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { handleDate } from "../api";
 import {
-  Typography,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
-  Menu,
-  Button,
   TextField,
-  Alert,
-  Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { isJSDocNullableType } from "typescript";
 const moment = require("moment");
 const Dispmodal = ({ site }) => {
   useEffect(() => {
@@ -1088,13 +1080,7 @@ const Dispmodal = ({ site }) => {
             </Select>
           </FormControl>
         </div>
-        {/* <Button
-          sx={{ m: 2, width: "82%" }}
-          variant="contained"
-          onClick={consoleTest}
-        >
-          Submit
-        </Button> */}
+
         <LoadingButton
           sx={{ m: 2, width: "82%" }}
           color="secondary"

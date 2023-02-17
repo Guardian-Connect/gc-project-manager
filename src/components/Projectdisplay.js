@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Dispcardz from "./Dispcardz";
 import { getSomething } from "../api";
 import Projectdisplaycontrol from "./Projectdisplaycontrol";
+import Projectdizplay from "./Projectdizplay";
 import { makeStyles } from "@mui/styles";
 
 const Projectdisplay = ({ searchInput, setSearchInput }) => {
@@ -77,6 +78,11 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
     setTextTwelve(secondary);
     setTextThirteen(secondary);
   };
+  const gp_names = [
+    { name: "Majors", value: "MAJ0001" },
+    { name: "Quick Gas", value: "QUI0003" },
+    { name: "Quality Oil", value: "QUA0006" },
+  ];
 
   const handleClickOne = () => {
     setFilters([...filters, (item) => item.gp_cust.includes("MAJ0001")]);
@@ -109,7 +115,7 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
   };
 
   const handleClickSix = () => {
-    setFilters([...filters, (item) => item.gp_cust.includes("QUA0006")]);
+    setFilters([...filters, (item) => item.gp_cust.includes("QUA")]);
     setButtonTwelve(secondary);
     setTextTwelve(primary);
   };
