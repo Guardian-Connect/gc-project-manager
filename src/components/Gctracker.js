@@ -276,7 +276,7 @@ const Gctracker = ({ addTicket }) => {
           sx={{ m: 1 }}
           required
           id="outlined-required"
-          label="Enter ATL PO #"
+          label="Enter GC Ticket #"
           InputLabelProps={{
             shrink: true,
           }}

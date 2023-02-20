@@ -195,8 +195,8 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
                   )}
                   {gctix.fp === null && <>No Fueling Points Listed</>}
                   <Typography variant="h5" component="div">
-                    {gctix.atl_po != null && <>ATL PO # {gctix.atl_po} </>}
-                    {gctix.atl_po === null && <>No ATL PO Number Entered</>}
+                    {gctix.atl_po != null && <>GC Ticket # {gctix.atl_po} </>}
+                    {gctix.atl_po === null && <>No GC Ticket Number Entered</>}
                   </Typography>
                   <Typography variant="h5" component="div">
                     {gctix.warranty_status != null && (

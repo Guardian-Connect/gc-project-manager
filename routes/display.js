@@ -14,6 +14,7 @@ displayRouter.get("/disp", async (req, res, next) => {
     const dispinfo = await getAllSites();
     const rrsmatrix = await getRrsMatrix();
     console.log(typeof dispinfo);
+
     res.send({ dispinfo, rrsmatrix });
   } catch ({ name, message }) {
     next({ name, message });
