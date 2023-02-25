@@ -105,7 +105,7 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
             if (clientsAdd.includes(searchInput.toLowerCase())) {
               return true;
             }
-            const clientsId = client.gvr_id;
+            const clientsId = client.gvr_id.toString();
             if (clientsId.includes(searchInput.toLowerCase())) {
               return true;
             }

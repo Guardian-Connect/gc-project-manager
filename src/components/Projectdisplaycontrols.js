@@ -27,6 +27,7 @@ const names = [
   { name: "Majors", value: "MAJ0001" },
   { name: "Quick Gas", value: "QUI0003" },
   { name: "Quality Oil", value: "QUA0006" },
+  { name: "GPM", value: "GPM0001" },
 ];
 
 const status = [
@@ -73,6 +74,8 @@ export default function Projectdisplaycontrols({
       } else if (scores[i] === "QUI0003") {
         handleClickOne(scores[i]);
       } else if (scores[i] === "QUA0006") {
+        handleClickOne(scores[i]);
+      } else if (scores[i] === "GPM0001") {
         handleClickOne(scores[i]);
       } else if (!scores[i]) {
         console.log("ZERO");

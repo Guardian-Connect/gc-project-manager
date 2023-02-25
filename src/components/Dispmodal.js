@@ -14,6 +14,7 @@ import { makeStyles } from "@mui/styles";
 const moment = require("moment");
 const Dispmodal = ({ site }) => {
   useEffect(() => {
+    setThisGuy(site.gvr_id);
     setGvr_id(site.gvr_id);
     setGp_cust(site.gp_cust);
     setContract(site.contract);
@@ -121,7 +122,7 @@ const Dispmodal = ({ site }) => {
   const [model8, setModel8] = React.useState("");
   const [model9, setModel9] = React.useState("");
   const [model10, setModel10] = React.useState("");
-
+  const [thisGuy, setThisGuy] = React.useState(0);
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -352,7 +353,7 @@ const Dispmodal = ({ site }) => {
   };
 
   const consoleTest = () => {
-    let id = site.id;
+    console.log(gvr_id);
     // if (branchRevenue === "$350") {
     //   vendorRevenue = null;
     //   quote = "X";
@@ -368,7 +369,7 @@ const Dispmodal = ({ site }) => {
     }
     setLoading(true);
     updateDisp(
-      id,
+      thisGuy,
       gvr_id,
       gp_cust,
       contract,

@@ -76,7 +76,7 @@ async function createSite(
     );
 
     if (gvr_id === 0) {
-      gvr_id = "Customer Number" + " " + Math.floor(Math.random() * 500000);
+      gvr_id = Math.floor(Math.random() * 50000000);
     }
     const check = await getSiteGvr(gvr_id);
     if (check && check.length > 0) {
@@ -85,6 +85,9 @@ async function createSite(
     } else {
       console.log(check.length, "check");
       let add_id = custAddId;
+      await createSiteModels(gvr_id);
+      await createSiteGrades(gvr_id);
+      await createSiteSerials(gvr_id);
       const siteCreate = await createSiteDisp(
         gvr_id,
         add_id,
@@ -97,6 +100,7 @@ async function createSite(
         rrs,
         contractor
       );
+      //NEED TO ADD GVR IDs into other 3 databases as well. (dispserials, dispmodel, dispgrades)
       const result = await client.query(
         `
       INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
@@ -109,6 +113,54 @@ async function createSite(
     }
   } catch (error) {
     console.log(error);
+    throw error;
+  }
+}
+
+async function createSiteModels(gvr_id) {
+  try {
+    const result = await client.query(
+      `
+      INSERT INTO dispmodels(gvr_id)
+      VALUES ($1);
+    `,
+      [gvr_id]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function createSiteSerials(gvr_id) {
+  try {
+    const result = await client.query(
+      `
+      INSERT INTO dispserials(gvr_id)
+      VALUES ($1);
+    `,
+      [gvr_id]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function createSiteGrades(gvr_id) {
+  try {
+    const result = await client.query(
+      `
+      INSERT INTO dispgrades(gvr_id)
+      VALUES ($1);
+    `,
+      [gvr_id]
+    );
+
+    return result;
+  } catch (error) {
     throw error;
   }
 }
@@ -331,9 +383,11 @@ async function getAllInbound() {
 async function getAllSites() {
   console.log("getting all sites!");
   const { rows } = await client.query(
-    `SELECT *
-    FROM dispinfo
-    ORDER BY gvr_id ASC;
+    `SELECT * FROM dispinfo
+    INNER JOIN dispserials ON dispserials.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispgrades ON dispgrades.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispmodels ON dispmodels.gvr_id = dispinfo.gvr_id
+    ORDER BY dispinfo.gvr_id ASC;
   `
   );
 
@@ -459,21 +513,95 @@ async function getTracker(id) {
 
 async function updateDisp(id, fields = {}) {
   try {
-    console.log(fields, "fields");
+    console.log(id, "typeof");
     const setString = Object.keys(fields)
       .map((key, index) => `${key}=$${index + 1}`)
       .join(", ");
     console.log(setString);
-    if (fields.gvr_id) {
-      const test = await updateAllSitesGvr(fields);
-      console.log(test, "Testing");
-    }
     try {
       const { rows } = await client.query(
         `
       UPDATE dispinfo
       SET ${setString}
-      WHERE id=${id}
+      WHERE gvr_id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows, "rows");
+      return { message: "Update Successful" };
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateSerials(id, fields = {}) {
+  try {
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(setString);
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE dispserials
+      SET ${setString}
+      WHERE gvr_id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows, "rows");
+      return { message: "Update Successful" };
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateModels(id, fields = {}) {
+  try {
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(setString);
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE dispmodels
+      SET ${setString}
+      WHERE gvr_id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows, "rows");
+      return { message: "Update Successful" };
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateGrades(id, fields = {}) {
+  try {
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(setString);
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE dispgrades
+      SET ${setString}
+     WHERE gvr_id=${id}
       RETURNING *;
     `,
         Object.values(fields)
@@ -706,7 +834,7 @@ async function getTicketing() {
     const tickets = await client.query(
       `
 select ticketing.*, dispinfo.gp_cust from ticketing
-INNER JOIN dispinfo ON ticketing.gvr_id = dispinfo.gvr_id
+INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
 ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC
       `
     );
@@ -784,4 +912,7 @@ module.exports = {
   getAllInbound,
   getRrsMatrix,
   getProjectCount,
+  updateSerials,
+  updateModels,
+  updateGrades,
 };

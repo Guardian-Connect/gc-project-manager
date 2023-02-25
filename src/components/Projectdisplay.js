@@ -25,12 +25,6 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
     setFilters([]);
     setSearchInput("");
   };
-  const gp_names = [
-    { name: "Majors", value: "MAJ0001" },
-    { name: "Quick Gas", value: "QUI0003" },
-    { name: "Quality Oil", value: "QUA0006" },
-  ];
-
   const handleClickOne = (value) => {
     setFilters([...filters, (item) => item.gp_cust.includes(value)]);
   };
@@ -72,7 +66,7 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
       />
       {filteredItems
         .filter((client, index) => {
-          const clientsId = client.gvr_id;
+          const clientsId = client.gvr_id.toString();
           if (clientsId.includes(searchInput.toLowerCase())) {
             return true;
           }

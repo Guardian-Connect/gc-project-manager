@@ -1,7 +1,14 @@
 const apiRouter = require("express");
 require("dotenv").config();
 const updateRouter = apiRouter.Router();
-const { updateDisp, updateTracker, updateAlertTickets } = require("../db");
+const {
+  updateDisp,
+  updateTracker,
+  updateAlertTickets,
+  updateSerials,
+  updateModels,
+  updateGrades,
+} = require("../db");
 
 function addNotesField(updateNotes) {
   let date_ob = new Date();
@@ -19,7 +26,7 @@ function addNotesField(updateNotes) {
 
 updateRouter.post("/", async (req, res, next) => {
   const {
-    id,
+    thisGuy,
     gvr_id,
     gp_cust,
     contract,
@@ -71,199 +78,210 @@ updateRouter.post("/", async (req, res, next) => {
     vendorRevenue,
     branchRevenue,
   } = req.body;
-  const updateFields = {};
+  console.log(gvr_id, "pre run");
+  const updateFieldsInfo = {};
+  const updateFieldsSerials = {};
+  const updateFieldsModels = {};
+  const updateFieldsGrades = {};
+  let id = parseInt(thisGuy);
+
+  if (gvr_id) {
+    let thisGuyTwo = parseInt(gvr_id);
+    console.log(thisGuyTwo, "this fuckin guy");
+    updateFieldsInfo.gvr_id = thisGuyTwo;
+    updateFieldsSerials.gvr_id = thisGuyTwo;
+    updateFieldsModels.gvr_id = thisGuyTwo;
+    updateFieldsGrades.gvr_id = thisGuyTwo;
+  }
+
   if (notes != null && notes.length > 1) {
     let newNotes = addNotesField(notes);
-    updateFields.notes = newNotes;
+    updateFieldsInfo.notes = newNotes;
   } else if (notes.length <= 1) {
-    updateFields.notes = "X";
+    updateFieldsInfo.notes = "X";
   }
 
   if (vendorRevenue) {
-    updateFields.v_revenue = vendorRevenue;
+    updateFieldsInfo.v_revenue = vendorRevenue;
   }
 
   if (branchRevenue) {
-    updateFields.b_revenue = branchRevenue;
+    updateFieldsInfo.b_revenue = branchRevenue;
   }
 
   if (quote) {
-    updateFields.quote = quote;
-  }
-
-  if (gvr_id) {
-    updateFields.gvr_id = gvr_id;
+    updateFieldsInfo.quote = quote;
   }
 
   if (gp_cust) {
-    updateFields.gp_cust = gp_cust;
+    updateFieldsInfo.gp_cust = gp_cust;
   }
 
   if (contract) {
-    updateFields.contract = contract;
+    updateFieldsInfo.contract = contract;
   }
   if (add_id) {
-    updateFields.add_id = add_id;
+    updateFieldsInfo.add_id = add_id;
   }
   if (contractStatus) {
-    updateFields.contract_status = contractStatus;
+    updateFieldsInfo.contract_status = contractStatus;
   }
 
   if (site_address) {
-    updateFields.site_address = site_address;
+    updateFieldsInfo.site_address = site_address;
   }
 
   if (totaldisp) {
-    updateFields.totaldisp = totaldisp;
+    updateFieldsInfo.totaldisp = totaldisp;
   }
 
   if (activation_date) {
     let split2 = activation_date.split("T");
     let activation_date_final = split2[0].toString();
-    updateFields.activation = activation_date_final;
+    updateFieldsInfo.activation = activation_date_final;
   }
 
   if (warranty_date) {
     let split = warranty_date.split("T");
     let warranty_date_final = split[0].toString();
-    updateFields.warranty = warranty_date_final;
+    updateFieldsInfo.warranty = warranty_date_final;
   }
 
   if (renewal) {
-    updateFields.renewal = renewal;
+    updateFieldsInfo.renewal = renewal;
   }
 
   if (posvn) {
-    updateFields.posvn = posvn;
+    updateFieldsSerials.posvn = posvn;
   }
 
   if (posmain) {
-    updateFields.posmain = posmain;
+    updateFieldsSerials.posmain = posmain;
   }
 
   if (posreg1) {
-    updateFields.posreg1 = posreg1;
+    updateFieldsSerials.posreg1 = posreg1;
   }
 
   if (posreg2) {
-    updateFields.posreg2 = posreg2;
+    updateFieldsSerials.posreg2 = posreg2;
   }
   if (posreg3) {
-    updateFields.posreg3 = posreg3;
+    updateFieldsSerials.posreg3 = posreg3;
   }
   if (atgmodel) {
-    updateFields.atgmodel = atgmodel;
+    updateFieldsSerials.atgmodel = atgmodel;
   }
   if (disp1) {
-    updateFields.disp1 = disp1;
+    updateFieldsSerials.disp1 = disp1;
   }
   if (grades1) {
-    updateFields.grades1 = grades1;
+    updateFieldsGrades.grades1 = grades1;
   }
   if (disp2) {
-    updateFields.disp2 = disp2;
+    updateFieldsSerials.disp2 = disp2;
   }
 
   if (grades2) {
-    updateFields.grades2 = grades2;
+    updateFieldsGrades.grades2 = grades2;
   }
   if (disp3) {
-    updateFields.disp3 = disp3;
+    updateFieldsSerials.disp3 = disp3;
   }
   if (grades3) {
-    updateFields.grades3 = grades3;
+    updateFieldsGrades.grades3 = grades3;
   }
   if (disp4) {
-    updateFields.disp4 = disp4;
+    updateFieldsSerials.disp4 = disp4;
   }
 
   if (grades4) {
-    updateFields.grades4 = grades4;
+    updateFieldsGrades.grades4 = grades4;
   }
   if (disp5) {
-    updateFields.disp5 = disp5;
+    updateFieldsSerials.disp5 = disp5;
   }
   if (grades5) {
-    updateFields.grades5 = grades5;
+    updateFieldsGrades.grades5 = grades5;
   }
   if (disp6) {
-    updateFields.disp6 = disp6;
+    updateFieldsSerials.disp6 = disp6;
   }
   if (grades6) {
-    updateFields.grades6 = grades6;
+    updateFieldsGrades.grades6 = grades6;
   }
   if (disp7) {
-    updateFields.disp7 = disp7;
+    updateFieldsSerials.disp7 = disp7;
   }
   if (grades7) {
-    updateFields.grades7 = grades7;
+    updateFieldsGrades.grades7 = grades7;
   }
   if (disp8) {
-    updateFields.disp8 = disp8;
+    updateFieldsSerials.disp8 = disp8;
   }
   if (grades8) {
-    updateFields.grades8 = grades8;
+    updateFieldsGrades.grades8 = grades8;
   }
   if (disp9) {
-    updateFields.disp9 = disp9;
+    updateFieldsSerials.disp9 = disp9;
   }
   if (grades9) {
-    updateFields.grades9 = grades9;
+    updateFieldsGrades.grades9 = grades9;
   }
   if (disp10) {
-    updateFields.disp10 = disp10;
+    updateFieldsSerials.disp10 = disp10;
   }
   if (grades10) {
-    updateFields.grades10 = grades10;
+    updateFieldsGrades.grades10 = grades10;
   }
 
   if (model1) {
-    updateFields.model1 = model1;
+    updateFieldsModels.model1 = model1;
   }
 
   if (model2) {
-    updateFields.model2 = model2;
+    updateFieldsModels.model2 = model2;
   }
 
   if (model3) {
-    updateFields.model3 = model3;
+    updateFieldsModels.model3 = model3;
   }
 
   if (model4) {
-    updateFields.model4 = model4;
+    updateFieldsModels.model4 = model4;
   }
 
   if (model5) {
-    updateFields.model5 = model5;
+    updateFieldsModels.model5 = model5;
   }
 
   if (model6) {
-    updateFields.model6 = model6;
+    updateFieldsModels.model6 = model6;
   }
 
   if (model7) {
-    updateFields.model7 = model7;
+    updateFieldsModels.model7 = model7;
   }
 
   if (model8) {
-    updateFields.model8 = model8;
+    updateFieldsModels.model8 = model8;
   }
 
   if (model9) {
-    updateFields.model9 = model9;
+    updateFieldsModels.model9 = model9;
   }
 
   if (model10) {
-    updateFields.model10 = model10;
+    updateFieldsModels.model10 = model10;
   }
-  // if (posreg1) {
-  //   updateFields.posreg1 = posreg1;
-  // }
 
   try {
-    const updatedTicket = await updateDisp(id, updateFields);
-    // console.log(updatedTicket.length);
-    res.send({ updatedTicket });
+    console.log(updateFieldsInfo);
+    const updatedDispInfo = await updateDisp(id, updateFieldsInfo);
+    const updatedDispSerials = await updateSerials(id, updateFieldsSerials);
+    const updatedDispModels = await updateModels(id, updateFieldsModels);
+    const updateDispGrades = await updateGrades(id, updateFieldsGrades);
+    res.send({ updatedDispInfo });
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);

@@ -174,7 +174,7 @@ export async function createInbound(
 }
 
 export async function updateDisp(
-  id,
+  thisGuy,
   gvr_id,
   gp_cust,
   contract,
@@ -227,8 +227,9 @@ export async function updateDisp(
   branchRevenue
 ) {
   try {
+    console.log(gvr_id, "api update");
     const { disp } = await axios.post("api/update", {
-      id,
+      thisGuy,
       gvr_id,
       gp_cust,
       contract,
