@@ -26,7 +26,11 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
     setSearchInput("");
   };
   const handleClickOne = (value) => {
-    setFilters([...filters, (item) => item.gp_cust.includes(value)]);
+    if (typeof value[0] === "undefined") {
+      setFilters([]);
+    } else {
+      setFilters([...filters, (item) => item.gp_cust.includes(value)]);
+    }
   };
 
   const handleClickThree = (value) => {

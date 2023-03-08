@@ -126,6 +126,17 @@ const Right = () => {
                 GC Tracker
               </Button>
             </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/pcnalert");
+                }}
+              >
+                PCN Alert Tracker
+              </Button>
+            </ListItem>
             <ListItem></ListItem>
           </List>
         </div>

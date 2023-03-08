@@ -307,11 +307,26 @@ updateRouter.post("/tracker", async (req, res, next) => {
     atl_po,
     status,
     trip,
+    parts,
+    travel,
   } = req.body;
   console.log("Ticket Update Running");
 
+  let date_ob = new Date();
+  let date2 = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  let hourz = date_ob.getHours() - 4;
+  let hours = (hourz < 10 ? "0" : "") + hourz;
+  let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
+  let dateStamp = year + "-" + month + "-" + date2;
+  let time = hours + ":" + minutes;
+
   let newNotes = addNotesField(updateNotes);
   const updateFields = {};
+
+  updateFields.complete_date = dateStamp;
+  updateFields.complete_time = time;
 
   if (date) {
     let split2 = date.split("T");
@@ -368,6 +383,14 @@ updateRouter.post("/tracker", async (req, res, next) => {
   }
   if (atl_po) {
     updateFields.atl_po = atl_po;
+  }
+
+  if (parts) {
+    updateFields.parts = parts;
+  }
+
+  if (travel) {
+    updateFields.travel = travel;
   }
 
   try {

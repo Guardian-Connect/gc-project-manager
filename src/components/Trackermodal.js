@@ -6,6 +6,7 @@ import {
   MenuItem,
   Select,
   InputLabel,
+  Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { updateTicket } from "../api";
@@ -36,6 +37,8 @@ const Trackermodal = ({ gctix }) => {
   const [status, setstatus] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [trip, setTripCount] = React.useState("1");
+  const [travel, setTravel] = React.useState("");
+  const [parts, setParts] = React.useState("");
   const alert = useAlert();
   const classes = useStyles();
   // React.useEffect(() => {
@@ -79,7 +82,9 @@ const Trackermodal = ({ gctix }) => {
       warranty_status,
       atl_po,
       status,
-      trip
+      trip,
+      parts,
+      travel
     ).then((res) => {
       if (res.message === "Update Successful") {
         alert.show("Updated!");
@@ -88,6 +93,14 @@ const Trackermodal = ({ gctix }) => {
       }
     });
     reload();
+  };
+
+  const handleParts = (e) => {
+    setParts(e.target.value);
+  };
+
+  const handleTravel = (e) => {
+    setTravel(e.target.value);
   };
 
   const handleTextChangeStatus = (e) => {
@@ -196,25 +209,35 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeDate}
       />
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
-        <InputLabel>Dispatch Type - {gctix.dispatch_type}</InputLabel>
-        <Select onChange={handleTextChangeDispatch}>
-          <MenuItem value={"Install - Repair"}>Install - Repair </MenuItem>
-          <MenuItem value={"Repair"}>Repair </MenuItem>
-          <MenuItem value={"Upgrade"}>Upgrade </MenuItem>
-          <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
-          <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
-          <MenuItem value={"Printer"}>Printer</MenuItem>
-          <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
-          <MenuItem value={"Serial Interface"}>Serial Interface</MenuItem>
-          <MenuItem value={"UPM"}>UPM</MenuItem>
-          <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
-          <MenuItem value={"Display"}>Display</MenuItem>
-          <MenuItem value={"Omnia"}>Omnia</MenuItem>
-          <MenuItem value={"PCN Update"}>PCN Update</MenuItem>
-          <MenuItem value={"UPM Update"}>UPM Update</MenuItem>
-          <MenuItem value={"Omnia Update"}>Omnia Update</MenuItem>
-          <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
-        </Select>
+        <InputLabel>
+          {gctix.dispatch_type != "PCN Error" && (
+            <>Dispatch Type - {gctix.dispatch_type}</>
+          )}
+          {gctix.dispatch_type === "PCN Error" && <></>}
+        </InputLabel>
+        {gctix.dispatch_type != "PCN Error" && (
+          <Select onChange={handleTextChangeDispatch}>
+            <MenuItem value={"Install - Repair"}>Install - Repair </MenuItem>
+            <MenuItem value={"Repair"}>Repair </MenuItem>
+            <MenuItem value={"Upgrade"}>Upgrade </MenuItem>
+            <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
+            <MenuItem value={"Card Reader"}>Card Reader</MenuItem>
+            <MenuItem value={"Printer"}>Printer</MenuItem>
+            <MenuItem value={"No Transaction"}>No Transaction</MenuItem>
+            <MenuItem value={"Serial Interface"}>Serial Interface</MenuItem>
+            <MenuItem value={"UPM"}>UPM</MenuItem>
+            <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
+            <MenuItem value={"Display"}>Display</MenuItem>
+            <MenuItem value={"Omnia"}>Omnia</MenuItem>
+            <MenuItem value={"PCN Update"}>PCN Update</MenuItem>
+            <MenuItem value={"UPM Update"}>UPM Update</MenuItem>
+            <MenuItem value={"Omnia Update"}>Omnia Update</MenuItem>
+            <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
+          </Select>
+        )}
+        {gctix.dispatch_type === "PCN Error" && (
+          <>{gctix.dispatch_type} Can't Be Changed</>
+        )}
       </FormControl>
       <TextField
         sx={{ m: 2 }}
@@ -268,6 +291,33 @@ const Trackermodal = ({ gctix }) => {
         multiline
         rows={6}
         onChange={handleTextChangeNotes}
+      />
+      <div className="pcnborder">
+        <Typography sx={{ alignContent: "center" }}>
+          PCN Alert Data Only
+        </Typography>
+      </div>
+      <TextField
+        sx={{ m: 2, width: "81%" }}
+        required
+        id="outlined-required"
+        label="Enter Parts Cost"
+        defaultValue={gctix.update_notes}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleParts}
+      />
+      <TextField
+        sx={{ m: 2, width: "81%" }}
+        required
+        id="outlined-required"
+        label="Enter Labor+Travel Cost"
+        defaultValue={gctix.update_notes}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTravel}
       />
 
       <LoadingButton

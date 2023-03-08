@@ -68,17 +68,22 @@ export default function Projectdisplaycontrols({
   };
   const handleTagCustomer = (event) => {
     let scores = event.target.value;
-    for (let i = 0; i < scores.length; i++) {
-      if (scores[i] === "MAJ0001") {
-        handleClickOne(scores[i]);
-      } else if (scores[i] === "QUI0003") {
-        handleClickOne(scores[i]);
-      } else if (scores[i] === "QUA0006") {
-        handleClickOne(scores[i]);
-      } else if (scores[i] === "GPM0001") {
-        handleClickOne(scores[i]);
-      } else if (!scores[i]) {
-        console.log("ZERO");
+    let empty = [];
+    if (typeof scores[0] === "undefined") {
+      handleClickOne(empty);
+    } else {
+      for (let i = 0; i < scores.length; i++) {
+        if (scores[i] === "MAJ0001") {
+          handleClickOne(scores[i]);
+        } else if (scores[i] === "QUI0003") {
+          handleClickOne(scores[i]);
+        } else if (scores[i] === "QUA0006") {
+          handleClickOne(scores[i]);
+        } else if (scores[i] === "GPM0001") {
+          handleClickOne(scores[i]);
+        } else {
+          handleClickOne(scores[i]);
+        }
       }
     }
   };

@@ -777,6 +777,15 @@ async function createGctracker(
   notes,
   status
 ) {
+  let date_ob = new Date();
+  let date2 = ("0" + date_ob.getDate()).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let year = date_ob.getFullYear();
+  let hourz = date_ob.getHours() - 4;
+  let hours = (hourz < 10 ? "0" : "") + hourz;
+  let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
+  let create_date = year + "-" + month + "-" + date2;
+  let create_time = hours + ":" + minutes;
   try {
     console.log(
       "new ticket",
@@ -794,12 +803,14 @@ async function createGctracker(
       atl_po,
       warranty_status,
       notes,
-      status
+      status,
+      create_date,
+      create_time
     );
     const result = await client.query(
       `
-      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
+      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status, create_date, create_time)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);
     `,
       [
         date,
@@ -817,6 +828,8 @@ async function createGctracker(
         warranty_status,
         notes,
         status,
+        create_date,
+        create_time,
       ]
     );
     return { message: "Ticket Created Successfully" };

@@ -304,7 +304,9 @@ export async function updateTicket(
   warranty_status,
   atl_po,
   status,
-  trip
+  trip,
+  parts,
+  travel
 ) {
   try {
     const { tracker } = await axios.post("api/update/tracker", {
@@ -324,6 +326,8 @@ export async function updateTicket(
       atl_po,
       status,
       trip,
+      parts,
+      travel,
     });
     return tracker;
   } catch (error) {

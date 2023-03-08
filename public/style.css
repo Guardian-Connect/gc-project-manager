@@ -7,7 +7,19 @@
   align-content: normal;
 }
 
-.border,
+.pcnborder {
+  background-color: yellow;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  flex-wrap: "wrap";
+  align-self: center;
+  align-content: center;
+}
+
+.border {
+  border: 1px solid black;
+}
 .bordertop {
   border-bottom: 1px solid black;
 }

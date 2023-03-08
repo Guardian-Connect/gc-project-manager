@@ -29,6 +29,7 @@ import Alerticket from "./Alerticket";
 import Inboundcalldisplay from "./Inboundcalldisplay";
 import Inboundcall from "./Inboundcall";
 import Projectdisplay from "./Projectdisplay";
+import Pcntracker from "./Pcntracker";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -165,6 +166,13 @@ const App = () => {
                   addTicket={addTicket}
                   message={message}
                   setMessage={setMessage}
+                />
+              </Route>
+              <Route path="/pcnalert">
+                <Pcntracker
+                  addTicket={addTicket}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
                 />
               </Route>
               <Route path="/project">
