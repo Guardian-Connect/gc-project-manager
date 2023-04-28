@@ -117,10 +117,10 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
 
       {filteredItems
         .filter((client, index) => {
-          const clientsAdd = client.address;
-          if (clientsAdd.includes(searchInput.toLowerCase())) {
-            return true;
-          }
+          // const clientsAdd = client.address;
+          // if (clientsAdd.includes(searchInput.toLowerCase())) {
+          //   return true;
+          // }
           const clientsId = client.gvr_id.toString();
           if (clientsId.includes(searchInput.toLowerCase())) {
             return true;

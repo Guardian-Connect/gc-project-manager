@@ -2,6 +2,7 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const { red } = require("@mui/material/colors");
 const DB_NAME = "equipment";
+const nodemailer = require("nodemailer");
 
 // const client = new Client(
 //   process.env.DATABASE_URL ||
@@ -16,6 +17,44 @@ const client = new Client({
     rejectUnauthorized: false,
   },
 });
+
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: "guardianconnectscrapes@gmail.com", // your email address
+    pass: "ujkvrpggoitghxuw", // your email password
+  },
+});
+
+// create a function that sends an email
+async function sendEmail(
+  gvrId,
+  gpCust,
+  address,
+  activationDate,
+  warrantyDate,
+  quote,
+  notes
+) {
+  let mailOptions = {
+    from: "Guardian Connect Activations",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `New Activation - ${gpCust}`,
+    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
+
+  // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -181,6 +220,7 @@ async function createSiteDisp(
   let totaldisp = "0";
   let notes = "X";
   let phase = "0";
+  let contract_status = "1-PENDING";
   try {
     console.log(
       "site creation",
@@ -201,8 +241,8 @@ async function createSiteDisp(
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor, contract_status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
     `,
       [
         gvr_id,
@@ -219,6 +259,7 @@ async function createSiteDisp(
         notes,
         phase,
         contractor,
+        contract_status,
       ]
     );
     console.log("dispinfo", result);
@@ -528,7 +569,34 @@ async function updateDisp(id, fields = {}) {
     `,
         Object.values(fields)
       );
-      console.log(rows, "rows");
+      // console.log(rows, "put send email function here");
+      let gvrId = fields.gvr_id;
+      let gpCust = fields.gp_cust;
+      let address = fields.site_address;
+      let activationDate = fields.activation;
+      let warrantyDate = fields.warranty;
+      let quote = fields.contract_status;
+      let notes = fields.notes;
+      console.log(
+        gvrId,
+        quote,
+        gpCust,
+        address,
+        "activation date =",
+        activationDate,
+        "warranty expiration =",
+        warrantyDate,
+        "email fields"
+      );
+      sendEmail(
+        gvrId,
+        gpCust,
+        address,
+        activationDate,
+        warrantyDate,
+        quote,
+        notes
+      );
       return { message: "Update Successful" };
     } catch (error) {
       throw error;
