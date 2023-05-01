@@ -41,6 +41,7 @@ async function sendEmail(
 ) {
   let mailOptions = {
     from: "Guardian Connect Activations",
+    // to: "jgale@guardianfueltech.com",
     to: "guardianconnect@guardianfueltech.com",
     subject: `New Activation - ${gpCust}`,
     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
@@ -588,15 +589,19 @@ async function updateDisp(id, fields = {}) {
         warrantyDate,
         "email fields"
       );
-      sendEmail(
-        gvrId,
-        gpCust,
-        address,
-        activationDate,
-        warrantyDate,
-        quote,
-        notes
-      );
+      if (quote === "3-STATIC" || quote === "2-MONITORING") {
+        sendEmail(
+          gvrId,
+          gpCust,
+          address,
+          activationDate,
+          warrantyDate,
+          quote,
+          notes
+        );
+      } else {
+        console.log("Just updating");
+      }
       return { message: "Update Successful" };
     } catch (error) {
       throw error;
