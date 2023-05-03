@@ -57,6 +57,33 @@ async function sendEmail(
   });
 }
 
+async function sendEmailStatic(
+  gvrId,
+  gpCust,
+  address,
+  activationDate,
+  warrantyDate,
+  quote,
+  notes
+) {
+  let mailOptions = {
+    from: "Guardian Connect Activations",
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `New Activation STATIC SITE - ${gpCust}`,
+    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
+
+  // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
+
 async function getRecordByDate(start, end, gp) {
   try {
     const { rows } = await client.query(
@@ -589,8 +616,18 @@ async function updateDisp(id, fields = {}) {
         warrantyDate,
         "email fields"
       );
-      if (quote === "3-STATIC" || quote === "2-MONITORING") {
+      if (quote === "2-MONITORING") {
         sendEmail(
+          gvrId,
+          gpCust,
+          address,
+          activationDate,
+          warrantyDate,
+          quote,
+          notes
+        );
+      } else if (quote === "3-STATIC") {
+        sendEmailStatic(
           gvrId,
           gpCust,
           address,
