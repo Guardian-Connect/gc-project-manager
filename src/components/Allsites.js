@@ -233,6 +233,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           <Select onChange={handleContractor}>
             <MenuItem value={"Guardian"}>Guardian Connect</MenuItem>
             <MenuItem value={"Nexus"}>Nexus</MenuItem>
+            <MenuItem value={"Simard"}>Simard</MenuItem>
           </Select>
         </FormControl>
 
