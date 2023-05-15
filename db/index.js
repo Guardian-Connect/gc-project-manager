@@ -20,12 +20,13 @@ const client = new Client({
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // true for 465, false for other ports
+  // host: "smtp.gmail.com",
+  // port: 465,
+  // secure: true, // true for 465, false for other ports
+  service: "yahoo",
   auth: {
-    user: "guardianconnectscrapes@gmail.com", // your email address
-    pass: "ujkvrpggoitghxuw", // your email password
+    user: "jgale2263130@yahoo.com", // your email address
+    pass: process.env.email_password, // your email password
   },
 });
 
@@ -40,7 +41,10 @@ async function sendEmail(
   notes
 ) {
   let mailOptions = {
-    from: "Guardian Connect Activations",
+    from: {
+      name: "GC Activations",
+      address: "jgale2263130@yahoo.com",
+    },
     // to: "jgale@guardianfueltech.com",
     to: "guardianconnect@guardianfueltech.com",
     subject: `New Activation - ${gpCust}`,
