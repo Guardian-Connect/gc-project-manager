@@ -84,7 +84,6 @@ updateRouter.post("/", async (req, res, next) => {
   const updateFieldsModels = {};
   const updateFieldsGrades = {};
   let id = parseInt(thisGuy);
-
   if (gvr_id) {
     let thisGuyTwo = parseInt(gvr_id);
     console.log(thisGuyTwo, "this fuckin guy");
@@ -138,6 +137,7 @@ updateRouter.post("/", async (req, res, next) => {
   if (activation_date) {
     let split2 = activation_date.split("T");
     let activation_date_final = split2[0].toString();
+    updateFieldsInfo.dashboard_status = "Active";
     updateFieldsInfo.activation = activation_date_final;
   }
 

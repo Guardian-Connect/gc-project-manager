@@ -71,7 +71,10 @@ async function sendEmailStatic(
   notes
 ) {
   let mailOptions = {
-    from: "Guardian Connect Activations",
+    from: {
+      name: "GC Activations",
+      address: "jgale2263130@yahoo.com",
+    },
     // to: "jgale@guardianfueltech.com",
     to: "guardianconnect@guardianfueltech.com",
     subject: `New Activation STATIC SITE - ${gpCust}`,
@@ -156,6 +159,7 @@ async function createSite(
     } else {
       console.log(check.length, "check");
       let add_id = custAddId;
+      let dashboard_status = "Provisioned";
       await createSiteModels(gvr_id);
       await createSiteGrades(gvr_id);
       await createSiteSerials(gvr_id);
@@ -169,7 +173,8 @@ async function createSite(
         cus_email1,
         cus_email2,
         rrs,
-        contractor
+        contractor,
+        dashboard_status
       );
       //NEED TO ADD GVR IDs into other 3 databases as well. (dispserials, dispmodel, dispgrades)
       const result = await client.query(
@@ -246,7 +251,8 @@ async function createSiteDisp(
   cus_email1,
   cus_email2,
   rrs,
-  contractor
+  contractor,
+  dashboard_status
 ) {
   let quote = "X";
   let totaldisp = "0";
@@ -269,12 +275,13 @@ async function createSiteDisp(
       totaldisp,
       notes,
       phase,
-      contractor
+      contractor,
+      dashboard_status
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor, contract_status)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
+      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor, contract_status, dashboard_status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
     `,
       [
         gvr_id,
@@ -292,6 +299,7 @@ async function createSiteDisp(
         phase,
         contractor,
         contract_status,
+        dashboard_status,
       ]
     );
     console.log("dispinfo", result);
