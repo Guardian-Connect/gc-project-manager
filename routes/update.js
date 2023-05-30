@@ -77,6 +77,7 @@ updateRouter.post("/", async (req, res, next) => {
     quote,
     vendorRevenue,
     branchRevenue,
+    gcdStatus,
   } = req.body;
   console.log(gvr_id, "pre run");
   const updateFieldsInfo = {};
@@ -98,6 +99,10 @@ updateRouter.post("/", async (req, res, next) => {
     updateFieldsInfo.notes = newNotes;
   } else if (notes.length <= 1) {
     updateFieldsInfo.notes = "X";
+  }
+
+  if (gcdStatus) {
+    updateFieldsInfo.dashboard_status = gcdStatus;
   }
 
   if (vendorRevenue) {

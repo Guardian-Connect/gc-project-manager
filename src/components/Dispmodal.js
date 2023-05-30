@@ -123,6 +123,7 @@ const Dispmodal = ({ site }) => {
   const [model9, setModel9] = React.useState("");
   const [model10, setModel10] = React.useState("");
   const [thisGuy, setThisGuy] = React.useState(0);
+  const [gcdStatus, setGcdStatus] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
@@ -289,6 +290,10 @@ const Dispmodal = ({ site }) => {
     setPosvn(e.target.value);
   };
 
+  const handleGcdStatus = (e) => {
+    setGcdStatus(e.target.value);
+  };
+
   const handleWarranty = (e) => {
     setWarranty(handleDate(e.target.value));
   };
@@ -419,7 +424,8 @@ const Dispmodal = ({ site }) => {
       notes,
       quote,
       vendorRevenue,
-      branchRevenue
+      branchRevenue,
+      gcdStatus
     );
     reload();
   };
@@ -594,10 +600,7 @@ const Dispmodal = ({ site }) => {
           </Select>
         </FormControl>
 
-        <FormControl
-          className={classes.formControl}
-          sx={{ m: 2, width: "81%" }}
-        >
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
           <InputLabel>Site Status?</InputLabel>
           <Select onChange={handleQuote}>
             <MenuItem value={"X"}>Install Open</MenuItem>
@@ -605,6 +608,14 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"$350"}>Completed - Branch</MenuItem>
             <MenuItem value={"$200"}>Completed - Vendor</MenuItem>
             <MenuItem value={"S"}>Static</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
+          <InputLabel>GCD Status?</InputLabel>
+          <Select onChange={handleGcdStatus}>
+            <MenuItem value={"GCD - Contracted"}>Contracted</MenuItem>
+            <MenuItem value={"GCD - Not Contracted"}>Not Contracted</MenuItem>
           </Select>
         </FormControl>
 

@@ -224,7 +224,8 @@ export async function updateDisp(
   notes,
   quote,
   vendorRevenue,
-  branchRevenue
+  branchRevenue,
+  gcdStatus
 ) {
   try {
     console.log(gvr_id, "api update");
@@ -280,6 +281,7 @@ export async function updateDisp(
       quote,
       vendorRevenue,
       branchRevenue,
+      gcdStatus,
     });
     return disp;
   } catch (error) {
