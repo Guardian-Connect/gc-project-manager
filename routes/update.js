@@ -140,9 +140,15 @@ updateRouter.post("/", async (req, res, next) => {
   }
 
   if (activation_date) {
+    console.log(gcdStatus);
     let split2 = activation_date.split("T");
     let activation_date_final = split2[0].toString();
-    updateFieldsInfo.dashboard_status = "Active";
+    if (gcdStatus) {
+      updateFieldsInfo.dashboard_status = gcdStatus;
+    } else {
+      console.log("setting active");
+      updateFieldsInfo.dashboard_status = "Active";
+    }
     updateFieldsInfo.activation = activation_date_final;
   }
 
