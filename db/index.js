@@ -106,6 +106,20 @@ async function getRecordByDate(start, end, gp) {
   }
 }
 
+async function getBfr() {
+  try {
+    const { rows } = await client.query(
+      ` select ribbon_count, gvr_id, s_name, cus_name, gp_cust, dispinfo.add_id, warranty, site_address, dashboard_status, gpmaster.* from dispinfo
+INNER JOIN gpmaster ON
+dispinfo.add_id = gpmaster.add_id;
+`
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createUser({ username, password }) {
   try {
     const result = await client.query(
@@ -1050,4 +1064,5 @@ module.exports = {
   updateSerials,
   updateModels,
   updateGrades,
+  getBfr,
 };

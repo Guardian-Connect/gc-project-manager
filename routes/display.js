@@ -7,6 +7,7 @@ const {
   getAllInbound,
   getTicketing,
   getAllGcTracker,
+  getBfr,
 } = require("../db");
 
 displayRouter.get("/disp", async (req, res, next) => {
@@ -16,6 +17,15 @@ displayRouter.get("/disp", async (req, res, next) => {
     console.log(typeof dispinfo);
 
     res.send({ dispinfo, rrsmatrix });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/bfr", async (req, res, next) => {
+  try {
+    const bfrReport = await getBfr();
+    res.send({ bfrReport });
   } catch ({ name, message }) {
     next({ name, message });
   }

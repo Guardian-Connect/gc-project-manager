@@ -18,7 +18,7 @@ const Login = ({ setMockData, getSomething, setMessage }) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
   const alert = useAlert();
-
+  const user = sessionStorage.getItem("user");
   async function verifiedLogIn() {
     getSomething()
       .then((response) => {
@@ -55,6 +55,10 @@ const Login = ({ setMockData, getSomething, setMessage }) => {
         );
       }
     });
+  };
+
+  const handleNewUser = () => {
+    registerUser(login, password);
   };
 
   const handleUser = (e) => {
@@ -109,6 +113,18 @@ const Login = ({ setMockData, getSomething, setMessage }) => {
         >
           Sign in
         </Button>
+        {user === "james" && (
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            style={btnstyle}
+            fullWidth
+            onClick={handleNewUser}
+          >
+            Register User
+          </Button>
+        )}
       </Paper>
     </Grid>
   );

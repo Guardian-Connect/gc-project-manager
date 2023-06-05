@@ -40,6 +40,19 @@ export async function getInfo() {
   }
 }
 
+export async function getBfr() {
+  try {
+    console.log("Running BFR");
+    const { data } = await axios.get(`/api/display/bfr`);
+    let info = data.bfrReport;
+    sessionStorage.setItem("bfr", JSON.stringify(info));
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getGcTracker() {
   try {
     const { data } = await axios.get(`/api/display/gctracker`);

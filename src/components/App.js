@@ -182,6 +182,10 @@ const App = () => {
                   setSearchInput={setSearchInput}
                 />
               </Route>
+              <Route exact path="/login">
+                {/* Initial loading */}
+                <Login />
+              </Route>
               {/* <Route path="/login">
                 <Login />
               </Route> */}

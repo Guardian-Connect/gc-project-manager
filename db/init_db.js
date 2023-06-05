@@ -16,6 +16,7 @@ const {
   getEmailByGp,
   getTicketing,
   getProjectCount,
+  getBfr,
 } = require("./index");
 
 async function createSiteDisp(
@@ -192,7 +193,7 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    let count = await getProjectCount("QUA0006");
+    let count = await getBfr();
     console.log(count);
     // await dropTables();
     // await createTables();

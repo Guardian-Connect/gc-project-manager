@@ -13,7 +13,7 @@ const drawerWidth = 240;
 
 const Right = () => {
   let history = useHistory();
-
+  const user = sessionStorage.getItem("user");
   return (
     <Box
       sx={{
@@ -137,7 +137,19 @@ const Right = () => {
                 PCN Alert Tracker
               </Button>
             </ListItem>
-            <ListItem></ListItem>
+            <ListItem>
+              {user === "james" && (
+                <Button
+                  sx={{ border: 1, borderColor: "white", width: 500 }}
+                  variant="contained"
+                  onClick={() => {
+                    history.push("/login");
+                  }}
+                >
+                  New User
+                </Button>
+              )}
+            </ListItem>
           </List>
         </div>
       </Drawer>
