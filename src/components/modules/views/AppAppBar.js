@@ -36,9 +36,9 @@ function AppAppBar({
   const handleClose = () => {
     setOpen(false);
   };
-  React.useEffect(async () => {
-    await getBfr();
-  }, []);
+  // React.useEffect(async () => {
+  //   await getBfr();
+  // }, []);
   // const handleSubmit = async (e) => {
   //   if (e.keyCode === 13) {
   //     if (searchInput.length != 0) {
@@ -82,7 +82,6 @@ function AppAppBar({
             data={mockData}
             filename="BFR.csv"
             style={{
-              //pass other props, like styles
               boxShadow: "inset 0px 1px 0px 0px #e184f3",
               background:
                 "linear-gradient(to bottom, #c123de 5%, #a20dbd 100%)",

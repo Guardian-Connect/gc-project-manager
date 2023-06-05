@@ -30,6 +30,7 @@ import Inboundcalldisplay from "./Inboundcalldisplay";
 import Inboundcall from "./Inboundcall";
 import Projectdisplay from "./Projectdisplay";
 import Pcntracker from "./Pcntracker";
+import { getBfr } from "../api";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -57,6 +58,10 @@ const App = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+  }, []);
+
+  React.useEffect(async () => {
+    await getBfr();
   }, []);
 
   if (sessionStorage.getItem("token") < 27) {
