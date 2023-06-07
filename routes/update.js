@@ -147,7 +147,7 @@ updateRouter.post("/", async (req, res, next) => {
       updateFieldsInfo.dashboard_status = gcdStatus;
     } else {
       console.log("setting active");
-      updateFieldsInfo.dashboard_status = "Active";
+      updateFieldsInfo.dashboard_status = "IS360 Only";
     }
     updateFieldsInfo.activation = activation_date_final;
   }

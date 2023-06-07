@@ -616,7 +616,7 @@ const Dispmodal = ({ site }) => {
           <Select onChange={handleGcdStatus}>
             <MenuItem value={"GCD - Contracted"}>Contracted</MenuItem>
             <MenuItem value={"GCD - Not Contracted"}>Not Contracted</MenuItem>
-            <MenuItem value={"Active"}>Active</MenuItem>
+            <MenuItem value={"IS360 Only"}>Active</MenuItem>
             <MenuItem value={"Provisioned"}>Provisioned</MenuItem>
             <MenuItem value={"No Dashboard Records"}>
               No Dashboard Records
