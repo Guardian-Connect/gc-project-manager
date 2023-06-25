@@ -10,19 +10,19 @@ export async function getSomething() {
   try {
     const { data } = await axios.get("/api/display/disp");
     // sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
-    let info = data.dispinfo;
-    let disconnected = [];
-    let connected = [];
-    info.map((site) => {
-      if (site.quote != "C") {
-        return disconnected.push(site.gvr_id);
-      } else {
-        return connected.push(site.gvr_id);
-      }
-    });
+    // let info = data.dispinfo;
+    // let disconnected = [];
+    // let connected = [];
+    // info.map((site) => {
+    //   if (site.quote != "C") {
+    //     return disconnected.push(site.gvr_id);
+    //   } else {
+    //     return connected.push(site.gvr_id);
+    //   }
+    // });
 
-    sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
-    sessionStorage.setItem("connected", JSON.stringify(connected));
+    // sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
+    // sessionStorage.setItem("connected", JSON.stringify(connected));
 
     return data;
   } catch (error) {

@@ -22,8 +22,8 @@ function AppAppBar({
   contactInfo,
   setContactInfo,
 }) {
-  let countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
-  let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
+  // let countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
+  // let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
   let mockData = JSON.parse(sessionStorage.getItem("bfr"));
   const [open, setOpen] = React.useState(false);
   const handleTextChange = (e) => {
@@ -101,7 +101,7 @@ function AppAppBar({
           >
             BFR Download
           </CsvDownloadButton>
-          <div className="withData">Sites w/ Data - {countCon}</div>
+          {/* <div className="withData">Sites w/ Data - {countCon}</div> */}
           <input
             className="search"
             type="text"
@@ -110,7 +110,7 @@ function AppAppBar({
             onChange={handleTextChange}
             // onKeyDown={handleSubmit}
           />
-          <div className="withoutData">Sites w/out Data - {countDis} </div>
+          {/* <div className="withoutData">Sites w/out Data - {countDis} </div> */}
 
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
