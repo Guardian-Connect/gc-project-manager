@@ -53,6 +53,12 @@ const Dispcardz = ({ site, setCount, count }) => {
             GVR ID - {site.gvr_id}
           </Typography>
           <Typography variant="h5" component="div">
+            {site.warr_gvr_id === null && <></>}
+            {site.warr_gvr_id != null && (
+              <>Warranty GVR ID - {site.warr_gvr_id} </>
+            )}
+          </Typography>
+          <Typography variant="h5" component="div">
             {site.add_id != "#N/A" && <>Address ID - {site.add_id} </>}
             {site.add_id === "#N/A" && <>No Address ID Available</>}
           </Typography>

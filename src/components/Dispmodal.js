@@ -72,6 +72,7 @@ const Dispmodal = ({ site }) => {
   }, []);
   let date = moment.utc().format("yyyy-MM-DD");
   const [gvr_id, setGvr_id] = React.useState(0);
+  const [warr_gvr_id, setWarr_Gvr_id] = React.useState(0);
   const [gp_cust, setGp_cust] = React.useState("");
   const [contract, setContract] = React.useState("");
   const [site_address, setAddress] = React.useState("");
@@ -336,6 +337,10 @@ const Dispmodal = ({ site }) => {
     setGvr_id(e.target.value);
   };
 
+  const handleTextChangeWarrGvr = (e) => {
+    setWarr_Gvr_id(e.target.value);
+  };
+
   const handleTextChangeGp = (e) => {
     setGp_cust(e.target.value);
   };
@@ -425,7 +430,8 @@ const Dispmodal = ({ site }) => {
       quote,
       vendorRevenue,
       branchRevenue,
-      gcdStatus
+      gcdStatus,
+      warr_gvr_id
     );
     reload();
   };
@@ -442,6 +448,17 @@ const Dispmodal = ({ site }) => {
             shrink: true,
           }}
           onChange={handleTextChangeGvr}
+        />
+        <TextField
+          sx={{ m: 2 }}
+          required
+          id="outlined-required"
+          label="Enter Warranty GVR ID"
+          defaultValue={site.warr_gvr_id}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeWarrGvr}
         />
         <TextField
           sx={{ m: 2 }}
@@ -611,7 +628,10 @@ const Dispmodal = ({ site }) => {
           </Select>
         </FormControl>
 
-        <FormControl className={classes.formControl} sx={{ m: 2 }}>
+        <FormControl
+          className={classes.formControl}
+          sx={{ m: 2, width: "81%" }}
+        >
           <InputLabel>GCD Status?</InputLabel>
           <Select onChange={handleGcdStatus}>
             <MenuItem value={"GCD - Contracted"}>Contracted</MenuItem>

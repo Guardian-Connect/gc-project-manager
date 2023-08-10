@@ -78,6 +78,7 @@ updateRouter.post("/", async (req, res, next) => {
     vendorRevenue,
     branchRevenue,
     gcdStatus,
+    warr_gvr_id,
   } = req.body;
   console.log(gvr_id, "pre run");
   const updateFieldsInfo = {};
@@ -85,6 +86,13 @@ updateRouter.post("/", async (req, res, next) => {
   const updateFieldsModels = {};
   const updateFieldsGrades = {};
   let id = parseInt(thisGuy);
+
+  if (warr_gvr_id) {
+    let thisGuyTwo = parseInt(warr_gvr_id);
+    console.log(thisGuyTwo, "this fuckin guy");
+    updateFieldsInfo.warr_gvr_id = thisGuyTwo;
+  }
+
   if (gvr_id) {
     let thisGuyTwo = parseInt(gvr_id);
     console.log(thisGuyTwo, "this fuckin guy");

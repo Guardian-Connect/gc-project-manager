@@ -136,17 +136,6 @@ const Alertmodal = ({ gctix }) => {
         onChange={handleTextChangeSite}
       />
       <TextField
-        sx={{ m: 2, width: "81%" }}
-        required
-        id="outlined-required"
-        label="Alert Resolved Date"
-        defaultValue={handleDate(gctix.date)}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        onChange={console.log("Just a display field")}
-      />
-      <TextField
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -156,6 +145,27 @@ const Alertmodal = ({ gctix }) => {
           shrink: true,
         }}
         onChange={handleTextChangeGvr}
+      />
+      <TextField
+        sx={{ m: 2 }}
+        required
+        id="outlined-required"
+        label="Warranty GVR ID"
+        defaultValue={gctix.warr_gvr_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        sx={{ m: 2 }}
+        required
+        id="outlined-required"
+        label="Alert Resolved Date"
+        defaultValue={handleDate(gctix.date)}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={console.log("Just a display field")}
       />
       <TextField
         sx={{ m: 2 }}
