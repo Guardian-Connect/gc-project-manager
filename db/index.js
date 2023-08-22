@@ -582,6 +582,62 @@ async function getSites(id) {
   return rows;
 }
 
+async function getSitesGvr(id) {
+  let gvr_id = id;
+  const { rows } = await client.query(
+    `SELECT *
+    FROM provision
+    WHERE gvr_id LIKE '%${gvr_id}%'
+    ORDER BY gvr_id;
+  `
+  );
+  let response = [];
+  let error = { gvr_id: "Nothing Found, Please Try Again" };
+  console.log(rows.length, "site gvr id");
+  if (rows.length === 0) {
+    response.push(error);
+    return response;
+  } else {
+    return rows;
+  }
+}
+
+async function getSitesAddress(id) {
+  let site_address = id;
+  console.log(site_address, "site address index");
+
+  const { rows } = await client.query(
+    `SELECT *
+    FROM provision
+    WHERE site_address LIKE '%${site_address}%'
+    ORDER BY gvr_id;
+  `
+  );
+  let response = [];
+  let error = { gvr_id: "Nothing Found, Please Try Again" };
+  console.log(rows.length, "site address");
+  if (rows.length === 0) {
+    response.push(error);
+    return response;
+  } else {
+    return rows;
+  }
+}
+
+async function searchPartsNumber(partNumber) {
+  try {
+    console.log("Getting Part #", partNumber);
+    const { rows } = await client.query(`
+    SELECT *
+    FROM parts
+    WHERE number LIKE '%${partNumber}%'
+    `);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getSiteGvr(gvr_id) {
   const { rows } = await client.query(
     `SELECT *
@@ -1065,4 +1121,6 @@ module.exports = {
   updateModels,
   updateGrades,
   getBfr,
+  getSitesGvr,
+  getSitesAddress,
 };

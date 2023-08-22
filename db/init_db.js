@@ -17,6 +17,8 @@ const {
   getTicketing,
   getProjectCount,
   getBfr,
+  getSitesGvr,
+  getSitesAddress,
 } = require("./index");
 
 async function createSiteDisp(
@@ -193,8 +195,8 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    let count = await getBfr();
-    console.log(count);
+    let count = await getSitesAddress("123456");
+    console.log(count.length);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();

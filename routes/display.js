@@ -8,6 +8,8 @@ const {
   getTicketing,
   getAllGcTracker,
   getBfr,
+  getSitesGvr,
+  getSitesAddress,
 } = require("../db");
 
 displayRouter.get("/disp", async (req, res, next) => {
@@ -53,6 +55,28 @@ displayRouter.get("/gctracker", async (req, res, next) => {
   try {
     const dispinfo = await getAllGcTracker();
     res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/getsitesgvr/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const dispinfo = await getSitesGvr(id);
+    res.send(dispinfo);
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/getsitesaddress/:id", async (req, res, next) => {
+  const { id } = req.params;
+  console.log("running sites display", id);
+  try {
+    const dispinfo = await getSitesAddress(id);
+    console.log(dispinfo);
+    res.send(dispinfo);
   } catch ({ name, message }) {
     next({ name, message });
   }

@@ -42,11 +42,9 @@ export async function getInfo() {
 
 export async function getBfr() {
   try {
-    console.log("Running BFR");
     const { data } = await axios.get(`/api/display/bfr`);
     let info = data.bfrReport;
     sessionStorage.setItem("bfr", JSON.stringify(info));
-    console.log(data);
     return data;
   } catch (error) {
     throw error;
@@ -109,7 +107,6 @@ export async function addSite(
   contractor
 ) {
   try {
-    console.log("RRS", rrs);
     const { data } = await axios.post("/api/dbpost/allsites", {
       gvr_id,
       gp_cust,
@@ -127,9 +124,6 @@ export async function addSite(
     response.forEach(function (e) {
       string = e.toString();
     });
-    console.log(string);
-    console.log(Object.values(data.allsites));
-    console.log(data.allsites);
     return string;
   } catch (error) {
     throw error;
@@ -242,7 +236,6 @@ export async function updateDisp(
   warr_gvr_id
 ) {
   try {
-    console.log(gvr_id, "api update");
     const { disp } = await axios.post("api/update", {
       thisGuy,
       gvr_id,
@@ -300,7 +293,6 @@ export async function updateDisp(
     });
     return disp;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }
@@ -348,7 +340,6 @@ export async function updateTicket(
     });
     return tracker;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }
@@ -499,7 +490,6 @@ export async function addTicket(
   status
 ) {
   try {
-    console.log("api index firing, gcticket");
     const { data } = await axios.post("/api/dbpost/gcticket", {
       date,
       gvr_id,
@@ -523,16 +513,32 @@ export async function addTicket(
   }
 }
 
+export async function getSitesGvrid(id) {
+  try {
+    const { data } = await axios.get(`/api/display/getsitesgvr/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getSitesAddress(id) {
+  try {
+    const { data } = await axios.get(`/api/display/getsitesaddress/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function loginUser(username, password) {
   try {
-    console.log(username, password);
     const { data } = await axios.post("/api/users/login", {
       username,
       password,
     });
     sessionStorage.setItem("token", data.token);
     sessionStorage.setItem("user", data.user.username);
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -548,7 +554,6 @@ export async function registerUser(username, password) {
     sessionStorage.setItem("token", data.token);
     sessionStorage.setItem("user", data.user.username);
     // sessionStorage.setItem("id", data.user.id);
-    console.log(data);
     return data;
   } catch (error) {
     throw error;
@@ -556,7 +561,6 @@ export async function registerUser(username, password) {
 }
 
 export function handleDate(d) {
-  // console.log(d);
   if (d === null) {
     let date = "";
     return date;
@@ -568,7 +572,6 @@ export function handleDate(d) {
 
 export function handleDateTwo(d) {
   let date = moment.utc(d).format("MM/DD/yyyy");
-  // console.log(date);
   return date;
 }
 

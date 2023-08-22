@@ -30,6 +30,7 @@ import Inboundcalldisplay from "./Inboundcalldisplay";
 import Inboundcall from "./Inboundcall";
 import Projectdisplay from "./Projectdisplay";
 import Pcntracker from "./Pcntracker";
+import Addresslookup from "./Addresslookup";
 import { getBfr } from "../api";
 const App = () => {
   // const user = sessionStorage.getItem("token");
@@ -125,6 +126,10 @@ const App = () => {
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                 />
+              </Route>
+              <Route exact path="/addresslookup">
+                {/* Initial loading */}
+                <Addresslookup />
               </Route>
               <Route path="/gctrackerdisplay">
                 <Gctrackerdisplay

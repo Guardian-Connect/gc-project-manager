@@ -161,7 +161,7 @@
 
 .sidebar {
   display: block;
-  flex-grow: 1;
+  flex-grow: 0;
   flex-shrink: 0;
   position: sticky;
   height: 100vh;
@@ -214,6 +214,13 @@
 
 .bottom {
   border-bottom: 1px solid white;
+}
+
+.card {
+  border: 1px solid black;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 900px;
 }
 
 @media only screen and (max-device-width: 1024px) and (orientation: landscape) {

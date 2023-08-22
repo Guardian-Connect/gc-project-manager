@@ -134,6 +134,15 @@ function AppAppBar({
           <Dialog open={open} onClose={handleClose}>
             <Inboundcall />
           </Dialog>
+          <Button
+            sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+            variant="contained"
+            onClick={() => {
+              history.push("/addresslookup");
+            }}
+          >
+            Provisioning Lookup
+          </Button>
           {/* <div className="drawer">
             <Button
               variant="contained"
