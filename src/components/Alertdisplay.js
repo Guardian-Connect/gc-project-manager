@@ -46,13 +46,13 @@ const Alertdisplay = ({ gctix }) => {
         >
           <CardActionArea onClick={() => handleClickOpen(gctix)}>
             <CardContent>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 component="div"
                 sx={{ alignText: "center" }}
               >
                 Site Name - {gctix.s_name}
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="div">
                 GVR ID - {gctix.gvr_id}
               </Typography>
@@ -63,29 +63,32 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
+                Address ID - {gctix.add_id}
+              </Typography>
+              <Typography variant="h5" component="div">
                 GP Cust - {gctix.gp_cust}
               </Typography>
               <Typography variant="h5" component="div">
-                Contract Status - {gctix.contract_status}
+                {gctix.rrs != null &&
+                  gctix.rrs != "Plus" &&
+                  gctix.rrs != "Premium" && (
+                    <>RRS Charge Amount - {gctix.rrs}</>
+                  )}
+                {gctix.rrs === "Plus" && <>Plus Customer - Free Reboot</>}
+                {gctix.rrs === "Premium" && <>Premium Customer - Free Reboot</>}
+                {gctix.rrs === null && <>No RRS Fees Found For Customer</>}
               </Typography>
-              <Typography variant="h5" component="div">
-                Address ID - {gctix.add_id}
-              </Typography>
+
               <Typography variant="h5" component="div">
                 Warranty Date - {handleDate(gctix.warr)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dashboard Ticket # {gctix.ticket_number}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Alert Status - {gctix.status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address & City - {gctix.address}, {gctix.city}
-              </Typography>
-              <Typography variant="h5" component="div">
                 Alert Resolved Date - {handleDate(gctix.date)}
               </Typography>
+              <Typography variant="h5" component="div">
+                Dashboard Ticket # {gctix.ticket_number}
+              </Typography>
+
               <Typography variant="h5" component="div">
                 Fueling Point Affected - #{gctix.fueling_position}
               </Typography>
@@ -94,9 +97,6 @@ const Alertdisplay = ({ gctix }) => {
               </Typography>
               <Typography variant="h5" component="div">
                 Cause - {gctix.cause}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Dashboard Status - {gctix.status}
               </Typography>
               <Typography variant="h5" component="div">
                 {gctix.gp_ticket != null && <>GP Ticket # {gctix.gp_ticket} </>}
@@ -160,13 +160,13 @@ const Alertdisplay = ({ gctix }) => {
         >
           <CardActionArea onClick={() => handleClickOpen(gctix)}>
             <CardContent>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 component="div"
                 sx={{ alignText: "center" }}
               >
                 Site Name - {gctix.s_name}
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="div">
                 GVR ID - {gctix.gvr_id}
               </Typography>
@@ -177,40 +177,40 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
-                GP Cust - {gctix.gp_cust}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Contract Status - {gctix.contract_status}
-              </Typography>
-              <Typography variant="h5" component="div">
                 Address ID - {gctix.add_id}
               </Typography>
               <Typography variant="h5" component="div">
+                GP Cust - {gctix.gp_cust}
+              </Typography>
+              <Typography variant="h5" component="div">
+                {gctix.rrs != null &&
+                  gctix.rrs != "Plus" &&
+                  gctix.rrs != "Premium" && (
+                    <>RRS Charge Amount - {gctix.rrs}</>
+                  )}
+                {gctix.rrs === "Plus" && <>Plus Customer - Free Reboot</>}
+                {gctix.rrs === "Premium" && <>Premium Customer - Free Reboot</>}
+                {gctix.rrs === null && <>No RRS Fees Found For Customer</>}
+              </Typography>
+
+              <Typography variant="h5" component="div">
                 Warranty Date - {handleDate(gctix.warr)}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Dashboard Ticket # {gctix.ticket_number}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Alert Status - {gctix.status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address & City - {gctix.address}, {gctix.city}
               </Typography>
               <Typography variant="h5" component="div">
                 Alert Resolved Date - {handleDate(gctix.date)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dispenser Affected - #{gctix.fueling_position}
+                Dashboard Ticket # {gctix.ticket_number}
+              </Typography>
+
+              <Typography variant="h5" component="div">
+                Fueling Point Affected - #{gctix.fueling_position}
               </Typography>
               <Typography variant="h5" component="div">
                 Component Affected - {gctix.component_name}
               </Typography>
               <Typography variant="h5" component="div">
                 Cause - {gctix.cause}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Dashboard Status - {gctix.status}
               </Typography>
               <Typography variant="h5" component="div">
                 {gctix.gp_ticket != null && <>GP Ticket # {gctix.gp_ticket} </>}
@@ -231,13 +231,19 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.majors_rrs != null && <>Majors RRS </>}
+                {gctix.majors_rrs != null && (
+                  <>Majors RRS {gctix.majors_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.parkers_rrs != null && <>Parkers RRS </>}
+                {gctix.parkers_rrs != null && (
+                  <>Parkers RRS {gctix.parkers_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.rrs_charges != null && <>Other RRS Charges</>}
+                {gctix.rrs_charges != null && (
+                  <>Other RRS Charges {gctix.rrs_charges} </>
+                )}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -269,13 +275,13 @@ const Alertdisplay = ({ gctix }) => {
         >
           <CardActionArea onClick={() => handleClickOpen(gctix)}>
             <CardContent>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 component="div"
                 sx={{ alignText: "center" }}
               >
                 Site Name - {gctix.s_name}
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="div">
                 GVR ID - {gctix.gvr_id}
               </Typography>
@@ -286,40 +292,38 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
+                Address ID - {gctix.add_id}
+              </Typography>
+              <Typography variant="h5" component="div">
                 GP Cust - {gctix.gp_cust}
               </Typography>
               <Typography variant="h5" component="div">
-                Contract Status - {gctix.contract_status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address ID - {gctix.add_id}
+                {gctix.rrs != null &&
+                  gctix.rrs != "Plus" &&
+                  gctix.rrs != "Premium" && (
+                    <>RRS Charge Amount - {gctix.rrs}</>
+                  )}
+                {gctix.rrs === "Plus" && <>Plus Customer - Free Reboot</>}
+                {gctix.rrs === "Premium" && <>Premium Customer - Free Reboot</>}
+                {gctix.rrs === null && <>No RRS Fees Found For Customer</>}
               </Typography>
               <Typography variant="h5" component="div">
                 Warranty Date - {handleDate(gctix.warr)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dashboard Ticket # {gctix.ticket_number}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Alert Status - {gctix.status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address & City - {gctix.address}, {gctix.city}
-              </Typography>
-              <Typography variant="h5" component="div">
                 Alert Resolved Date - {handleDate(gctix.date)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dispenser Affected - #{gctix.fueling_position}
+                Dashboard Ticket # {gctix.ticket_number}
+              </Typography>
+              <Typography variant="h5" component="div">
+                Fueling Point Affected - #{gctix.fueling_position}
               </Typography>
               <Typography variant="h5" component="div">
                 Component Affected - {gctix.component_name}
               </Typography>
               <Typography variant="h5" component="div">
                 Cause - {gctix.cause}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Dashboard Status - {gctix.status}
               </Typography>
               <Typography variant="h5" component="div">
                 {gctix.gp_ticket != null && <>GP Ticket # {gctix.gp_ticket} </>}
@@ -340,14 +344,20 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.majors_rrs != null && <>Majors RRS </>}
+                {gctix.majors_rrs != null && (
+                  <>Majors RRS {gctix.majors_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.parkers_rrs != null && <>Parkers RRS </>}
+                {gctix.parkers_rrs != null && (
+                  <>Parkers RRS {gctix.parkers_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.rrs_charges != null && <>Other RRS Charges</>}
-              </Typography>
+                {gctix.rrs_charges != null && (
+                  <>Other RRS Charges {gctix.rrs_charges} </>
+                )}
+              </Typography>{" "}
             </CardContent>
           </CardActionArea>
         </Card>
@@ -378,13 +388,13 @@ const Alertdisplay = ({ gctix }) => {
         >
           <CardActionArea onClick={() => handleClickOpen(gctix)}>
             <CardContent>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 component="div"
                 sx={{ alignText: "center" }}
               >
                 Site Name - {gctix.s_name}
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="div">
                 GVR ID - {gctix.gvr_id}
               </Typography>
@@ -395,40 +405,38 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
+                Address ID - {gctix.add_id}
+              </Typography>
+              <Typography variant="h5" component="div">
                 GP Cust - {gctix.gp_cust}
               </Typography>
               <Typography variant="h5" component="div">
-                Contract Status - {gctix.contract_status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address ID - {gctix.add_id}
+                {gctix.rrs != null &&
+                  gctix.rrs != "Plus" &&
+                  gctix.rrs != "Premium" && (
+                    <>RRS Charge Amount - {gctix.rrs}</>
+                  )}
+                {gctix.rrs === "Plus" && <>Plus Customer - Free Reboot</>}
+                {gctix.rrs === "Premium" && <>Premium Customer - Free Reboot</>}
+                {gctix.rrs === null && <>No RRS Fees Found For Customer</>}
               </Typography>
               <Typography variant="h5" component="div">
                 Warranty Date - {handleDate(gctix.warr)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dashboard Ticket # {gctix.ticket_number}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Alert Status - {gctix.status}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Address & City - {gctix.address}, {gctix.city}
-              </Typography>
-              <Typography variant="h5" component="div">
                 Alert Resolved Date - {handleDate(gctix.date)}
               </Typography>
               <Typography variant="h5" component="div">
-                Dispenser Affected - #{gctix.fueling_position}
+                Dashboard Ticket # {gctix.ticket_number}
+              </Typography>
+              <Typography variant="h5" component="div">
+                Fueling Point Affected - #{gctix.fueling_position}
               </Typography>
               <Typography variant="h5" component="div">
                 Component Affected - {gctix.component_name}
               </Typography>
               <Typography variant="h5" component="div">
                 Cause - {gctix.cause}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Dashboard Status - {gctix.status}
               </Typography>
               <Typography variant="h5" component="div">
                 {gctix.gp_ticket != null && <>GP Ticket # {gctix.gp_ticket} </>}
@@ -449,14 +457,20 @@ const Alertdisplay = ({ gctix }) => {
                 )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.majors_rrs != null && <>Majors RRS </>}
+                {gctix.majors_rrs != null && (
+                  <>Majors RRS {gctix.majors_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.parkers_rrs != null && <>Parkers RRS </>}
+                {gctix.parkers_rrs != null && (
+                  <>Parkers RRS {gctix.parkers_rrs} </>
+                )}
               </Typography>
               <Typography variant="h5" component="div">
-                {gctix.rrs_charges != null && <>Other RRS Charges</>}
-              </Typography>
+                {gctix.rrs_charges != null && (
+                  <>Other RRS Charges {gctix.rrs_charges} </>
+                )}
+              </Typography>{" "}
             </CardContent>
           </CardActionArea>
         </Card>
