@@ -53,6 +53,14 @@ const Dispcardz = ({ site, setCount, count }) => {
             GVR ID - {site.gvr_id}
           </Typography>
           <Typography variant="h5" component="div">
+            {site.rrs != null &&
+              site.rrs != "Plus" &&
+              site.rrs != "Premium" && <>RRS Charge Amount - {site.rrs}</>}
+            {site.rrs === "Plus" && <>Plus Customer - Free Reboot</>}
+            {site.rrs === "Premium" && <>Premium Customer - Free Reboot</>}
+            {site.rrs === null && <>No RRS Fees Found For Customer</>}
+          </Typography>
+          <Typography variant="h5" component="div">
             {site.warr_gvr_id === null && <></>}
             {site.warr_gvr_id != null && (
               <>Warranty GVR ID - {site.warr_gvr_id} </>
