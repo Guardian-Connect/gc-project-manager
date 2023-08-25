@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const { red } = require("@mui/material/colors");
 const DB_NAME = "equipment";
 const nodemailer = require("nodemailer");
+const moment = require("moment");
 
 // const client = new Client(
 //   process.env.DATABASE_URL ||
@@ -952,14 +953,30 @@ async function getEmailByGp(id) {
   }
 }
 
+async function findCusInfo(gvr_id) {
+  console.log("running lookup");
+  try {
+    const { rows } = await client.query(
+      `
+    select gvr_id, gp_cust, s_name, site_address, warranty from dispinfo
+    WHERE gvr_id=$1;
+    `,
+      [gvr_id]
+    );
+    return rows[0];
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createGctracker(
   date,
   gvr_id,
-  gp,
+  // gp,
   dispatch_type,
   fm_ticket,
-  location,
-  address,
+  // location,
+  // address,
   grade,
   fp,
   sb,
@@ -969,6 +986,7 @@ async function createGctracker(
   notes,
   status
 ) {
+  console.log("gctracker starting");
   let date_ob = new Date();
   let date2 = ("0" + date_ob.getDate()).slice(-2);
   let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -983,22 +1001,46 @@ async function createGctracker(
       "new ticket",
       date,
       gvr_id,
-      gp,
+      // gp,
       dispatch_type,
       fm_ticket,
-      location,
-      address,
+      // location,
+      // address,
       grade,
       fp,
       sb,
       gp_ticket,
       atl_po,
-      warranty_status,
+      // warranty_status,
       notes,
       status,
       create_date,
       create_time
     );
+
+    const test = await findCusInfo(gvr_id);
+    let gp = test.gp_cust;
+    let location = test.cus_name;
+    let address = test.site_address;
+    let date_fix = handleDate(test.warranty);
+    let warranty_status;
+    function handleDate(d) {
+      // console.log(d);
+      if (d === null) {
+        let date = "";
+        return date;
+      } else {
+        let date = moment.utc(d).format("yyyy-MM-DD");
+        return date;
+      }
+    }
+    console.log("starting warranty check", create_date, date_fix);
+    if (create_date >= date_fix) {
+      warranty_status = "Out of Warranty";
+    } else {
+      warranty_status = "In Warranty";
+    }
+    console.log("warranty check done");
     const result = await client.query(
       `
       INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status, create_date, create_time)
@@ -1123,4 +1165,5 @@ module.exports = {
   getBfr,
   getSitesGvr,
   getSitesAddress,
+  findCusInfo,
 };

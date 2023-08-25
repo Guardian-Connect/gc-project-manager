@@ -19,6 +19,7 @@ const {
   getBfr,
   getSitesGvr,
   getSitesAddress,
+  findCusInfo,
 } = require("./index");
 
 async function createSiteDisp(
@@ -195,8 +196,8 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    let count = await getSitesAddress("123456");
-    console.log(count.length);
+    let count = await findCusInfo(868094);
+    console.log(count);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();

@@ -475,11 +475,11 @@ export async function getCompleteData(gp) {
 export async function addTicket(
   date,
   gvr_id,
-  gp,
+  // gp,
   dispatch_type,
   fm_ticket,
-  location,
-  address,
+  // location,
+  // address,
   grade,
   fp,
   sb,
@@ -490,14 +490,15 @@ export async function addTicket(
   status
 ) {
   try {
+    console.log("api firing");
     const { data } = await axios.post("/api/dbpost/gcticket", {
       date,
       gvr_id,
-      gp,
+      // gp,
       dispatch_type,
       fm_ticket,
-      location,
-      address,
+      // location,
+      // address,
       grade,
       fp,
       sb,

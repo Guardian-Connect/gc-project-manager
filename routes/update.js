@@ -409,7 +409,7 @@ updateRouter.post("/tracker", async (req, res, next) => {
   }
 
   if (travel) {
-    updateFields.travel = travel;
+    updateFields.part_desc = travel;
   }
 
   try {

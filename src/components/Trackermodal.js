@@ -280,6 +280,28 @@ const Trackermodal = ({ gctix }) => {
         </Select>
       </FormControl>
       <TextField
+        sx={{ m: 2 }}
+        required
+        id="outlined-required"
+        label="Enter Part Number"
+        defaultValue={gctix.parts}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleParts}
+      />
+      <TextField
+        sx={{ m: 2, width: "81%" }}
+        required
+        id="outlined-required"
+        label="Enter Part Description"
+        defaultValue={gctix.part_desc}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTravel}
+      />
+      <TextField
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
@@ -292,12 +314,12 @@ const Trackermodal = ({ gctix }) => {
         rows={6}
         onChange={handleTextChangeNotes}
       />
-      <div className="pcnborder">
+      {/* <div className="pcnborder">
         <Typography sx={{ alignContent: "center" }}>
           PCN Alert Data Only
         </Typography>
-      </div>
-      <TextField
+      </div> */}
+      {/* <TextField
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
@@ -318,7 +340,7 @@ const Trackermodal = ({ gctix }) => {
           shrink: true,
         }}
         onChange={handleTravel}
-      />
+      /> */}
 
       <LoadingButton
         sx={{ m: 2, width: "82%" }}

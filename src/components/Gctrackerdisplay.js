@@ -199,6 +199,18 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
                     {gctix.atl_po === null && <>No GC Ticket Number Entered</>}
                   </Typography>
                   <Typography variant="h5" component="div">
+                    {gctix.parts != null && (
+                      <>Part Number Used - {gctix.parts}</>
+                    )}
+                    {gctix.parts === null && <></>}
+                  </Typography>
+                  <Typography variant="h5" component="div">
+                    {gctix.part_desc != null && (
+                      <>Part Description - {gctix.part_desc}</>
+                    )}
+                    {gctix.parts === null && <></>}
+                  </Typography>
+                  <Typography variant="h5" component="div">
                     {gctix.warranty_status != null && (
                       <>Warranty Status {gctix.warranty_status} </>
                     )}

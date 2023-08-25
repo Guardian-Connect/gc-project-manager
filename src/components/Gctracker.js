@@ -49,11 +49,11 @@ const Gctracker = ({ addTicket }) => {
     addTicket(
       now,
       gvr_id,
-      gp_cust,
+      // gp_cust,
       dispatch,
       fm_ticket,
-      site_name,
-      site_address,
+      // site_name,
+      // site_address,
       grade,
       fp,
       sb,
@@ -137,7 +137,7 @@ const Gctracker = ({ addTicket }) => {
           <Typography>GC Ticket Tracker</Typography>
         </Box>
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 3 }}
           required
           id="outlined-required"
           label="Enter GVR ID"
@@ -147,8 +147,8 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleTextChangeGvr}
         />
 
-        <TextField
-          sx={{ m: 1 }}
+        {/* <TextField
+          sx={{ m:3}}
           required
           id="outlined-required"
           label="Enter GP Customer Number"
@@ -156,8 +156,8 @@ const Gctracker = ({ addTicket }) => {
             shrink: true,
           }}
           onChange={handleTextChangeGp}
-        />
-        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+        /> */}
+        <FormControl className={classes.formControl} sx={{ m: 3 }}>
           <InputLabel>Dispatch Type</InputLabel>
           <Select onChange={handleDispatch}>
             <MenuItem value={"Install - Repair"}>Install - Repair </MenuItem>
@@ -178,19 +178,16 @@ const Gctracker = ({ addTicket }) => {
             <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
           </Select>
         </FormControl>
+        {/* <FormControl className={classes.formControl} sx={{ m:3}}>
+          <InputLabel>Warranty Status</InputLabel>
+          <Select onChange={handleWarranty}>
+            <MenuItem value={"In Warranty"}>In Warranty</MenuItem>
+            <MenuItem value={"Out of Warranty"}>Out of Warranty</MenuItem>
+          </Select>
+        </FormControl> */}
+        {/* 
         <TextField
-          sx={{ m: 1 }}
-          required
-          id="outlined-required"
-          label="Enter FM Ticket #"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleFmticket}
-        />
-
-        <TextField
-          sx={{ m: 1 }}
+          sx={{ m:3}}
           required
           id="outlined-required"
           label="Enter Location Name"
@@ -201,7 +198,7 @@ const Gctracker = ({ addTicket }) => {
         />
 
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m:3}}
           required
           id="outlined-required"
           label="Enter Location Address"
@@ -209,10 +206,10 @@ const Gctracker = ({ addTicket }) => {
             shrink: true,
           }}
           onChange={handleAddress}
-        />
+        /> */}
 
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 3 }}
           required
           id="outlined-required"
           label="Enter Dispenser Grade # Affected"
@@ -223,7 +220,7 @@ const Gctracker = ({ addTicket }) => {
         />
 
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 3 }}
           required
           id="outlined-required"
           label="Enter Fueling Point # Affected"
@@ -233,7 +230,7 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleFueling}
         />
 
-        <FormControl className={classes.formControl} sx={{ m: 1 }}>
+        <FormControl className={classes.formControl} sx={{ m: 3 }}>
           <InputLabel>Branch</InputLabel>
           <Branches handleBrach={handleBranch} />
           {/* <Select onChange={handleBranch}>
@@ -262,7 +259,7 @@ const Gctracker = ({ addTicket }) => {
         </FormControl>
 
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 3 }}
           required
           id="outlined-required"
           label="Enter GP Ticket #"
@@ -273,7 +270,7 @@ const Gctracker = ({ addTicket }) => {
         />
 
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 3 }}
           required
           id="outlined-required"
           label="Enter GC Ticket #"
@@ -283,16 +280,18 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleAtl}
         />
 
-        <FormControl className={classes.formControl} sx={{ m: 1 }}>
-          <InputLabel>Warranty Status</InputLabel>
-          <Select onChange={handleWarranty}>
-            <MenuItem value={"In Warranty"}>In Warranty</MenuItem>
-            <MenuItem value={"Out of Warranty"}>Out of Warranty</MenuItem>
-          </Select>
-        </FormControl>
-
         <TextField
-          sx={{ width: "91%", m: 1 }}
+          sx={{ m: 3 }}
+          required
+          id="outlined-required"
+          label="Enter FM Ticket #"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleFmticket}
+        />
+        <TextField
+          sx={{ width: "91%", m: 3 }}
           required
           id="outlined-required"
           label="Enter Ticket Notes"
