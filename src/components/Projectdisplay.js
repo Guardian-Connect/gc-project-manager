@@ -76,7 +76,7 @@ const Projectdisplay = ({ searchInput, setSearchInput }) => {
           }
         })
         .map((site) => (
-          <div key={site.id}>
+          <div key={site.id} className="testing">
             <Dispcardz site={site} />
           </div>
         ))}

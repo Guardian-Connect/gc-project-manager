@@ -70,7 +70,7 @@ function AppAppBar({
 
   let history = useHistory();
   return (
-    <div>
+    <div className="Appappbar">
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: "center" }}>
           <Box

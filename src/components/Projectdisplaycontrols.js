@@ -28,6 +28,7 @@ const names = [
   { name: "Quick Gas", value: "QUI0003" },
   { name: "Quality Oil", value: "QUA0006" },
   { name: "GPM", value: "GPM0001" },
+  { name: "Refuel", value: "REF0001" },
 ];
 
 const status = [
@@ -80,6 +81,8 @@ export default function Projectdisplaycontrols({
         } else if (scores[i] === "QUA0006") {
           handleClickOne(scores[i]);
         } else if (scores[i] === "GPM0001") {
+          handleClickOne(scores[i]);
+        } else if (scores[i] === "REF0001") {
           handleClickOne(scores[i]);
         } else {
           handleClickOne(scores[i]);
@@ -150,7 +153,7 @@ export default function Projectdisplaycontrols({
 
   return (
     <div className="stickytwo">
-      <FormControl sx={{ m: 1, width: 250 }}>
+      <FormControl sx={{ m: 1, width: 175 }}>
         <InputLabel id="demo-multiple-name-label">Name</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -168,7 +171,7 @@ export default function Projectdisplaycontrols({
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 250 }}>
+      <FormControl sx={{ m: 1, width: 200 }}>
         <InputLabel id="demo-multiple-name-label">Site Status</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -186,7 +189,7 @@ export default function Projectdisplaycontrols({
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 250 }}>
+      <FormControl sx={{ m: 1, width: 200 }}>
         <InputLabel id="demo-multiple-name-label">Phase</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -204,7 +207,7 @@ export default function Projectdisplaycontrols({
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ width: "20%", m: 1 }}>
+      <FormControl sx={{ width: "14%", m: 1 }}>
         <Button
           sx={{
             backgroundColor: "white",

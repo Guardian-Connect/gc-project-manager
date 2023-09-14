@@ -55,10 +55,10 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
   const filteredItems = applyFilters(message);
 
   return (
-    <div className="appform">
+    <div className="apptrack">
       <h2>
         <div className="stickytwo">
-          <FormControl sx={{ width: "20%", m: 1 }}>
+          <FormControl sx={{ width: "23%", m: 1 }}>
             <Button
               sx={{
                 backgroundColor: buttonOne,

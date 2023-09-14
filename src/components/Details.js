@@ -40,7 +40,7 @@ const Details = ({ setMessage, searchInput, setSearchInput }) => {
           }
         })
         .map((site) => (
-          <div key={site.id}>
+          <div key={site.id} className="test">
             {site.id === 5000000 ? (
               <div className="yellow">
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>

@@ -112,7 +112,7 @@ const Alertmodal = ({ gctix }) => {
   };
 
   return (
-    <div>
+    <div className="testalertmodal">
       <LoadingButton
         sx={{ m: 2, width: "82%" }}
         color="secondary"
