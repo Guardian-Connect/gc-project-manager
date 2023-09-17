@@ -1082,7 +1082,7 @@ async function getTicketing() {
       `
 select ticketing.*, dispinfo.gp_cust from ticketing
 INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
-ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC
+ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC
       `
     );
     return tickets;
