@@ -27,7 +27,7 @@ const Alertdisplay = ({ gctix }) => {
 
   if (gctix.gp_ticket != null) {
     return (
-      <div key={gctix.id} className="test">
+      <div key={gctix.id}>
         <Card
           sx={{
             display: "flex",
