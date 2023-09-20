@@ -30,13 +30,13 @@ const Alertdisplay = ({ gctix }) => {
       <div key={gctix.id}>
         <Card
           sx={{
+            bgcolor: "background.paper",
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
             p: 1,
             m: 1,
-            bgcolor: "background.paper",
-            width: "-95px",
+            width: { md: "90%", lg: "75%" },
             borderRadius: 1,
             alignText: "center",
             alignItems: "center",

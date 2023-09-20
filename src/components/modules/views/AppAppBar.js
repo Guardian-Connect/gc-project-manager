@@ -10,11 +10,18 @@ import CsvDownloadButton from "react-json-to-csv";
 import { Button } from "@mui/material";
 import { getBfr } from "../../../api";
 import { useHistory } from "react-router-dom";
-const rightLink = {
-  fontSize: 16,
-  color: "common.white",
-  ml: 3,
-};
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiPaper-root": {
+      borderRadius: "10px",
+      // boxShadow: "5px 5px 22px 0px rgba(0,0,0,0.85);",
+      background:
+        "linear-gradient(189deg, rgba(25,118,213,1) 22%, rgba(255,252,247,1) 91%, rgba(2,0,36,1) 97%);",
+    },
+  },
+}));
 
 function AppAppBar({
   searchInput,
@@ -22,8 +29,6 @@ function AppAppBar({
   contactInfo,
   setContactInfo,
 }) {
-  // let countDis = JSON.parse(sessionStorage.getItem("disconnected")).length;
-  // let countCon = JSON.parse(sessionStorage.getItem("connected")).length;
   let mockData = JSON.parse(sessionStorage.getItem("bfr"));
   const [open, setOpen] = React.useState(false);
   const handleTextChange = (e) => {
@@ -36,41 +41,10 @@ function AppAppBar({
   const handleClose = () => {
     setOpen(false);
   };
-  // React.useEffect(async () => {
-  //   await getBfr();
-  // }, []);
-  // const handleSubmit = async (e) => {
-  //   if (e.keyCode === 13) {
-  //     if (searchInput.length != 0) {
-  //       if (searchInput.length === 6) {
-  //         await getEmail(searchInput).then((resp) => {
-  //           setContactInfo(resp.emailInfo);
-  //           history.push("/contact");
-  //         });
-  //       }
-  //       // else {
-  //       //   await getGp(searchInput).then((resp) => {
-  //       //     setContactInfo(resp.emailInfo);
-  //       //     history.push("/contact");
-  //       //     console.log(resp.emailInfo);
-  //       //   });
-  //       // }
-  //     } else {
-  //       return;
-  //     }
-  //   }
-  // };
-
-  // const handleKeypress = (e) => {
-  //   // it triggers by pressing the enter key
-  //   if (e.keyCode === 13) {
-  //     handleSubmit();
-  //   }
-  // };
-
+  const classes = useStyles();
   let history = useHistory();
   return (
-    <div className="Appappbar">
+    <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: "center" }}>
           <Box
@@ -101,16 +75,13 @@ function AppAppBar({
           >
             BFR Download
           </CsvDownloadButton>
-          {/* <div className="withData">Sites w/ Data - {countCon}</div> */}
           <input
             className="search"
             type="text"
             placeholder="Search By GVR ID,Address, or GP Customer ID."
             value={searchInput}
             onChange={handleTextChange}
-            // onKeyDown={handleSubmit}
           />
-          {/* <div className="withoutData">Sites w/out Data - {countDis} </div> */}
 
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
@@ -118,7 +89,6 @@ function AppAppBar({
             onClick={async () => {
               setSearchInput("");
               window.location.reload();
-              // sessionStorage.setItem("false", false);
             }}
           >
             Search Clear
@@ -143,31 +113,6 @@ function AppAppBar({
           >
             Provisioning Lookup
           </Button>
-          {/* <div className="drawer">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                await getInfo();
-                history.push("/second");
-                sessionStorage.setItem("site", JSON.stringify("12345"));
-
-                window.location.reload();
-              }}
-            >
-              Open Notes
-            </Button>
-          </div>
-          <div className="drawertwo">
-            <Button
-              variant="contained"
-              onClick={async () => {
-                history.push("/");
-                // window.location.reload();
-              }}
-            >
-              Clear
-            </Button>
-          </div> */}
         </Toolbar>
       </AppBar>
       <Toolbar />

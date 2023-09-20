@@ -169,7 +169,15 @@
     order: 0;
     margin-top: 4.5em;
     border: 2px solid black;
-    background-color: #1976d2;
+    border-radius: 20px;
+    box-shadow: 5px 5px 22px 0px rgba(0, 0, 0, 0.85);
+    background: linear-gradient(
+      189deg,
+      rgba(25, 118, 213, 1) 22%,
+      rgba(25, 118, 210, 0.9150035014005602) 91%,
+      rgba(2, 0, 36, 0.38279061624649857) 97%
+    );
+
     color: #fff;
     overflow: scroll;
   }
