@@ -20,6 +20,10 @@ const {
   getSitesGvr,
   getSitesAddress,
   findCusInfo,
+  ticketsLeft,
+  ticketsDone,
+  getEodTicketing,
+  sendEmailTickets,
 } = require("./index");
 
 async function createSiteDisp(
@@ -196,8 +200,10 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    let count = await findCusInfo(868094);
-    console.log(count);
+    // let count1 = await sendEmailTickets();
+    // console.log(count1);
+    // let count2 = await ticketsDone();
+    // console.log(count2);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();

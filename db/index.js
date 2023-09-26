@@ -4,6 +4,8 @@ const { red } = require("@mui/material/colors");
 const DB_NAME = "equipment";
 const nodemailer = require("nodemailer");
 const moment = require("moment");
+const dotenv = require("dotenv");
+dotenv.config();
 
 // const client = new Client(
 //   process.env.DATABASE_URL ||
@@ -50,6 +52,30 @@ async function sendEmail(
     to: "guardianconnect@guardianfueltech.com",
     subject: `New Activation - ${gpCust}`,
     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
+
+  // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
+
+async function sendEmailTickets() {
+  let answer = await getEodTicketing();
+  console.log(answer, "answer");
+  let mailOptions = {
+    from: {
+      name: "Daily Tickets",
+      address: "jgale2263130@yahoo.com",
+    },
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `Ticketing Report`,
+    text: `${answer}`,
   };
 
   // send the email using the transporter object
@@ -113,6 +139,56 @@ async function getBfr() {
       ` select ribbon_count, gvr_id, s_name, cus_name, gp_cust, rrs, dispinfo.add_id, warranty, site_address, dashboard_status, gpmaster.* from dispinfo
 INNER JOIN gpmaster ON
 dispinfo.add_id = gpmaster.add_id;
+`
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getEodTicketing() {
+  try {
+    console.log("runnin EoD");
+    const left = (await ticketsComplete()).pop();
+    const done = (await ticketsDone()).pop();
+    console.log(left.count, done.count, "TESTING");
+    const answer = "Left-" + left.count + " " + "Completed-" + done.count;
+    return answer;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function ticketsDone() {
+  try {
+    let ts = Date.now();
+
+    let date_ob = new Date(ts);
+    let date = date_ob.getDate().toString();
+    let monthTest = (date_ob.getMonth() + 1).toString();
+    let month = "0" + monthTest;
+    let year = date_ob.getFullYear().toString().slice(-2);
+
+    let ticketStamp = year + month.slice(-2) + date;
+    console.log(ticketStamp, "stamped");
+    const { rows } = await client.query(
+      ` SELECT COUNT(*) from ticketing
+       WHERE gp_ticket LIKE '${ticketStamp}%'
+`
+    );
+    console.log("done", rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function ticketsComplete() {
+  try {
+    const { rows } = await client.query(
+      ` SELECT COUNT(*) from ticketing
+        WHERE gp_ticket IS NULL;
 `
     );
     return rows;
@@ -1166,4 +1242,8 @@ module.exports = {
   getSitesGvr,
   getSitesAddress,
   findCusInfo,
+  ticketsComplete,
+  ticketsDone,
+  getEodTicketing,
+  sendEmailTickets,
 };

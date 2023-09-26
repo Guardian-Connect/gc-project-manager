@@ -8,6 +8,8 @@ const {
   updateSerials,
   updateModels,
   updateGrades,
+  sendEmailTickets,
+  getEodTicketing,
 } = require("../db");
 
 function addNotesField(updateNotes) {
@@ -477,6 +479,15 @@ updateRouter.post("/ticketing", async (req, res, next) => {
   } catch ({ name, message }) {
     console.log(name, message);
     console.log(name, message);
+    next({ name, message });
+  }
+});
+
+updateRouter.get("/sendemail", async (req, res, next) => {
+  try {
+    const email = await sendEmailTickets();
+    console.log(email);
+  } catch ({ name, message }) {
     next({ name, message });
   }
 });

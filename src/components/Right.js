@@ -10,6 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
+import { sendEmailTickets } from "../api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,6 +113,17 @@ const Right = () => {
                 }}
               >
                 Project Management
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  sendEmailTickets();
+                }}
+              >
+                Ticketing Count
               </Button>
             </ListItem>
           </List>

@@ -40,6 +40,16 @@ export async function getInfo() {
   }
 }
 
+export async function sendEmailTickets() {
+  try {
+    const { data } = await axios.get(`/api/update/sendemail`);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getBfr() {
   try {
     const { data } = await axios.get(`/api/display/bfr`);
