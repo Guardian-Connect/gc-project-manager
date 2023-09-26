@@ -105,7 +105,7 @@ const Right = () => {
                 Project Management
               </Button>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
@@ -115,7 +115,7 @@ const Right = () => {
               >
                 Ticketing Count
               </Button>
-            </ListItem>
+            </ListItem> */}
           </List>
           <Divider />
           <div className="hide">
