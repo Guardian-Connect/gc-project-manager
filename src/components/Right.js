@@ -82,17 +82,7 @@ const Right = () => {
                 GC Tracker
               </Button>
             </ListItem>
-            <ListItem>
-              <Button
-                sx={{ border: 1, borderColor: "white", width: 500 }}
-                variant="contained"
-                onClick={() => {
-                  history.push("/alerticket");
-                }}
-              >
-                Alert Tickets
-              </Button>
-            </ListItem>
+
             <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
@@ -180,6 +170,19 @@ const Right = () => {
                     }}
                   >
                     New User
+                  </Button>
+                )}
+              </ListItem>
+              <ListItem>
+                {user === "james" && (
+                  <Button
+                    sx={{ border: 1, borderColor: "white", width: 500 }}
+                    variant="contained"
+                    onClick={() => {
+                      history.push("/alerticket");
+                    }}
+                  >
+                    Alert Tickets
                   </Button>
                 )}
               </ListItem>
