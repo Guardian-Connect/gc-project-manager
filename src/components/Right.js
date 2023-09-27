@@ -26,11 +26,18 @@ const drawerWidth = 240;
 const Right = () => {
   const classes = useStyles();
   const alert = useAlert();
+
   const email = () => {
-    sendEmailTickets().then(() => {
-      alert.show("Email Sent");
-    });
+    // const response = confirm("Are you sure you want to send an email?");
+    if (window.confirm("Are you sure you want to send an email?")) {
+      sendEmailTickets().then(() => {
+        alert.show("Email Sent");
+      });
+    } else {
+      alert.show("Email Canceled");
+    }
   };
+
   let history = useHistory();
   const user = sessionStorage.getItem("user");
   return (
