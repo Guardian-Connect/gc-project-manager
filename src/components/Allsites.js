@@ -137,6 +137,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
 
         {/* <div className="spaceform"> */}
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -148,6 +149,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -159,6 +161,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -170,6 +173,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -181,6 +185,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -192,6 +197,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         />
 
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -202,6 +208,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           onChange={handleContract}
         />
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -212,6 +219,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           onChange={handleTextChangeEmail1}
         />
         <TextField
+          className={classes.formControl}
           sx={{ m: 1 }}
           required
           id="outlined-required"
@@ -240,7 +248,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
 
         <Box textAlign="center">
           <LoadingButton
-            sx={{ m: 2, width: "25%" }}
+            sx={{ m: 1, width: "25%" }}
             color="secondary"
             onClick={() => {
               addData(

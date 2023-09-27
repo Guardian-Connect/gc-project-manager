@@ -137,7 +137,8 @@ const Gctracker = ({ addTicket }) => {
           <Typography>GC Ticket Tracker</Typography>
         </Box>
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter GVR ID"
@@ -146,7 +147,6 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleTextChangeGvr}
         />
-
         {/* <TextField
           sx={{ m:3}}
           required
@@ -157,7 +157,8 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleTextChangeGp}
         /> */}
-        <FormControl className={classes.formControl} sx={{ m: 3 }}>
+
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
           <InputLabel>Dispatch Type</InputLabel>
           <Select onChange={handleDispatch}>
             <MenuItem value={"Install - Repair"}>Install - Repair </MenuItem>
@@ -207,9 +208,9 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleAddress}
         /> */}
-
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter Dispenser Grade # Affected"
@@ -218,9 +219,9 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleGrade}
         />
-
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter Fueling Point # Affected"
@@ -230,7 +231,7 @@ const Gctracker = ({ addTicket }) => {
           onChange={handleFueling}
         />
 
-        <FormControl className={classes.formControl} sx={{ m: 3 }}>
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
           <InputLabel>Branch</InputLabel>
           <Branches handleBrach={handleBranch} />
           {/* <Select onChange={handleBranch}>
@@ -257,9 +258,9 @@ const Gctracker = ({ addTicket }) => {
             <MenuItem value={"TAM"}>Tampa</MenuItem>
           </Select> */}
         </FormControl>
-
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter GP Ticket #"
@@ -268,9 +269,9 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleGpticket}
         />
-
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter GC Ticket #"
@@ -279,9 +280,9 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleAtl}
         />
-
         <TextField
-          sx={{ m: 3 }}
+          className={classes.formControl}
+          sx={{ m: 2 }}
           required
           id="outlined-required"
           label="Enter FM Ticket #"

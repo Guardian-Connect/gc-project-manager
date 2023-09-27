@@ -153,6 +153,7 @@ const Trackermodal = ({ gctix }) => {
   return (
     <div>
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -164,6 +165,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeGvr}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -175,6 +177,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeGpTicket}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -186,6 +189,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeFm}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -197,6 +201,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeLocation}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -240,6 +245,7 @@ const Trackermodal = ({ gctix }) => {
         )}
       </FormControl>
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -251,6 +257,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTextChangeFp}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -280,6 +287,7 @@ const Trackermodal = ({ gctix }) => {
         </Select>
       </FormControl>
       <TextField
+        className={classes.formControl}
         sx={{ m: 2 }}
         required
         id="outlined-required"
@@ -291,6 +299,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleParts}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
@@ -302,6 +311,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleTravel}
       />
       <TextField
+        className={classes.formControl}
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
@@ -320,6 +330,7 @@ const Trackermodal = ({ gctix }) => {
         </Typography>
       </div> */}
       {/* <TextField
+      className={classes.formControl}
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
@@ -331,6 +342,7 @@ const Trackermodal = ({ gctix }) => {
         onChange={handleParts}
       />
       <TextField
+      className={classes.formControl}
         sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"

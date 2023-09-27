@@ -439,7 +439,7 @@ const Dispmodal = ({ site }) => {
     <>
       <div className="testDispmodal">
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter GVR ID"
@@ -450,7 +450,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleTextChangeGvr}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Warranty GVR ID"
@@ -461,7 +461,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleTextChangeWarrGvr}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter GP Customer Number"
@@ -472,7 +472,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleTextChangeGp}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Contract Number"
@@ -483,7 +483,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleTextChangeContract}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Site Address"
@@ -494,7 +494,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleTextChangeAddress}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Number of Dispensers"
@@ -506,7 +506,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Registration Date"
@@ -519,7 +519,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Enter Warranty Expiration Date"
@@ -532,7 +532,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="POS Version #"
@@ -544,7 +544,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="POS EDH/Commander Console Serial #"
@@ -556,7 +556,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Register 1 / Manager Work Station"
@@ -568,7 +568,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Register 2 / Manager Work Station"
@@ -580,7 +580,7 @@ const Dispmodal = ({ site }) => {
         />
 
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Register 3 / Manager Work Station"
@@ -591,7 +591,7 @@ const Dispmodal = ({ site }) => {
           onChange={handlePosreg3}
         />
         <TextField
-          sx={{ m: 2 }}
+          sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
           label="Address ID"
