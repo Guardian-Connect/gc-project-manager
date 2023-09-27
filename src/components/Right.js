@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import { sendEmailTickets } from "../api";
+import { useAlert } from "react-alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,17 +106,17 @@ const Right = () => {
                 Project Management
               </Button>
             </ListItem>
-            {/* <ListItem>
+            <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  sendEmailTickets();
+                  history.push("/alerticket");
                 }}
               >
-                Ticketing Count
+                Alert Tickets
               </Button>
-            </ListItem> */}
+            </ListItem>
           </List>
           <Divider />
           <div className="hide">
@@ -179,10 +180,10 @@ const Right = () => {
                     sx={{ border: 1, borderColor: "white", width: 500 }}
                     variant="contained"
                     onClick={() => {
-                      history.push("/alerticket");
+                      sendEmailTickets();
                     }}
                   >
-                    Alert Tickets
+                    Ticketing Count
                   </Button>
                 )}
               </ListItem>
