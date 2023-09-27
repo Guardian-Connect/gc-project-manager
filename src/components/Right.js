@@ -25,6 +25,12 @@ const drawerWidth = 240;
 
 const Right = () => {
   const classes = useStyles();
+  const alert = useAlert();
+  const email = () => {
+    sendEmailTickets().then(() => {
+      alert.show("Email Sent");
+    });
+  };
   let history = useHistory();
   const user = sessionStorage.getItem("user");
   return (
@@ -117,6 +123,18 @@ const Right = () => {
                 Alert Tickets
               </Button>
             </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  // sendEmailTickets();
+                  email();
+                }}
+              >
+                Ticketing Count Email
+              </Button>
+            </ListItem>
           </List>
           <Divider />
           <div className="hide">
@@ -174,19 +192,20 @@ const Right = () => {
                   </Button>
                 )}
               </ListItem>
-              <ListItem>
+              {/* <ListItem>
                 {user === "james" && (
                   <Button
                     sx={{ border: 1, borderColor: "white", width: 500 }}
                     variant="contained"
                     onClick={() => {
-                      sendEmailTickets();
+                      // sendEmailTickets();
+                      email();
                     }}
                   >
                     Ticketing Count
                   </Button>
                 )}
-              </ListItem>
+              </ListItem> */}
             </List>
           </div>
         </Drawer>

@@ -487,6 +487,7 @@ updateRouter.get("/sendemail", async (req, res, next) => {
   try {
     const email = await sendEmailTickets();
     console.log(email);
+    res.send(email);
   } catch ({ name, message }) {
     next({ name, message });
   }
