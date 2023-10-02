@@ -72,8 +72,8 @@ async function sendEmailTickets() {
       name: "Daily Tickets",
       address: "jgale2263130@yahoo.com",
     },
-    to: "jgale@guardianfueltech.com",
-    // to: "guardianconnect@guardianfueltech.com",
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
     subject: `Ticketing Report`,
     text: `${answer}`,
   };
