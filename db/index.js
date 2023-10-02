@@ -166,7 +166,8 @@ async function ticketsDone() {
     let ts = Date.now();
 
     let date_ob = new Date(ts);
-    let date = date_ob.getDate().toString();
+    let dated = date_ob.getDate().toString();
+    let date = "0" + dated;
     let monthTest = (date_ob.getMonth() + 1).toString();
     let month = "0" + monthTest;
     let year = date_ob.getFullYear().toString().slice(-2);
