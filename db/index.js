@@ -7,19 +7,19 @@ const moment = require("moment");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
@@ -172,7 +172,7 @@ async function ticketsDone() {
     let month = "0" + monthTest;
     let year = date_ob.getFullYear().toString().slice(-2);
 
-    let ticketStamp = year + month.slice(-2) + date;
+    let ticketStamp = year + month.slice(-2) + date.slice(-2);
     console.log(ticketStamp, "stamped");
     const { rows } = await client.query(
       ` SELECT COUNT(*) from ticketing
