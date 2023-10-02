@@ -200,10 +200,10 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    // let count1 = await sendEmailTickets();
-    // console.log(count1);
-    let count2 = await ticketsDone();
-    console.log(count2);
+    let count1 = await sendEmailTickets();
+    console.log(count1);
+    // let count2 = await ticketsDone();
+    // console.log(count2);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();
