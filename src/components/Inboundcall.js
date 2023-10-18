@@ -155,14 +155,15 @@ const Inboundcall = ({ addTicket }) => {
       </FormControl> */}
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Found?</InputLabel>
-        <Select onChange={handleIssue}>
+        <Select onChange={handleIssue} defaultValue={""}>
           <MenuItem value={"TRUE"}>Yes</MenuItem>
           <MenuItem value={"FALSE"}>No</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Type</InputLabel>
-        <Select onChange={handleProblem}>
+        <Select onChange={handleProblem} defaultValue={""}>
+          <MenuItem value={"VCL Plugin"}>VCL Plugin</MenuItem>
           <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
           <MenuItem value={"Serial Error"}>Serial Error</MenuItem>
           <MenuItem value={"Printer Error"}>Printer Error</MenuItem>

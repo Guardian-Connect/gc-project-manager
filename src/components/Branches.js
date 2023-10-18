@@ -3,7 +3,7 @@ import { Select, MenuItem } from "@mui/material";
 
 const Branches = ({ handleBranch }) => {
   return (
-    <Select onChange={handleBranch}>
+    <Select onChange={handleBranch} defaultValue={""}>
       <MenuItem value={"ATL"}>Atlanta</MenuItem>
       <MenuItem value={"BIR"}>Birmingham</MenuItem>
       <MenuItem value={"CHA"}>Charlotte</MenuItem>
@@ -18,6 +18,7 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"LAF"}>Lafayette</MenuItem>
       <MenuItem value={"KNX"}>Knoxville</MenuItem>
       <MenuItem value={"NAS"}>Nashville</MenuItem>
+      <MenuItem value={"PARKERS"}>Parker's</MenuItem>
       <MenuItem value={"PES"}>Petro Solutions</MenuItem>
       <MenuItem value={"RAL"}>Raleigh</MenuItem>
       <MenuItem value={"RCH"}>Richmond</MenuItem>
