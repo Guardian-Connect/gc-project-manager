@@ -73,10 +73,10 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
                   Caller Name - {site.name}
                 </Typography>
                 <Typography variant="h5" component="div">
-                  {site.number != null && (
+                  {site.number.length >= 1 && (
                     <>Caller Number - {phoneNumber(site.number)}</>
                   )}{" "}
-                  {site.number === null && <></>}
+                  {site.number <= 0 && <></>}
                 </Typography>
                 <Typography variant="h5" component="div">
                   Caller Branch - {findSb(site.sb)}
