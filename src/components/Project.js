@@ -54,7 +54,7 @@ const Project = ({ searchInput, setSearchInput }) => {
         })
         .map((site) => (
           <div className="Project">
-            {site.id === 5000000 ? (
+            {/* {site.id === 5000000 ? (
               <div className="yellow">
                 <Typography variant="h4" sx={{ width: "100%", flexShrink: 1 }}>
                   No Open Installs Found
@@ -64,7 +64,7 @@ const Project = ({ searchInput, setSearchInput }) => {
               <>
                 <Dispcardz site={site} />
               </>
-            )}
+            )} */}
           </div>
         ))}
     </div>

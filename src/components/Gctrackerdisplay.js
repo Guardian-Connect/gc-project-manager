@@ -21,8 +21,10 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
   const [gctix, setGctix] = React.useState({});
   const [buttonOne, setButtonOne] = useState(primary);
   const [buttonTwo, setButtonTwo] = useState("yellow");
+  const [buttonThree, setButtonThree] = useState(primary);
   const [textOne, setTextOne] = useState(secondary);
   const [textTwo, setTextTwo] = useState(secondary);
+  const [textThree, setTextThree] = useState(secondary);
 
   useEffect(() => {
     getGcTracker().then((resp) => {
@@ -43,13 +45,21 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
     setTextTwo(primary);
   };
 
+  const handleClickThree = () => {
+    setFilters([...filters, (item) => item.dispatch_type.includes("Install")]);
+    setButtonThree(secondary);
+    setTextThree(primary);
+  };
+
   const handleClear = () => {
     setFilters([]);
     setSearchInput("");
     setButtonOne(primary);
     setButtonTwo("yellow");
+    setButtonThree(primary);
     setTextOne(secondary);
     setTextTwo(secondary);
+    setTextThree(secondary);
   };
 
   const handleClickOpen = (gctix) => {
@@ -74,6 +84,18 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
   return (
     <div className="apptrack">
       <div className="stickytwo">
+        <FormControl sx={{ width: "20%", m: 1 }}>
+          <Button
+            sx={{
+              backgroundColor: buttonThree,
+              border: "1px solid green",
+              color: textThree,
+            }}
+            onClick={handleClickThree}
+          >
+            Install Tickets
+          </Button>
+        </FormControl>
         <FormControl sx={{ width: "20%", m: 1 }}>
           <Button
             sx={{
@@ -140,6 +162,7 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
         })
         .map((gctix) => (
           <div className="Gctrackerdisplay">
+            {console.log(gctix.dispatch_type === "Install - Repair")}
             <Card
               sx={{
                 display: "flex",

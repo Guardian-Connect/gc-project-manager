@@ -10,6 +10,8 @@ const {
   updateGrades,
   sendEmailTickets,
   getEodTicketing,
+  closeInstallTicket,
+  closeStaticTicket,
 } = require("../db");
 
 function addNotesField(updateNotes) {
@@ -295,7 +297,13 @@ updateRouter.post("/", async (req, res, next) => {
   if (model10) {
     updateFieldsModels.model10 = model10;
   }
+  if (contractStatus === "2-MONITORING") {
+    closeInstallTicket(notes, gvr_id);
+  }
 
+  if (contractStatus === "3-STATIC") {
+    closeStaticTicket(notes, gvr_id);
+  }
   try {
     console.log(updateFieldsInfo);
     const updatedDispInfo = await updateDisp(id, updateFieldsInfo);

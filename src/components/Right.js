@@ -108,7 +108,7 @@ const Right = () => {
                 Inbound Calls
               </Button>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
@@ -118,7 +118,7 @@ const Right = () => {
               >
                 Project Management
               </Button>
-            </ListItem>
+            </ListItem> */}
             <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}

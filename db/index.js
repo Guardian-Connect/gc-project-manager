@@ -580,6 +580,36 @@ async function getAllGcTracker() {
   return rows;
 }
 
+async function closeInstallTicket(notes, gvr_id) {
+  console.log(typeof notes);
+  const { rows } = await client.query(
+    `UPDATE gctracker
+    SET status = 'Closed',
+        update_notes=$1
+    WHERE gvr_id::integer=$2 AND dispatch_type = 'Install - Repair'
+    
+  `,
+    [notes, gvr_id]
+  );
+
+  return rows;
+}
+
+async function closeStaticTicket(notes, gvr_id) {
+  console.log(typeof notes);
+  const { rows } = await client.query(
+    `UPDATE gctracker
+    SET status = 'Static',
+        update_notes=$1
+    WHERE gvr_id::integer=$2 AND dispatch_type = 'Install - Repair'
+    
+  `,
+    [notes, gvr_id]
+  );
+
+  return rows;
+}
+
 async function getRrsMatrix() {
   const { rows } = await client.query(
     `SELECT *
@@ -1248,4 +1278,6 @@ module.exports = {
   ticketsDone,
   getEodTicketing,
   sendEmailTickets,
+  closeInstallTicket,
+  closeStaticTicket,
 };
