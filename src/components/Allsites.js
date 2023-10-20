@@ -232,6 +232,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
         <FormControl className={classes.formControl} sx={{ m: 1 }}>
           <InputLabel>RRS Fees</InputLabel>
           <Select onChange={handleRrs}>
+            <MenuItem value={"JC-0"}>Job Cost</MenuItem>
             <MenuItem value={"Free Trial"}>Free Trial</MenuItem>
             <MenuItem value={"100"}>$100</MenuItem>
             <MenuItem value={"Plus"}>Plus</MenuItem>
