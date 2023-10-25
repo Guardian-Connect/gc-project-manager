@@ -67,6 +67,39 @@ updateRouter.post("/", async (req, res, next) => {
     grades9,
     disp10,
     grades10,
+    grades11,
+    disp11,
+    model11,
+    grades12,
+    disp12,
+    model12,
+    grades13,
+    disp13,
+    model13,
+    grades14,
+    disp14,
+    model14,
+    grades15,
+    disp15,
+    model15,
+    grades16,
+    disp16,
+    model16,
+    grades17,
+    disp17,
+    model17,
+    grades18,
+    disp18,
+    model18,
+    grades19,
+    disp19,
+    model19,
+    grades20,
+    disp20,
+    model20,
+    grades21,
+    disp21,
+    model21,
     model1,
     model2,
     model3,
@@ -257,7 +290,105 @@ updateRouter.post("/", async (req, res, next) => {
   if (grades10) {
     updateFieldsGrades.grades10 = grades10;
   }
-
+  if (disp11) {
+    updateFieldsSerials.disp11 = disp11;
+  }
+  if (grades11) {
+    updateFieldsGrades.grades11 = grades11;
+  }
+  if (model11) {
+    updateFieldsModels.model11 = model11;
+  }
+  if (disp12) {
+    updateFieldsSerials.disp12 = disp12;
+  }
+  if (grades12) {
+    updateFieldsGrades.grades12 = grades12;
+  }
+  if (model12) {
+    updateFieldsModels.model12 = model12;
+  }
+  if (disp13) {
+    updateFieldsSerials.disp13 = disp13;
+  }
+  if (grades13) {
+    updateFieldsGrades.grades13 = grades13;
+  }
+  if (model13) {
+    updateFieldsModels.model13 = model13;
+  }
+  if (disp14) {
+    updateFieldsSerials.disp14 = disp14;
+  }
+  if (grades14) {
+    updateFieldsGrades.grades14 = grades14;
+  }
+  if (model14) {
+    updateFieldsModels.model14 = model14;
+  }
+  if (disp15) {
+    updateFieldsSerials.disp15 = disp15;
+  }
+  if (grades15) {
+    updateFieldsGrades.grades15 = grades15;
+  }
+  if (model15) {
+    updateFieldsModels.model15 = model15;
+  }
+  if (disp16) {
+    updateFieldsSerials.disp16 = disp16;
+  }
+  if (grades16) {
+    updateFieldsGrades.grades16 = grades16;
+  }
+  if (model16) {
+    updateFieldsModels.model16 = model16;
+  }
+  if (disp17) {
+    updateFieldsSerials.disp17 = disp17;
+  }
+  if (grades17) {
+    updateFieldsGrades.grades17 = grades17;
+  }
+  if (model17) {
+    updateFieldsModels.model17 = model17;
+  }
+  if (disp18) {
+    updateFieldsSerials.disp18 = disp18;
+  }
+  if (grades18) {
+    updateFieldsGrades.grades18 = grades18;
+  }
+  if (model18) {
+    updateFieldsModels.model18 = model18;
+  }
+  if (disp19) {
+    updateFieldsSerials.disp19 = disp19;
+  }
+  if (grades19) {
+    updateFieldsGrades.grades19 = grades19;
+  }
+  if (model19) {
+    updateFieldsModels.model19 = model19;
+  }
+  if (disp20) {
+    updateFieldsSerials.disp20 = disp20;
+  }
+  if (grades20) {
+    updateFieldsGrades.grades20 = grades20;
+  }
+  if (model20) {
+    updateFieldsModels.model20 = model20;
+  }
+  if (disp21) {
+    updateFieldsSerials.disp21 = disp21;
+  }
+  if (grades21) {
+    updateFieldsGrades.grades21 = grades21;
+  }
+  if (model21) {
+    updateFieldsModels.model21 = model21;
+  }
   if (model1) {
     updateFieldsModels.model1 = model1;
   }
