@@ -24,7 +24,7 @@ const Inboundcall = ({ addTicket }) => {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = React.useState(false);
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState("0");
   const [issue, setIssue] = useState("");
   const [gp, setGp] = useState("");
   const [gcIssue, setGcIssue] = useState("");

@@ -233,7 +233,7 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           <InputLabel>RRS Fees</InputLabel>
           <Select onChange={handleRrs}>
             <MenuItem value={"JC-0"}>Job Cost</MenuItem>
-            <MenuItem value={"Free Trial"}>Free Trial</MenuItem>
+            <MenuItem value={"Free Trial-P"}>Free Trial</MenuItem>
             <MenuItem value={"100"}>$100</MenuItem>
             <MenuItem value={"Plus"}>Plus</MenuItem>
             <MenuItem value={"Premium"}>Premium</MenuItem>
