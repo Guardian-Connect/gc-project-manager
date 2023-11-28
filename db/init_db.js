@@ -24,6 +24,7 @@ const {
   ticketsDone,
   getEodTicketing,
   sendEmailTickets,
+  runAtSpecificTimeOfDay,
 } = require("./index");
 
 async function createSiteDisp(
@@ -200,8 +201,9 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    let count1 = await sendEmailTickets();
-    console.log(count1);
+    runAtSpecificTimeOfDay(12, 1, () => {
+      console.log(new Date());
+    });
     // let count2 = await ticketsDone();
     // console.log(count2);
     // await dropTables();
