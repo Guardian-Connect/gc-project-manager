@@ -154,21 +154,16 @@ const Inboundcall = ({ addTicket }) => {
         </Select>
       </FormControl> */}
       <FormControl sx={{ width: "44%", m: 1 }}>
-        <InputLabel>Issue Found?</InputLabel>
+        <InputLabel>Circle K Activation</InputLabel>
         <Select onChange={handleIssue} defaultValue={""}>
-          <MenuItem value={"TRUE"}>Yes</MenuItem>
-          <MenuItem value={"FALSE"}>No</MenuItem>
+          <MenuItem value={"Success"}>Success</MenuItem>
+          <MenuItem value={"Fail"}>Fail - Enter Failure Notes Below</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Type</InputLabel>
         <Select onChange={handleProblem} defaultValue={""}>
-          <MenuItem value={"CK Activation Success"}>
-            Circle K Activation - Success
-          </MenuItem>
-          <MenuItem value={"CK Activation Fail"}>
-            Circle K Activation - Fail
-          </MenuItem>
+          <MenuItem value={"CK Activation"}>Circle K Activation</MenuItem>
           <MenuItem value={"VCL Plugin"}>VCL Plugin</MenuItem>
           <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
           <MenuItem value={"Serial Error"}>Serial Error</MenuItem>
