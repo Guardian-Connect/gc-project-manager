@@ -7,6 +7,7 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"ATL"}>Atlanta</MenuItem>
       <MenuItem value={"BIR"}>Birmingham</MenuItem>
       <MenuItem value={"CHA"}>Charlotte</MenuItem>
+      <MenuItem value={"CIK"}>Circle K</MenuItem>
       <MenuItem value={"COL"}>Columbia</MenuItem>
       <MenuItem value={"CUS"}>Customer</MenuItem>
       <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
