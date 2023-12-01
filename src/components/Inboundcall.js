@@ -163,7 +163,7 @@ const Inboundcall = ({ addTicket }) => {
       <FormControl sx={{ width: "44%", m: 1 }}>
         <InputLabel>Issue Type</InputLabel>
         <Select onChange={handleProblem} defaultValue={""}>
-          <MenuItem value={"CK Activation"}>
+          <MenuItem value={"CK Activation Success"}>
             Circle K Activation - Success
           </MenuItem>
           <MenuItem value={"CK Activation Fail"}>
