@@ -19,6 +19,9 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
   const [gp_cust, setGp_cust] = useState("");
   const [cus_name, setCus_name] = useState("");
   const [site_address, setSite_address] = useState("");
+  const [site_city, setSite_city] = useState("");
+  const [site_state, setSite_state] = useState("");
+  const [site_zip, setSite_zip] = useState("");
   const [cus_email1, setCus_email1] = useState("");
   const [cus_email2, setCus_email2] = useState("");
   const [contract, setContract] = useState("");
@@ -56,8 +59,20 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     setCus_email2(e.target.value);
   };
 
-  const handleTextChangeSite = (e) => {
+  const handleTextChangeSiteAddress = (e) => {
     setSite_address(e.target.value);
+  };
+
+  const handleTextChangeSiteCity = (e) => {
+    setSite_city(e.target.value);
+  };
+
+  const handleTextChangeSiteState = (e) => {
+    setSite_state(e.target.value);
+  };
+
+  const handleTextChangeSiteZip = (e) => {
+    setSite_zip(e.target.value);
   };
 
   const handleContract = (e) => {
@@ -82,6 +97,9 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
     gp_cust,
     cus_name,
     site_address,
+    site_city,
+    site_state,
+    site_zip,
     contract,
     cus_email1,
     cus_email2,
@@ -95,6 +113,9 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       gp_cust,
       cus_name,
       site_address,
+      site_city,
+      site_state,
+      site_zip,
       contract,
       cus_email1,
       cus_email2,
@@ -107,6 +128,9 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       gp_cust,
       cus_name,
       site_address,
+      site_city,
+      site_state,
+      site_zip,
       contract,
       cus_email1,
       cus_email2,
@@ -193,7 +217,43 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
           InputLabelProps={{
             shrink: true,
           }}
-          onChange={handleTextChangeSite}
+          onChange={handleTextChangeSiteAddress}
+        />
+
+        <TextField
+          className={classes.formControl}
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Site City"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeSiteCity}
+        />
+
+        <TextField
+          className={classes.formControl}
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Site State"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeSiteState}
+        />
+
+        <TextField
+          className={classes.formControl}
+          sx={{ m: 1 }}
+          required
+          id="outlined-required"
+          label="Enter Site Zip"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleTextChangeSiteZip}
         />
 
         <TextField
@@ -258,6 +318,9 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
                 gp_cust,
                 cus_name,
                 site_address,
+                site_city,
+                site_state,
+                site_zip,
                 contract,
                 cus_email1,
                 cus_email2,

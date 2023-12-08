@@ -219,6 +219,9 @@ async function createSite(
   gp_cust,
   cus_name,
   site_address,
+  site_city,
+  site_state,
+  site_zip,
   contract,
   cus_email1,
   cus_email2,
@@ -234,6 +237,9 @@ async function createSite(
       gp_cust,
       cus_name,
       site_address,
+      site_city,
+      site_state,
+      site_zip,
       contract,
       cus_email1,
       cus_email2,
@@ -262,6 +268,9 @@ async function createSite(
         gp_cust,
         cus_name,
         site_address,
+        site_city,
+        site_state,
+        site_zip,
         contract,
         cus_email1,
         cus_email2,
@@ -270,14 +279,22 @@ async function createSite(
         dashboard_status
       );
       //NEED TO ADD GVR IDs into other 3 databases as well. (dispserials, dispmodel, dispgrades)
-      const result = await client.query(
-        `
-      INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address)
-      VALUES ($1, $2, $3, $4);
-    `,
-        [gvr_id, gp_cust, cus_name, site_address]
-      );
-      console.log("allsite", result);
+      //   const result = await client.query(
+      //     `
+      //   INSERT INTO allsites(gvr_id, gp_cust, cus_name, site_address, site_city, site_state, site_zip)
+      //   VALUES ($1, $2, $3, $4, $5, $6, $7);
+      // `,
+      //     [
+      //       gvr_id,
+      //       gp_cust,
+      //       cus_name,
+      //       site_address,
+      //       site_city,
+      //       site_state,
+      //       site_zip,
+      //     ]
+      //   );
+      // console.log("allsite", result);
       return { message: "Site Created" };
     }
   } catch (error) {
@@ -455,7 +472,7 @@ async function createInbound(
     let date2 = ("0" + date_ob.getDate()).slice(-2);
     let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
     let year = date_ob.getFullYear();
-    let hourz = date_ob.getHours() - 4;
+    let hourz = date_ob.getHours();
     let hours = (hourz < 10 ? "0" : "") + hourz;
     let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
