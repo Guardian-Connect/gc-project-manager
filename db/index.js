@@ -357,6 +357,9 @@ async function createSiteDisp(
   gp_cust,
   cus_name,
   site_address,
+  site_city,
+  site_state,
+  site_zip,
   contract,
   cus_email1,
   cus_email2,
@@ -377,6 +380,9 @@ async function createSiteDisp(
       gp_cust,
       cus_name,
       site_address,
+      site_city,
+      site_state,
+      site_zip,
       contract,
       cus_email1,
       cus_email2,
@@ -390,8 +396,8 @@ async function createSiteDisp(
     );
     const result = await client.query(
       `
-      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor, contract_status, dashboard_status)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
+      INSERT INTO dispinfo(gvr_id, add_id, gp_cust, cus_name, site_address, site_city, site_state, site_zip, contract, cus_email1, cus_email2, rrs, quote, totaldisp, notes, phase, contractor, contract_status, dashboard_status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19);
     `,
       [
         gvr_id,
@@ -399,6 +405,9 @@ async function createSiteDisp(
         gp_cust,
         cus_name,
         site_address,
+        site_city,
+        site_state,
+        site_zip,
         contract,
         cus_email1,
         cus_email2,
