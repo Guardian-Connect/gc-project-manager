@@ -137,9 +137,9 @@ async function getRecordByDate(start, end, gp) {
 async function getBfr() {
   try {
     const { rows } = await client.query(
-      ` select ribbon_count, gvr_id, s_name, cus_name, gp_cust, rrs, dispinfo.add_id, warranty, site_address, dashboard_status, gpmaster.* from dispinfo
+      `select ribbon_count, gvr_id, s_name, cus_name, gp_cust, dispinfo.add_id, warranty, site_address, site_city, site_state, site_zip, dashboard_status, gpmaster.* from dispinfo
 INNER JOIN gpmaster ON
-dispinfo.add_id = gpmaster.add_id;
+dispinfo.add_id = gpmaster.add_id
 `
     );
     return rows;
