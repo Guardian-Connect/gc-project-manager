@@ -715,6 +715,12 @@ export function findSb(sb) {
     return "Petro Solutions";
   } else if (sb === "SUB") {
     return "Sub-Contractor (Other)";
+  } else if (sb === "APEC") {
+    return "APEC";
+  } else if (sb === "PARKERS") {
+    return "Parker's";
+  } else if (sb === "CIK") {
+    return "Circle K";
   } else {
     return "Unknown";
   }
