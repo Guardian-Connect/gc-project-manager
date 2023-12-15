@@ -115,8 +115,18 @@ dbpostRouter.post("/createdisp", async (req, res, next) => {
 });
 
 dbpostRouter.post("/inbound", async (req, res, next) => {
-  const { sb, gvr_id, notes, name, number, issue, gp, problemType, gcIssue } =
-    req.body;
+  const {
+    sb,
+    gvr_id,
+    notes,
+    name,
+    number,
+    issue,
+    gp,
+    problemType,
+    gcIssue,
+    dispNumber,
+  } = req.body;
   try {
     const inboundRes = await createInbound(
       sb,
@@ -127,7 +137,8 @@ dbpostRouter.post("/inbound", async (req, res, next) => {
       issue,
       gp,
       problemType,
-      gcIssue
+      gcIssue,
+      dispNumber
     );
     res.send({ inboundRes });
   } catch (error) {

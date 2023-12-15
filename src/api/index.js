@@ -176,7 +176,8 @@ export async function createInbound(
   issue,
   gp,
   problemType,
-  gcIssue
+  gcIssue,
+  dispNumber
 ) {
   try {
     const { data } = await axios.post("/api/dbpost/inbound", {
@@ -189,6 +190,7 @@ export async function createInbound(
       gp,
       problemType,
       gcIssue,
+      dispNumber,
     });
     return data;
   } catch (error) {

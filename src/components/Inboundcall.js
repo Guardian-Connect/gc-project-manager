@@ -28,8 +28,12 @@ const Inboundcall = ({ addTicket }) => {
   const [issue, setIssue] = useState("");
   const [gp, setGp] = useState("");
   const [gcIssue, setGcIssue] = useState("");
+  const [dispNumber, setDispNumber] = useState(0);
   const [problemType, setProblemType] = useState("");
 
+  const handleDisp = (e) => {
+    setDispNumber(e.target.value);
+  };
   const handleProblem = (e) => {
     setProblemType(e.target.value);
   };
@@ -69,7 +73,8 @@ const Inboundcall = ({ addTicket }) => {
       issue,
       gp,
       problemType,
-      gcIssue
+      gcIssue,
+      dispNumber
     );
     reload();
   };
@@ -180,6 +185,17 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"No Issues Found"}>No Issues Found</MenuItem>
         </Select>
       </FormControl>
+      <TextField
+        sx={{ width: "44%", m: 1, mt: 1 }}
+        required
+        id="outlined-required"
+        label="Number of Dispensers Online"
+        // defaultValue={site.gvr_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleDisp}
+      />
       <TextField
         sx={{ width: "91%", m: 1 }}
         required

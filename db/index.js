@@ -7,19 +7,19 @@ const moment = require("moment");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
@@ -474,7 +474,8 @@ async function createInbound(
   issue,
   gp,
   problemType,
-  gcIssue
+  gcIssue,
+  dispNumber
 ) {
   try {
     let date_ob = new Date();
@@ -497,12 +498,13 @@ async function createInbound(
       problemType,
       gcIssue,
       date,
-      time
+      time,
+      dispNumber
     );
     const result = await client.query(
       `
-      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time, disp_number)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
     `,
       [
         sb,
@@ -516,6 +518,7 @@ async function createInbound(
         gcIssue,
         date,
         time,
+        dispNumber,
       ]
     );
     console.log(result);
