@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { createInbound } from "../api";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import {
   Select,
   MenuItem,
@@ -29,8 +31,20 @@ const Inboundcall = ({ addTicket }) => {
   const [gp, setGp] = useState("");
   const [gcIssue, setGcIssue] = useState("");
   const [dispNumber, setDispNumber] = useState(0);
+  const [totalDispNumer, setTotalDispNumer] = useState(0);
+  const [totalFuelingPositions, setTotalFuelingPositions] = useState(0);
+  const [totalCommercialDisp, setTotalCommercialDisp] = useState(0);
   const [problemType, setProblemType] = useState("");
 
+  const handleTotalCommercialDisp = (e) => {
+    setTotalCommercialDisp(e.target.value);
+  };
+  const handleTotalFuelingPositions = (e) => {
+    setTotalFuelingPositions(e.target.value);
+  };
+  const handleTotalDisp = (e) => {
+    setTotalDispNumer(e.target.value);
+  };
   const handleDisp = (e) => {
     setDispNumber(e.target.value);
   };
@@ -74,7 +88,10 @@ const Inboundcall = ({ addTicket }) => {
       gp,
       problemType,
       gcIssue,
-      dispNumber
+      dispNumber,
+      totalDispNumer,
+      totalFuelingPositions,
+      totalCommercialDisp
     );
     reload();
   };
@@ -165,7 +182,7 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"Fail"}>Fail - Enter Failure Notes Below</MenuItem>
         </Select>
       </FormControl>
-      <FormControl sx={{ width: "44%", m: 1 }}>
+      <FormControl sx={{ width: "91%", m: 1 }}>
         <InputLabel>Issue Type</InputLabel>
         <Select onChange={handleProblem} defaultValue={""}>
           <MenuItem value={"CK Activation"}>Circle K Activation</MenuItem>
@@ -185,8 +202,16 @@ const Inboundcall = ({ addTicket }) => {
           <MenuItem value={"No Issues Found"}>No Issues Found</MenuItem>
         </Select>
       </FormControl>
+      <Typography
+        variant="h5"
+        component="div"
+        sx={{ textAlign: "center", m: 2 }}
+      >
+        Dispenser Data - Circle K Only
+      </Typography>
+      <Divider />
       <TextField
-        sx={{ width: "44%", m: 1, mt: 1 }}
+        sx={{ width: "44%", m: 1, mt: 2 }}
         required
         id="outlined-required"
         label="Number of Dispensers Online"
@@ -195,6 +220,39 @@ const Inboundcall = ({ addTicket }) => {
           shrink: true,
         }}
         onChange={handleDisp}
+      />
+      <TextField
+        sx={{ width: "44%", m: 1, mt: 2 }}
+        required
+        id="outlined-required"
+        label="Number of Fuel Dispensers On-Site"
+        // defaultValue={site.gvr_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTotalDisp}
+      />
+      <TextField
+        sx={{ width: "44%", m: 1, mt: 1 }}
+        required
+        id="outlined-required"
+        label="Number of Commercial Dispensers On-Site"
+        // defaultValue={site.gvr_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTotalCommercialDisp}
+      />
+      <TextField
+        sx={{ width: "44%", m: 1, mt: 1 }}
+        required
+        id="outlined-required"
+        label="Total Count of Fueling Positions On-Site"
+        // defaultValue={site.gvr_id}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTotalFuelingPositions}
       />
       <TextField
         sx={{ width: "91%", m: 1 }}
