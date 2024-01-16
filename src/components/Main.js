@@ -1,6 +1,6 @@
 import React from "react";
 import AppAppBar from "./modules/views/AppAppBar";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 const Main = ({
   message,
@@ -10,7 +10,7 @@ const Main = ({
   searchInput,
   setSearchInput,
 }) => {
-  let history = useHistory();
+  let history = useNavigate();
 
   return (
     <>
@@ -24,7 +24,7 @@ const Main = ({
       <Button
         variant="outlined"
         onClick={() => {
-          history.push("/second");
+          history("/second");
         }}
       >
         Complete List of Sites
@@ -33,7 +33,7 @@ const Main = ({
         variant="outlined"
         onClick={() => {
           setSearchInput("MAJ0001");
-          history.push("/second");
+          history("/second");
         }}
       >
         Majors Management

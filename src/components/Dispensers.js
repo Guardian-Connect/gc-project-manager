@@ -2,9 +2,11 @@ import React from "react";
 import { Typography, Card } from "@mui/material";
 
 const Dispensers = ({ site }) => {
+  let test = "NULL";
   return (
     <>
-      {site.disp1 != null && (
+      {console.log(site.disp1 == "test")}
+      {site.disp1 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp1}</div>{" "}
@@ -12,7 +14,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp2 != null && (
+      {site.disp2 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp2}</div>{" "}
@@ -20,7 +22,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp3 != null && (
+      {site.disp3 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp3}</div>{" "}
@@ -28,7 +30,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp4 != null && (
+      {site.disp4 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp4}</div>{" "}
@@ -36,7 +38,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp5 != null && (
+      {site.disp5 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp5}</div>{" "}
@@ -44,7 +46,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp6 != null && (
+      {site.disp6 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp6}</div>{" "}
@@ -52,7 +54,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp7 != null && (
+      {site.disp7 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp7}</div>{" "}
@@ -60,7 +62,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp8 != null && (
+      {site.disp8 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp8}</div>{" "}
@@ -68,7 +70,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp9 != null && (
+      {site.disp9 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp9}</div>{" "}
@@ -76,7 +78,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp10 != null && (
+      {site.disp10 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp10}</div>{" "}
@@ -84,7 +86,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp11 != null && (
+      {site.disp11 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp11}</div>{" "}
@@ -92,7 +94,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp12 != null && (
+      {site.disp12 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp12}</div>{" "}
@@ -100,7 +102,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp13 != null && (
+      {site.disp13 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp13}</div>{" "}
@@ -108,7 +110,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp14 != null && (
+      {site.disp14 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp14}</div>{" "}
@@ -116,7 +118,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp15 != null && (
+      {site.disp15 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp15}</div>{" "}
@@ -124,7 +126,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp16 != null && (
+      {site.disp16 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp16}</div>{" "}
@@ -132,7 +134,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp17 != null && (
+      {site.disp17 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp17}</div>{" "}
@@ -140,7 +142,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp18 != null && (
+      {site.disp18 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp18}</div>{" "}
@@ -148,7 +150,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp19 != null && (
+      {site.disp19 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp19}</div>{" "}
@@ -156,7 +158,7 @@ const Dispensers = ({ site }) => {
           </Typography>
         </div>
       )}
-      {site.disp20 != null && (
+      {site.disp20 != test && (
         <div className="disp">
           <Typography variant="h5">
             <div>Fueling Position #{site.disp20}</div>{" "}

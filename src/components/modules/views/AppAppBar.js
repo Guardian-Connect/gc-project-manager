@@ -9,7 +9,7 @@ import Dialog from "@mui/material/Dialog";
 import CsvDownloadButton from "react-json-to-csv";
 import { Button } from "@mui/material";
 import { getBfr } from "../../../api";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +42,7 @@ function AppAppBar({
     setOpen(false);
   };
   const classes = useStyles();
-  let history = useHistory();
+  let history = useNavigate();
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -108,7 +108,7 @@ function AppAppBar({
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"
             onClick={() => {
-              history.push("/addresslookup");
+              history("/addresslookup");
             }}
           >
             Provisioning Lookup
