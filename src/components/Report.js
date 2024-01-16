@@ -1,11 +1,11 @@
 import React from "react";
 import { Typography, Button, Box } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const moment = require("moment");
 
 const Report = ({ children }) => {
-  let history = useNavigate();
+  let history = useHistory();
   return (
     <div className="app">
       <Box sx={{ textAlign: "center" }}>
@@ -14,7 +14,7 @@ const Report = ({ children }) => {
           sx={{ ml: 10 }}
           variant="contained"
           onClick={() => {
-            history("/allsites");
+            history.push("/allsites");
           }}
         >
           All Sites
@@ -23,7 +23,7 @@ const Report = ({ children }) => {
           sx={{ ml: 2 }}
           variant="contained"
           onClick={() => {
-            history("/gctracker");
+            history.push("/gctracker");
           }}
         >
           GC Tracker

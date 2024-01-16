@@ -3,8 +3,10 @@ import { getSomething } from "../api";
 import { Typography, Card, ButtonBase } from "@mui/material";
 import CsvDownload from "react-json-to-csv";
 import { getSpecificData, getCompleteData } from "../api/index";
+import { useHistory } from "react-router-dom";
 
 const SideBar = ({ mockData, setSearchInput }) => {
+  let history = useHistory();
   const [message, setMessage] = useState([]);
 
   useEffect(async () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./Main";
 import Start from "./Start";
 import Details from "./Details";
@@ -96,143 +96,110 @@ const App = () => {
                 count={count}
               />
             </div>
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <Start
-                    message={message}
-                    setMessage={setMessage}
-                    count={count}
-                    setCount={setCount}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/second"
-                element={
-                  <Project
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/alerticket"
-                element={
-                  <Alerticket
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/report"
-                element={
-                  <Report
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                exact
-                path="/addresslookup"
-                element={<Addresslookup />}
-              ></Route>
-              <Route
-                path="/gctrackerdisplay"
-                element={
-                  <Gctrackerdisplay
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/details"
-                element={
-                  <Details
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/contact"
-                element={
-                  <Contact
-                    contactInfo={contactInfo}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/inbounddisplay"
-                element={
-                  <Inboundcalldisplay
-                    contactInfo={contactInfo}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/inboundcall"
-                element={
-                  <Inboundcall
-                    contactInfo={contactInfo}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/allsites"
-                element={
-                  <Allsites
-                    addSite={addSite}
-                    addEmail={addEmail}
-                    createDisp={createDisp}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/gctracker"
-                element={
-                  <Gctracker
-                    addTicket={addTicket}
-                    message={message}
-                    setMessage={setMessage}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/pcnalert"
-                element={
-                  <Pcntracker
-                    addTicket={addTicket}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/project"
-                element={
-                  <Projectdisplay
-                    addTicket={addTicket}
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                  />
-                }
-              ></Route>
-              <Route exact path="/login" element={<Login />}></Route>
-            </Routes>
+            <Switch>
+              <Route exact path="/">
+                {/* Initial loading */}
+                <Start
+                  message={message}
+                  setMessage={setMessage}
+                  count={count}
+                  setCount={setCount}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              {/* What Renders when open notes button is clicked */}
+              <Route path="/second">
+                <Project
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/alerticket">
+                <Alerticket
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/report">
+                <Report
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route exact path="/addresslookup">
+                {/* Initial loading */}
+                <Addresslookup />
+              </Route>
+              <Route path="/gctrackerdisplay">
+                <Gctrackerdisplay
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/details">
+                <Details
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/contact">
+                <Contact
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/inbounddisplay">
+                <Inboundcalldisplay
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/inboundcall">
+                <Inboundcall
+                  contactInfo={contactInfo}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/allsites">
+                <Allsites
+                  addSite={addSite}
+                  addEmail={addEmail}
+                  createDisp={createDisp}
+                />
+              </Route>
+              <Route path="/gctracker">
+                <Gctracker
+                  addTicket={addTicket}
+                  message={message}
+                  setMessage={setMessage}
+                />
+              </Route>
+              <Route path="/pcnalert">
+                <Pcntracker
+                  addTicket={addTicket}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/project">
+                <Projectdisplay
+                  addTicket={addTicket}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route exact path="/login">
+                {/* Initial loading */}
+                <Login />
+              </Route>
+              {/* <Route path="/login">
+                <Login />
+              </Route> */}
+            </Switch>
           </Router>
         )}
       </>

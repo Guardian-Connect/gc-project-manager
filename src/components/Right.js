@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import { sendEmailTickets } from "../api";
 import { useAlert } from "react-alert";
@@ -38,7 +38,7 @@ const Right = () => {
     }
   };
 
-  let history = useNavigate();
+  let history = useHistory();
   const user = sessionStorage.getItem("user");
   return (
     <div className={classes.root}>
@@ -79,7 +79,7 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  history("/");
+                  history.push("/");
                 }}
               >
                 Site Information
@@ -90,7 +90,7 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={async () => {
-                  history("/gctrackerdisplay");
+                  history.push("/gctrackerdisplay");
                 }}
               >
                 GC Tracker
@@ -102,7 +102,7 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  history("/inbounddisplay");
+                  history.push("/inbounddisplay");
                 }}
               >
                 Inbound Calls
@@ -113,7 +113,7 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  history("/project");
+                  history.push("/project");
                 }}
               >
                 Project Management
@@ -124,7 +124,7 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  history("/alerticket");
+                  history.push("/alerticket");
                 }}
               >
                 Alert Tickets
@@ -158,7 +158,7 @@ const Right = () => {
                   sx={{ border: 1, borderColor: "white", width: 500 }}
                   variant="contained"
                   onClick={() => {
-                    history("/allsites");
+                    history.push("/allsites");
                   }}
                 >
                   All Sites
@@ -169,7 +169,7 @@ const Right = () => {
                   sx={{ border: 1, borderColor: "white", width: 500 }}
                   variant="contained"
                   onClick={() => {
-                    history("/gctracker");
+                    history.push("/gctracker");
                   }}
                 >
                   GC Tracker
@@ -180,7 +180,7 @@ const Right = () => {
                   sx={{ border: 1, borderColor: "white", width: 500 }}
                   variant="contained"
                   onClick={() => {
-                    history("/pcnalert");
+                    history.push("/pcnalert");
                   }}
                 >
                   PCN Alert Tracker
@@ -192,7 +192,7 @@ const Right = () => {
                     sx={{ border: 1, borderColor: "white", width: 500 }}
                     variant="contained"
                     onClick={() => {
-                      history("/login");
+                      history.push("/login");
                     }}
                   >
                     New User
