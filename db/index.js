@@ -176,7 +176,7 @@ async function ticketsDone() {
     console.log(ticketStamp, "stamped");
     const { rows } = await client.query(
       ` SELECT COUNT(*) from ticketing
-       WHERE gp_ticket LIKE '${ticketStamp}%'
+       WHERE gp_ticket LIKE '${ticketStamp}%' and sr_number IS NOT NULL
 `
     );
     console.log("done", rows);
