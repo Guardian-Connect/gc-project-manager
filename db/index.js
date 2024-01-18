@@ -153,7 +153,7 @@ async function getEodTicketing() {
     console.log("runnin EoD");
     const left = (await ticketsComplete()).pop();
     const done = (await ticketsDone()).pop();
-    const billed = (await ticketsDoneWarranty()).pop;
+    const billed = (await ticketsDoneWarranty()).pop();
     console.log(left.count, done.count, "TESTING");
     const answer =
       "Left-" +
