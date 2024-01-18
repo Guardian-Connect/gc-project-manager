@@ -153,9 +153,43 @@ async function getEodTicketing() {
     console.log("runnin EoD");
     const left = (await ticketsComplete()).pop();
     const done = (await ticketsDone()).pop();
+    const billed = (await ticketsDoneWarranty()).pop;
     console.log(left.count, done.count, "TESTING");
-    const answer = "Left-" + left.count + " " + "Completed-" + done.count;
+    const answer =
+      "Left-" +
+      left.count +
+      " " +
+      "Completed-" +
+      done.count +
+      " " +
+      "Warranty Tickets-" +
+      billed.count;
     return answer;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function ticketsDoneWarranty() {
+  try {
+    let ts = Date.now();
+
+    let date_ob = new Date(ts);
+    let dated = date_ob.getDate().toString();
+    let date = "0" + dated;
+    let monthTest = (date_ob.getMonth() + 1).toString();
+    let month = "0" + monthTest;
+    let year = date_ob.getFullYear().toString().slice(-2);
+
+    let ticketStamp = year + month.slice(-2) + date.slice(-2);
+    console.log(ticketStamp, "stamped");
+    const { rows } = await client.query(
+      ` SELECT COUNT(*) from ticketing
+       WHERE gp_ticket LIKE '${ticketStamp}%' and sr_number IS NOT NULL
+`
+    );
+    console.log("done", rows);
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -176,7 +210,7 @@ async function ticketsDone() {
     console.log(ticketStamp, "stamped");
     const { rows } = await client.query(
       ` SELECT COUNT(*) from ticketing
-       WHERE gp_ticket LIKE '${ticketStamp}%' and sr_number IS NOT NULL
+       WHERE gp_ticket LIKE '${ticketStamp}%'
 `
     );
     console.log("done", rows);
