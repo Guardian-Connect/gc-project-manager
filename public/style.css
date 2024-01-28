@@ -1,0 +1,285 @@
+#root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+}
+@media only screen and (max-device-width: 1920px) and (orientation: landscape) {
+  .pcnborder {
+    background-color: yellow;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex-wrap: "wrap";
+    align-self: center;
+    align-content: center;
+  }
+
+  .border {
+    border: 1px solid black;
+  }
+  .bordertop {
+    border-bottom: 1px solid black;
+  }
+
+  .withData {
+    background-color: white;
+    color: blue;
+  }
+
+  .withoutData {
+    background-color: yellow;
+    color: blue;
+  }
+
+  .sticky {
+    display: flex;
+    position: sticky;
+    top: 120px;
+    height: 53px;
+    width: 78%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    background-color: white;
+    overflow: hidden;
+    z-index: 999;
+  }
+
+  .stickytwo {
+    display: flex;
+    /* position: sticky; */
+    top: 60px;
+    height: 60px;
+    width: 78%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    overflow: hidden;
+    z-index: 999;
+  }
+
+  .stickythree {
+    display: flex;
+    position: sticky;
+    top: 180px;
+    height: 53px;
+    width: 78%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    background-color: white;
+    overflow: hidden;
+    z-index: 999;
+  }
+
+  .AppLoading {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .main {
+    border: 2px solid black;
+    width: 1000px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .disp {
+    border-bottom: 1px solid black;
+    width: 100%;
+    text-align: center;
+  }
+
+  .searchingbuttons {
+    width: 100%;
+  }
+
+  .spaceform {
+    margin-top: 20px;
+    margin-bottom: 150px;
+  }
+  .search {
+    border: 1px solid black;
+    width: 800px;
+    height: 30px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .displayNone {
+    display: none;
+  }
+
+  .yellow {
+    background-color: yellow;
+  }
+  .white {
+    background-color: white;
+  }
+
+  .test {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 10em;
+    margin-left: 0em;
+    margin-right: 3em;
+    border: 1px solid white;
+  }
+
+  .drawertwo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-left: 1em;
+    margin-right: 3em;
+    border: 1px solid white;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    order: 0;
+    margin-top: 4.5em;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 22px 0px rgba(0, 0, 0, 0.85);
+    background: linear-gradient(
+      189deg,
+      rgba(25, 118, 213, 1) 22%,
+      rgba(25, 118, 210, 0.9150035014005602) 91%,
+      rgba(2, 0, 36, 0.38279061624649857) 97%
+    );
+
+    color: #fff;
+    overflow: scroll;
+  }
+
+  .app {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 75%;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    margin-top: 5em;
+  }
+
+  .appform {
+    display: block;
+    width: 75%;
+    margin-top: 5em;
+    margin-left: -16em;
+  }
+
+  .apptrack {
+    display: block;
+    width: 75%;
+    margin-top: 5em;
+    margin-left: -350px;
+  }
+
+  .spacecenter {
+    display: flex;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .space {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  .bottom {
+    border-bottom: 1px solid white;
+  }
+
+  .card {
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 900px;
+  }
+}
+/* @media only screen and (max-device-width: 2560px) and (orientation: landscape) {
+  .Dispcardz,
+  .Gctrackerdisplay {
+    margin-left: -95px;
+  }
+} */
+
+@media only screen and (max-device-width: 1024px) and (orientation: landscape) {
+  .sidebar {
+    display: none;
+    /* width: 10px;
+    position: sticky;
+    height: 100vh;
+    margin-top: 4.5em;
+    border: 2px solid black;
+    background-color: black;
+    color: #fff; */
+  }
+
+  .search {
+    border: 1px solid black;
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+    margin: 10px;
+  }
+  .stickythree {
+    width: 85%;
+  }
+
+  .stickytwo {
+    justify-content: space-evenly;
+    width: 85%;
+  }
+
+  .sticky {
+    width: 85%;
+  }
+
+  .css-1r31e64-MuiPaper-root-MuiAccordion-root {
+    /* display: none; */
+    background-color: black;
+  }
+
+  .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+    display: none;
+  }
+
+  .hide {
+    display: none;
+  }
+}
