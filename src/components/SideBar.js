@@ -12,7 +12,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
   useEffect(async () => {
     await getSomething()
       .then((response) => {
-        setMessage(response.rrsmatrix);
+        setMessage(response.managers);
       })
       .catch((error) => {
         setMessage(error.message);
@@ -24,40 +24,73 @@ const SideBar = ({ mockData, setSearchInput }) => {
         variant="h4"
         sx={{ width: "100%", flexShrink: 1, alignContent: "center" }}
       >
-        <div className="spacecenter">RRS Pricing Matrix</div>
+        <div className="spacecenter">GFT Contacts</div>
         <div className="bottom"></div>
       </Typography>
-      <Typography
-        variant="h5"
-        sx={{
-          flexShrink: 1,
-          alignSelf: "center",
-          width: "100%",
-          ml: 1,
-          mr: 1,
-          fontSize: 18,
-        }}
-      >
-        {" "}
-        GP - Customer Name - RRS Fee - Request Before RRS
-      </Typography>
+
       <div className="bottom"></div>
-      {message.map((rrs) => (
-        <div key={rrs.id}>
-          <Typography
-            variant="h5"
-            sx={{
-              flexShrink: 1,
-              alignSelf: "center",
-              width: "100%",
-              ml: 1,
-              mr: 3,
-              fontSize: 17,
-            }}
-          >
-            {rrs.gp_cust} - {rrs.cus_name} - {rrs.rrs} - {rrs.warm_start}
-          </Typography>
-        </div>
+      {message.map((managers) => (
+        <>
+          <div key={managers.id}>
+            <Typography
+              variant="h5"
+              sx={{
+                flexShrink: 1,
+                alignSelf: "center",
+                width: "100%",
+                m: 2,
+                fontSize: 17,
+              }}
+            >
+              {managers.branch}
+            </Typography>
+          </div>
+          <div key={managers.id}>
+            <Typography
+              variant="h5"
+              sx={{
+                flexShrink: 1,
+                alignSelf: "center",
+                width: "100%",
+                ml: 1,
+                mr: 3,
+                fontSize: 17,
+              }}
+            >
+              {managers.s_manager} - {managers.s_manager_name}
+            </Typography>
+          </div>
+          <div key={managers.id}>
+            <Typography
+              variant="h5"
+              sx={{
+                flexShrink: 1,
+                alignSelf: "center",
+                width: "100%",
+                ml: 1,
+                mr: 3,
+                fontSize: 17,
+              }}
+            >
+              {managers.b_manager} - {managers.b_manager_name}
+            </Typography>
+          </div>
+          {/* <div key={managers.id}>
+            <Typography
+              variant="h5"
+              sx={{
+                flexShrink: 1,
+                alignSelf: "center",
+                width: "100%",
+                ml: 1,
+                mr: 3,
+                fontSize: 17,
+              }}
+            >
+              {managers.warm_start}
+            </Typography>
+          </div> */}
+        </>
       ))}
 
       {/* ALL PROJECTS START HERE */}
