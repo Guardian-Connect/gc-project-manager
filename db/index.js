@@ -7,19 +7,19 @@ const moment = require("moment");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// const client = new Client(
-//   process.env.DATABASE_URL ||
-//     `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
-// );
+const client = new Client(
+  process.env.DATABASE_URL ||
+    `postgressql://postgres:postgres@localhost:5432/${DB_NAME}`
+);
 
 // Turn on when uploading to heroku //
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
@@ -1334,6 +1334,44 @@ function runAtSpecificTimeOfDay(hour, minutes, func) {
   }, eta_ms);
 }
 
+async function getTicketingSearchGvr(gvr_id) {
+  try {
+    const tickets = await client.query(
+      `
+select * from ticketing
+WHERE gvr_id=$1
+UNION
+SELECT * from ticketingold
+WHERE gvr_id=$1
+ORDER BY date DESC;
+`,
+      [gvr_id]
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
+async function getTicketingSearchGp(gp_cust) {
+  try {
+    const tickets = await client.query(
+      `
+select * from ticketing
+WHERE gp_cust=$1
+UNION
+SELECT * from ticketingold
+WHERE gp_cust=$1
+ORDER BY date DESC;
+`,
+      [gp_cust]
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -1379,4 +1417,6 @@ module.exports = {
   closeInstallTicket,
   closeStaticTicket,
   runAtSpecificTimeOfDay,
+  getTicketingSearchGp,
+  getTicketingSearchGvr,
 };

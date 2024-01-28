@@ -144,6 +144,45 @@ const Right = () => {
             </ListItem>
           </List>
           <Divider />
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
+            Search Menus
+          </Typography>
+          <List>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/addresslookup");
+                }}
+              >
+                Provisioning Lookup
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/alertticketlookup");
+                }}
+              >
+                Alert Ticket Lookup
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/rrsmatrix");
+                }}
+              >
+                RRS
+              </Button>
+            </ListItem>
+          </List>
+          <Divider />
           <div className="hide">
             <Typography
               variant="h5"

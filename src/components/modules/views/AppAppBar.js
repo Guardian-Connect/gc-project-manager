@@ -104,7 +104,7 @@ function AppAppBar({
           <Dialog open={open} onClose={handleClose}>
             <Inboundcall />
           </Dialog>
-          <Button
+          {/* <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"
             onClick={() => {
@@ -112,7 +112,7 @@ function AppAppBar({
             }}
           >
             Provisioning Lookup
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
       <Toolbar />

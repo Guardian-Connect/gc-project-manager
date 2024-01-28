@@ -32,6 +32,8 @@ import Projectdisplay from "./Projectdisplay";
 import Pcntracker from "./Pcntracker";
 import Addresslookup from "./Addresslookup";
 import { getBfr } from "../api";
+import Rrsmatrix from "./Rrsmatrix";
+import Alertticketlookup from "./Alertticketlookup";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -191,6 +193,12 @@ const App = () => {
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                 />
+              </Route>
+              <Route path="/rrsmatrix">
+                <Rrsmatrix />
+              </Route>
+              <Route path="/alertticketlookup">
+                <Alertticketlookup />
               </Route>
               <Route exact path="/login">
                 {/* Initial loading */}
