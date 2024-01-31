@@ -13,6 +13,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
     await getSomething()
       .then((response) => {
         setMessage(response.managers);
+        console.log(response.managers);
       })
       .catch((error) => {
         setMessage(error.message);
@@ -22,7 +23,12 @@ const SideBar = ({ mockData, setSearchInput }) => {
     <div className="sidebar">
       <Typography
         variant="h4"
-        sx={{ width: "100%", flexShrink: 1, alignContent: "center" }}
+        sx={{
+          width: "100%",
+          flexShrink: 1,
+          alignContent: "center",
+          mr: 20,
+        }}
       >
         <div className="spacecenter">GFT Contacts</div>
         <div className="bottom"></div>
@@ -38,11 +44,11 @@ const SideBar = ({ mockData, setSearchInput }) => {
                 flexShrink: 1,
                 alignSelf: "center",
                 width: "100%",
-                m: 2,
+                m: 1,
                 fontSize: 17,
               }}
             >
-              {managers.branch}
+              <u>{managers.branch}</u>
             </Typography>
           </div>
           <div key={managers.id}>

@@ -25,6 +25,8 @@ const {
   getEodTicketing,
   sendEmailTickets,
   runAtSpecificTimeOfDay,
+  getTicketingSearchGp,
+  getTicketingSearchGvr,
 } = require("./index");
 
 async function createSiteDisp(
@@ -201,11 +203,11 @@ async function rebuildDB() {
 
 async function testDB() {
   try {
-    runAtSpecificTimeOfDay(12, 1, () => {
-      console.log(new Date());
-    });
-    // let count2 = await ticketsDone();
-    // console.log(count2);
+    // runAtSpecificTimeOfDay(12, 1, () => {
+    //   console.log(new Date());
+    // });
+    let count2 = await getTicketingSearchGvr(832654);
+    console.log(count2);
     // await dropTables();
     // await createTables();
     // await createInitialUsers();

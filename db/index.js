@@ -693,6 +693,17 @@ async function getRrsMatrix() {
   return rows;
 }
 
+async function getAllManagers() {
+  const { rows } = await client.query(
+    `SELECT *
+    FROM managers
+   ORDER BY branch ASC;
+  `
+  );
+
+  return rows;
+}
+
 async function getAllSitesNotes() {
   const { rows } = await client.query(
     `SELECT *
@@ -1264,10 +1275,65 @@ select ticketing.*, dispinfo.gp_cust from ticketing
 INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
 WHERE gp_ticket IS NULL
 ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC, ticketing.warr ASC
-
       `
     );
     return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
+// async function getTicketingSearch() {
+//   try {
+//     const tickets = await client.query(
+//       `
+// select ticketing.*, dispinfo.gp_cust from ticketing
+// INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
+// ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC, ticketing.warr ASC
+
+//       `
+//     );
+//     return tickets;
+//   } catch (error) {
+//     thrown(error);
+//   }
+// }
+
+async function getTicketingSearchGvr(gvr_id) {
+  try {
+    const tickets = await client.query(
+      `
+select * from ticketing
+WHERE gvr_id=$1
+UNION
+SELECT * from ticketingold
+WHERE gvr_id=$1
+ORDER BY date DESC;
+`,
+      [gvr_id]
+    );
+    return tickets.rows;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
+async function getTicketingSearchGp(gp_cust) {
+  console.log("GP Cust Running");
+  try {
+    const tickets = await client.query(
+      `
+select * from ticketing
+WHERE gp_cust=$1
+UNION
+SELECT * from ticketingold
+WHERE gp_cust=$1
+ORDER BY date DESC;
+`,
+      [gp_cust]
+    );
+    // console.log(tickets.rows, "GP Cust Tickets");
+    return tickets.rows;
   } catch (error) {
     thrown(error);
   }
@@ -1334,44 +1400,6 @@ function runAtSpecificTimeOfDay(hour, minutes, func) {
   }, eta_ms);
 }
 
-async function getTicketingSearchGvr(gvr_id) {
-  try {
-    const tickets = await client.query(
-      `
-select * from ticketing
-WHERE gvr_id=$1
-UNION
-SELECT * from ticketingold
-WHERE gvr_id=$1
-ORDER BY date DESC;
-`,
-      [gvr_id]
-    );
-    return tickets;
-  } catch (error) {
-    thrown(error);
-  }
-}
-
-async function getTicketingSearchGp(gp_cust) {
-  try {
-    const tickets = await client.query(
-      `
-select * from ticketing
-WHERE gp_cust=$1
-UNION
-SELECT * from ticketingold
-WHERE gp_cust=$1
-ORDER BY date DESC;
-`,
-      [gp_cust]
-    );
-    return tickets;
-  } catch (error) {
-    thrown(error);
-  }
-}
-
 module.exports = {
   client,
   getAllUsers,
@@ -1417,6 +1445,7 @@ module.exports = {
   closeInstallTicket,
   closeStaticTicket,
   runAtSpecificTimeOfDay,
-  getTicketingSearchGp,
+  getAllManagers,
   getTicketingSearchGvr,
+  getTicketingSearchGp,
 };

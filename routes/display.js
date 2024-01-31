@@ -10,15 +10,53 @@ const {
   getBfr,
   getSitesGvr,
   getSitesAddress,
+  getAllManagers,
+  getTicketingSearchGvr,
+  getTicketingSearchGp,
 } = require("../db");
+
+// displayRouter.post("/searchgvr/:id", async (req, res, next) => {
+//   const { id } = req.params;
+//   console.log("routes/display");
+//   try {
+//     const searchGvr = getTicketingSearchGvr(id);
+
+//     res.send({ searchGvr });
+//   } catch ({ name, message }) {
+//     next({ name, message });
+//   }
+// });
+
+displayRouter.get("/searchgvr/:id", async (req, res, next) => {
+  const { id } = req.params;
+  console.log("routes/display");
+  try {
+    const searchGvr = await getTicketingSearchGvr(id);
+    console.log(searchGvr, "search GVR");
+    res.send(searchGvr);
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/searchgp/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const searchGp = await getTicketingSearchGp(id);
+    console.log(searchGp, "search GVR");
+    res.send(searchGp);
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
 
 displayRouter.get("/disp", async (req, res, next) => {
   try {
     const dispinfo = await getAllSites();
     const rrsmatrix = await getRrsMatrix();
-    console.log(typeof dispinfo);
+    const managers = await getAllManagers();
 
-    res.send({ dispinfo, rrsmatrix });
+    res.send({ dispinfo, rrsmatrix, managers });
   } catch ({ name, message }) {
     next({ name, message });
   }

@@ -6,24 +6,42 @@ export let projectOne = "MAJ0001";
 export let projectTwo = "LIO0002";
 export let projectThree = "SOU0008";
 
+// export async function getTicketingSearchGp(id) {
+//   console.log("/api/index/GP");
+//   try {
+//     const { data } = await axios.post("/api/display/report", {
+//       id,
+//     });
+//     console.log("data", data);
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+export async function getTicketingSearchGp(id) {
+  try {
+    const { data } = await axios.get(`/api/display/searchgp/${id}`);
+    sessionStorage.setItem("SearchResult", JSON.stringify(data));
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getTicketingSearchGvr(id) {
+  try {
+    const { data } = await axios.get(`/api/display/searchgvr/${id}`);
+    sessionStorage.setItem("SearchResult", JSON.stringify(data));
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getSomething() {
   try {
     const { data } = await axios.get("/api/display/disp");
-    // sessionStorage.setItem("dispinf", JSON.stringify(data.dispinfo));
-    // let info = data.dispinfo;
-    // let disconnected = [];
-    // let connected = [];
-    // info.map((site) => {
-    //   if (site.quote != "C") {
-    //     return disconnected.push(site.gvr_id);
-    //   } else {
-    //     return connected.push(site.gvr_id);
-    //   }
-    // });
-
-    // sessionStorage.setItem("disconnected", JSON.stringify(disconnected));
-    // sessionStorage.setItem("connected", JSON.stringify(connected));
-
     return data;
   } catch (error) {
     throw error;
@@ -33,7 +51,6 @@ export async function getInfo() {
   try {
     const { data } = await axios.get(`/api/users/disp/notes`);
     let info = data.dispinfo;
-    // sessionStorage.setItem("dispinfo", JSON.stringify(info));
     return info;
   } catch (error) {
     throw error;
@@ -97,7 +114,6 @@ export async function getReportData(start, end, gp) {
       end,
       gp,
     });
-    // sessionStorage.setItem("mockData", JSON.stringify(data.report));
     return data;
   } catch (error) {
     throw error;

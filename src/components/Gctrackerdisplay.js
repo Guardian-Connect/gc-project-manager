@@ -151,14 +151,14 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
           if (clientsGp.includes(searchInput.toUpperCase())) {
             return true;
           }
-          const clientsGptick = client.gp_ticket;
-          if (clientsGptick.includes(searchInput.toUpperCase())) {
-            return true;
-          }
-          const clientsFm = client.fm_ticket;
-          if (clientsFm.includes(searchInput.toUpperCase())) {
-            return true;
-          }
+          // const clientsGptick = client.gp_ticket;
+          // if (clientsGptick.includes(searchInput.toUpperCase())) {
+          //   return true;
+          // }
+          // const clientsFm = client.fm_ticket;
+          // if (clientsFm.includes(searchInput.toUpperCase())) {
+          //   return true;
+          // }
         })
         .map((gctix) => (
           <div className="Gctrackerdisplay">

@@ -76,7 +76,7 @@ const Addresslookup = () => {
   return (
     <div className="apptrack">
       <form>
-        <FormControl size="small" sx={{ width: 250, m: 1 }}>
+        <FormControl size="small" sx={{ width: 250, ml: 25, mt: 3 }}>
           <InputLabel id="demo-multiple-name-label">Search Area</InputLabel>
           <Select
             labelId="demo-multiple-name-label"
@@ -94,7 +94,7 @@ const Addresslookup = () => {
           </Select>
         </FormControl>
         <TextField
-          sx={{ m: 1 }}
+          sx={{ mt: 3, ml: 1 }}
           id="search-bar"
           className="text"
           onInput={(e) => {
@@ -105,7 +105,7 @@ const Addresslookup = () => {
           placeholder="Search..."
           size="small"
         />
-        <IconButton aria-label="delete" sx={{ m: 1 }}>
+        <IconButton aria-label="delete" sx={{ mt: 3, ml: 1 }}>
           <SearchIcon onClick={handleClick} />
         </IconButton>
       </form>

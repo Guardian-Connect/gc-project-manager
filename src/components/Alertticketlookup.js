@@ -14,12 +14,15 @@ import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { getTicketingSearchGp, getTicketingSearchGvr } from "../api";
+import CsvDownloadButton from "react-json-to-csv";
 const Alertticketlookup = () => {
   const [searchInput, setSearchInput] = React.useState("");
   const [statusName, setStatusName] = React.useState("gvr");
   const [display, setDisplay] = React.useState([]);
   const [error, setError] = React.useState("");
   const [ticket, setTicketing] = React.useState([]);
+  let mockData = JSON.parse(sessionStorage.getItem("SearchResult"));
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -49,26 +52,29 @@ const Alertticketlookup = () => {
   const handleClick = (e) => {
     let site = statusName;
     e.preventDefault();
-    // if (searchInput <= 0) {
-    //   return;
-    // } else {
-    //   if (site === "address") {
-    //     getSitesAddress(searchInput).then((response) => {
-    //       if (response.length === 0) {
-    //         setDisplay("Nothing Found, Please Try Again");
-    //       } else if (response.length > 0) {
-    //         setDisplay(response);
-    //       }
-    //     });
-    //   } else if (site === "gvr")
-    //     getSitesGvrid(searchInput).then((response) => {
-    //       if (response.length === 0) {
-    //         setError("Nothing Found, Please Try Again");
-    //       } else if (response.length > 0) {
-    //         setDisplay(response);
-    //       }
-    //     });
-    // }
+    console.log(site, searchInput);
+    if (searchInput <= 0) {
+      return;
+    } else {
+      if (site === "gp") {
+        getTicketingSearchGp(searchInput).then((response) => {
+          console.log(response);
+          if (response.length === 0) {
+            setDisplay("Nothing Found, Please Try Again");
+          } else if (response.length > 0) {
+            setDisplay(response);
+          }
+        });
+      } else if (site === "gvr")
+        getTicketingSearchGvr(searchInput).then((response) => {
+          console.log(response);
+          if (response.length === 0) {
+            setError("Nothing Found, Please Try Again");
+          } else if (response.length > 0) {
+            setDisplay(response);
+          }
+        });
+    }
   };
   return (
     <div className="apptrack">
@@ -106,11 +112,39 @@ const Alertticketlookup = () => {
           <SearchIcon onClick={handleClick} />
         </IconButton>
       </form>
-      <div className="apptrack">
-        {ticket.map((gctix) => (
-          <Alertdisplay gctix={gctix} />
-        ))}
-      </div>
+      {/* <div className="apptrack"> */}
+      {display.length > 0 && (
+        <>
+          <CsvDownloadButton
+            data={mockData}
+            filename="Ticketing.csv"
+            style={{
+              boxShadow: "inset 0px 1px 0px 0px #e184f3",
+              background:
+                "linear-gradient(to bottom, #c123de 5%, #a20dbd 100%)",
+              backgroundColor: "#c123de",
+              borderRadius: "6px",
+              border: "1px solid white",
+              display: "inline-block",
+              cursor: "pointer",
+              color: "#ffffff",
+              fontSize: "15px",
+              fontWeight: "bold",
+              padding: "6px 24px",
+              textDecoration: "none",
+              textShadow: "0px 1px 0px #9b14b3",
+              marginRight: "10px",
+              marginLeft: "50px",
+            }}
+          >
+            Report Download
+          </CsvDownloadButton>
+        </>
+      )}
+      {display.map((gctix) => (
+        <Alertdisplay gctix={gctix} />
+      ))}
+      {/* </div> */}
     </div>
   );
 };
