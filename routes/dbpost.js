@@ -12,11 +12,8 @@ dbpostRouter.post("/gcticket", async (req, res, next) => {
   const {
     date,
     gvr_id,
-    // gp,
-    dispatch_type,
+    dispatch,
     fm_ticket,
-    // location,
-    // address,
     grade,
     fp,
     sb,
@@ -25,18 +22,17 @@ dbpostRouter.post("/gcticket", async (req, res, next) => {
     warranty_status,
     notes,
     status,
+    email,
+    checked,
+    checkedTwo,
   } = req.body;
   try {
-    console.log("firing in users, gcticket");
-
-    const gctracker = await createGctracker(
+    console.log(
+      "firing in users, gcticket",
       date,
       gvr_id,
-      // gp,
-      dispatch_type,
+      dispatch,
       fm_ticket,
-      // location,
-      // address,
       grade,
       fp,
       sb,
@@ -44,7 +40,28 @@ dbpostRouter.post("/gcticket", async (req, res, next) => {
       atl_po,
       warranty_status,
       notes,
-      status
+      status,
+      email,
+      checked,
+      checkedTwo
+    );
+
+    const gctracker = await createGctracker(
+      date,
+      gvr_id,
+      dispatch,
+      fm_ticket,
+      grade,
+      fp,
+      sb,
+      gp_ticket,
+      atl_po,
+      warranty_status,
+      notes,
+      status,
+      email,
+      checked,
+      checkedTwo
     );
     res.send({ gctracker });
   } catch (error) {

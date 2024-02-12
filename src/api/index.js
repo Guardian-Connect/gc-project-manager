@@ -421,7 +421,8 @@ export async function updateTicket(
   status,
   trip,
   parts,
-  travel
+  travel,
+  email
 ) {
   try {
     const { tracker } = await axios.post("api/update/tracker", {
@@ -443,6 +444,7 @@ export async function updateTicket(
       trip,
       parts,
       travel,
+      email,
     });
     return tracker;
   } catch (error) {
@@ -581,11 +583,8 @@ export async function getCompleteData(gp) {
 export async function addTicket(
   date,
   gvr_id,
-  // gp,
-  dispatch_type,
+  dispatch,
   fm_ticket,
-  // location,
-  // address,
   grade,
   fp,
   sb,
@@ -593,18 +592,18 @@ export async function addTicket(
   atl_po,
   warranty_status,
   notes,
-  status
+  status,
+  email,
+  checked,
+  checkedTwo
 ) {
   try {
     console.log("api firing");
     const { data } = await axios.post("/api/dbpost/gcticket", {
       date,
       gvr_id,
-      // gp,
-      dispatch_type,
+      dispatch,
       fm_ticket,
-      // location,
-      // address,
       grade,
       fp,
       sb,
@@ -613,6 +612,9 @@ export async function addTicket(
       warranty_status,
       notes,
       status,
+      email,
+      checked,
+      checkedTwo,
     });
     return data;
   } catch (error) {

@@ -3,6 +3,7 @@ import AppAppBar from "./modules/views/AppAppBar";
 import { getSomething } from "../api";
 import { FormControl, Button, makeStyles, useTheme } from "@mui/material";
 import Dispcardz from "./Dispcardz";
+import { List } from "react-virtualized";
 const Start = ({ count, setCount, searchInput, setSearchInput }) => {
   const primary = "white";
   const secondary = "blue";
@@ -124,12 +125,7 @@ const Start = ({ count, setCount, searchInput, setSearchInput }) => {
           })
           .map((site) => (
             <div key={site.id}>
-              {site.quote === "C" && (
-                <Dispcardz site={site} setCount={setCount} count={count} />
-              )}
-              {site.quote != "C" && (
-                <Dispcardz site={site} setCount={setCount} count={count} />
-              )}
+              <Dispcardz site={site} setCount={setCount} count={count} />
             </div>
           ))}
       </h2>

@@ -13,7 +13,6 @@ const SideBar = ({ mockData, setSearchInput }) => {
     await getSomething()
       .then((response) => {
         setMessage(response.managers);
-        console.log(response.managers);
       })
       .catch((error) => {
         setMessage(error.message);

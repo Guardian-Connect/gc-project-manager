@@ -139,10 +139,6 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
 
       {filteredItems
         .filter((client, index) => {
-          // const clientsAdd = client.address;
-          // if (clientsAdd.includes(searchInput.toLowerCase())) {
-          //   return true;
-          // }
           const clientsId = client.gvr_id.toString();
           if (clientsId.includes(searchInput.toLowerCase())) {
             return true;
@@ -151,18 +147,9 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
           if (clientsGp.includes(searchInput.toUpperCase())) {
             return true;
           }
-          // const clientsGptick = client.gp_ticket;
-          // if (clientsGptick.includes(searchInput.toUpperCase())) {
-          //   return true;
-          // }
-          // const clientsFm = client.fm_ticket;
-          // if (clientsFm.includes(searchInput.toUpperCase())) {
-          //   return true;
-          // }
         })
         .map((gctix) => (
           <div className="Gctrackerdisplay">
-            {console.log(gctix.dispatch_type === "Install - Repair")}
             <Card
               sx={{
                 display: "flex",
@@ -249,6 +236,12 @@ const Gctrackerdisplay = ({ searchInput, setSearchInput }) => {
                     <Typography variant="h5" component="div">
                       {gctix.sb != null && <>Service Branch - {gctix.sb} </>}
                       {gctix.asb === null && <>No Service Branch Entered</>}
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                      {gctix.email != null && (
+                        <>Email Status - {gctix.email} </>
+                      )}
+                      {gctix.email === null && <>No Email Status Needed</>}
                     </Typography>
                     <Typography variant="h5" component="div">
                       {gctix.update_notes != null && (

@@ -1163,11 +1163,8 @@ async function findCusInfo(gvr_id) {
 async function createGctracker(
   date,
   gvr_id,
-  // gp,
-  dispatch_type,
+  dispatch,
   fm_ticket,
-  // location,
-  // address,
   grade,
   fp,
   sb,
@@ -1175,9 +1172,30 @@ async function createGctracker(
   atl_po,
   warranty_status,
   notes,
-  status
+  status,
+  email,
+  checked,
+  checkedTwo
 ) {
-  console.log("gctracker starting");
+  console.log(
+    "gctracker starting",
+    date,
+    gvr_id,
+    dispatch,
+    fm_ticket,
+    grade,
+    fp,
+    sb,
+    gp_ticket,
+    atl_po,
+    warranty_status,
+    notes,
+    status,
+    email,
+    checked,
+    checkedTwo
+  );
+  console.log("date starting");
   let date_ob = new Date();
   let date2 = ("0" + date_ob.getDate()).slice(-2);
   let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -1187,27 +1205,9 @@ async function createGctracker(
   let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
   let create_date = year + "-" + month + "-" + date2;
   let create_time = hours + ":" + minutes;
+  console.log("date finished");
   try {
-    console.log(
-      "new ticket",
-      date,
-      gvr_id,
-      // gp,
-      dispatch_type,
-      fm_ticket,
-      // location,
-      // address,
-      grade,
-      fp,
-      sb,
-      gp_ticket,
-      atl_po,
-      // warranty_status,
-      notes,
-      status,
-      create_date,
-      create_time
-    );
+    console.log("new ticket");
 
     const test = await findCusInfo(gvr_id);
     let gp = test.gp_cust;
@@ -1216,7 +1216,7 @@ async function createGctracker(
     let date_fix = handleDate(test.warranty);
     let warranty_status;
     function handleDate(d) {
-      // console.log(d);
+      console.log(d);
       if (d === null) {
         let date = "";
         return date;
@@ -1231,17 +1231,17 @@ async function createGctracker(
     } else {
       warranty_status = "In Warranty";
     }
-    console.log("warranty check done");
+    console.log("warranty check done", warranty_status);
     const result = await client.query(
       `
-      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status, create_date, create_time)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);
+      INSERT INTO gctracker(date, gvr_id, gp, dispatch_type, fm_ticket, location, address, grade, fp, sb, gp_ticket, atl_po, warranty_status, notes, status, create_date, create_time, email, checked)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19);
     `,
       [
         date,
         gvr_id,
         gp,
-        dispatch_type,
+        dispatch,
         fm_ticket,
         location,
         address,
@@ -1255,8 +1255,11 @@ async function createGctracker(
         status,
         create_date,
         create_time,
+        email,
+        checked,
       ]
     );
+    console.log(result);
     return { message: "Ticket Created Successfully" };
   } catch (error) {
     throw error;

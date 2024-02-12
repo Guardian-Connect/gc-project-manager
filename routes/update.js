@@ -469,8 +469,9 @@ updateRouter.post("/tracker", async (req, res, next) => {
     trip,
     parts,
     travel,
+    email,
   } = req.body;
-  console.log("Ticket Update Running");
+  console.log("Ticket Update Running", email);
 
   let date_ob = new Date();
   let date2 = ("0" + date_ob.getDate()).slice(-2);
@@ -551,6 +552,10 @@ updateRouter.post("/tracker", async (req, res, next) => {
 
   if (travel) {
     updateFields.part_desc = travel;
+  }
+
+  if (email) {
+    updateFields.email = email;
   }
 
   try {

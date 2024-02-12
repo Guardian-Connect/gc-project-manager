@@ -9,6 +9,9 @@ import {
   InputLabel,
   TextField,
   Box,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import Branches from "./Branches";
 import { makeStyles } from "@mui/styles";
@@ -19,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gctracker = ({ addTicket }) => {
-  let now = new Date().toISOString().split("T")[0];
+  let date = new Date().toISOString().split("T")[0];
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
   const [dispatch, setDispatch] = useState("");
@@ -36,6 +39,10 @@ const Gctracker = ({ addTicket }) => {
   const [status, setStatus] = useState("Open");
   const [loading, setLoading] = React.useState(false);
   const [trip_count, setTripCount] = useState("");
+  const [trouble, setTrouble] = useState(false);
+  const [email, setEmail] = useState(null);
+  const [checked, setChecked] = React.useState(false);
+  const [checkedTwo, setCheckedTwo] = React.useState(false);
   const classes = useStyles();
 
   const reload = () => {
@@ -47,13 +54,10 @@ const Gctracker = ({ addTicket }) => {
   const consoleTest = (e) => {
     setLoading(true);
     addTicket(
-      now,
+      date,
       gvr_id,
-      // gp_cust,
       dispatch,
       fm_ticket,
-      // site_name,
-      // site_address,
       grade,
       fp,
       sb,
@@ -61,9 +65,20 @@ const Gctracker = ({ addTicket }) => {
       atl_po,
       warranty_status,
       notes,
-      status
+      status,
+      email,
+      checked,
+      checkedTwo
     );
     reload();
+  };
+
+  const handleChange = (event) => {
+    setChecked(event.target.value);
+  };
+
+  const handleChangeTwo = (event) => {
+    setCheckedTwo(event.target.checked);
   };
 
   const handleNotes = (e) => {
@@ -108,6 +123,14 @@ const Gctracker = ({ addTicket }) => {
 
   const handleDispatch = (e) => {
     setDispatch(e.target.value);
+  };
+
+  const handleTrouble = (e) => {
+    setTrouble(e.target.value);
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
   };
 
   const handleFmticket = (e) => {
@@ -179,35 +202,6 @@ const Gctracker = ({ addTicket }) => {
             <MenuItem value={"SSoM Update"}>SSoM Update</MenuItem>
           </Select>
         </FormControl>
-        {/* <FormControl className={classes.formControl} sx={{ m:3}}>
-          <InputLabel>Warranty Status</InputLabel>
-          <Select onChange={handleWarranty}>
-            <MenuItem value={"In Warranty"}>In Warranty</MenuItem>
-            <MenuItem value={"Out of Warranty"}>Out of Warranty</MenuItem>
-          </Select>
-        </FormControl> */}
-        {/* 
-        <TextField
-          sx={{ m:3}}
-          required
-          id="outlined-required"
-          label="Enter Location Name"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleLocation}
-        />
-
-        <TextField
-          sx={{ m:3}}
-          required
-          id="outlined-required"
-          label="Enter Location Address"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={handleAddress}
-        /> */}
         <TextField
           className={classes.formControl}
           sx={{ m: 2 }}
@@ -234,29 +228,6 @@ const Gctracker = ({ addTicket }) => {
         <FormControl className={classes.formControl} sx={{ m: 2 }}>
           <InputLabel>Branch</InputLabel>
           <Branches handleBrach={handleBranch} />
-          {/* <Select onChange={handleBranch}>
-            <MenuItem value={"ATL"}>Atlanta</MenuItem>
-            <MenuItem value={"BIR"}>Birmingham</MenuItem>
-            <MenuItem value={"CHA"}>Charlotte</MenuItem>
-            <MenuItem value={"COL"}>Columbia</MenuItem>
-            <MenuItem value={"CUS"}>Customer</MenuItem>
-            <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
-            <MenuItem value={"FTM"}>Fort Myers</MenuItem>
-            <MenuItem value={"GRE"}>Greensboro</MenuItem>
-            <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
-            <MenuItem value={"GUL"}>Gulf/Pensacola</MenuItem>
-            <MenuItem value={"JAX"}>Jacksonville</MenuItem>
-            <MenuItem value={"LAF"}>Lafayette</MenuItem>
-            <MenuItem value={"KNX"}>Knoxville</MenuItem>
-            <MenuItem value={"NAS"}>Nashville</MenuItem>
-            <MenuItem value={"PES"}>Petro Solutions</MenuItem>
-            <MenuItem value={"RAL"}>Raleigh</MenuItem>
-            <MenuItem value={"SAN"}>Sanford</MenuItem>
-            <MenuItem value={"SAV"}>Savannah</MenuItem>
-            <MenuItem value={"SUB"}>Sub-Contractor (Other)</MenuItem>
-            <MenuItem value={"TAL"}>Tallahassee</MenuItem>
-            <MenuItem value={"TAM"}>Tampa</MenuItem>
-          </Select> */}
         </FormControl>
         <TextField
           className={classes.formControl}
@@ -291,6 +262,23 @@ const Gctracker = ({ addTicket }) => {
           }}
           onChange={handleFmticket}
         />
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
+          <InputLabel>Customer Email</InputLabel>
+          <Select onChange={handleEmail}>
+            <MenuItem value={"Approved"}>Approved</MenuItem>
+            <MenuItem value={"Rejected"}>Rejected </MenuItem>
+            <MenuItem value={"No Response"}>No Response</MenuItem>
+            <MenuItem value={"Pending"}>Pending</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
+          <InputLabel>Dispatch Source</InputLabel>
+          <Select onChange={handleChange}>
+            <MenuItem value={"Customer Request"}>Customer Request</MenuItem>
+            <MenuItem value={"Dashboard"}>Dashboard </MenuItem>
+            <MenuItem value={"Troubled Dispenser"}>Troubled Dispenser</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           sx={{ width: "91%", m: 3 }}
           required

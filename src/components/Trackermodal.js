@@ -39,6 +39,7 @@ const Trackermodal = ({ gctix }) => {
   const [trip, setTripCount] = React.useState("1");
   const [travel, setTravel] = React.useState("");
   const [parts, setParts] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const alert = useAlert();
   const classes = useStyles();
   // React.useEffect(() => {
@@ -65,6 +66,7 @@ const Trackermodal = ({ gctix }) => {
 
   const consoleTest = () => {
     let id = gctix.id;
+    console.log(email, "email");
     setLoading(true);
     updateTicket(
       date,
@@ -84,7 +86,8 @@ const Trackermodal = ({ gctix }) => {
       status,
       trip,
       parts,
-      travel
+      travel,
+      email
     ).then((res) => {
       if (res.message === "Update Successful") {
         alert.show("Updated!");
@@ -105,6 +108,10 @@ const Trackermodal = ({ gctix }) => {
 
   const handleTextChangeStatus = (e) => {
     setstatus(e.target.value);
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
   };
 
   const handleTextChangeNotes = (e) => {
@@ -286,9 +293,18 @@ const Trackermodal = ({ gctix }) => {
           <MenuItem value={"0"}>No</MenuItem>
         </Select>
       </FormControl>
+      <FormControl className={classes.formControl} sx={{ m: 2 }}>
+        <InputLabel>Customer Email</InputLabel>
+        <Select onChange={handleEmail}>
+          <MenuItem value={"Approved"}>Approved</MenuItem>
+          <MenuItem value={"Rejected"}>Rejected </MenuItem>
+          <MenuItem value={"No Response"}>No Response</MenuItem>
+          <MenuItem value={"Pending"}>Pending</MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         className={classes.formControl}
-        sx={{ m: 2 }}
+        sx={{ m: 2, width: "81%" }}
         required
         id="outlined-required"
         label="Enter Part Number"
@@ -324,35 +340,6 @@ const Trackermodal = ({ gctix }) => {
         rows={6}
         onChange={handleTextChangeNotes}
       />
-      {/* <div className="pcnborder">
-        <Typography sx={{ alignContent: "center" }}>
-          PCN Alert Data Only
-        </Typography>
-      </div> */}
-      {/* <TextField
-      className={classes.formControl}
-        sx={{ m: 2, width: "81%" }}
-        required
-        id="outlined-required"
-        label="Enter Parts Cost"
-        defaultValue={gctix.update_notes}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        onChange={handleParts}
-      />
-      <TextField
-      className={classes.formControl}
-        sx={{ m: 2, width: "81%" }}
-        required
-        id="outlined-required"
-        label="Enter Labor+Travel Cost"
-        defaultValue={gctix.update_notes}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        onChange={handleTravel}
-      /> */}
 
       <LoadingButton
         sx={{ m: 2, width: "82%" }}
