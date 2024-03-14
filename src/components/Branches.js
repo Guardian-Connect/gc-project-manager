@@ -15,10 +15,11 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"DAL"}>Dallas</MenuItem>
       <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
       <MenuItem value={"FTM"}>Fort Myers</MenuItem>
+      <MenuItem value={"GPM"}>GPM</MenuItem>
       <MenuItem value={"GRE"}>Greensboro</MenuItem>
-      <MenuItem value={"HOU"}>Houston</MenuItem>
       <MenuItem value={"GCS"}>Guardian Connect</MenuItem>
       <MenuItem value={"GUL"}>Gulf/Pensacola</MenuItem>
+      <MenuItem value={"HOU"}>Houston</MenuItem>
       <MenuItem value={"JAC"}>Jackson</MenuItem>
       <MenuItem value={"JAX"}>Jacksonville</MenuItem>
       <MenuItem value={"KNX"}>Knoxville</MenuItem>
