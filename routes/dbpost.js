@@ -146,6 +146,7 @@ dbpostRouter.post("/inbound", async (req, res, next) => {
     totalDispNumer,
     totalFuelingPositions,
     totalCommercialDisp,
+    user,
   } = req.body;
   try {
     const inboundRes = await createInbound(
@@ -161,7 +162,8 @@ dbpostRouter.post("/inbound", async (req, res, next) => {
       dispNumber,
       totalDispNumer,
       totalFuelingPositions,
-      totalCommercialDisp
+      totalCommercialDisp,
+      user
     );
     res.send({ inboundRes });
   } catch (error) {

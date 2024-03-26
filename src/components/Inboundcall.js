@@ -35,6 +35,7 @@ const Inboundcall = ({ addTicket }) => {
   const [totalFuelingPositions, setTotalFuelingPositions] = useState(0);
   const [totalCommercialDisp, setTotalCommercialDisp] = useState(0);
   const [problemType, setProblemType] = useState("");
+  const user = sessionStorage.getItem("user");
 
   const handleTotalCommercialDisp = (e) => {
     setTotalCommercialDisp(e.target.value);
@@ -91,7 +92,8 @@ const Inboundcall = ({ addTicket }) => {
       dispNumber,
       totalDispNumer,
       totalFuelingPositions,
-      totalCommercialDisp
+      totalCommercialDisp,
+      user
     );
     reload();
   };

@@ -512,7 +512,8 @@ async function createInbound(
   dispNumber,
   totalDispNumer,
   totalFuelingPositions,
-  totalCommercialDisp
+  totalCommercialDisp,
+  user
 ) {
   try {
     let date_ob = new Date();
@@ -539,12 +540,14 @@ async function createInbound(
       dispNumber,
       totalDispNumer,
       totalFuelingPositions,
-      totalCommercialDisp
+      totalCommercialDisp,
+      user,
+      "indexdb"
     );
     const result = await client.query(
       `
-      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time, disp_number, total_disp_number, total_number_fueling_positions, total_commercial_dispensers)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
+      INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time, disp_number, total_disp_number, total_number_fueling_positions, total_commercial_dispensers, userid)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
     `,
       [
         sb,
@@ -562,6 +565,7 @@ async function createInbound(
         totalDispNumer,
         totalFuelingPositions,
         totalCommercialDisp,
+        user,
       ]
     );
     console.log(result);

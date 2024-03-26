@@ -196,7 +196,8 @@ export async function createInbound(
   dispNumber,
   totalDispNumer,
   totalFuelingPositions,
-  totalCommercialDisp
+  totalCommercialDisp,
+  user
 ) {
   try {
     const { data } = await axios.post("/api/dbpost/inbound", {
@@ -213,6 +214,7 @@ export async function createInbound(
       totalDispNumer,
       totalFuelingPositions,
       totalCommercialDisp,
+      user,
     });
     return data;
   } catch (error) {

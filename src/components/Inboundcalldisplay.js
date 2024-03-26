@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Trackermodal from "./Trackermodal";
 import { findSb, getAllInbound, phoneNumber } from "../api";
 import { handleDateTwo as handleDate } from "../api";
 import {
@@ -11,11 +10,13 @@ import {
   Dialog,
 } from "@mui/material";
 import { getGcTracker } from "../api";
+import Inboundmodal from "./Inboundmodal";
 const moment = require("moment");
 
 const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
   const [message, setMessage] = useState([]);
-
+  // const [open, setOpen] = React.useState(false);
+  const user = sessionStorage.getItem("user");
   useEffect(async () => {
     await getAllInbound()
       .then((response) => {
@@ -25,6 +26,14 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
         setMessage(error.message);
       });
   }, []);
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   return (
     <div className="apptrack">
@@ -54,7 +63,8 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
             }}
             key={site.id}
           >
-            <CardActionArea onClick={() => console.log(site)}>
+            {/* <CardActionArea onClick={() => handleClickOpen()}> */}
+            <CardActionArea>
               <CardContent>
                 <Typography
                   variant="h5"
@@ -91,6 +101,9 @@ const Inboundcalldisplay = ({ searchInput, setSearchInput }) => {
             </CardActionArea>
           </Card>
         ))}
+      {/* <Dialog open={open} onClose={handleClose}>
+        <Inboundmodal />
+      </Dialog> */}
     </div>
   );
 };
