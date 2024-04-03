@@ -188,6 +188,9 @@ const Inboundcall = ({ addTicket }) => {
         <InputLabel>Issue Type</InputLabel>
         <Select onChange={handleProblem} defaultValue={""}>
           <MenuItem value={"CK Activation"}>Circle K Activation</MenuItem>
+          <MenuItem value={"CK UPM Replacement"}>
+            Circle K UPM Replacement
+          </MenuItem>
           <MenuItem value={"VCL Plugin"}>VCL Plugin</MenuItem>
           <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
           <MenuItem value={"Serial Error"}>Serial Error</MenuItem>
@@ -216,7 +219,7 @@ const Inboundcall = ({ addTicket }) => {
         sx={{ width: "44%", m: 1, mt: 2 }}
         required
         id="outlined-required"
-        label="Number of Dispensers Online"
+        label="Number of Fueling Positions Online"
         // defaultValue={site.gvr_id}
         InputLabelProps={{
           shrink: true,
@@ -227,7 +230,7 @@ const Inboundcall = ({ addTicket }) => {
         sx={{ width: "44%", m: 1, mt: 2 }}
         required
         id="outlined-required"
-        label="Number of Fuel Dispensers On-Site"
+        label="Number of Fueling Positions On-Site"
         // defaultValue={site.gvr_id}
         InputLabelProps={{
           shrink: true,
@@ -238,7 +241,7 @@ const Inboundcall = ({ addTicket }) => {
         sx={{ width: "44%", m: 1, mt: 1 }}
         required
         id="outlined-required"
-        label="Number of Commercial Dispensers On-Site"
+        label="Number of Commercial Fueling Positions On-Site"
         // defaultValue={site.gvr_id}
         InputLabelProps={{
           shrink: true,
