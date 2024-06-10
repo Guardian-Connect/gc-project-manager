@@ -13,6 +13,7 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"CTX"}>CTX</MenuItem>
       <MenuItem value={"CUS"}>Customer</MenuItem>
       <MenuItem value={"DAL"}>Dallas</MenuItem>
+      <MenuItem value={"DEN"}>Denver</MenuItem>
       <MenuItem value={"FTL"}>Fort Lauderdale</MenuItem>
       <MenuItem value={"FTM"}>Fort Myers</MenuItem>
       <MenuItem value={"GPM"}>GPM</MenuItem>
@@ -25,6 +26,7 @@ const Branches = ({ handleBranch }) => {
       <MenuItem value={"KNX"}>Knoxville</MenuItem>
       <MenuItem value={"LAF"}>Lafayette</MenuItem>
       <MenuItem value={"NAS"}>Nashville</MenuItem>
+      <MenuItem value={"OK"}>Oklahoma</MenuItem>
       <MenuItem value={"PARKERS"}>Parker's</MenuItem>
       <MenuItem value={"PES"}>Petro Solutions</MenuItem>
       <MenuItem value={"RAL"}>Raleigh</MenuItem>
