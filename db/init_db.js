@@ -27,6 +27,7 @@ const {
   runAtSpecificTimeOfDay,
   getTicketingSearchGp,
   getTicketingSearchGvr,
+  troubledCreate,
 } = require("./index");
 
 async function createSiteDisp(
@@ -206,7 +207,7 @@ async function testDB() {
     // runAtSpecificTimeOfDay(12, 1, () => {
     //   console.log(new Date());
     // });
-    let count2 = await getTicketingSearchGvr(832654);
+    let count2 = await troubledCreate(71);
     console.log(count2);
     // await dropTables();
     // await createTables();

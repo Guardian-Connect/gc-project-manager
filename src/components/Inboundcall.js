@@ -187,11 +187,23 @@ const Inboundcall = ({ addTicket }) => {
       <FormControl sx={{ width: "91%", m: 1 }}>
         <InputLabel>Issue Type</InputLabel>
         <Select onChange={handleProblem} defaultValue={""}>
-          <MenuItem value={"CK Support"}>Circle K Support</MenuItem>
-          <MenuItem value={"CK Activation"}>Circle K Activation</MenuItem>
-          <MenuItem value={"CK UPM Replacement"}>
-            Circle K UPM Replacement
+          <MenuItem value={"CK Support"}>Circle K - Support</MenuItem>
+          <MenuItem value={"Firmware and Software Fallout"}>
+            Circle k - Firmware and Software Fallout
           </MenuItem>
+          <MenuItem value={"Commercial Fuel Sites"}>
+            Circle k - Commercial Fuel Sites
+          </MenuItem>
+          <MenuItem value={"Canada Fuel Sites"}>
+            Circle k - Canada Fuel Sites
+          </MenuItem>
+          <MenuItem value={"Northern Tier Gilbarco Fuel Sites"}>
+            Circle k - Northern Tier Gilbarco Fuel Sites
+          </MenuItem>
+          <MenuItem value={"Shell V-Store Visits "}>
+            Circle k - Shell V-Store Visits
+          </MenuItem>
+          <MenuItem value={"Slow Flow"}>Slow Flow</MenuItem>
           <MenuItem value={"VCL Plugin"}>VCL Plugin</MenuItem>
           <MenuItem value={"Dispenser Offline"}>Dispenser Offline</MenuItem>
           <MenuItem value={"Serial Error"}>Serial Error</MenuItem>

@@ -19,6 +19,15 @@ export let projectThree = "SOU0008";
 //   }
 // }
 
+export async function createTroubledDisp(id) {
+  try {
+    const { data } = await axios.get(`/api/display/troubled/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getTicketingSearchGp(id) {
   try {
     const { data } = await axios.get(`/api/display/searchgp/${id}`);
@@ -488,6 +497,34 @@ export async function updateAlertTicket(
   }
 }
 
+export async function updateTroubledDispensers(
+  id,
+  firstDate,
+  secondDate,
+  firstContact,
+  secondContact,
+  notes,
+  status,
+  resoDate
+) {
+  try {
+    const { tracker } = await axios.post("api/update/troubled", {
+      id,
+      firstDate,
+      secondDate,
+      firstContact,
+      secondContact,
+      notes,
+      status,
+      resoDate,
+    });
+    return tracker;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 export async function addEmail(
   cust_gp,
   cus_name,
@@ -520,6 +557,15 @@ export async function addEmail(
 export async function getTicketing() {
   try {
     const { data } = await axios.get(`/api/display/ticketing`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getTroubled() {
+  try {
+    const { data } = await axios.get(`/api/display/troubleds`);
     return data;
   } catch (error) {
     throw error;

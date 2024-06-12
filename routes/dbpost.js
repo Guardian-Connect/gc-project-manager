@@ -132,6 +132,7 @@ dbpostRouter.post("/createdisp", async (req, res, next) => {
 });
 
 dbpostRouter.post("/inbound", async (req, res, next) => {
+  console.log("sending");
   const {
     sb,
     gvr_id,

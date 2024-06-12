@@ -12,6 +12,7 @@ const {
   getEodTicketing,
   closeInstallTicket,
   closeStaticTicket,
+  updateTroubledDispensers,
 } = require("../db");
 
 function addNotesField(updateNotes) {
@@ -618,6 +619,52 @@ updateRouter.post("/ticketing", async (req, res, next) => {
   }
   try {
     const updatedTicket = await updateAlertTickets(id, updateFields);
+    console.log(updatedTicket, "users");
+    res.send({ updatedTicket });
+  } catch ({ name, message }) {
+    console.log(name, message);
+    console.log(name, message);
+    next({ name, message });
+  }
+});
+
+updateRouter.post("/troubled", async (req, res, next) => {
+  const {
+    id,
+    firstDate,
+    secondDate,
+    firstContact,
+    secondContact,
+    notes,
+    status,
+    resoDate,
+  } = req.body;
+  console.log("Ticket Update Running");
+  const updateFields = {};
+
+  if (resoDate) {
+    updateFields.resolved_date = resoDate;
+  }
+  if (firstDate) {
+    updateFields.date_notified = firstDate;
+  }
+  if (secondDate) {
+    updateFields.next_date = secondDate;
+  }
+  if (firstContact) {
+    updateFields.cus_notification = firstContact;
+  }
+  if (secondContact) {
+    updateFields.cus_notification_two = secondContact;
+  }
+  if (notes) {
+    updateFields.notes = notes;
+  }
+  if (status) {
+    updateFields.troubled_status = status;
+  }
+  try {
+    const updatedTicket = await updateTroubledDispensers(id, updateFields);
     console.log(updatedTicket, "users");
     res.send({ updatedTicket });
   } catch ({ name, message }) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { getTicketing } from "../api";
 import Alertdisplay from "./Alertdisplay";
-import { handleDateTwo as handleDate } from "../api";
+import { handleDateTwo as handleDate, getTroubled } from "../api";
 import {
   Typography,
   Card,
@@ -10,11 +10,14 @@ import {
   Button,
   Dialog,
 } from "@mui/material";
-const Alerticket = ({ searchInput, setSearchInput }) => {
+import Troubleddisplay from "./Troubleddisplay";
+
+const Troubledticket = ({ searchInput, setSearchInput }) => {
   const [ticket, setTicketing] = React.useState([]);
 
   React.useEffect(() => {
-    getTicketing().then((resp) => {
+    getTroubled().then((resp) => {
+      console.log(resp.dispinfo.rows);
       setTicketing(resp.dispinfo.rows);
     });
   }, []);
@@ -32,10 +35,10 @@ const Alerticket = ({ searchInput, setSearchInput }) => {
           }
         })
         .map((gctix) => (
-          <Alertdisplay gctix={gctix} />
+          <Troubleddisplay gctix={gctix} />
         ))}
     </div>
   );
 };
 
-export default Alerticket;
+export default Troubledticket;

@@ -13,6 +13,8 @@ const {
   getAllManagers,
   getTicketingSearchGvr,
   getTicketingSearchGp,
+  troubledCreate,
+  getTroubled,
 } = require("../db");
 
 // displayRouter.post("/searchgvr/:id", async (req, res, next) => {
@@ -26,6 +28,18 @@ const {
 //     next({ name, message });
 //   }
 // });
+
+displayRouter.get("/troubled/:id", async (req, res, next) => {
+  const { id } = req.params;
+  console.log("routes/display");
+  try {
+    const troubledD = await troubledCreate(id);
+    console.log(troubledD, "troubled Dispenser");
+    res.send(troubledD);
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
 
 displayRouter.get("/searchgvr/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -83,6 +97,15 @@ displayRouter.get("/allinbound", async (req, res, next) => {
 displayRouter.get("/ticketing", async (req, res, next) => {
   try {
     const dispinfo = await getTicketing();
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/troubleds", async (req, res, next) => {
+  try {
+    const dispinfo = await getTroubled();
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });

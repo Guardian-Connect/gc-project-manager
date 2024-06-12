@@ -96,7 +96,28 @@ const Right = () => {
                 GC Tracker
               </Button>
             </ListItem>
-
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
+                  history.push("/alerticket");
+                }}
+              >
+                Alert Tickets
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={async () => {
+                  history.push("/troubled");
+                }}
+              >
+                Troubled Dispensers
+              </Button>
+            </ListItem>
             <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
@@ -119,7 +140,7 @@ const Right = () => {
                 Project Management
               </Button>
             </ListItem> */}
-            <ListItem>
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
@@ -129,8 +150,8 @@ const Right = () => {
               >
                 Alert Tickets
               </Button>
-            </ListItem>
-            <ListItem>
+            </ListItem> */}
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
@@ -139,15 +160,15 @@ const Right = () => {
                   email();
                 }}
               >
-                Ticketing Count Email
+                Ticketing Email
               </Button>
-            </ListItem>
-          </List>
-          <Divider />
+            </ListItem> */}
+            {/* </List> */}
+            {/* <Divider />
           <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
             Search Menus
-          </Typography>
-          <List>
+          </Typography> */}
+            {/* <List> */}
             <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
@@ -175,14 +196,26 @@ const Right = () => {
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
+                  // sendEmailTickets();
+                  email();
+                }}
+              >
+                Ticketing Email
+              </Button>
+            </ListItem>
+            {/* <ListItem>
+              <Button
+                sx={{ border: 1, borderColor: "white", width: 500 }}
+                variant="contained"
+                onClick={() => {
                   history.push("/rrsmatrix");
                 }}
               >
                 RRS
-              </Button>
-            </ListItem>
+              </Button> */}
+            {/* </ListItem> */}
           </List>
-          <Divider />
+          {/* <Divider /> */}
           <div className="hide">
             <Typography
               variant="h5"
@@ -214,7 +247,7 @@ const Right = () => {
                   GC Tracker
                 </Button>
               </ListItem>
-              <ListItem>
+              {/* <ListItem>
                 <Button
                   sx={{ border: 1, borderColor: "white", width: 500 }}
                   variant="contained"
@@ -224,7 +257,7 @@ const Right = () => {
                 >
                   PCN Alert Tracker
                 </Button>
-              </ListItem>
+              </ListItem> */}
               <ListItem>
                 {user === "james" && (
                   <Button
@@ -237,6 +270,17 @@ const Right = () => {
                     New User
                   </Button>
                 )}
+              </ListItem>
+              <ListItem>
+                <Button
+                  sx={{ border: 1, borderColor: "white", width: 500 }}
+                  variant="contained"
+                  onClick={() => {
+                    history.push("/rrsmatrix");
+                  }}
+                >
+                  RRS
+                </Button>
               </ListItem>
               {/* <ListItem>
                 {user === "james" && (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Main from "./Main";
+
 import Start from "./Start";
 import Details from "./Details";
 import AppAppBar from "./modules/views/AppAppBar";
@@ -34,6 +34,8 @@ import Addresslookup from "./Addresslookup";
 import { getBfr } from "../api";
 import Rrsmatrix from "./Rrsmatrix";
 import Alertticketlookup from "./Alertticketlookup";
+import Troubleddisplay from "./Troubledticket";
+import Troubledticket from "./Troubledticket";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -189,6 +191,13 @@ const App = () => {
               </Route>
               <Route path="/project">
                 <Projectdisplay
+                  addTicket={addTicket}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              </Route>
+              <Route path="/troubled">
+                <Troubledticket
                   addTicket={addTicket}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}

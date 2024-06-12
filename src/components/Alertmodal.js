@@ -1,5 +1,9 @@
 import React from "react";
-import { handleDateTwo as handleDate, deleteAlert } from "../api";
+import {
+  handleDateTwo as handleDate,
+  deleteAlert,
+  createTroubledDisp,
+} from "../api";
 import {
   TextField,
   FormControl,
@@ -11,6 +15,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { makeStyles } from "@mui/styles";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import { updateAlertTicket } from "../api";
 const reload = () => {
   setTimeout(function () {
@@ -111,10 +116,28 @@ const Alertmodal = ({ gctix }) => {
     reload();
   };
 
+  const handleTrouble = () => {
+    let id = gctix.id;
+    console.log(id);
+    createTroubledDisp(id);
+    reload();
+  };
+
   return (
     <div className="testalertmodal">
       <LoadingButton
-        sx={{ m: 2, width: "82%" }}
+        sx={{ m: 2, width: "41%" }}
+        color="secondary"
+        onClick={handleTrouble}
+        loading={loading}
+        loadingPosition="start"
+        variant="contained"
+        startIcon={<AutoFixHighIcon />}
+      >
+        Troubled
+      </LoadingButton>
+      <LoadingButton
+        sx={{ m: 2, width: "41%" }}
         color="secondary"
         onClick={handleDelete}
         loading={loading}
@@ -165,7 +188,7 @@ const Alertmodal = ({ gctix }) => {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={console.log("Just a display field")}
+        // onChange={console.log("Just a display field")}
       />
       <TextField
         sx={{ m: 2 }}
@@ -176,7 +199,7 @@ const Alertmodal = ({ gctix }) => {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={console.log("Can't Change This Cause It Does NOTHING")}
+        // onChange={console.log("Can't Change This Cause It Does NOTHING")}
       />
       <TextField
         sx={{ m: 2 }}

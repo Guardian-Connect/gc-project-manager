@@ -697,6 +697,33 @@ async function getRrsMatrix() {
   return rows;
 }
 
+async function troubledCreate(id) {
+  const { rows } = await client.query(
+    `WITH moved_rows AS(
+  DELETE FROM ticketing
+    WHERE id=$1
+    RETURNING *
+)
+INSERT INTO troubled
+  SELECT * FROM moved_rows;
+  `,
+    [id]
+  );
+  // await setTroubledStatus(id);
+  console.log(rows);
+  return rows;
+}
+
+async function setTroubledStatus(id) {
+  console.log("Starting to set status", id);
+  const { rows } = await client.query(
+    `UPDATE troubled
+       SET troubled_status = 'Open',
+      WHERE id=$1    
+  `,
+    [id]
+  );
+}
 async function getAllManagers() {
   const { rows } = await client.query(
     `SELECT *
@@ -938,6 +965,32 @@ async function updateSerials(id, fields = {}) {
       UPDATE dispserials
       SET ${setString}
       WHERE gvr_id=${id}
+      RETURNING *;
+    `,
+        Object.values(fields)
+      );
+      console.log(rows, "rows");
+      return { message: "Update Successful" };
+    } catch (error) {
+      throw error;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateTroubledDispensers(id, fields = {}) {
+  try {
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    console.log(setString);
+    try {
+      const { rows } = await client.query(
+        `
+      UPDATE troubled
+      SET ${setString}
+      WHERE id=${id}
       RETURNING *;
     `,
         Object.values(fields)
@@ -1290,6 +1343,22 @@ ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC, 
   }
 }
 
+async function getTroubled() {
+  try {
+    const tickets = await client.query(
+      `
+select * from troubled
+WHERE troubled_status IS NULL
+ORDER BY next_date ASC;
+
+      `
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
 // async function getTicketingSearch() {
 //   try {
 //     const tickets = await client.query(
@@ -1455,4 +1524,7 @@ module.exports = {
   getAllManagers,
   getTicketingSearchGvr,
   getTicketingSearchGp,
+  troubledCreate,
+  getTroubled,
+  updateTroubledDispensers,
 };
