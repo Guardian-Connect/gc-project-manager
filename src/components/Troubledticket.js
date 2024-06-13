@@ -29,10 +29,10 @@ const Troubledticket = ({ searchInput, setSearchInput }) => {
           if (clientsId.includes(searchInput.toLowerCase())) {
             return true;
           }
-          const gcticket = client.ticket_number;
-          if (gcticket.includes(searchInput.toLowerCase())) {
-            return true;
-          }
+          // const gcticket = client.ticket_number;
+          // if (gcticket.includes(searchInput.toLowerCase())) {
+          //   return true;
+          // }
         })
         .map((gctix) => (
           <Troubleddisplay gctix={gctix} />
