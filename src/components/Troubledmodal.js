@@ -33,6 +33,7 @@ const Troubledmodal = ({ gctix }) => {
   const [firstContact, setFirstContact] = React.useState("");
   const [secondContact, setSecondContact] = React.useState("");
   const [notez, setNotes] = React.useState("");
+  const [notes, setNotez] = React.useState("");
   const [status, setStatus] = React.useState("");
   const [resoDate, setResoDate] = React.useState("");
   const classes = useStyles();
@@ -86,9 +87,12 @@ const Troubledmodal = ({ gctix }) => {
     setLoading(true);
     let id = gctix.id;
     let date = new Date();
-    const test =
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    const notes = test + " " + ":" + " " + notez;
+    if (notez) {
+      const test =
+        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      const notes = test + " " + ":" + " " + notez;
+      setNotez(notes);
+    }
     updateTroubledDispensers(
       id,
       firstDate,

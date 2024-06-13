@@ -36,6 +36,7 @@ import Rrsmatrix from "./Rrsmatrix";
 import Alertticketlookup from "./Alertticketlookup";
 import Troubleddisplay from "./Troubledticket";
 import Troubledticket from "./Troubledticket";
+import Rrsmatrixmain from "./Rrsmatrixmain";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -204,7 +205,10 @@ const App = () => {
                 />
               </Route>
               <Route path="/rrsmatrix">
-                <Rrsmatrix />
+                <Rrsmatrixmain
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
               </Route>
               <Route path="/alertticketlookup">
                 <Alertticketlookup />
