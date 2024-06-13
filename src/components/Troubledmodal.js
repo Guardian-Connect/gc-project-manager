@@ -100,7 +100,8 @@ const Troubledmodal = ({ gctix }) => {
         <InputLabel>Status Update</InputLabel>
         <Select onChange={handleStatus}>
           {/* <MenuItem value={"Warranty Dispatch"}>Warranty Dispatch</MenuItem> */}
-          <MenuItem value={"Closed"}>Closed</MenuItem>
+          <MenuItem value={"No Response"}>No Response</MenuItem>
+          <MenuItem value={"Completed"}>Completed</MenuItem>
         </Select>
       </FormControl>
       <TextField
