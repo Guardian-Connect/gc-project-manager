@@ -45,7 +45,11 @@ const Troubledmodal = ({ gctix }) => {
 
   const handleFirstContactDate = (e) => {
     setFirstDate(e.target.value);
-    addWeeks(2);
+    console.log(secondDate.length);
+    if (secondDate.length <= 2) {
+      console.log("adding weeks");
+      addWeeks(2);
+    }
     function addWeeks(weeks, date = new Date()) {
       date.setDate(date.getDate() + weeks * 7);
       let format =
@@ -53,6 +57,10 @@ const Troubledmodal = ({ gctix }) => {
       console.log(typeof format);
       return setSecondDate(format);
     }
+  };
+
+  const handleSecondContactDate = (e) => {
+    setSecondDate(e.target.value);
   };
 
   const handleResoDate = (e) => {
@@ -216,13 +224,13 @@ const Troubledmodal = ({ gctix }) => {
         sx={{ m: 2, width: 226 }}
         required
         id="outlined-required"
-        label="Enter Second Contact Date"
+        label="Enter Next Contact Date"
         placeholder="YYYY-MM-DD"
         defaultValue={handleDate(gctix.next_date)}
         InputLabelProps={{
           shrink: true,
         }}
-        // onChange={console.log("placeholder")}
+        onChange={handleSecondContactDate}
       />
       <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Enter Second Contact Type</InputLabel>
