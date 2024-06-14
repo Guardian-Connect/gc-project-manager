@@ -32,8 +32,8 @@ const Troubledmodal = ({ gctix }) => {
   const [secondDate, setSecondDate] = React.useState("");
   const [firstContact, setFirstContact] = React.useState("");
   const [secondContact, setSecondContact] = React.useState("");
-  const [notez, setNotes] = React.useState("");
-  const [notes, setNotez] = React.useState("");
+  const [notez, setNotez] = React.useState("");
+  const [notes, setNotes] = React.useState("");
   const [status, setStatus] = React.useState("");
   const [resoDate, setResoDate] = React.useState("");
   const classes = useStyles();
@@ -76,10 +76,21 @@ const Troubledmodal = ({ gctix }) => {
     setSecondContact(e.target.value);
   };
   const handleNotes = (e) => {
-    console.log(e.target.value);
-    setNotez(e.target.value);
+    setNotes(e.target.value);
   };
 
+  const dateUpdate = (notez) => {
+    let date = new Date();
+    if (notez) {
+      const test =
+        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      const notes = test + " " + ":" + " " + notez;
+      setNotes(notes);
+      consoleTest();
+    } else {
+      consoleTest();
+    }
+  };
   const handleStatus = (e) => {
     setStatus(e.target.value);
   };
@@ -87,13 +98,16 @@ const Troubledmodal = ({ gctix }) => {
   const consoleTest = () => {
     setLoading(true);
     let id = gctix.id;
-    let date = new Date();
-    if (notez) {
-      const test =
-        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-      const notes = test + " " + ":" + " " + notez;
-      setNotez(notes);
-    }
+    // let date = new Date();
+    // console.log(notez, "checking notez");
+    // if (notez) {
+    //   console.log("notez exist");
+    //   const test =
+    //     date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    //   const notes = test + " " + ":" + " " + notez;
+    //   setNotes(notes);
+    // }
+    console.log("first notes check", notes);
     updateTroubledDispensers(
       id,
       firstDate,
@@ -104,8 +118,8 @@ const Troubledmodal = ({ gctix }) => {
       status,
       resoDate
     );
-    console.log(notes);
-    // reload();
+    // console.log(notes, "checking notes");
+    reload();
   };
 
   return (
@@ -264,7 +278,7 @@ const Troubledmodal = ({ gctix }) => {
       <LoadingButton
         sx={{ m: 2, width: "82%" }}
         color="secondary"
-        onClick={consoleTest}
+        onClick={dateUpdate}
         loading={loading}
         loadingPosition="start"
         startIcon={<SaveIcon />}

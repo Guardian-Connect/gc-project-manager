@@ -56,13 +56,13 @@ const Rrsmatrix = ({ rrs }) => {
       >
         <CardContent>
           <Typography variant="h5" component="div">
-            Customer Number - {rrs.gp_cust}{" "}
+            Customer Number - {rrs.gp_cust}
           </Typography>
           <Typography variant="h5" component="div">
-            Customer Name - {rrs.cus_name}{" "}
+            Customer Name - {rrs.cus_name}
           </Typography>
           <Typography variant="h5" component="div">
-            RRS Info - {rrs.rrs}{" "}
+            RRS Info - {rrs.rrs}
           </Typography>
         </CardContent>
       </AccordionSummary>

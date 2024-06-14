@@ -669,7 +669,9 @@ updateRouter.post("/troubled", async (req, res, next) => {
     updateFields.cus_notification_two = secondContact;
   }
   if (notes) {
-    updateFields.notes = notes;
+    let newNotes = addNotesField(notes);
+    updateFields.notes = newNotes;
+    // updateFields.notes = notes;
   }
   if (status) {
     updateFields.troubled_status = status;
