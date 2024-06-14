@@ -639,7 +639,18 @@ updateRouter.post("/troubled", async (req, res, next) => {
     status,
     resoDate,
   } = req.body;
-  console.log("Ticket Update Running");
+
+  console.log(
+    "Troubled Update Running",
+    id,
+    firstDate,
+    secondDate,
+    firstContact,
+    secondContact,
+    notes,
+    status,
+    resoDate
+  );
   const updateFields = {};
 
   if (resoDate) {

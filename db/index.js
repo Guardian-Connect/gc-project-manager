@@ -248,6 +248,8 @@ async function createUser({ username, password }) {
     throw error;
   }
 }
+
+// NEED TO ADD IN RRS MATRIX ENTRIES.
 async function createSite(
   gvrid,
   gp_cust,

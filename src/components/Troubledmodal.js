@@ -76,7 +76,8 @@ const Troubledmodal = ({ gctix }) => {
     setSecondContact(e.target.value);
   };
   const handleNotes = (e) => {
-    setNotes(e.target.value);
+    console.log(e.target.value);
+    setNotez(e.target.value);
   };
 
   const handleStatus = (e) => {
@@ -103,7 +104,8 @@ const Troubledmodal = ({ gctix }) => {
       status,
       resoDate
     );
-    reload();
+    console.log(notes);
+    // reload();
   };
 
   return (
