@@ -21,9 +21,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { SixteenMp } from "@mui/icons-material";
 const Rrsmatrix = ({ rrs }) => {
   const [message, setMessage] = useState([]);
   const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -64,6 +69,27 @@ const Rrsmatrix = ({ rrs }) => {
           <Typography variant="h5" component="div">
             RRS Info - {rrs.rrs}
           </Typography>
+          {/* <Typography variant="h5" component="div">
+            RRS Info - {rrs.rrs}
+          </Typography> */}
+          <Typography variant="h5" component="div">
+            {rrs.bug_fixes === null && <>No Bug Fix Pricing Availble</>}
+            {rrs.bug_fixes != null && <>Bug Fix Price - {rrs.bug_fixes}</>}
+          </Typography>
+          <Typography variant="h5" component="div">
+            {rrs.soft_upgrade === null && (
+              <>No Software Upgrade Pricing Availble</>
+            )}
+            {rrs.soft_upgrade != null && (
+              <>Software Upgrade - {rrs.soft_upgrade}</>
+            )}
+          </Typography>
+          <Button variant="contained" onClick={handleClickOpen} sx={{ mt: 1 }}>
+            Edit RRS Data
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <Rrsmodal rrs={rrs} />
+          </Dialog>
         </CardContent>
       </AccordionSummary>
     </Accordion>

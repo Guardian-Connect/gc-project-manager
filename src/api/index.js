@@ -591,6 +591,15 @@ export async function deleteAlert(id) {
   }
 }
 
+export async function deleteTroubled(id) {
+  try {
+    const { data } = await axios.get(`/api/users/delete/troubled/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getEmail(id) {
   try {
     const { data } = await axios.get(`/api/users/email/${id}`);

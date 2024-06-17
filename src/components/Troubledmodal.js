@@ -1,5 +1,10 @@
 import React from "react";
-import { handleDate, deleteAlert, updateTroubledDispensers } from "../api";
+import {
+  handleDate,
+  deleteAlert,
+  updateTroubledDispensers,
+  deleteTroubled,
+} from "../api";
 import {
   TextField,
   FormControl,
@@ -95,6 +100,14 @@ const Troubledmodal = ({ gctix }) => {
     setStatus(e.target.value);
   };
 
+  const handleDelete = () => {
+    let id = gctix.id;
+    setLoading(true);
+    console.log(id);
+    deleteTroubled(id);
+    reload();
+  };
+
   const consoleTest = () => {
     setLoading(true);
     let id = gctix.id;
@@ -124,6 +137,17 @@ const Troubledmodal = ({ gctix }) => {
 
   return (
     <div className="testalertmodal">
+      <LoadingButton
+        sx={{ m: 2, width: "82%" }}
+        color="secondary"
+        onClick={handleDelete}
+        loading={loading}
+        loadingPosition="start"
+        variant="contained"
+        startIcon={<DeleteForeverIcon />}
+      >
+        Delete
+      </LoadingButton>
       <FormControl sx={{ m: 2, width: 226 }}>
         <InputLabel>Status Update</InputLabel>
         <Select onChange={handleStatus}>

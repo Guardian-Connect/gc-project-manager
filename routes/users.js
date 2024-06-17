@@ -13,6 +13,7 @@ const {
   createEmailList,
   getTracker,
   deleteAlertTicket,
+  deleteTroubledTicket,
 } = require("../db");
 const { NotesSharp } = require("@mui/icons-material");
 const SALT_COUNT = 10;
@@ -60,6 +61,16 @@ usersRouter.get("/delete/ticketing/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const dispinfo = await deleteAlertTicket(id);
+    res.send({ dispinfo });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/delete/troubled/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const dispinfo = await deleteTroubledTicket(id);
     res.send({ dispinfo });
   } catch ({ name, message }) {
     next({ name, message });

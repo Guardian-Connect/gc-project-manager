@@ -1432,6 +1432,21 @@ async function deleteAlertTicket(id) {
   }
 }
 
+async function deleteTroubledTicket(id) {
+  try {
+    const tickets = await client.query(
+      `
+      DELETE FROM troubled
+      WHERE id=$1
+      `,
+      [id]
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
+
 async function getProjectCount(gp) {
   try {
     const { rows } = await client.query(
@@ -1529,4 +1544,5 @@ module.exports = {
   troubledCreate,
   getTroubled,
   updateTroubledDispensers,
+  deleteTroubledTicket,
 };
