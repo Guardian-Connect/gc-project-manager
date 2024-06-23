@@ -118,7 +118,7 @@ const Alertmodal = ({ gctix }) => {
 
   const handleTrouble = () => {
     let id = gctix.id;
-    console.log(id);
+    setLoading(true);
     createTroubledDisp(id);
     reload();
   };
