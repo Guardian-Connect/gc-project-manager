@@ -80,6 +80,7 @@ export async function getBfr() {
   try {
     const { data } = await axios.get(`/api/display/bfr`);
     let info = data.bfrReport;
+    console.log(info, "BFR");
     sessionStorage.setItem("bfr", JSON.stringify(info));
     return data;
   } catch (error) {

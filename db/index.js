@@ -142,6 +142,7 @@ INNER JOIN gpmaster ON
 dispinfo.add_id = gpmaster.add_id
 `
     );
+    console.log("INC BFR", rows);
     return rows;
   } catch (error) {
     throw error;
