@@ -181,6 +181,9 @@ const Inboundcall = ({ addTicket }) => {
         <InputLabel>Circle K Activation</InputLabel>
         <Select onChange={handleIssue} defaultValue={""}>
           <MenuItem value={"Success"}>Success</MenuItem>
+          <MenuItem value={"Waiting On Bluefin Whitelist"}>
+            Waiting On Bluefin Whitelist
+          </MenuItem>
           <MenuItem value={"Fail"}>Fail - Enter Failure Notes Below</MenuItem>
         </Select>
       </FormControl>
