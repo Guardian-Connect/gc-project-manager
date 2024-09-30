@@ -52,7 +52,7 @@ function AppAppBar({
               flex: 0,
             }}
           />
-          <CsvDownloadButton
+          {/* <CsvDownloadButton
             data={mockData}
             filename="BFR.csv"
             style={{
@@ -74,7 +74,7 @@ function AppAppBar({
             }}
           >
             BFR Download
-          </CsvDownloadButton>
+          </CsvDownloadButton> */}
           <input
             className="search"
             type="text"

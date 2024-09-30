@@ -76,14 +76,14 @@ displayRouter.get("/disp", async (req, res, next) => {
   }
 });
 
-displayRouter.get("/bfr", async (req, res, next) => {
-  try {
-    const bfrReport = await getBfr();
-    res.send({ bfrReport });
-  } catch ({ name, message }) {
-    next({ name, message });
-  }
-});
+// displayRouter.get("/bfr", async (req, res, next) => {
+//   try {
+//     const bfrReport = await getBfr();
+//     res.send({ bfrReport });
+//   } catch ({ name, message }) {
+//     next({ name, message });
+//   }
+// });
 
 displayRouter.get("/allinbound", async (req, res, next) => {
   try {

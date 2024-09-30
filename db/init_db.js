@@ -16,7 +16,7 @@ const {
   getEmailByGp,
   getTicketing,
   getProjectCount,
-  getBfr,
+  // getBfr,
   getSitesGvr,
   getSitesAddress,
   findCusInfo,

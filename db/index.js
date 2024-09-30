@@ -22,102 +22,102 @@ const client = new Client({
 });
 
 // create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport({
-  // host: "smtp.gmail.com",
-  // port: 465,
-  // secure: true, // true for 465, false for other ports
-  service: "yahoo",
-  auth: {
-    user: "jgale2263130@yahoo.com", // your email address
-    pass: process.env.email_password, // your email password
-  },
-});
+// let transporter = nodemailer.createTransport({
+//   // host: "smtp.gmail.com",
+//   // port: 465,
+//   // secure: true, // true for 465, false for other ports
+//   service: "yahoo",
+//   auth: {
+//     user: "jgale2263130@yahoo.com", // your email address
+//     pass: process.env.email_password, // your email password
+//   },
+// });
 
-// create a function that sends an email
-async function sendEmail(
-  gvrId,
-  gpCust,
-  address,
-  activationDate,
-  warrantyDate,
-  quote,
-  notes
-) {
-  let mailOptions = {
-    from: {
-      name: "GC Activations",
-      address: "jgale2263130@yahoo.com",
-    },
-    // to: "jgale@guardianfueltech.com",
-    to: "guardianconnect@guardianfueltech.com",
-    subject: `New Activation - ${gpCust}`,
-    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
-  };
+// // create a function that sends an email
+// async function sendEmail(
+//   gvrId,
+//   gpCust,
+//   address,
+//   activationDate,
+//   warrantyDate,
+//   quote,
+//   notes
+// ) {
+//   let mailOptions = {
+//     from: {
+//       name: "GC Activations",
+//       address: "jgale2263130@yahoo.com",
+//     },
+//     // to: "jgale@guardianfueltech.com",
+//     to: "guardianconnect@guardianfueltech.com",
+//     subject: `New Activation - ${gpCust}`,
+//     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+//   };
 
-  // send the email using the transporter object
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
-}
+//   // send the email using the transporter object
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log("Email sent: " + info.response);
+//     }
+//   });
+// }
 
-async function sendEmailTickets() {
-  let answer = await getEodTicketing();
-  console.log(answer, "answer");
-  let mailOptions = {
-    from: {
-      name: "Daily Tickets",
-      address: "jgale2263130@yahoo.com",
-    },
-    // to: "jgale@guardianfueltech.com",
-    to: "guardianconnect@guardianfueltech.com",
-    subject: `Ticketing Report`,
-    text: `${answer}`,
-  };
+// async function sendEmailTickets() {
+//   let answer = await getEodTicketing();
+//   console.log(answer, "answer");
+//   let mailOptions = {
+//     from: {
+//       name: "Daily Tickets",
+//       address: "jgale2263130@yahoo.com",
+//     },
+//     // to: "jgale@guardianfueltech.com",
+//     to: "guardianconnect@guardianfueltech.com",
+//     subject: `Ticketing Report`,
+//     text: `${answer}`,
+//   };
 
-  // send the email using the transporter object
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-      return "Email sent: " + info.response;
-    }
-  });
-}
+//   // send the email using the transporter object
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log("Email sent: " + info.response);
+//       return "Email sent: " + info.response;
+//     }
+//   });
+// }
 
-async function sendEmailStatic(
-  gvrId,
-  gpCust,
-  address,
-  activationDate,
-  warrantyDate,
-  quote,
-  notes
-) {
-  let mailOptions = {
-    from: {
-      name: "GC Activations",
-      address: "jgale2263130@yahoo.com",
-    },
-    // to: "jgale@guardianfueltech.com",
-    to: "guardianconnect@guardianfueltech.com",
-    subject: `New Activation STATIC SITE - ${gpCust}`,
-    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
-  };
+// async function sendEmailStatic(
+//   gvrId,
+//   gpCust,
+//   address,
+//   activationDate,
+//   warrantyDate,
+//   quote,
+//   notes
+// ) {
+//   let mailOptions = {
+//     from: {
+//       name: "GC Activations",
+//       address: "jgale2263130@yahoo.com",
+//     },
+//     // to: "jgale@guardianfueltech.com",
+//     to: "guardianconnect@guardianfueltech.com",
+//     subject: `New Activation STATIC SITE - ${gpCust}`,
+//     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+//   };
 
-  // send the email using the transporter object
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
-}
+//   // send the email using the transporter object
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log("Email sent: " + info.response);
+//     }
+//   });
+// }
 
 async function getRecordByDate(start, end, gp) {
   try {
@@ -134,38 +134,54 @@ async function getRecordByDate(start, end, gp) {
   }
 }
 
-async function getBfr() {
+// async function getBfr() {
+//   try {
+//     const { rows } = await client.query(
+//       `select ribbon_count, gvr_id, s_name, cus_name, gp_cust, dispinfo.add_id, warranty, site_address, site_city, site_state, site_zip, dashboard_status, gpmaster.* from dispinfo
+// INNER JOIN gpmaster ON
+// dispinfo.add_id = gpmaster.add_id
+// `
+//     );
+//     // console.log("INC BFR", rows);
+//     return rows;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+// async function getEodTicketing() {
+//   try {
+//     console.log("runnin EoD");
+//     const left = (await ticketsComplete()).pop();
+//     const done = (await ticketsDone()).pop();
+//     const billed = (await ticketsDoneWarranty()).pop();
+//     console.log(left.count, done.count, "TESTING");
+//     const answer =
+//       "Left-" +
+//       left.count +
+//       " " +
+//       "Completed-" +
+//       done.count +
+//       " " +
+//       "Warranty Tickets-" +
+//       billed.count;
+//     return answer;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+//ADDING IN NEW FUNCTION TO HELP WITH TICKETING AUTOMATION.
+async function getEodTicketing() {
   try {
+    console.log("runnin EoD");
     const { rows } = await client.query(
       `select ribbon_count, gvr_id, s_name, cus_name, gp_cust, dispinfo.add_id, warranty, site_address, site_city, site_state, site_zip, dashboard_status, gpmaster.* from dispinfo
 INNER JOIN gpmaster ON
 dispinfo.add_id = gpmaster.add_id
 `
     );
-    // console.log("INC BFR", rows);
-    return rows;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function getEodTicketing() {
-  try {
-    console.log("runnin EoD");
-    const left = (await ticketsComplete()).pop();
-    const done = (await ticketsDone()).pop();
-    const billed = (await ticketsDoneWarranty()).pop();
-    console.log(left.count, done.count, "TESTING");
-    const answer =
-      "Left-" +
-      left.count +
-      " " +
-      "Completed-" +
-      done.count +
-      " " +
-      "Warranty Tickets-" +
-      billed.count;
-    return answer;
+    console.log(typeof rows, "rows test");
   } catch (error) {
     throw error;
   }
@@ -701,19 +717,29 @@ async function getRrsMatrix() {
 }
 
 async function troubledCreate(id) {
+  console.log(id, "running troubled");
   const { rows } = await client.query(
-    `WITH moved_rows AS(
-  DELETE FROM ticketing
-    WHERE id=$1
-    RETURNING *
-)
-INSERT INTO troubled
-  SELECT * FROM moved_rows;
+    `INSERT INTO troubled
+SELECT id, s_name, gvr_id, warr, add_id, address, city, ticket_number, date, fueling_position, component_name, cause, status, duration, contract_status, warr_gvr_id, rrs, gp_cust FROM ticketing
+WHERE id=$1
   `,
     [id]
   );
-  // await setTroubledStatus(id);
-  console.log(rows);
+  const { rowstwo } = await troubledDelete(id);
+  console.log(rows, rowstwo);
+  return rows;
+}
+
+async function troubledDelete(id) {
+  console.log(id, "running troubled delete");
+  const { rows } = await client.query(
+    `
+DELETE from ticketing
+WHERE id=$1;
+  `,
+    [id]
+  );
+  console.log(rows, "delete");
   return rows;
 }
 
@@ -1528,14 +1554,14 @@ module.exports = {
   updateSerials,
   updateModels,
   updateGrades,
-  getBfr,
+  // getBfr,
   getSitesGvr,
   getSitesAddress,
   findCusInfo,
   ticketsComplete,
   ticketsDone,
   getEodTicketing,
-  sendEmailTickets,
+  // sendEmailTickets,
   closeInstallTicket,
   closeStaticTicket,
   runAtSpecificTimeOfDay,

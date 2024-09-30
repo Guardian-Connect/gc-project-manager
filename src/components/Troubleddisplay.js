@@ -70,9 +70,9 @@ const Troubleddisplay = ({ gctix }) => {
               <Typography variant="h5" component="div">
                 Address ID - {gctix.add_id}
               </Typography>
-              <Typography variant="h5" component="div">
+              {/* <Typography variant="h5" component="div">
                 GP Cust - {gctix.gp_cust}
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="div">
                 {gctix.rrs != null &&
                   gctix.rrs != "Plus" &&

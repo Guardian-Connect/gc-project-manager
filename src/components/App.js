@@ -31,7 +31,7 @@ import Inboundcall from "./Inboundcall";
 import Projectdisplay from "./Projectdisplay";
 import Pcntracker from "./Pcntracker";
 import Addresslookup from "./Addresslookup";
-import { getBfr } from "../api";
+// import { getBfr } from "../api";
 import Rrsmatrix from "./Rrsmatrix";
 import Alertticketlookup from "./Alertticketlookup";
 import Troubleddisplay from "./Troubledticket";
@@ -66,9 +66,9 @@ const App = () => {
     }, 1000);
   }, []);
 
-  React.useEffect(async () => {
-    await getBfr();
-  }, []);
+  // React.useEffect(async () => {
+  //   await getBfr();
+  // }, []);
 
   if (sessionStorage.getItem("token") < 27) {
     return (
