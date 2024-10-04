@@ -571,33 +571,16 @@ updateRouter.post("/tracker", async (req, res, next) => {
 });
 
 updateRouter.post("/ticketing", async (req, res, next) => {
-  const {
-    majorsrrs,
-    parkers,
-    others,
-    confirmation,
-    sr,
-    gpticket,
-    fp,
-    gc,
-    site,
-    gvr,
-    id,
-  } = req.body;
+  const { asc, confirmation, sr, gpticket, fp, gc, site, gvr, id } = req.body;
   console.log("Ticket Update Running");
   const updateFields = {};
 
-  if (majorsrrs) {
-    updateFields.majors_rrs = majorsrrs;
-  }
-  if (parkers) {
-    updateFields.parkers_rrs = parkers;
-  }
-  if (others) {
-    updateFields.rrs_charges = others;
+  if (asc) {
+    updateFields.asc_number = asc;
   }
   if (confirmation) {
     updateFields.confirmation_number = confirmation;
+    updateFields.process = "1";
   }
   if (sr) {
     updateFields.sr_number = sr;
@@ -617,6 +600,7 @@ updateRouter.post("/ticketing", async (req, res, next) => {
   if (gvr) {
     updateFields.gvr_id = gvr;
   }
+
   try {
     const updatedTicket = await updateAlertTickets(id, updateFields);
     console.log(updatedTicket, "users");

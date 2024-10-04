@@ -466,9 +466,7 @@ export async function updateTicket(
 
 export async function updateAlertTicket(
   id,
-  majorsrrs,
-  parkers,
-  others,
+  asc,
   confirmation,
   sr,
   gpticket,
@@ -480,9 +478,7 @@ export async function updateAlertTicket(
   try {
     const { tracker } = await axios.post("api/update/ticketing", {
       id,
-      majorsrrs,
-      parkers,
-      others,
+      asc,
       confirmation,
       sr,
       gpticket,

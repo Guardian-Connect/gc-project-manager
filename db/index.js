@@ -1139,7 +1139,11 @@ async function updateAlertTickets(id, fields = {}) {
       .map((key, index) => `${key}=$${index + 1}`)
       .join(", ");
     console.log(id, setString);
-    console.log(Object.values(fields));
+    // console.log(Object.values(fields));
+    console.log(fields.confirmation_number != null);
+    if (fields.confirmation_number != null) {
+      const noteUpdate = await updateAlertTicketNotes(id, fields);
+    }
     try {
       const { rows } = await client.query(
         `
@@ -1155,6 +1159,31 @@ async function updateAlertTickets(id, fields = {}) {
     } catch (error) {
       throw error;
     }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateAlertTicketNotes(id, fields = {}) {
+  try {
+    console.log("updating alert ticket notes.");
+    const setString = Object.keys(fields)
+      .map((key, index) => `${key}=$${index + 1}`)
+      .join(", ");
+    const { rows } = await client.query(
+      `
+update ticketing
+set notes = '*GUARDIAN CONNECT*, GC-REMOTE FIX, #'|| fueling_position || ' ' || component_name || ' ' || 'WARM START
+				PLEASE BILL TO GILBARCO PER INSITE360 CONTRACT
+                LABOR = 0.83 HOURS
+                NO TRAVEL
+                NO MILEAGE
+                TOTAL = $75.53
+                ASC #${fields.asc_number}'
+    WHERE id=${id};
+    `
+    );
+    return rows;
   } catch (error) {
     throw error;
   }

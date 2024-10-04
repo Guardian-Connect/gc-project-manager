@@ -40,6 +40,7 @@ const Alertmodal = ({ gctix }) => {
   const [fp, setFP] = React.useState("");
   const [gc, setGCTicket] = React.useState("");
   const [site, setSite] = React.useState("");
+  const [asc, setAsc] = React.useState("");
   const [gvr, setGvr] = React.useState("");
   const classes = useStyles();
 
@@ -48,9 +49,7 @@ const Alertmodal = ({ gctix }) => {
     setLoading(true);
     updateAlertTicket(
       id,
-      majorsrrs,
-      parkers,
-      others,
+      asc,
       confirmation,
       sr,
       gpticket,
@@ -71,6 +70,10 @@ const Alertmodal = ({ gctix }) => {
 
   const handleTextChangeSite = (e) => {
     setSite(e.target.value);
+  };
+
+  const handleTextChangeAsc = (e) => {
+    setAsc(e.target.value);
   };
 
   const handleTextChangeGvr = (e) => {
@@ -157,6 +160,17 @@ const Alertmodal = ({ gctix }) => {
           shrink: true,
         }}
         onChange={handleTextChangeSite}
+      />
+      <TextField
+        sx={{ m: 2, width: "81%" }}
+        required
+        id="outlined-required"
+        label="Enter ASC Number"
+        defaultValue={gctix.asc}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleTextChangeAsc}
       />
       <TextField
         sx={{ m: 2 }}
@@ -256,7 +270,7 @@ const Alertmodal = ({ gctix }) => {
         }}
         onChange={handleTextChangeConfirmation}
       />{" "}
-      <FormControl className={classes.formControl} sx={{ m: 2 }}>
+      {/* <FormControl className={classes.formControl} sx={{ m: 2 }}>
         <InputLabel>Majors RRS?</InputLabel>
         <Select onChange={handleTextChangeMajorsRRS}>
           <MenuItem value={true}>Yes</MenuItem>
@@ -277,7 +291,7 @@ const Alertmodal = ({ gctix }) => {
           <MenuItem value={"200"}>$200</MenuItem>
           <MenuItem value={false}>No</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       <LoadingButton
         sx={{ m: 2, width: "82%" }}
         color="secondary"
