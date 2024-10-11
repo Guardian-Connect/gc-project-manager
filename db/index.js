@@ -22,102 +22,102 @@ const client = new Client({
 });
 
 // create reusable transporter object using the default SMTP transport
-// let transporter = nodemailer.createTransport({
-//   // host: "smtp.gmail.com",
-//   // port: 465,
-//   // secure: true, // true for 465, false for other ports
-//   service: "yahoo",
-//   auth: {
-//     user: "jgale2263130@yahoo.com", // your email address
-//     pass: process.env.email_password, // your email password
-//   },
-// });
+let transporter = nodemailer.createTransport({
+  // host: "smtp.gmail.com",
+  // port: 465,
+  // secure: true, // true for 465, false for other ports
+  service: "yahoo",
+  auth: {
+    user: "jgale2263130@yahoo.com", // your email address
+    pass: process.env.email_password, // your email password
+  },
+});
 
 // // create a function that sends an email
-// async function sendEmail(
-//   gvrId,
-//   gpCust,
-//   address,
-//   activationDate,
-//   warrantyDate,
-//   quote,
-//   notes
-// ) {
-//   let mailOptions = {
-//     from: {
-//       name: "GC Activations",
-//       address: "jgale2263130@yahoo.com",
-//     },
-//     // to: "jgale@guardianfueltech.com",
-//     to: "guardianconnect@guardianfueltech.com",
-//     subject: `New Activation - ${gpCust}`,
-//     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
-//   };
+async function sendEmail(
+  gvrId,
+  gpCust,
+  address,
+  activationDate,
+  warrantyDate,
+  quote,
+  notes
+) {
+  let mailOptions = {
+    from: {
+      name: "GC Activations",
+      address: "jgale2263130@yahoo.com",
+    },
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `New Activation - ${gpCust}`,
+    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
 
-//   // send the email using the transporter object
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("Email sent: " + info.response);
-//     }
-//   });
-// }
+  //   // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
 
-// async function sendEmailTickets() {
-//   let answer = await getEodTicketing();
-//   console.log(answer, "answer");
-//   let mailOptions = {
-//     from: {
-//       name: "Daily Tickets",
-//       address: "jgale2263130@yahoo.com",
-//     },
-//     // to: "jgale@guardianfueltech.com",
-//     to: "guardianconnect@guardianfueltech.com",
-//     subject: `Ticketing Report`,
-//     text: `${answer}`,
-//   };
+async function sendEmailTickets() {
+  let answer = await getEodTicketing();
+  console.log(answer, "answer");
+  let mailOptions = {
+    from: {
+      name: "Daily Tickets",
+      address: "jgale2263130@yahoo.com",
+    },
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `Ticketing Report`,
+    text: `${answer}`,
+  };
 
-//   // send the email using the transporter object
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("Email sent: " + info.response);
-//       return "Email sent: " + info.response;
-//     }
-//   });
-// }
+  //   // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+      return "Email sent: " + info.response;
+    }
+  });
+}
 
-// async function sendEmailStatic(
-//   gvrId,
-//   gpCust,
-//   address,
-//   activationDate,
-//   warrantyDate,
-//   quote,
-//   notes
-// ) {
-//   let mailOptions = {
-//     from: {
-//       name: "GC Activations",
-//       address: "jgale2263130@yahoo.com",
-//     },
-//     // to: "jgale@guardianfueltech.com",
-//     to: "guardianconnect@guardianfueltech.com",
-//     subject: `New Activation STATIC SITE - ${gpCust}`,
-//     text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
-//   };
+async function sendEmailStatic(
+  gvrId,
+  gpCust,
+  address,
+  activationDate,
+  warrantyDate,
+  quote,
+  notes
+) {
+  let mailOptions = {
+    from: {
+      name: "GC Activations",
+      address: "jgale2263130@yahoo.com",
+    },
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `New Activation STATIC SITE - ${gpCust}`,
+    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
 
-//   // send the email using the transporter object
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("Email sent: " + info.response);
-//     }
-//   });
-// }
+  // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
 
 async function getRecordByDate(start, end, gp) {
   try {
