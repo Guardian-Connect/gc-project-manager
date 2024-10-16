@@ -587,6 +587,7 @@ updateRouter.post("/ticketing", async (req, res, next) => {
   }
   if (gpticket) {
     updateFields.gp_ticket = gpticket;
+    updateFields.procss = "3";
   }
   if (fp) {
     updateFields.fueling_position = fp;
