@@ -119,6 +119,36 @@ async function sendEmailStatic(
   });
 }
 
+async function sendEmailSpecialCustomers(
+  gvrId,
+  gpCust,
+  address,
+  activationDate,
+  warrantyDate,
+  quote,
+  notes
+) {
+  let mailOptions = {
+    from: {
+      name: "GC Activations",
+      address: "jgale2263130@yahoo.com",
+    },
+    // to: "jgale@guardianfueltech.com",
+    to: "jgale@guardianfueltech.com",
+    subject: `New Activation STATIC SITE - ${gpCust}`,
+    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+  };
+
+  // send the email using the transporter object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
+
 async function getRecordByDate(start, end, gp) {
   try {
     const { rows } = await client.query(
@@ -544,6 +574,7 @@ async function createInbound(
     let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
+    const special = checkEmail(gvr_id);
     console.log(
       sb,
       gvr_id,

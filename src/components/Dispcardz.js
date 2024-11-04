@@ -78,6 +78,15 @@ const Dispcardz = ({ site, setCount, count }) => {
             {site.gp_cust != "#N/A" && <>GP Customer - {site.gp_cust}</>}
             {site.gp_cust === "#N/A" && <>No GP Customer Listed</>}
           </Typography>
+          <Typography variant="h5" component="div">
+            {console.log(site.jc_ticket_status)}
+            {site.jc_ticket === null && <> No JC Ticket Number </>}
+            {site.jc_ticket != null && (
+              <>
+                JC Ticket Number : {site.jc_ticket} - {site.jc_ticket_status}
+              </>
+            )}
+          </Typography>
         </CardContent>
       </AccordionSummary>
       <Typography variant="h5" component="div">
@@ -115,13 +124,22 @@ const Dispcardz = ({ site, setCount, count }) => {
         )}
         {site.warranty === null && <>No Warranty Information Available</>}
       </Typography>
+      {/* <Typography variant="h5" component="div">
+        {console.log(site.jc_ticket_status)}
+        {site.jc_ticket === null && <> No JC Ticket Number </>}
+        {site.jc_ticket != null && (
+          <>
+            JC Ticket Number : {site.jc_ticket} - {site.jc_ticket_status}
+          </>
+        )}
+       </Typography> */}
       {/* </CardContent>
       </AccordionSummary> */}
       <Typography variant="h5" component="div">
         {site.notes != "X" && <> Notes : {site.notes} </>}
         {site.notes === "X" && <>No Notes Entered</>}
       </Typography>
-      <PosAtg site={site} />
+      {/* <PosAtg site={site} /> */}
       <Dispensers site={site} />
       <Button variant="contained" onClick={handleClickOpen} sx={{ m: 1 }}>
         Edit Dispenser

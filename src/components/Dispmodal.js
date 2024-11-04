@@ -158,12 +158,17 @@ const Dispmodal = ({ site }) => {
   const [model21, setModel21] = React.useState("");
   const [thisGuy, setThisGuy] = React.useState(0);
   const [gcdStatus, setGcdStatus] = React.useState("");
+  const [jc, setJc] = React.useState("");
   const useStyles = makeStyles((theme) => ({
     formControl: {
       minWidth: 226,
     },
   }));
   const classes = useStyles();
+
+  const handleJc = (e) => {
+    setJc(e.target.value);
+  };
 
   const handleModel21 = (e) => {
     setModel21(e.target.value);
@@ -548,6 +553,7 @@ const Dispmodal = ({ site }) => {
       posreg2,
       posreg3,
       atgmodel,
+      jc,
       disp1,
       grades1,
       disp2,
@@ -716,7 +722,7 @@ const Dispmodal = ({ site }) => {
           onChange={handleWarranty}
         />
 
-        <TextField
+        {/* <TextField
           sx={{ m: 2, width: 226 }}
           required
           id="outlined-required"
@@ -774,7 +780,7 @@ const Dispmodal = ({ site }) => {
             shrink: true,
           }}
           onChange={handlePosreg3}
-        />
+        /> */}
         <TextField
           sx={{ m: 2, width: 226 }}
           required
@@ -808,15 +814,12 @@ const Dispmodal = ({ site }) => {
             <MenuItem value={"X"}>Install Open</MenuItem>
             <MenuItem value={"O"}>Quote Needed</MenuItem>
             <MenuItem value={"$350"}>Completed - Branch</MenuItem>
-            <MenuItem value={"$200"}>Completed - Vendor</MenuItem>
+            {/* <MenuItem value={"$200"}>Completed - Vendor</MenuItem> */}
             <MenuItem value={"S"}>Static</MenuItem>
           </Select>
         </FormControl>
 
-        <FormControl
-          className={classes.formControl}
-          sx={{ m: 2, width: "81%" }}
-        >
+        <FormControl className={classes.formControl} sx={{ m: 2 }}>
           <InputLabel>GCD Status?</InputLabel>
           <Select onChange={handleGcdStatus}>
             <MenuItem value={"GCD - Contracted"}>Contracted</MenuItem>
@@ -828,7 +831,18 @@ const Dispmodal = ({ site }) => {
             </MenuItem>
           </Select>
         </FormControl>
-
+        <TextField
+          sx={{ m: 2, width: "81%" }}
+          required
+          id="outlined-required"
+          label="JC Ticket Number"
+          defaultValue={site.jc_ticket}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={handleJc}
+        />
+        {/* 
         <TextField
           sx={{ m: 2, width: "81%" }}
           required
@@ -839,7 +853,7 @@ const Dispmodal = ({ site }) => {
             shrink: true,
           }}
           onChange={handleAtgmodel}
-        />
+        /> */}
         <div className="border">
           <TextField
             sx={{ m: 2, width: "81%" }}

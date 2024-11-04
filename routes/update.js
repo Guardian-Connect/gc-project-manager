@@ -48,6 +48,7 @@ updateRouter.post("/", async (req, res, next) => {
     posreg2,
     posreg3,
     atgmodel,
+    jc,
     disp1,
     grades1,
     disp2,
@@ -160,7 +161,12 @@ updateRouter.post("/", async (req, res, next) => {
   }
 
   if (quote) {
+    console.log(quote, "Quote");
     updateFieldsInfo.quote = quote;
+    if (quote === "C") {
+      console.log("JC Ticket Closed");
+      updateFieldsInfo.jc_ticket_status = "Closed";
+    }
   }
 
   if (gp_cust) {
@@ -202,6 +208,12 @@ updateRouter.post("/", async (req, res, next) => {
     let split = warranty_date.split("T");
     let warranty_date_final = split[0].toString();
     updateFieldsInfo.warranty = warranty_date_final;
+  }
+
+  if (jc) {
+    console.log("JC Exists");
+    updateFieldsInfo.jc_ticket = jc;
+    updateFieldsInfo.jc_ticket_status = "Open";
   }
 
   if (renewal) {
