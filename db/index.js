@@ -574,7 +574,7 @@ async function createInbound(
     let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
-    const special = checkEmail(gvr_id);
+    // const special = checkEmail(gvr_id);
     console.log(
       sb,
       gvr_id,
