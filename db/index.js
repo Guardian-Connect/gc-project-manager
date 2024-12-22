@@ -1206,7 +1206,7 @@ async function updateAlertTicketNotes(id, fields = {}) {
 update ticketing
 set notes = '*GUARDIAN CONNECT*, GC-REMOTE FIX, #'|| fueling_position || ' ' || component_name || ' ' || 'WARM START
 				PLEASE BILL TO GILBARCO PER INSITE360 CONTRACT
-                LABOR = 0.83 HOURS
+                LABOR = 0.80 HOURS
                 NO TRAVEL
                 NO MILEAGE
                 TOTAL = $75.20
