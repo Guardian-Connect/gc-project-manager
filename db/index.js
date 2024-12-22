@@ -1209,7 +1209,7 @@ set notes = '*GUARDIAN CONNECT*, GC-REMOTE FIX, #'|| fueling_position || ' ' || 
                 LABOR = 0.83 HOURS
                 NO TRAVEL
                 NO MILEAGE
-                TOTAL = $75.53
+                TOTAL = $75.20
                 ASC #${fields.asc_number}'
     WHERE id=${id};
     `
