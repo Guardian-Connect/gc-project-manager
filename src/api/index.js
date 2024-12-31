@@ -803,6 +803,8 @@ export function findSb(sb) {
     return "Parker's";
   } else if (sb === "CIK") {
     return "Circle K";
+  } else if (sb === "CKPOC") {
+    return "Circle K - Proof of Concept Sites";
   } else {
     return "Unknown";
   }
