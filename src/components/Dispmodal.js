@@ -813,7 +813,11 @@ const Dispmodal = ({ site }) => {
           <Select onChange={handleQuote}>
             <MenuItem value={"X"}>Install Open</MenuItem>
             <MenuItem value={"O"}>Quote Needed</MenuItem>
-            <MenuItem value={"$350"}>Completed - Branch</MenuItem>
+            <MenuItem value={"Needs Warranty"}>
+              Completed - Needs Warranty/Commissioning
+            </MenuItem>
+            <MenuItem value={"CB"}>Completed - Branch</MenuItem>
+            <MenuItem value={"CV"}>Completed - Vendor</MenuItem>
             {/* <MenuItem value={"$200"}>Completed - Vendor</MenuItem> */}
             <MenuItem value={"S"}>Static</MenuItem>
           </Select>

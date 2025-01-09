@@ -120,23 +120,26 @@ async function sendEmailStatic(
 }
 
 async function sendEmailSpecialCustomers(
-  gvrId,
-  gpCust,
-  address,
-  activationDate,
-  warrantyDate,
-  quote,
-  notes
+  results,
+  problemType,
+  gvr_id,
+  issue,
+  notes,
+  date,
+  time,
+  user
 ) {
   let mailOptions = {
     from: {
-      name: "GC Activations",
+      name: "Customer Alert",
       address: "jgale2263130@yahoo.com",
     },
     // to: "jgale@guardianfueltech.com",
-    to: "jgale@guardianfueltech.com",
-    subject: `New Activation STATIC SITE - ${gpCust}`,
-    text: `New Activation for ${gpCust}, GVR ID - ${gvrId},  Address - ${address},  Activation Date - ${activationDate},  Warranty Expiration - ${warrantyDate},  Status - ${quote}, Notes (X means no notes) - ${notes} `,
+    to: "guardianconnect@guardianfueltech.com",
+    subject: `Customer Alert for GVR ID ${gvr_id}`,
+    text: `A call was completed at a high profile customer account - ${results}. The problem type
+    is ${problemType},here are the notes taken by ${user} : ${notes}. The
+    call came in on ${date} at ${time}`,
   };
 
   // send the email using the transporter object
@@ -386,6 +389,75 @@ async function createSite(
   }
 }
 
+async function checkEmail(
+  gvr_id,
+  issue,
+  gcIssue,
+  notes,
+  date,
+  time,
+  user,
+  problemType
+) {
+  console.log(gvr_id);
+  try {
+    const result = await client.query(
+      `
+      select gp_cust from dispinfo
+       where gvr_id = $1
+      
+    `,
+      [gvr_id]
+    );
+    const results = result.rows[0].gp_cust;
+    const alerts = await checkCustAlerts(results);
+    console.log("alerts", alerts.answer);
+
+    if (alerts.answer === true) {
+      sendEmailSpecialCustomers(
+        results,
+        problemType,
+        gvr_id,
+        issue,
+        notes,
+        date,
+        time,
+        user
+      );
+    } else {
+      console.log("nope");
+    }
+    // console.log("GP CUstomer", result.rows[0].gp_cust);
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function checkCustAlerts(results) {
+  try {
+    const result = await client.query(
+      `
+      SELECT * FROM customer_alerts
+      WHERE gp_cust = $1
+    `,
+      [results]
+    );
+    console.log(result.rows.length);
+    if (result.rows.length != 0) {
+      let resultz = result.rows[0].gp_cust;
+      let answer = resultz === results;
+      return {
+        answer,
+        result,
+      };
+    } else {
+      return;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createSiteModels(gvr_id) {
   try {
     const result = await client.query(
@@ -574,7 +646,16 @@ async function createInbound(
     let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
-    // const special = checkEmail(gvr_id);
+    const special = checkEmail(
+      gvr_id,
+      issue,
+      gcIssue,
+      notes,
+      date,
+      time,
+      user,
+      problemType
+    );
     console.log(
       sb,
       gvr_id,
@@ -618,7 +699,7 @@ async function createInbound(
         user,
       ]
     );
-    console.log(result);
+    console.log("ticket done");
     return result;
   } catch (error) {
     throw error;
@@ -673,7 +754,7 @@ async function getAllInbound() {
   const { rows } = await client.query(
     `SELECT *
     FROM inbound
-    ORDER BY date DESC, time DESC;
+    ORDER BY id DESC;
   `
   );
 
