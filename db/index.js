@@ -411,7 +411,6 @@ async function checkEmail(
     );
     const results = result.rows[0].gp_cust;
     const alerts = await checkCustAlerts(results);
-    console.log("alerts", alerts.answer);
 
     if (alerts.answer === true) {
       sendEmailSpecialCustomers(
