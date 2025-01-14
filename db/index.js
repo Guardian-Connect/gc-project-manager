@@ -399,7 +399,7 @@ async function checkEmail(
   user,
   problemType
 ) {
-  console.log(gvr_id);
+  console.log("email", gvr_id);
   try {
     const result = await client.query(
       `
@@ -409,10 +409,11 @@ async function checkEmail(
     `,
       [gvr_id]
     );
-    const results = result.rows[0].gp_cust;
-    const alerts = await checkCustAlerts(results);
+    if (result.rows[0].gp_cust != "#N/A") {
+      const results = result.rows[0].gp_cust;
+      const alerts = await checkCustAlerts(results);
+      // console.log("alerts", results);
 
-    if (alerts.answer === true) {
       sendEmailSpecialCustomers(
         results,
         problemType,
@@ -645,35 +646,37 @@ async function createInbound(
     let minutes = (date_ob.getMinutes() < 10 ? "0" : "") + date_ob.getMinutes();
     let date = year + "-" + month + "-" + date2;
     let time = hours + ":" + minutes;
-    const special = checkEmail(
-      gvr_id,
-      issue,
-      gcIssue,
-      notes,
-      date,
-      time,
-      user,
-      problemType
-    );
-    console.log(
-      sb,
-      gvr_id,
-      notes,
-      name,
-      number,
-      issue,
-      gp,
-      problemType,
-      gcIssue,
-      date,
-      time,
-      dispNumber,
-      totalDispNumer,
-      totalFuelingPositions,
-      totalCommercialDisp,
-      user,
-      "indexdb"
-    );
+    if (sb != "CIK") {
+      const special = checkEmail(
+        gvr_id,
+        issue,
+        gcIssue,
+        notes,
+        date,
+        time,
+        user,
+        problemType
+      );
+      console.log(
+        sb,
+        gvr_id,
+        notes,
+        name,
+        number,
+        issue,
+        gp,
+        problemType,
+        gcIssue,
+        date,
+        time,
+        dispNumber,
+        totalDispNumer,
+        totalFuelingPositions,
+        totalCommercialDisp,
+        user,
+        "indexdb"
+      );
+    }
     const result = await client.query(
       `
       INSERT INTO inbound(sb, gvr_id, notes, name, number, issue, gp, problem_type, gc_issue, date, time, disp_number, total_disp_number, total_number_fueling_positions, total_commercial_dispensers, userid)
@@ -1528,21 +1531,20 @@ ORDER BY next_date ASC;
   }
 }
 
-// async function getTicketingSearch() {
-//   try {
-//     const tickets = await client.query(
-//       `
-// select ticketing.*, dispinfo.gp_cust from ticketing
-// INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
-// ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC, ticketing.warr ASC
+async function getEmailCust() {
+  try {
+    const tickets = await client.query(
+      `
+select * from customer_alerts
+ORDER BY id DESC;
 
-//       `
-//     );
-//     return tickets;
-//   } catch (error) {
-//     thrown(error);
-//   }
-// }
+      `
+    );
+    return tickets;
+  } catch (error) {
+    thrown(error);
+  }
+}
 
 async function getTicketingSearchGvr(gvr_id) {
   try {
@@ -1712,4 +1714,5 @@ module.exports = {
   getTroubled,
   updateTroubledDispensers,
   deleteTroubledTicket,
+  getEmailCust,
 };

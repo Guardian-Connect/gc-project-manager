@@ -37,6 +37,7 @@ import Alertticketlookup from "./Alertticketlookup";
 import Troubleddisplay from "./Troubledticket";
 import Troubledticket from "./Troubledticket";
 import Rrsmatrixmain from "./Rrsmatrixmain";
+import Customeremail from "./Customeremail";
 const App = () => {
   // const user = sessionStorage.getItem("token");
   const [errormessage, setMessage] = useState([]);
@@ -212,6 +213,9 @@ const App = () => {
               </Route>
               <Route path="/alertticketlookup">
                 <Alertticketlookup />
+              </Route>
+              <Route path="/customeremail">
+                <Customeremail />
               </Route>
               <Route exact path="/login">
                 {/* Initial loading */}

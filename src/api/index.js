@@ -28,6 +28,15 @@ export async function createTroubledDisp(id) {
   }
 }
 
+export async function getEmailCust() {
+  try {
+    const { data } = await axios.get(`/api/display/customeremail`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getTicketingSearchGp(id) {
   try {
     const { data } = await axios.get(`/api/display/searchgp/${id}`);

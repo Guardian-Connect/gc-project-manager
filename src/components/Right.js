@@ -129,17 +129,7 @@ const Right = () => {
                 Inbound Calls
               </Button>
             </ListItem>
-            {/* <ListItem>
-              <Button
-                sx={{ border: 1, borderColor: "white", width: 500 }}
-                variant="contained"
-                onClick={() => {
-                  history.push("/project");
-                }}
-              >
-                Project Management
-              </Button>
-            </ListItem> */}
+
             {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
@@ -191,18 +181,17 @@ const Right = () => {
                 Alert Ticket Lookup
               </Button>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
                 onClick={() => {
-                  // sendEmailTickets();
-                  email();
+                  history.push("/customeremail");
                 }}
               >
-                Ticketing Email
+                Email Alerts
               </Button>
-            </ListItem>
+            </ListItem> */}
             {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}

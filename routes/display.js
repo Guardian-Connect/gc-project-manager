@@ -15,6 +15,7 @@ const {
   getTicketingSearchGp,
   troubledCreate,
   getTroubled,
+  getEmailCust,
 } = require("../db");
 
 // displayRouter.post("/searchgvr/:id", async (req, res, next) => {
@@ -89,6 +90,15 @@ displayRouter.get("/allinbound", async (req, res, next) => {
   try {
     const inboundCalls = await getAllInbound();
     res.send({ inboundCalls });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+displayRouter.get("/customeremail", async (req, res, next) => {
+  try {
+    const emailNotice = await getEmailCust();
+    res.send({ emailNotice });
   } catch ({ name, message }) {
     next({ name, message });
   }
