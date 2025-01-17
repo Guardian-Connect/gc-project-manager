@@ -134,8 +134,8 @@ async function sendEmailSpecialCustomers(
       name: "Customer Alert",
       address: "jgale2263130@yahoo.com",
     },
-    // to: "jgale@guardianfueltech.com",
-    to: "guardianconnect@guardianfueltech.com",
+    to: "jgale@guardianfueltech.com",
+    // to: "guardianconnect@guardianfueltech.com",
     subject: `Customer Alert for GVR ID ${gvr_id}`,
     text: `A call was completed at a high profile customer account - ${results}. The problem type
     is ${problemType},here are the notes taken by ${user} : ${notes}. The
@@ -409,23 +409,25 @@ async function checkEmail(
     `,
       [gvr_id]
     );
+    console.log(result.rows[0].gp_cust, "result count");
     if (result.rows[0].gp_cust != "#N/A") {
       const results = result.rows[0].gp_cust;
       const alerts = await checkCustAlerts(results);
-      // console.log("alerts", results);
-
-      sendEmailSpecialCustomers(
-        results,
-        problemType,
-        gvr_id,
-        issue,
-        notes,
-        date,
-        time,
-        user
-      );
-    } else {
-      console.log("nope");
+      console.log("alerts", alerts);
+      if (alerts) {
+        sendEmailSpecialCustomers(
+          results,
+          problemType,
+          gvr_id,
+          issue,
+          notes,
+          date,
+          time,
+          user
+        );
+      } else {
+        console.log("nope");
+      }
     }
     // console.log("GP CUstomer", result.rows[0].gp_cust);
   } catch (error) {
@@ -442,7 +444,7 @@ async function checkCustAlerts(results) {
     `,
       [results]
     );
-    console.log(result.rows.length);
+    console.log(result.rows.length, "results");
     if (result.rows.length != 0) {
       let resultz = result.rows[0].gp_cust;
       let answer = resultz === results;
