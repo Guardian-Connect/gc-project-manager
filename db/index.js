@@ -134,8 +134,8 @@ async function sendEmailSpecialCustomers(
       name: "Customer Alert",
       address: "jgale2263130@yahoo.com",
     },
-    to: "jgale@guardianfueltech.com",
-    // to: "guardianconnect@guardianfueltech.com",
+    // to: "jgale@guardianfueltech.com",
+    to: "guardianconnect@guardianfueltech.com",
     subject: `Customer Alert for GVR ID ${gvr_id}`,
     text: `A call was completed at a high profile customer account - ${results}. The problem type
     is ${problemType},here are the notes taken by ${user} : ${notes}. The
