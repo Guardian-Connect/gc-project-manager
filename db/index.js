@@ -409,7 +409,7 @@ async function checkEmail(
     `,
       [gvr_id]
     );
-    console.log(result.rows[0].gp_cust, "result count");
+    // console.log(result.rows[0].gp_cust, "result count");
     if (result.rows[0].gp_cust != "#N/A") {
       const results = result.rows[0].gp_cust;
       const alerts = await checkCustAlerts(results);
@@ -1554,13 +1554,12 @@ async function getTicketingSearchGvr(gvr_id) {
       `
 select * from ticketing
 WHERE gvr_id=$1
-UNION
-SELECT * from ticketingold
-WHERE gvr_id=$1
 ORDER BY date DESC;
 `,
       [gvr_id]
     );
+
+    console.log(tickets.rows);
     return tickets.rows;
   } catch (error) {
     thrown(error);
@@ -1574,14 +1573,11 @@ async function getTicketingSearchGp(gp_cust) {
       `
 select * from ticketing
 WHERE gp_cust=$1
-UNION
-SELECT * from ticketingold
-WHERE gp_cust=$1
 ORDER BY date DESC;
 `,
       [gp_cust]
     );
-    // console.log(tickets.rows, "GP Cust Tickets");
+    console.log(tickets.rows, "GP Cust Tickets");
     return tickets.rows;
   } catch (error) {
     thrown(error);

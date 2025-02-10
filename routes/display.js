@@ -56,9 +56,10 @@ displayRouter.get("/searchgvr/:id", async (req, res, next) => {
 
 displayRouter.get("/searchgp/:id", async (req, res, next) => {
   const { id } = req.params;
+  console.log(id, "GP Customer");
   try {
     const searchGp = await getTicketingSearchGp(id);
-    console.log(searchGp, "search GVR");
+    console.log(searchGp, "search GP");
     res.send(searchGp);
   } catch ({ name, message }) {
     next({ name, message });
