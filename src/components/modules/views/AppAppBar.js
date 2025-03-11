@@ -7,10 +7,10 @@ import Drawer from "../../Drawer";
 import Inboundcall from "../../Inboundcall";
 import Dialog from "@mui/material/Dialog";
 import CsvDownloadButton from "react-json-to-csv";
-import { Button } from "@mui/material";
 import { getBfr } from "../../../api";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
+import { Typography, Card, CardContent, Button } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +28,7 @@ function AppAppBar({
   setSearchInput,
   contactInfo,
   setContactInfo,
+  header,
 }) {
   let mockData = JSON.parse(sessionStorage.getItem("bfr"));
   const [open, setOpen] = React.useState(false);
@@ -43,6 +44,7 @@ function AppAppBar({
   };
   const classes = useStyles();
   let history = useHistory();
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -75,16 +77,19 @@ function AppAppBar({
           >
             BFR Download
           </CsvDownloadButton> */}
-          <input
+          {/* <input
             className="search"
             type="text"
             placeholder="Search By GVR ID,Address, or GP Customer ID."
             value={searchInput}
             onChange={handleTextChange}
-          />
+          /> */}
+          <Typography variant="h3" component="div" style={{ color: "#414b76" }}>
+            {header}
+          </Typography>
 
           <Button
-            sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
+            sx={{ ml: 10, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"
             onClick={async () => {
               setSearchInput("");
@@ -93,7 +98,6 @@ function AppAppBar({
           >
             Search Clear
           </Button>
-
           <Button
             sx={{ ml: 2, mr: 2, border: 1, borderColor: "white" }}
             variant="contained"

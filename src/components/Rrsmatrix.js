@@ -22,7 +22,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { SixteenMp } from "@mui/icons-material";
-const Rrsmatrix = ({ rrs }) => {
+const Rrsmatrix = ({ rrs, setHeader }) => {
   const [message, setMessage] = useState([]);
   const [open, setOpen] = React.useState(false);
 

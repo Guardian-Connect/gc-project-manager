@@ -170,7 +170,7 @@ const Right = () => {
                 Provisioning Lookup
               </Button>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}
                 variant="contained"
@@ -180,7 +180,7 @@ const Right = () => {
               >
                 Alert Ticket Lookup
               </Button>
-            </ListItem>
+            </ListItem> */}
             {/* <ListItem>
               <Button
                 sx={{ border: 1, borderColor: "white", width: 500 }}

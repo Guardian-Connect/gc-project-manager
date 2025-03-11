@@ -5,6 +5,16 @@ const SALT_COUNT = 10;
 
 const {
   client,
+  getAllByAddressInbound,
+  getAllByGvrIdInbound,
+  getAllByGvrIdTroubled,
+  getAllByAddressTroubled,
+  getAllByGvrIdTicketing,
+  getAllByAddressTicketing,
+  getAllByGvrIdGcTracker,
+  getAllByAddressGcTracker,
+  getAllByGvrId,
+  getAllByAddress,
   getAllUsers,
   createUser,
   getUsersByID,
@@ -207,7 +217,7 @@ async function testDB() {
     // runAtSpecificTimeOfDay(12, 1, () => {
     //   console.log(new Date());
     // });
-    let count2 = await troubledCreate(71);
+    let count2 = await getAllByGvrIdInbound("116582");
     console.log(count2);
     // await dropTables();
     // await createTables();

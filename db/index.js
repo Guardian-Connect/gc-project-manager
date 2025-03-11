@@ -409,8 +409,13 @@ async function checkEmail(
     `,
       [gvr_id]
     );
-    // console.log(result.rows[0].gp_cust, "result count");
-    if (result.rows[0].gp_cust != "#N/A") {
+
+    const update = result.rows[0];
+    console.log(typeof update, "results row", update);
+
+    if (update === undefined) {
+      return;
+    } else if (update.gp_cust != "#N/A") {
       const results = result.rows[0].gp_cust;
       const alerts = await checkCustAlerts(results);
       console.log("alerts", alerts);
@@ -428,8 +433,9 @@ async function checkEmail(
       } else {
         console.log("nope");
       }
+    } else {
+      console.log("Not Found");
     }
-    // console.log("GP CUstomer", result.rows[0].gp_cust);
   } catch (error) {
     throw error;
   }
@@ -765,6 +771,32 @@ async function getAllInbound() {
   return rows;
 }
 
+async function getAllByAddressInbound(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM inbound
+    WHERE address LIKE '%${id}%'
+   ORDER BY id DESC;
+  `
+  );
+  console.log(rows);
+  return rows;
+}
+
+async function getAllByGvrIdInbound(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM inbound
+    WHERE gvr_id::text LIKE '%${id}%'
+    ORDER BY id DESC;
+  `
+  );
+  console.log(rows);
+  return rows;
+}
+
 async function getAllSites() {
   console.log("getting all sites!");
   const { rows } = await client.query(
@@ -776,6 +808,69 @@ async function getAllSites() {
   `
   );
 
+  return rows;
+}
+
+async function getAllByGvrId(id) {
+  console.log("getting GVR ID");
+  let gvr_id = parseInt(id);
+  console.log(gvr_id);
+  const { rows } = await client.query(
+    `SELECT * FROM dispinfo
+    INNER JOIN dispserials ON dispserials.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispgrades ON dispgrades.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispmodels ON dispmodels.gvr_id = dispinfo.gvr_id
+    WHERE dispinfo.gvr_id::text LIKE '%${gvr_id}%'
+    ORDER BY dispinfo.gvr_id ASC;
+  `
+  );
+
+  return rows;
+}
+
+async function getAllByAddress(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM dispinfo
+    INNER JOIN dispserials ON dispserials.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispgrades ON dispgrades.gvr_id = dispinfo.gvr_id
+    INNER JOIN dispmodels ON dispmodels.gvr_id = dispinfo.gvr_id
+    WHERE site_address LIKE '%${id}%'
+    ORDER BY dispinfo.gvr_id ASC;
+  `
+  );
+  console.log(rows);
+  return rows;
+}
+
+//GC TRACKER QUERY
+async function getAllByGvrIdGcTracker(id) {
+  console.log("getting GVR ID");
+  let gvr_id = parseInt(id);
+  console.log(gvr_id);
+  const { rows } = await client.query(
+    `SELECT *
+      FROM gctracker
+      WHERE gvr_id::text LIKE '%${gvr_id}%'
+      ORDER BY date DESC;
+  `
+  );
+
+  return rows;
+}
+
+async function getAllByAddressGcTracker(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT *
+    FROM gctracker
+    WHERE address LIKE '%${id}%'
+    ORDER BY date DESC;
+  `
+  );
+  console.log(rows);
   return rows;
 }
 
@@ -1505,16 +1600,41 @@ async function getTicketing() {
   try {
     const tickets = await client.query(
       `
-select ticketing.*, dispinfo.gp_cust from ticketing
-INNER JOIN dispinfo ON ticketing.gvr_id::integer = dispinfo.gvr_id
-WHERE gp_ticket IS NULL
-ORDER BY ticketing.gp_ticket DESC, ticketing.date ASC, ticketing.sr_number ASC, ticketing.warr ASC
+select * from ticketing
+WHERE gp_ticket IS NULL AND process != '4'
+ORDER BY gp_ticket DESC, date ASC, sr_number ASC, warr ASC;
       `
     );
     return tickets;
   } catch (error) {
     thrown(error);
   }
+}
+
+async function getAllByAddressTicketing(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM ticketing
+    WHERE address LIKE '%${id}%'
+    ORDER BY gp_ticket DESC, date ASC, sr_number ASC, warr ASC;
+  `
+  );
+  console.log(rows);
+  return rows;
+}
+
+async function getAllByGvrIdTicketing(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM ticketing
+    WHERE gvr_id::text LIKE '%${id}%'
+    ORDER BY gp_ticket DESC, date ASC, sr_number ASC, warr ASC;
+  `
+  );
+  console.log(rows);
+  return rows;
 }
 
 async function getTroubled() {
@@ -1531,6 +1651,32 @@ ORDER BY next_date ASC;
   } catch (error) {
     thrown(error);
   }
+}
+
+async function getAllByAddressTroubled(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM troubled
+    WHERE address LIKE '%${id}%'
+   ORDER BY next_date ASC;
+  `
+  );
+  console.log(rows);
+  return rows;
+}
+
+async function getAllByGvrIdTroubled(id) {
+  console.log("getting address", id);
+
+  const { rows } = await client.query(
+    `SELECT * FROM troubled
+    WHERE gvr_id::text LIKE '%${id}%'
+    ORDER BY next_date ASC;
+  `
+  );
+  console.log(rows);
+  return rows;
 }
 
 async function getEmailCust() {
@@ -1713,4 +1859,14 @@ module.exports = {
   updateTroubledDispensers,
   deleteTroubledTicket,
   getEmailCust,
+  getAllByGvrId,
+  getAllByAddress,
+  getAllByAddressGcTracker,
+  getAllByGvrIdGcTracker,
+  getAllByGvrIdTicketing,
+  getAllByAddressTicketing,
+  getAllByGvrIdTroubled,
+  getAllByAddressTroubled,
+  getAllByGvrIdInbound,
+  getAllByAddressInbound,
 };

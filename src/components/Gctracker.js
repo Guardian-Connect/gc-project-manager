@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Gctracker = ({ addTicket }) => {
+const Gctracker = ({ addTicket, setHeader }) => {
   let date = new Date().toISOString().split("T")[0];
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
@@ -50,6 +50,10 @@ const Gctracker = ({ addTicket }) => {
       window.location.reload();
     }, 5000);
   };
+
+  useEffect(async () => {
+    setHeader("Tracker Entry");
+  }, []);
 
   const consoleTest = (e) => {
     setLoading(true);

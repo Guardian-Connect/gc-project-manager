@@ -48,19 +48,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [nameButton, setNameButton] = useState("");
   const [mockData, setMockData] = useState("");
-  useEffect(async () => {
-    // await getSomething()
-    //   .then((response) => {
-    //     sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
-    //     // sessionStorage.setItem("dispinfo", 1);
-    //     setMockData(response.dispinfo);
-    //     // getTicketing();
-    //   })
-    //   .catch((error) => {
-    //     setMessage(error.message);
-    //   });
-  }, []);
-
+  const [header, setHeader] = useState("Dispenser Information");
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -100,6 +88,7 @@ const App = () => {
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 count={count}
+                header={header}
               />
             </div>
             <Switch>
@@ -112,6 +101,7 @@ const App = () => {
                   setCount={setCount}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               {/* What Renders when open notes button is clicked */}
@@ -119,34 +109,39 @@ const App = () => {
                 <Project
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/alerticket">
                 <Alerticket
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/report">
                 <Report
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route exact path="/addresslookup">
                 {/* Initial loading */}
-                <Addresslookup />
+                <Addresslookup setHeader={setHeader} />
               </Route>
               <Route path="/gctrackerdisplay">
                 <Gctrackerdisplay
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/details">
                 <Details
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/contact">
@@ -154,6 +149,7 @@ const App = () => {
                   contactInfo={contactInfo}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/inbounddisplay">
@@ -161,6 +157,7 @@ const App = () => {
                   contactInfo={contactInfo}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/inboundcall">
@@ -168,6 +165,7 @@ const App = () => {
                   contactInfo={contactInfo}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/allsites">
@@ -175,6 +173,7 @@ const App = () => {
                   addSite={addSite}
                   addEmail={addEmail}
                   createDisp={createDisp}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/gctracker">
@@ -182,6 +181,7 @@ const App = () => {
                   addTicket={addTicket}
                   message={message}
                   setMessage={setMessage}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/pcnalert">
@@ -189,6 +189,7 @@ const App = () => {
                   addTicket={addTicket}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/project">
@@ -196,6 +197,7 @@ const App = () => {
                   addTicket={addTicket}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/troubled">
@@ -203,12 +205,14 @@ const App = () => {
                   addTicket={addTicket}
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/rrsmatrix">
                 <Rrsmatrixmain
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
+                  setHeader={setHeader}
                 />
               </Route>
               <Route path="/alertticketlookup">

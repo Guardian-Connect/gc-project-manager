@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAlert } from "react-alert";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-const Allsites = ({ addSite, addEmail, createDisp }) => {
+const Allsites = ({ addSite, addEmail, createDisp, setHeader }) => {
   const [loading, setLoading] = React.useState(false);
   const [gvr_id, setGvr_id] = useState(0);
   const [gp_cust, setGp_cust] = useState("");
@@ -34,6 +34,11 @@ const Allsites = ({ addSite, addEmail, createDisp }) => {
       minWidth: 226,
     },
   }));
+
+  useEffect(async () => {
+    setHeader("Site Entry");
+  }, []);
+
   const classes = useStyles();
 
   const handleTextChangeCustAddId = (e) => {

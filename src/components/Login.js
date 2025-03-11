@@ -11,10 +11,19 @@ import {
   FormControlLabel,
   Box,
 } from "@mui/material";
+import {
+  getSomething,
+  getRrsMatrix,
+  getEmail,
+  addSite,
+  addEmail,
+  createDisp,
+  getTicketing,
+} from "../api";
 import { LockClockOutlined } from "@mui/icons-material";
 import { useAlert } from "react-alert";
 import { loginUser, registerUser } from "../api";
-const Login = ({ setMockData, getSomething, setMessage }) => {
+const Login = ({ setMockData, setMessage }) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
   const alert = useAlert();
@@ -23,12 +32,15 @@ const Login = ({ setMockData, getSomething, setMessage }) => {
     getSomething()
       .then((response) => {
         // sessionStorage.setItem("dispinf", JSON.stringify(response.dispinfo));
+        console.log(response.dispinfo);
         setMockData(response.dispinfo);
       })
       .catch((error) => {
         setMessage(error.message);
       });
   }
+
+  async function getStuff() {}
 
   const paperStyle = {
     padding: 20,

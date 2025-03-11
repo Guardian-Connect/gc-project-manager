@@ -10,7 +10,9 @@ import {
   MenuItem,
   Select,
   InputLabel,
+  Typography,
 } from "@mui/material";
+import { useAlert } from "react-alert";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { makeStyles } from "@mui/styles";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -42,30 +44,38 @@ const Alertmodal = ({ gctix }) => {
   const [site, setSite] = React.useState("");
   const [asc, setAsc] = React.useState("");
   const [gvr, setGvr] = React.useState("");
+  const [error, setError] = React.useState("");
   const classes = useStyles();
-
+  const alert = useAlert();
   const consoleTest = () => {
-    let id = gctix.id;
-    setLoading(true);
-    updateAlertTicket(
-      id,
-      asc,
-      confirmation,
-      sr,
-      gpticket,
-      fp,
-      gc,
-      site,
-      gvr
-    ).then((res) => {
-      console.log(res);
-      if (res.message === "Update Successful") {
-        alert.show("Updated!");
-      } else {
-        alert.show("An Error Has Occured");
-      }
-    });
-    reload();
+    // console.log(asc.length, "asc");
+    if (asc.length === 0) {
+      setError("ASC Number Needs To Be Filled Out");
+    } else if (gpticket.length === 0) {
+      setError("GP Ticket Number Needs To Be Filled Out");
+    } else {
+      let id = gctix.id;
+      setLoading(true);
+      updateAlertTicket(
+        id,
+        asc,
+        confirmation,
+        sr,
+        gpticket,
+        fp,
+        gc,
+        site,
+        gvr
+      ).then((res) => {
+        console.log(res);
+        if (res.message === "Update Successful") {
+          alert.show("Updated!");
+        } else {
+          alert.show("An Error Has Occured");
+        }
+      });
+      reload();
+    }
   };
 
   const handleTextChangeSite = (e) => {
@@ -150,6 +160,9 @@ const Alertmodal = ({ gctix }) => {
       >
         Delete
       </LoadingButton>
+      <Typography variant="h5" component="div" sx={{ ml: 3, color: "red" }}>
+        {error}
+      </Typography>
       <TextField
         sx={{ m: 2, width: "81%" }}
         required
@@ -166,7 +179,7 @@ const Alertmodal = ({ gctix }) => {
         required
         id="outlined-required"
         label="Enter ASC Number"
-        defaultValue={gctix.asc}
+        defaultValue={gctix.asc_number}
         InputLabelProps={{
           shrink: true,
         }}

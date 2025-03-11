@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getSomething } from "../api";
+import { getAllManagers } from "../api";
 import { Typography, Card, ButtonBase } from "@mui/material";
 import CsvDownload from "react-json-to-csv";
 import { getSpecificData, getCompleteData } from "../api/index";
@@ -10,7 +10,7 @@ const SideBar = ({ mockData, setSearchInput }) => {
   const [message, setMessage] = useState([]);
 
   useEffect(async () => {
-    await getSomething()
+    await getAllManagers()
       .then((response) => {
         setMessage(response.managers);
       })

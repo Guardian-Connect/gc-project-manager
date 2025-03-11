@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Rrsmatrix from "./Rrsmatrix";
-import { getSomething } from "../api";
+import { getRrsMatrix } from "../api";
 
-const Rrsmatrixmain = ({ searchInput, setSearchInput }) => {
+const Rrsmatrixmain = ({ searchInput, setSearchInput, setHeader }) => {
   const [message, setMessage] = useState([]);
   useEffect(async () => {
-    await getSomething()
+    await getRrsMatrix()
       .then((response) => {
         setMessage(response.rrsmatrix);
+        setHeader("RRS Matrix");
       })
       .catch((error) => {
         setMessage(error.message);

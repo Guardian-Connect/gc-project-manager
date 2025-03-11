@@ -57,14 +57,110 @@ export async function getTicketingSearchGvr(id) {
   }
 }
 
-export async function getSomething() {
+export async function getAllByGvrId(id) {
   try {
-    const { data } = await axios.get("/api/display/disp");
+    const { data } = await axios.get(`/api/display/dispgvr/${id}`);
     return data;
   } catch (error) {
     throw error;
   }
 }
+
+export async function getAllByAddress(id) {
+  try {
+    const { data } = await axios.get(`/api/display/addressgvr/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByGvrIdTracker(id) {
+  try {
+    const { data } = await axios.get(`/api/display/trackergvrid/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByAddressTracker(id) {
+  try {
+    const { data } = await axios.get(`/api/display/trackeraddress/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByGvrIdTicketing(id) {
+  try {
+    const { data } = await axios.get(`/api/display/ticketinggvrid/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByAddressTroubled(id) {
+  try {
+    const { data } = await axios.get(`/api/display/addresstroubled/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByGvrIdTroubled(id) {
+  try {
+    const { data } = await axios.get(`/api/display/troubledgvr/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByAddressTicketing(id) {
+  try {
+    const { data } = await axios.get(`/api/display/ticketingaddress/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getSomething(pg) {
+  try {
+    // const id = "1";
+    let id = pg.toString();
+    console.log(typeof id, "page id", id);
+
+    const { data } = await axios.get(`/api/display/disp?page=${id}&limit=100`);
+    console.log(data, "all data");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getRrsMatrix() {
+  try {
+    const { data } = await axios.get("/api/display/rrs");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllManagers() {
+  try {
+    const { data } = await axios.get("/api/display/managers");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getInfo() {
   try {
     const { data } = await axios.get(`/api/users/disp/notes`);
@@ -109,6 +205,24 @@ export async function getGcTracker() {
 export async function getAllInbound() {
   try {
     const { data } = await axios.get(`/api/display/allinbound`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByGvrIdInbound(id) {
+  try {
+    const { data } = await axios.get(`/api/display/inboundgvrid/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllByAddressInbound(id) {
+  try {
+    const { data } = await axios.get(`/api/display/inboundaddress/${id}`);
     return data;
   } catch (error) {
     throw error;

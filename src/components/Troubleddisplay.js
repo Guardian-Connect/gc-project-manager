@@ -28,7 +28,6 @@ const Troubleddisplay = ({ gctix }) => {
   let today = moment.utc().format("MM/DD/yyyy");
   return (
     <div>
-      {" "}
       <div key={gctix.id}>
         <Card
           sx={{

@@ -49,15 +49,15 @@
   }
 
   .stickytwo {
-    display: flex;
+    /* display: flex; */
     /* position: sticky; */
     top: 60px;
-    height: 60px;
+    height: 120px;
     width: 78%;
     align-items: center;
     justify-content: center;
     background-color: white;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 999;
   }
 

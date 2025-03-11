@@ -79,7 +79,6 @@ const Dispcardz = ({ site, setCount, count }) => {
             {site.gp_cust === "#N/A" && <>No GP Customer Listed</>}
           </Typography>
           <Typography variant="h5" component="div">
-            {console.log(site.jc_ticket_status)}
             {site.jc_ticket === null && <> No JC Ticket Number </>}
             {site.jc_ticket != null && (
               <>
