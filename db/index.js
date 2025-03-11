@@ -764,6 +764,7 @@ async function getAllInbound() {
   const { rows } = await client.query(
     `SELECT *
     FROM inbound
+	WHERE date::date > now() - interval '30 day'
     ORDER BY id DESC;
   `
   );
