@@ -877,8 +877,9 @@ async function getAllByAddressGcTracker(id) {
 
 async function getAllGcTracker() {
   const { rows } = await client.query(
-    `SELECT *
+    `	SELECT *
     FROM gctracker
+	WHERE date::date > now() - interval '30 day'
     ORDER BY date DESC;
     
   `
