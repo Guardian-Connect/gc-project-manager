@@ -51,6 +51,8 @@ const Alertmodal = ({ gctix }) => {
     // console.log(asc.length, "asc");
     if (asc.length === 0) {
       setError("ASC Number Needs To Be Filled Out");
+    } else if (gpticket.length === 0) {
+      setError("GP Ticket Number Needs To Be Filled Out");
     } else {
       let id = gctix.id;
       setLoading(true);
