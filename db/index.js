@@ -1660,8 +1660,8 @@ async function getAllByAddressTroubled(id) {
 
   const { rows } = await client.query(
     `SELECT * FROM troubled
-    WHERE address LIKE '%${id}%'
-   ORDER BY next_date ASC;
+    WHERE address LIKE '%${id}%' AND date is NOT NULL
+   ORDER BY date DESC;
   `
   );
   console.log(rows);
@@ -1673,8 +1673,8 @@ async function getAllByGvrIdTroubled(id) {
 
   const { rows } = await client.query(
     `SELECT * FROM troubled
-    WHERE gvr_id::text LIKE '%${id}%'
-    ORDER BY next_date ASC;
+    WHERE gvr_id::text LIKE '%${id}%' AND date is NOT NULL
+    ORDER BY date DESC;
   `
   );
   console.log(rows);
