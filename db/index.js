@@ -773,6 +773,8 @@ async function getAllInbound() {
 }
 
 async function getAllByAddressInbound(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM inbound
     WHERE address LIKE '%${id}%'
@@ -784,6 +786,8 @@ async function getAllByAddressInbound(id) {
 }
 
 async function getAllByGvrIdInbound(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM inbound
     WHERE gvr_id::text LIKE '%${id}%'
@@ -826,6 +830,8 @@ async function getAllByGvrId(id) {
 }
 
 async function getAllByAddress(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM dispinfo
     INNER JOIN dispserials ON dispserials.gvr_id = dispinfo.gvr_id
@@ -856,6 +862,8 @@ async function getAllByGvrIdGcTracker(id) {
 }
 
 async function getAllByAddressGcTracker(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT *
     FROM gctracker
@@ -1606,6 +1614,8 @@ ORDER BY gp_ticket DESC, date ASC, sr_number ASC, warr ASC;
 }
 
 async function getAllByAddressTicketing(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM ticketing
     WHERE address LIKE '%${id}%'
@@ -1617,6 +1627,8 @@ async function getAllByAddressTicketing(id) {
 }
 
 async function getAllByGvrIdTicketing(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM ticketing
     WHERE gvr_id::text LIKE '%${id}%'
@@ -1644,6 +1656,8 @@ ORDER BY next_date ASC;
 }
 
 async function getAllByAddressTroubled(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM troubled
     WHERE address LIKE '%${id}%' AND date is NOT NULL
@@ -1655,6 +1669,8 @@ async function getAllByAddressTroubled(id) {
 }
 
 async function getAllByGvrIdTroubled(id) {
+  console.log("getting address", id);
+
   const { rows } = await client.query(
     `SELECT * FROM troubled
     WHERE gvr_id::text LIKE '%${id}%' AND date is NOT NULL

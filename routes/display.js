@@ -57,6 +57,7 @@ displayRouter.get("/troubledgvr/:id", async (req, res, next) => {
   console.log("routes/display");
   try {
     const dispinfo = await getAllByGvrIdTroubled(id);
+    console.log(dispinfo, "search GVR");
     res.send(dispinfo);
   } catch ({ name, message }) {
     next({ name, message });
@@ -80,6 +81,7 @@ displayRouter.get("/searchgvr/:id", async (req, res, next) => {
   console.log("routes/display");
   try {
     const searchGvr = await getTicketingSearchGvr(id);
+    console.log(searchGvr, "search GVR");
     res.send(searchGvr);
   } catch ({ name, message }) {
     next({ name, message });
@@ -91,6 +93,7 @@ displayRouter.get("/dispgvr/:id", async (req, res, next) => {
   console.log("routes/display");
   try {
     const dispinfo = await getAllByGvrId(id);
+    console.log(dispinfo, "search GVR");
     res.send(dispinfo);
   } catch ({ name, message }) {
     next({ name, message });
