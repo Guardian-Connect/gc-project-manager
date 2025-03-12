@@ -13,6 +13,7 @@ dotenv.config();
 // );
 
 // Turn on when uploading to heroku //
+// console.log(process.env.REACT_APP_DATABASE_URL);
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -66,7 +67,6 @@ async function sendEmail(
 
 async function sendEmailTickets() {
   let answer = await getEodTicketing();
-  console.log(answer, "answer");
   let mailOptions = {
     from: {
       name: "Daily Tickets",
@@ -207,14 +207,12 @@ async function getRecordByDate(start, end, gp) {
 //ADDING IN NEW FUNCTION TO HELP WITH TICKETING AUTOMATION.
 async function getEodTicketing() {
   try {
-    console.log("runnin EoD");
     const { rows } = await client.query(
       `select ribbon_count, gvr_id, s_name, cus_name, gp_cust, dispinfo.add_id, warranty, site_address, site_city, site_state, site_zip, dashboard_status, gpmaster.* from dispinfo
 INNER JOIN gpmaster ON
 dispinfo.add_id = gpmaster.add_id
 `
     );
-    console.log(typeof rows, "rows test");
   } catch (error) {
     throw error;
   }
@@ -232,13 +230,11 @@ async function ticketsDoneWarranty() {
     let year = date_ob.getFullYear().toString().slice(-2);
 
     let ticketStamp = year + month.slice(-2) + date.slice(-2);
-    console.log(ticketStamp, "stamped");
     const { rows } = await client.query(
       ` SELECT COUNT(*) from ticketing
        WHERE gp_ticket LIKE '${ticketStamp}%' and sr_number IS NOT NULL
 `
     );
-    console.log("done", rows);
     return rows;
   } catch (error) {
     throw error;
@@ -773,8 +769,6 @@ async function getAllInbound() {
 }
 
 async function getAllByAddressInbound(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM inbound
     WHERE address LIKE '%${id}%'
@@ -786,8 +780,6 @@ async function getAllByAddressInbound(id) {
 }
 
 async function getAllByGvrIdInbound(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM inbound
     WHERE gvr_id::text LIKE '%${id}%'
@@ -830,8 +822,6 @@ async function getAllByGvrId(id) {
 }
 
 async function getAllByAddress(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM dispinfo
     INNER JOIN dispserials ON dispserials.gvr_id = dispinfo.gvr_id
@@ -862,8 +852,6 @@ async function getAllByGvrIdGcTracker(id) {
 }
 
 async function getAllByAddressGcTracker(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT *
     FROM gctracker
@@ -1614,8 +1602,6 @@ ORDER BY gp_ticket DESC, date ASC, sr_number ASC, warr ASC;
 }
 
 async function getAllByAddressTicketing(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM ticketing
     WHERE address LIKE '%${id}%'
@@ -1627,8 +1613,6 @@ async function getAllByAddressTicketing(id) {
 }
 
 async function getAllByGvrIdTicketing(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM ticketing
     WHERE gvr_id::text LIKE '%${id}%'
@@ -1656,12 +1640,10 @@ ORDER BY next_date ASC;
 }
 
 async function getAllByAddressTroubled(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM troubled
-    WHERE address LIKE '%${id}%'
-   ORDER BY next_date ASC;
+    WHERE address LIKE '%${id}%' and date is NOT NULL
+   ORDER BY date DESC;
   `
   );
   console.log(rows);
@@ -1669,12 +1651,10 @@ async function getAllByAddressTroubled(id) {
 }
 
 async function getAllByGvrIdTroubled(id) {
-  console.log("getting address", id);
-
   const { rows } = await client.query(
     `SELECT * FROM troubled
-    WHERE gvr_id::text LIKE '%${id}%'
-    ORDER BY next_date ASC;
+    WHERE gvr_id::text LIKE '%${id}%' and date is NOT NULL
+   ORDER BY date DESC;
   `
   );
   console.log(rows);
